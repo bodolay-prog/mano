@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=83 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/test_char/test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://dbj5ft3wsx8s5" path="res://actors/characters/test_char/sprites/ground/normals/5p_ryo01.png" id="1_xqg6t"]
@@ -7,13 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bquscy0adlilg" path="res://actors/characters/test_char/sprites/air/movement/jump_ryo17.png" id="3_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://82mf0b7hbi7j" path="res://actors/characters/test_char/sprites/ground/movement/forward_walk_ryo26.png" id="4_8oc46"]
 [ext_resource type="Texture2D" uid="uid://dg21dyp0gg7ta" path="res://actors/characters/test_char/sprites/ground/idle_ryo00.png" id="5_kljdq"]
-[ext_resource type="Script" uid="uid://udxvodm4f2r3" path="res://state_machine/state_machine.gd" id="8_mpk8s"]
+[ext_resource type="Script" uid="uid://udxvodm4f2r3" path="res://core/fsm/state_machine.gd" id="8_mpk8s"]
 [ext_resource type="Script" uid="uid://dfl1lpjutfifu" path="res://actors/characters/test_char/states/movement_states/idle.gd" id="9_jyar5"]
 [ext_resource type="Script" uid="uid://ces800ovfakxf" path="res://actors/characters/test_char/states/movement_states/moving_foward.gd" id="10_vssk5"]
 [ext_resource type="Script" uid="uid://cx0swm5l1aefx" path="res://actors/characters/test_char/states/movement_states/moving_backward.gd" id="11_7crfg"]
 [ext_resource type="Script" uid="uid://ca78hxjat2r1l" path="res://actors/characters/test_char/states/movement_states/jump.gd" id="12_1mff4"]
 [ext_resource type="Script" uid="uid://dmmt0hrit5a21" path="res://actors/characters/test_char/states/movement_states/falling.gd" id="13_4xfqa"]
 [ext_resource type="Script" uid="uid://c13f4d8amrtxc" path="res://actors/characters/test_char/states/movement_states/crouch.gd" id="14_n6tdv"]
+[ext_resource type="Script" uid="uid://cdks531jvy04u" path="res://actors/characters/test_char/states/movement_states/jump_foward.gd" id="15_vssk5"]
+[ext_resource type="Script" uid="uid://bnt8a0yla5hm" path="res://actors/characters/test_char/states/movement_states/jump_back.gd" id="16_7crfg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2cko"]
 atlas = ExtResource("1_xqg6t")
@@ -551,4 +553,12 @@ metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="crouch" type="Node" parent="state_machine_moving"]
 script = ExtResource("14_n6tdv")
+metadata/_custom_type_script = "uid://mam2jjic0o1k"
+
+[node name="jump_foward" type="Node" parent="state_machine_moving"]
+script = ExtResource("15_vssk5")
+metadata/_custom_type_script = "uid://mam2jjic0o1k"
+
+[node name="jump_back" type="Node" parent="state_machine_moving"]
+script = ExtResource("16_7crfg")
 metadata/_custom_type_script = "uid://mam2jjic0o1k"

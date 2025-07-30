@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="agora_o_bagui_ficou_serio"
-run/main_scene="res://stages/test_stage/test_stage.tscn"
+run/main_scene="uid://uxvnmrhb5qpq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
