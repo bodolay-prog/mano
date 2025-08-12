@@ -544,6 +544,7 @@ back_jump_state = NodePath("../jump_back")
 fall_state = NodePath("../falling")
 crouch_state = NodePath("../crouch")
 animation_name = "idle"
+move_speed = 300.0
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="moving_foward" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "fall_state", "crouch_state")]

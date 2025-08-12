@@ -58,3 +58,7 @@ jump_foward={
 "deadzone": 0.2,
 "events": []
 }
+jump_back={
+"deadzone": 0.2,
+"events": []
+}
