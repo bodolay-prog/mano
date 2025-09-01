@@ -20,23 +20,23 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_input(Event: InputEvent) -> State:	
-	if get_jump() and parent.is_on_floor():
-		if get_movement_input() > 0:
-			print("jump frente")
-			return foward_jump_state
+		
+	if input_handler() == 7:
+		print("jump trasd")
+		return back_jump_state
 			
-		if get_movement_input() < 0:
-			print("jump trasd")
-			return back_jump_state
-			
-		if  get_movement_input() == 0:
-			print("jump_neutro")
+	if  input_handler() == 8:
+		print("jump_neutro")
 		return neutral_jump_state
+		
+	if input_handler() == 9 :
+		print("jump frente")
+		return foward_jump_state
 	
-	if get_movement_input() > 0 and parent.is_on_floor():
+	if input_handler() == 6 and parent.is_on_floor():
 		print("frente")
 		return moving_foward_state
-	if get_movement_input() < 0 and parent.is_on_floor():
+	if input_handler() == 4 and parent.is_on_floor():
 		print("trasd")
 		return moving_back_state
 	return null

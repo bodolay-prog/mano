@@ -4,7 +4,9 @@ extends Node
 @export
 var animation_name: String
 @export
-var move_speed: float = 350
+var move_foward_speed: float = 300
+@export
+var move_back_speed: float = 230
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -32,3 +34,9 @@ func get_movement_input() -> float:
 
 func get_jump() -> bool:
 	return move_component.wants_jump()
+	
+func input_handler() -> int:
+	return move_component.inputs()
+
+
+	

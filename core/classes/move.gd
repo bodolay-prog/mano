@@ -6,3 +6,32 @@ func wants_jump() -> bool:
 
 func get_movement_direction() -> float:
 	return Input.get_axis('move_back','move_foward')
+	
+func inputs() -> int:
+	
+	if Input.is_action_pressed('crouch'):
+		if Input.is_action_pressed('jump'):
+			return 5
+		if Input.is_action_pressed('move_back'):
+			return 1
+		if Input.is_action_pressed('move_foward'):
+			return 3
+		return 2
+		
+	if Input.is_action_pressed('move_back'):
+		if Input.is_action_pressed('jump'):
+			return 7
+		if Input.is_action_pressed('move_foward'):
+			return 5
+		return 4
+		
+	if Input.is_action_pressed('move_foward'):
+		if Input.is_action_pressed('move_back'):
+			return 5
+		if Input.is_action_pressed('jump'):
+			return 9
+		return 6
+	if Input.is_action_pressed('jump'):
+		return 8
+		
+	return 5

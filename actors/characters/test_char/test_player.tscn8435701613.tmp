@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=111 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/test_char/test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://dbj5ft3wsx8s5" path="res://actors/characters/test_char/sprites/ground/normals/5p_ryo01.png" id="1_xqg6t"]
@@ -135,6 +135,22 @@ region = Rect2(256, 256, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hhmn"]
 atlas = ExtResource("5_kljdq")
 region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hovxg"]
+atlas = ExtResource("3_8cjhs")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seywa"]
+atlas = ExtResource("3_8cjhs")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyjdi"]
+atlas = ExtResource("3_8cjhs")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu6wy"]
+atlas = ExtResource("3_8cjhs")
+region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ivfc"]
 atlas = ExtResource("3_8cjhs")
@@ -476,6 +492,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hovxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seywa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyjdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu6wy")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5ivfc")
 }, {
 "duration": 1.0,
@@ -686,8 +714,7 @@ script = ExtResource("1_8cjhs")
 
 [node name="move_animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d3fxd")
-animation = &"jump"
-frame_progress = 0.0549426
+animation = &"falling"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(5, 39)
@@ -743,8 +770,12 @@ crouch_state = NodePath("../crouch")
 animation_name = "jump"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="falling" type="Node" parent="movement_state_machine"]
+[node name="falling" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("idle_state", "moving_back_state", "moving_foward_state", "crouch_state")]
 script = ExtResource("13_4xfqa")
+idle_state = NodePath("../idle")
+moving_back_state = NodePath("../moving_backward")
+moving_foward_state = NodePath("../moving_foward")
+crouch_state = NodePath("../crouch")
 animation_name = "falling"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
@@ -752,23 +783,13 @@ metadata/_custom_type_script = "uid://mam2jjic0o1k"
 script = ExtResource("14_n6tdv")
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="jump_foward" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("idle_state", "moving_back_state", "moving_foward_state", "fall_state", "crouch_state")]
+[node name="jump_foward" type="Node" parent="movement_state_machine"]
 script = ExtResource("15_vssk5")
-idle_state = NodePath("../idle")
-moving_back_state = NodePath("../moving_backward")
-moving_foward_state = NodePath("../moving_foward")
-fall_state = NodePath("../falling")
-crouch_state = NodePath("../crouch")
 animation_name = "jump_foward"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="jump_back" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("idle_state", "moving_back_state", "moving_foward_state", "fall_state", "crouch_state")]
+[node name="jump_back" type="Node" parent="movement_state_machine"]
 script = ExtResource("16_7crfg")
-idle_state = NodePath("../idle")
-moving_back_state = NodePath("../moving_backward")
-moving_foward_state = NodePath("../moving_foward")
-fall_state = NodePath("../falling")
-crouch_state = NodePath("../crouch")
 animation_name = "jump_back"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 

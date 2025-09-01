@@ -16,26 +16,26 @@ var fall_state: State
 var crouch_state: State
 	
 func process_physics(delta: float) -> State:
-	if get_jump() and parent.is_on_floor():
-		if get_movement_input() > 0:
-			print("jump frente")
-			return foward_jump_state
+	
+	if input_handler() == 7:
+		print("jump trasd")
+		return back_jump_state
 			
-		if get_movement_input() < 0:
-			print("jump trasd")
-			return back_jump_state
-			
-		if  get_movement_input() == 0:
-			print("jump_neutro")
+	if  input_handler() == 8:
+		print("jump_neutro")
 		return neutral_jump_state
+		
+	if input_handler() == 9:
+		print("jump frente")
+		return foward_jump_state
 
 	parent.velocity.y += gravity * delta
 
-	var movement = get_movement_input() * move_speed
-	if get_movement_input() < 0:
+	var movement = move_foward_speed
+	if input_handler() == 4:
 		return moving_back_state
 	
-	if movement == 0:
+	if input_handler() == 5:
 		return idle_state
 	
 	parent.velocity.x = movement

@@ -12,24 +12,20 @@ var fall_state: State
 var crouch_state: State
 
 @export
-var jump_force: float = 900
+var vertical_jump_force: float = 500
 
 func enter() -> void:
 	super()
-	parent.velocity.y = -jump_force
+	parent.velocity.y = -vertical_jump_force
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
-	
-	if parent.velocity.y > 0:
-		return fall_state
-	
-	var movement = get_movement_input() * move_speed
-	
+	parent.move_and_slide()
+
 	if parent.is_on_floor():
-		if movement > 0:
+		if input_handler() == 6:
 			return moving_foward_state
-		if movement < 0:
+		if input_handler() == 4:
 			return moving_back_state
 		return idle_state
 	
