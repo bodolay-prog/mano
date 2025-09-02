@@ -4,26 +4,25 @@ extends CharacterBody2D
 @onready
 var movement_animations: AnimatedSprite2D = $move_animations
 @onready
-var movement_state_machine: Node = $movement_state_machine
+var input_state_machine: Node = $input_state_machine
 @onready
-var player_move_component = $player_move_component
-
-
+var player_input_component = $player_input_component
 
 func _ready() -> void:
-	movement_state_machine.init(self, movement_animations, player_move_component)
+	input_state_machine.init(self, movement_animations, player_input_component)
 
 func _unhandled_input(event: InputEvent) -> void:
-	movement_state_machine.process_input(event)
+	input_state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	movement_state_machine.process_physics(delta)
+	input_state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
-	movement_state_machine.process_frame(delta)
+	input_state_machine.process_frame(delta)
 	print("x:" +str(velocity.x) + " y: " + str(velocity.y) )
-	print("input: " + str(player_move_component.inputs()))
+	print("movement input: " + str(player_input_component.movement_inputs()))
+	print("attack input: " + str(player_input_component.attack_inputs()))
 	if is_on_floor():
 		print("chão")
-	print("State: " +str($movement_state_machine.current_state))
+	print("State: " +str($input_state_machine.current_state))
 	

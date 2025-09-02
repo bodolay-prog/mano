@@ -1,13 +1,6 @@
-class_name  Movable
 extends Node
 
-func wants_jump() -> bool:
-	return Input.is_action_just_pressed('jump') 
-
-func get_movement_direction() -> float:
-	return Input.get_axis('move_back','move_foward')
-	
-func inputs() -> int:
+func movement_inputs() -> int:
 	
 	if Input.is_action_pressed('crouch'):
 		if Input.is_action_pressed('jump'):
@@ -35,3 +28,9 @@ func inputs() -> int:
 		return 8
 		
 	return 5
+	
+func attack_inputs() -> String:
+	
+	if Input.is_action_pressed("5L"):
+		return "L"
+	return "N"

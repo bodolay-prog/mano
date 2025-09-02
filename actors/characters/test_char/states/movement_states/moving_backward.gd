@@ -10,12 +10,11 @@ var neutral_jump_state: State
 var foward_jump_state: State
 @export
 var back_jump_state: State
-@export
-var fall_state: State
 @export 
 var crouch_state: State
 	
-func process_physics(delta: float) -> State:
+func process_input(Event: InputEvent) -> State:	
+	
 	if input_handler() == 7:
 		print("jump trasd")
 		return back_jump_state
@@ -27,19 +26,25 @@ func process_physics(delta: float) -> State:
 	if input_handler() == 9 :
 		print("jump frente")
 		return foward_jump_state
-
-	parent.velocity.y += gravity * delta
-
-	var movement = -move_back_speed
+		
 	if input_handler() == 6:
 		return moving_foward_state
 	
 	if input_handler() == 5:
 		return idle_state
 	
+	if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			return crouch_state
+
+	return null
+	
+func process_physics(delta: float) -> State:
+	
+
+	parent.velocity.y += gravity * delta
+
+	var movement = -move_back_speed
+	
 	parent.velocity.x = movement
 	parent.move_and_slide()
-	
-	if !parent.is_on_floor():
-		return fall_state
 	return null

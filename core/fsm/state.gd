@@ -11,7 +11,7 @@ var move_back_speed: float = 230
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var animations: AnimatedSprite2D
-var move_component
+var input_component
 var parent: CharacterBody2D
 
 func enter() -> void:
@@ -28,15 +28,9 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	return null
-
-func get_movement_input() -> float:
-	return move_component.get_movement_direction()
-
-func get_jump() -> bool:
-	return move_component.wants_jump()
-	
+		
 func input_handler() -> int:
-	return move_component.inputs()
+	return input_component.movement_inputs()
 
-
-	
+func  attack_input_handler() -> String:
+	return input_component.attack_inputs()

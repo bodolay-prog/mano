@@ -27,6 +27,8 @@ func process_physics(delta: float) -> State:
 			return moving_foward_state
 		if input_handler() == 4:
 			return moving_back_state
+		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			return crouch_state
 		return idle_state
 	
 	return null
