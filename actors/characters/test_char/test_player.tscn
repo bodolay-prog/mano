@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://c13f4d8amrtxc" path="res://actors/characters/test_char/states/movement_states/crouch.gd" id="14_n6tdv"]
 [ext_resource type="Script" uid="uid://cdks531jvy04u" path="res://actors/characters/test_char/states/movement_states/jump_foward.gd" id="15_vssk5"]
 [ext_resource type="Script" uid="uid://bnt8a0yla5hm" path="res://actors/characters/test_char/states/movement_states/jump_back.gd" id="16_7crfg"]
-[ext_resource type="Script" uid="uid://cgmf4m62ud3d6" path="res://core/classes/input.gd" id="17_7crfg"]
+[ext_resource type="Script" uid="uid://cgmf4m62ud3d6" path="res://core/input/input.gd" id="17_7crfg"]
 [ext_resource type="Script" uid="uid://d4cffaajwb5iw" path="res://actors/characters/test_char/states/attack_states/5_l.gd" id="18_5kwwp"]
 [ext_resource type="Script" uid="uid://mam2jjic0o1k" path="res://core/fsm/state.gd" id="19_nsq6k"]
 
