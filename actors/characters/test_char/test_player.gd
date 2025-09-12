@@ -4,12 +4,15 @@ extends CharacterBody2D
 @onready
 var movement_animations: AnimatedSprite2D = $move_animations
 @onready
+var animations_player: AnimationPlayer = $animation_player
+@onready
 var input_state_machine: Node = $input_state_machine
 @onready
 var player_input_component = $player_input_component
 
+
 func _ready() -> void:
-	input_state_machine.init(self, movement_animations, player_input_component)
+	input_state_machine.init(self, movement_animations, animations_player, player_input_component)
 
 func _unhandled_input(event: InputEvent) -> void:
 	input_state_machine.process_input(event)

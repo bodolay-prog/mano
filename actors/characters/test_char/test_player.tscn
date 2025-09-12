@@ -789,3 +789,5 @@ metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="player_input_component" type="Node" parent="."]
 script = ExtResource("17_7crfg")
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
