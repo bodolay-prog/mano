@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=109 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/test_char/test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://dbj5ft3wsx8s5" path="res://actors/characters/test_char/sprites/ground/normals/5p_ryo01.png" id="1_xqg6t"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bnt8a0yla5hm" path="res://actors/characters/test_char/states/movement_states/jump_back.gd" id="16_7crfg"]
 [ext_resource type="Script" uid="uid://cgmf4m62ud3d6" path="res://core/input/input.gd" id="17_7crfg"]
 [ext_resource type="Script" uid="uid://d4cffaajwb5iw" path="res://actors/characters/test_char/states/attack_states/5_l.gd" id="18_5kwwp"]
+[ext_resource type="Script" uid="uid://cgir5kw7x5yut" path="res://actors/characters/test_char/5_m.gd" id="19_5kwwp"]
 [ext_resource type="Script" uid="uid://mam2jjic0o1k" path="res://core/fsm/state.gd" id="19_nsq6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2cko"]
@@ -780,7 +781,7 @@ animation_name = "5L"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="5_M" type="Node" parent="input_state_machine"]
-script = ExtResource("19_nsq6k")
+script = ExtResource("19_5kwwp")
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="5_H" type="Node" parent="input_state_machine"]
