@@ -12,6 +12,8 @@ var foward_jump_state: State
 var back_jump_state: State
 @export 
 var crouch_state: State
+
+var move_back_speed: float = 230
 	
 func process_input(Event: InputEvent) -> State:	
 	

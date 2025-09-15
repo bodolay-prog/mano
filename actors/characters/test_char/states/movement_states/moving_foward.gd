@@ -13,6 +13,8 @@ var back_jump_state: State
 @export 
 var crouch_state: State
 
+var move_foward_speed: float = 300
+
 func process_input(Event: InputEvent) -> State:	
 	
 	if input_handler() == 7:

@@ -24,10 +24,6 @@ var _5_M_State: State
 @export
 var _5_H_State: State
 
-func enter() -> void:
-	super()
-	parent.velocity.x = 0
-
 func process_input(Event: InputEvent) -> State:	
 	
 	if parent.is_on_floor():

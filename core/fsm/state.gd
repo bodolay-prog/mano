@@ -4,9 +4,7 @@ extends Node
 @export
 var animation_name: String
 @export
-var move_foward_speed: float = 300
-@export
-var move_back_speed: float = 230
+var animation_player_name: String
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -17,6 +15,8 @@ var animations_player: AnimationPlayer
 
 func enter() -> void:
 	animations.play(animation_name)
+	if animation_name.is_empty():
+		animations_player.animation(animation_player_name)
 
 func exit() -> void:
 	pass
