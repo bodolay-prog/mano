@@ -1,2 +1,18 @@
 # AYSU
-FIGHTING GAME POO
+Jogo de Luta para entrega no Trabalho Final da cadeira de POO
+Fase: Beta
+
+Propriedades do jogo:
+- Debug Stage (concluido)
+- Debug Char (meio concluido)
+- State machine (concluido)
+- State sciprt (concluido)
+- Hitbox (nao concluido)
+- Hurtbox (nao concluido)
+- Blocking (nao concluido)
+
+Fases ate a entrega:
+- Beta (Atual)
+- Alpha
+- Polimento
+- Finalizado
