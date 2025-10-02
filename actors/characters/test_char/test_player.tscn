@@ -1,10 +1,10 @@
-[gd_scene load_steps=129 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=130 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/test_char/test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://dbj5ft3wsx8s5" path="res://actors/characters/test_char/sprites/ground/normals/5p_ryo01.png" id="1_xqg6t"]
-[ext_resource type="Texture2D" uid="uid://c17vojytfpff6" path="res://actors/characters/test_char/sprites/dio_prites/dio_without_jacker.png" id="2_5kwwp"]
+[ext_resource type="Texture2D" uid="uid://lafqnllb5e0g" path="res://actors/characters/test_char/sprites/dio_prites/spritesheet (2).png" id="2_5kwwp"]
 [ext_resource type="Texture2D" uid="uid://c06ukrmww2j35" path="res://actors/characters/test_char/sprites/ground/crouch_ryo28.png" id="2_8oc46"]
-[ext_resource type="Texture2D" uid="uid://2yupa5etry4" path="res://actors/characters/test_char/sprites/dio_prites/dio_spritesheet.png" id="2_n6tdv"]
+[ext_resource type="Texture2D" path="res://actors/characters/test_char/sprites/dio_prites/dio_spritesheet.png" id="2_n6tdv"]
 [ext_resource type="Texture2D" uid="uid://dxa32l8oh7q12" path="res://actors/characters/test_char/sprites/ground/movement/back_walk_ryo27.png" id="2_p77nf"]
 [ext_resource type="Texture2D" uid="uid://bquscy0adlilg" path="res://actors/characters/test_char/sprites/air/movement/jump_ryo17.png" id="3_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://82mf0b7hbi7j" path="res://actors/characters/test_char/sprites/ground/movement/forward_walk_ryo26.png" id="4_8oc46"]
@@ -678,44 +678,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpk8s"]
 size = Vector2(40, 106)
 
-[sub_resource type="Animation" id="Animation_5kwwp"]
-resource_name = "idle"
-
-[sub_resource type="Animation" id="Animation_nsq6k"]
-resource_name = "walk_foward"
-
-[sub_resource type="Animation" id="Animation_gjg2l"]
-resource_name = "walk_backward"
-
-[sub_resource type="Animation" id="Animation_0473c"]
-resource_name = "crouch"
-
-[sub_resource type="Animation" id="Animation_1pd4v"]
-resource_name = "jump_neutral"
-
-[sub_resource type="Animation" id="Animation_bexjm"]
-resource_name = "jump_foward"
-
-[sub_resource type="Animation" id="Animation_j1tmy"]
-resource_name = "dash_foward"
-
-[sub_resource type="Animation" id="Animation_kdefj"]
-resource_name = "dash_backward"
-
-[sub_resource type="Animation" id="Animation_sq3no"]
-resource_name = "high_block"
-
-[sub_resource type="Animation" id="Animation_v6kur"]
-resource_name = "low_block"
-
-[sub_resource type="Animation" id="Animation_cmyno"]
-resource_name = "5_L"
-
-[sub_resource type="Animation" id="Animation_dhpyy"]
-resource_name = "5_M"
-
-[sub_resource type="Animation" id="Animation_nfofg"]
-resource_name = "5_H"
+[sub_resource type="Animation" id="Animation_pqplh"]
+resource_name = "2_H"
 
 [sub_resource type="Animation" id="Animation_5txxm"]
 resource_name = "2_L"
@@ -723,8 +687,45 @@ resource_name = "2_L"
 [sub_resource type="Animation" id="Animation_ysehe"]
 resource_name = "2_M"
 
-[sub_resource type="Animation" id="Animation_pqplh"]
-resource_name = "2_H"
+[sub_resource type="Animation" id="Animation_nfofg"]
+resource_name = "5_H"
+
+[sub_resource type="Animation" id="Animation_cmyno"]
+resource_name = "5_L"
+
+[sub_resource type="Animation" id="Animation_dhpyy"]
+resource_name = "5_M"
+
+[sub_resource type="Animation" id="Animation_0473c"]
+resource_name = "crouch"
+
+[sub_resource type="Animation" id="Animation_kdefj"]
+resource_name = "dash_backward"
+
+[sub_resource type="Animation" id="Animation_j1tmy"]
+resource_name = "dash_foward"
+
+[sub_resource type="Animation" id="Animation_sq3no"]
+resource_name = "high_block"
+
+[sub_resource type="Animation" id="Animation_5kwwp"]
+resource_name = "idle"
+step = 0.0263158
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_sheet_without_jacker:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0263158, 0.0526316, 0.0789474, 0.105263, 0.131579, 0.157895, 0.184211, 0.210526, 0.236842, 0.263158, 0.289474, 0.315789, 0.342105, 0.368421, 0.394737, 0.421053, 0.447368, 0.473684, 0.5, 0.526316, 0.552632, 0.578947, 0.605263, 0.631579, 0.657895, 0.684211, 0.710526, 0.736842, 0.763158, 0.789474, 0.815789, 0.842105, 0.868421, 0.894737, 0.921053, 0.947368, 0.973684),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_e5td8"]
+resource_name = "j5_H"
 
 [sub_resource type="Animation" id="Animation_thrt0"]
 resource_name = "j5_L"
@@ -732,8 +733,35 @@ resource_name = "j5_L"
 [sub_resource type="Animation" id="Animation_hms8n"]
 resource_name = "j5_M"
 
-[sub_resource type="Animation" id="Animation_e5td8"]
-resource_name = "j5_H"
+[sub_resource type="Animation" id="Animation_bexjm"]
+resource_name = "jump_foward"
+
+[sub_resource type="Animation" id="Animation_1pd4v"]
+resource_name = "jump_neutral"
+
+[sub_resource type="Animation" id="Animation_v6kur"]
+resource_name = "low_block"
+
+[sub_resource type="Animation" id="Animation_gjg2l"]
+resource_name = "walk_backward"
+
+[sub_resource type="Animation" id="Animation_nsq6k"]
+resource_name = "walk_foward"
+
+[sub_resource type="Animation" id="Animation_6ngd5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_sheet_without_jacker:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ngd5"]
 _data = {
@@ -743,6 +771,7 @@ _data = {
 &"5_H": SubResource("Animation_nfofg"),
 &"5_L": SubResource("Animation_cmyno"),
 &"5_M": SubResource("Animation_dhpyy"),
+&"RESET": SubResource("Animation_6ngd5"),
 &"crouch": SubResource("Animation_0473c"),
 &"dash_backward": SubResource("Animation_kdefj"),
 &"dash_foward": SubResource("Animation_j1tmy"),
@@ -762,8 +791,9 @@ _data = {
 script = ExtResource("1_8cjhs")
 
 [node name="sprite_sheet_without_jacker" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_5kwwp")
+hframes = 30
+vframes = 30
 
 [node name="sprite_sheet" type="Sprite2D" parent="."]
 visible = false
@@ -857,7 +887,7 @@ crouch_state = NodePath("../crouch")
 animation_name = "jump_back"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="5_L" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State", "_5_M_State", "_5_H_State")]
+[node name="5_L" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State")]
 script = ExtResource("18_5kwwp")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
@@ -867,8 +897,6 @@ foward_jump_state = NodePath("../jump_foward")
 back_jump_state = NodePath("../jump_back")
 crouch_state = NodePath("../crouch")
 _5_L_State = NodePath(".")
-_5_M_State = NodePath("")
-_5_H_State = NodePath("")
 animation_name = "5L"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
