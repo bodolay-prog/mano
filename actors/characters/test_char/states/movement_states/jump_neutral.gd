@@ -6,8 +6,6 @@ var idle_state: State
 var moving_back_state: State
 @export
 var moving_foward_state: State
-@export
-var fall_state: State
 @export 
 var crouch_state: State
 

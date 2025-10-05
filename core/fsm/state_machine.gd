@@ -2,7 +2,7 @@ extends Node
 
 @export
 var starting_state: State
-
+var old_state: State
 var current_state: State
 
 # Initialize the state machine by giving each child state a reference to the
@@ -33,7 +33,7 @@ func process_physics(delta: float) -> void:
 		change_state(new_state)
 
 func process_input(event: InputEvent) -> void:
-	var new_state = current_state.process_input(event)
+	var new_state = await current_state.process_input(event)
 	if new_state:
 		change_state(new_state)
 

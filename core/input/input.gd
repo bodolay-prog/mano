@@ -1,5 +1,8 @@
 extends Node
 
+@onready
+var animations_player: AnimationPlayer = $animation_player
+
 func movement_inputs() -> int:
 	
 	if Input.is_action_pressed('crouch'):
@@ -31,6 +34,12 @@ func movement_inputs() -> int:
 	
 func attack_inputs() -> String:
 	
-	if Input.is_action_pressed("5L"):
+	if Input.is_action_just_pressed("5L"):
 		return "L"
+	if Input.is_action_just_pressed("5M"):
+		return "M"
+	if Input.is_action_just_pressed("5H"):
+		return "H"
+
 	return "N"
+		
