@@ -10,7 +10,6 @@ var animations: AnimatedSprite2D
 var input_component
 var parent: CharacterBody2D
 var animations_player: AnimationPlayer
-var animation : Animation 
 
 	
 func enter() -> void:

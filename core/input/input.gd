@@ -1,8 +1,5 @@
 extends Node
 
-@onready
-var animations_player: AnimationPlayer = $animation_player
-
 func movement_inputs() -> int:
 	
 	if Input.is_action_pressed('crouch'):

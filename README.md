@@ -7,8 +7,9 @@ Propriedades do jogo:
 - Debug Char (meio concluido)
 - State machine (concluido)
 - State sciprt (concluido)
-- Hitbox (nao concluido)
+- Hitbox (concluido)
 - Hurtbox (nao concluido)
+- Get Hurt (nao concluido)
 - Blocking (nao concluido)
 
 Fases ate a entrega:
