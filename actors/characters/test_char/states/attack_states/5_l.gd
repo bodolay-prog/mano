@@ -32,7 +32,9 @@ var _2_H_State: State
 
 func process_input(Event: InputEvent) -> State:		
 	await animations_player.animation_finished
+	
 	if parent.is_on_floor():
+		
 		if attack_input_handler() == 'L':
 			return _5_L_State
 		if attack_input_handler() == 'M':

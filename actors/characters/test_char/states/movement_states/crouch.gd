@@ -12,6 +12,8 @@ var foward_jump_state: State
 var back_jump_state: State
 @export
 var idle_state: State
+@export
+var crouch_state: State
 
 #attack states
 @export
@@ -21,14 +23,23 @@ var _2_M_State: State
 @export
 var _2_H_State: State
 
+#Input Machine Path
+@onready
+var input_machine_path =$".."
+
+
 func enter() -> void:
-	super()
+	
+	if input_machine_path.old_state == _2_L_State or input_machine_path.old_state == _2_M_State or input_machine_path.old_state == _2_H_State or input_machine_path.old_state == crouch_state:
+		animations_player.play("crouched") 
+	else:
+		animations_player.play("crouch")
+		
 	parent.velocity.x = 0
 
 func process_input(Event: InputEvent) -> State:	
 
 	if parent.is_on_floor():
-		
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 			# 2 attack inputs
 			if attack_input_handler() == 'L':

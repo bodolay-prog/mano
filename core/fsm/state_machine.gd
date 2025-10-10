@@ -2,15 +2,16 @@ extends Node
 
 @export
 var starting_state: State
-var old_state: State
+var old_state: State 
 var current_state: State
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
-func init(parent: CharacterBody2D, animations_player: AnimationPlayer, input_component) -> void:
+func init(parent: CharacterBody2D, animations_player: AnimationPlayer, hitbox_manager: Area2D, input_component) -> void:
 	for child in get_children():
 		child.parent = parent
 		child.animations_player = animations_player
+		child.hitbox_manager = hitbox_manager
 		child.input_component = input_component
 		
 	# Initialize to the default state
@@ -29,11 +30,13 @@ func change_state(new_state: State) -> void:
 func process_physics(delta: float) -> void:
 	var new_state = await current_state.process_physics(delta)
 	if new_state:
+		old_state = current_state
 		change_state(new_state)
 
 func process_input(event: InputEvent) -> void:
 	var new_state = await current_state.process_input(event)
 	if new_state:
+		old_state = current_state
 		change_state(new_state)
 
 func process_frame(delta: float) -> void:

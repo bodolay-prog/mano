@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=53 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/test_char/test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://lafqnllb5e0g" path="res://actors/characters/test_char/sprites/dio_prites/spritesheet (2).png" id="2_5kwwp"]
@@ -1012,22 +1012,6 @@ tracks/0/keys = {
 "values": [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
 }
 
-[sub_resource type="Animation" id="Animation_lsui0"]
-resource_name = "crouched"
-length = 0.0333367
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [414]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ngd5"]
 _data = {
 &"2_H": SubResource("Animation_pqplh"),
@@ -1038,7 +1022,6 @@ _data = {
 &"5_M": SubResource("Animation_dhpyy"),
 &"RESET": SubResource("Animation_6ngd5"),
 &"crouch": SubResource("Animation_0473c"),
-&"crouched": SubResource("Animation_lsui0"),
 &"dash_backward": SubResource("Animation_kdefj"),
 &"dash_foward": SubResource("Animation_j1tmy"),
 &"falling": SubResource("Animation_ug1d2"),
@@ -1193,7 +1176,7 @@ _5_jH_State = NodePath("../5_jH")
 animation_name = "jump_neutral"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="crouch" type="Node" parent="input_state_machine" node_paths=PackedStringArray("moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "idle_state", "crouch_state", "_2_L_State", "_2_M_State", "_2_H_State")]
+[node name="crouch" type="Node" parent="input_state_machine" node_paths=PackedStringArray("moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "idle_state", "_2_L_State", "_2_M_State", "_2_H_State")]
 script = ExtResource("14_n6tdv")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -1201,7 +1184,6 @@ neutral_jump_state = NodePath("../jump_neutral")
 foward_jump_state = NodePath("../jump_foward")
 back_jump_state = NodePath("../jump_back")
 idle_state = NodePath("../idle")
-crouch_state = NodePath(".")
 _2_L_State = NodePath("../2_L")
 _2_M_State = NodePath("../2_M")
 _2_H_State = NodePath("../2_H")
