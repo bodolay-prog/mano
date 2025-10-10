@@ -27,7 +27,6 @@ var _2_H_State: State
 @onready
 var input_machine_path =$".."
 
-
 func enter() -> void:
 	
 	if input_machine_path.old_state == _2_L_State or input_machine_path.old_state == _2_M_State or input_machine_path.old_state == _2_H_State or input_machine_path.old_state == crouch_state:

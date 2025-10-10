@@ -11,6 +11,7 @@ var input_component
 var parent: CharacterBody2D
 var animations_player: AnimationPlayer
 var hitbox_manager : Area2D
+
 		
 func enter() -> void:
 	animations_player.play(animation_name)
@@ -19,6 +20,7 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	
 	return null
 
 func process_frame(delta: float) -> State:
