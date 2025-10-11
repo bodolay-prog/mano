@@ -12,13 +12,14 @@ config_version=5
 
 config/name="agora_o_bagui_ficou_serio"
 run/main_scene="uid://uxvnmrhb5qpq"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 FrayInputMap="*res://addons/fray/src/input/autoloads/fray_input_map.gd"
 FrayInput="*res://addons/fray/src/input/autoloads/fray_input.gd"
+"CâmeraGlobal"="*res://core/camera/camera.tscn"
 
 [display]
 
