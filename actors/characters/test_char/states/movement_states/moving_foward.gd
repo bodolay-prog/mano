@@ -12,6 +12,10 @@ var foward_jump_state: State
 var back_jump_state: State
 @export 
 var crouch_state: State
+@export
+var dash_back_state: State
+@export
+var dash_foward_state: State
 
 # Attack States
 @export
@@ -28,6 +32,10 @@ var _2_M_State: State
 var _2_H_State: State
 
 var move_foward_speed: float = 300
+
+func enter() -> void:
+	super()
+	parent.velocity.x = 0
 
 func process_input(Event: InputEvent) -> State:	
 	
@@ -50,9 +58,14 @@ func process_input(Event: InputEvent) -> State:
 		
 		if input_handler() == 4:
 			return moving_back_state
+		if input_handler() == 44:
+			return dash_back_state
 	
 		if input_handler() == 5:
 			return idle_state
+			
+		if input_handler() == 66:
+			return dash_foward_state
 		
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 			if attack_input_handler() == 'L':

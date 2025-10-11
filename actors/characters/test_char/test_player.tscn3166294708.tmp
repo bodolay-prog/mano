@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=56 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/test_char/test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://lafqnllb5e0g" path="res://actors/characters/test_char/sprites/dio_prites/spritesheet (2).png" id="2_5kwwp"]
@@ -15,10 +15,9 @@
 [ext_resource type="Script" uid="uid://mtvwmg1i3slv" path="res://actors/characters/test_char/states/attack_states/5_m.gd" id="20_nsq6k"]
 [ext_resource type="Script" uid="uid://bq2ktjg22eug0" path="res://actors/characters/test_char/foward_dash.gd" id="21_gjg2l"]
 [ext_resource type="Script" uid="uid://csku8fk2iak65" path="res://actors/characters/test_char/states/attack_states/5_h.gd" id="21_nsq6k"]
-[ext_resource type="Script" uid="uid://yttkpselinci" path="res://actors/characters/test_char/back_dash.gd" id="22_1pd4v"]
+[ext_resource type="Script" uid="uid://mam2jjic0o1k" path="res://core/fsm/state.gd" id="22_1pd4v"]
 [ext_resource type="Script" uid="uid://bhfrwqgyl3kmf" path="res://actors/characters/test_char/states/attack_states/2_l.gd" id="22_0473c"]
 [ext_resource type="Script" uid="uid://ix78o87tsaj0" path="res://actors/characters/test_char/states/attack_states/2_m.gd" id="23_1pd4v"]
-[ext_resource type="Script" uid="uid://bcdi8pnwkxbyu" path="res://actors/characters/test_char/post_dash.gd" id="23_0473c"]
 [ext_resource type="Script" uid="uid://b5dguhbm43rib" path="res://actors/characters/test_char/states/attack_states/2_h.gd" id="24_bexjm"]
 [ext_resource type="Script" uid="uid://cby3yid0ykeny" path="res://actors/characters/test_char/states/attack_states/5_j_l.gd" id="25_j1tmy"]
 [ext_resource type="Script" uid="uid://d2lfu8ae32x3c" path="res://actors/characters/test_char/states/attack_states/5_j_m.gd" id="26_sq3no"]
@@ -678,6 +677,22 @@ tracks/0/keys = {
 "values": [414]
 }
 
+[sub_resource type="Animation" id="Animation_kdefj"]
+resource_name = "dash_backward"
+length = 0.300003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [94, 95, 96, 97, 98, 99, 100, 101, 102]
+}
+
 [sub_resource type="Animation" id="Animation_j1tmy"]
 resource_name = "dash_foward"
 length = 0.26667
@@ -685,12 +700,12 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 0
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [86, 87, 88, 89, 90, 91, 92, 93]
 }
 
@@ -1015,38 +1030,6 @@ tracks/0/keys = {
 "values": [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
 }
 
-[sub_resource type="Animation" id="Animation_bafmb"]
-resource_name = "post_dash"
-length = 0.0333367
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [93]
-}
-
-[sub_resource type="Animation" id="Animation_kdefj"]
-resource_name = "dash_back"
-length = 0.300003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [94, 95, 96, 97, 98, 99, 100, 101, 102]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ngd5"]
 _data = {
 &"2_H": SubResource("Animation_pqplh"),
@@ -1058,7 +1041,7 @@ _data = {
 &"RESET": SubResource("Animation_6ngd5"),
 &"crouch": SubResource("Animation_0473c"),
 &"crouched": SubResource("Animation_lsui0"),
-&"dash_back": SubResource("Animation_kdefj"),
+&"dash_backward": SubResource("Animation_kdefj"),
 &"dash_foward": SubResource("Animation_j1tmy"),
 &"falling": SubResource("Animation_ug1d2"),
 &"get_up": SubResource("Animation_0r3xw"),
@@ -1075,7 +1058,6 @@ _data = {
 &"low_block": SubResource("Animation_v6kur"),
 &"low_hurt": SubResource("Animation_n6tdv"),
 &"mid_hurt": SubResource("Animation_drypn"),
-&"post_dash": SubResource("Animation_bafmb"),
 &"walk_backward": SubResource("Animation_gjg2l"),
 &"walk_foward": SubResource("Animation_nsq6k")
 }
@@ -1124,7 +1106,7 @@ _2_H_State = NodePath("../2_H")
 animation_name = "idle"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="moving_foward" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State")]
+[node name="moving_foward" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State")]
 script = ExtResource("10_vssk5")
 idle_state = NodePath("../idle")
 moving_back_state = NodePath("../moving_backward")
@@ -1132,8 +1114,6 @@ neutral_jump_state = NodePath("../jump_neutral")
 foward_jump_state = NodePath("../jump_foward")
 back_jump_state = NodePath("../jump_back")
 crouch_state = NodePath("../crouch")
-dash_back_state = NodePath("../back_dash")
-dash_foward_state = NodePath("../foward_dash")
 _5_L_State = NodePath("../5_L")
 _5_M_State = NodePath("../5_M")
 _5_H_State = NodePath("../5_H")
@@ -1143,7 +1123,7 @@ _2_H_State = NodePath("../2_H")
 animation_name = "walk_foward"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="moving_backward" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State")]
+[node name="moving_backward" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State")]
 script = ExtResource("11_7crfg")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
@@ -1151,8 +1131,6 @@ neutral_jump_state = NodePath("../jump_neutral")
 foward_jump_state = NodePath("../jump_foward")
 back_jump_state = NodePath("../jump_back")
 crouch_state = NodePath("../crouch")
-dash_back_state = NodePath("../back_dash")
-dash_foward_state = NodePath("../foward_dash")
 _5_L_State = NodePath("../5_L")
 _5_M_State = NodePath("../5_M")
 _5_H_State = NodePath("../5_H")
@@ -1235,7 +1213,7 @@ _2_H_State = NodePath("../2_H")
 animation_name = "crouch"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="falling" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State", "_5_jL_State", "_5_jM_State", "_5_jH_State")]
+[node name="falling" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State", "_2_jL_State", "_2_jM_State", "_2_jH_State", "_5_jL_State", "_5_jM_State", "_5_jH_State")]
 script = ExtResource("28_sq3no")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
@@ -1250,6 +1228,9 @@ _5_H_State = NodePath("../5_H")
 _2_L_State = NodePath("../2_L")
 _2_M_State = NodePath("../2_M")
 _2_H_State = NodePath("../2_H")
+_2_jL_State = NodePath("../5_jL")
+_2_jM_State = NodePath("../5_jM")
+_2_jH_State = NodePath("../5_jH")
 _5_jL_State = NodePath("../5_jL")
 _5_jM_State = NodePath("../5_jM")
 _5_jH_State = NodePath("../5_jH")
@@ -1385,37 +1366,14 @@ idle_state = NodePath("../idle")
 animation_name = "j5_H"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="back_dash" type="Node" parent="input_state_machine" node_paths=PackedStringArray("post_dash_state")]
-script = ExtResource("22_1pd4v")
-post_dash_state = NodePath("../post_dash")
-animation_name = "dash_back"
-metadata/_custom_type_script = "uid://mam2jjic0o1k"
-
-[node name="foward_dash" type="Node" parent="input_state_machine" node_paths=PackedStringArray("post_dash_state")]
+[node name="foward_dash" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("21_gjg2l")
-post_dash_state = NodePath("../post_dash")
+idle_state = NodePath("../idle")
 animation_name = "dash_foward"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="post_dash" type="Node" parent="input_state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_State", "_5_M_State", "_5_H_State", "_2_L_State", "_2_M_State", "_2_H_State", "_5_jL_State", "_5_jM_State", "_5_jH_State")]
-script = ExtResource("23_0473c")
-idle_state = NodePath("../idle")
-moving_foward_state = NodePath("../moving_foward")
-moving_back_state = NodePath("../moving_backward")
-neutral_jump_state = NodePath("../jump_neutral")
-foward_jump_state = NodePath("../jump_foward")
-back_jump_state = NodePath("../jump_back")
-crouch_state = NodePath("../crouch")
-_5_L_State = NodePath("../5_L")
-_5_M_State = NodePath("../5_M")
-_5_H_State = NodePath("../5_H")
-_2_L_State = NodePath("../2_L")
-_2_M_State = NodePath("../2_M")
-_2_H_State = NodePath("../2_H")
-_5_jL_State = NodePath("../5_jL")
-_5_jM_State = NodePath("../5_jM")
-_5_jH_State = NodePath("../5_jH")
-animation_name = "post_dash"
+[node name="back_dash" type="Node" parent="input_state_machine"]
+script = ExtResource("22_1pd4v")
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="player_input_component" type="Node" parent="."]

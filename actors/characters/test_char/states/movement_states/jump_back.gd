@@ -11,6 +11,8 @@ var moving_back_state: State
 var neutral_jump_state: State
 @export 
 var crouch_state: State
+@export
+var jump_foward_state: State
 
 # Attack States
 @export
@@ -62,6 +64,8 @@ func process_physics(delta: float) -> State:
 		if attack_input_handler() == 'H':
 			return _5_H_State
 			
+		if input_handler() == 9:
+			return jump_foward_state
 		if input_handler() == 8:
 			return neutral_jump_state
 		if input_handler() == 6:

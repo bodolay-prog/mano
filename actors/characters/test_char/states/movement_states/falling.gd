@@ -31,12 +31,6 @@ var _2_M_State: State
 @export
 var _2_H_State: State
 @export
-var _2_jL_State: State
-@export
-var _2_jM_State: State
-@export
-var _2_jH_State: State
-@export
 var _5_jL_State: State
 @export
 var _5_jM_State: State

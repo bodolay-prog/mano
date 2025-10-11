@@ -14,6 +14,10 @@ var foward_jump_state: State
 var back_jump_state: State
 @export 
 var crouch_state: State
+@export
+var dash_foward_state: State
+@export
+var dash_back_state: State
 
 # Attack States
 @export
@@ -29,6 +33,9 @@ var _2_M_State: State
 @export
 var _2_H_State: State
 
+@onready
+var timer = $"../../dash_timer"
+
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
@@ -42,6 +49,7 @@ func process_input(Event: InputEvent) -> State:
 			return _5_M_State
 		if attack_input_handler() == 'H':
 			return _5_H_State
+			
 		if input_handler() == 7:
 			return back_jump_state
 				
@@ -50,11 +58,17 @@ func process_input(Event: InputEvent) -> State:
 			
 		if input_handler() == 9 :
 			return foward_jump_state
-		
+			
 		if input_handler() == 6:
 			return moving_foward_state
+			
+		if input_handler() == 66:
+			return dash_foward_state
+			
 		if input_handler() == 4:
 			return moving_back_state
+		if input_handler() == 44:
+			return dash_back_state
 			
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 			if attack_input_handler() == 'L':
