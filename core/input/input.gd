@@ -42,6 +42,5 @@ func attack_inputs() -> String:
 		return "M"
 	if Input.is_action_just_pressed("5H"):
 		return "H"
-
 	return "N"
 		

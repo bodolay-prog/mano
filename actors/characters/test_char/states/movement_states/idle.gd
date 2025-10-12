@@ -33,8 +33,6 @@ var _2_M_State: State
 @export
 var _2_H_State: State
 
-@onready
-var timer = $"../../dash_timer"
 
 func enter() -> void:
 	super()

@@ -31,6 +31,7 @@ var _2_M_State: State
 var _2_H_State: State
 
 func process_input(Event: InputEvent) -> State:		
+	
 	await animations_player.animation_finished
 	
 	if parent.is_on_floor():
@@ -41,7 +42,7 @@ func process_input(Event: InputEvent) -> State:
 			return _5_M_State
 		if attack_input_handler() == 'H':
 			return _5_H_State
-			
+		
 		if input_handler() == 7:
 			return back_jump_state
 				
