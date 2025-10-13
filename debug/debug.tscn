@@ -13,7 +13,7 @@ size = Vector2(125, 280)
 [node name="Player" parent="." instance=ExtResource("2_25h3d")]
 position = Vector2(57, 613)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["test_enemy"]]
 position = Vector2(566, 433)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

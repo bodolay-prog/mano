@@ -29,6 +29,10 @@ window/size/viewport_height=720
 
 enabled=PackedStringArray("res://addons/fray/plugin.cfg")
 
+[global_group]
+
+test_enemy=""
+
 [input]
 
 move_foward={

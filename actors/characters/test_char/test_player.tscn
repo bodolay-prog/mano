@@ -1897,7 +1897,7 @@ func _on__hit_manager_low_hit_signal(block_stun_frames: int, hit_stun_frames: in
 	print(\"low_hit\")
 	pass # Replace with function body.
 
-func _on_high_hit_manager_hig_hit_signal(block_stun_frames: int, hit_stun_frames: int) -> void:
+func _on_high_hit_manager_high_hit_signal(block_stun_frames: int, hit_stun_frames: int) -> void:
 	print(\"high_hit\")
 	pass # Replace with function body.
 "
@@ -2275,6 +2275,34 @@ debug_color = Color(0, 1, 0, 0.419608)
 [node name="hitbox_manager" type="Node2D" parent="."]
 script = SubResource("GDScript_j1tmy")
 
+[node name="high_hit_manager" type="Node2D" parent="hitbox_manager"]
+script = ExtResource("26_bexjm")
+metadata/_custom_type_script = "uid://bfu4ky4oduc73"
+
+[node name="j5_L_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
+
+[node name="j5_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_L_area"]
+position = Vector2(68, 53)
+shape = SubResource("RectangleShape2D_5kwwp")
+disabled = true
+debug_color = Color(1, 0, 0, 0.513726)
+
+[node name="j5_M_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
+
+[node name="j5_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_M_area"]
+position = Vector2(69.5, 51.5)
+shape = SubResource("RectangleShape2D_5kwwp")
+disabled = true
+debug_color = Color(1, 0, 0, 0.513726)
+
+[node name="j5_H_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
+
+[node name="j5_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_H_area"]
+position = Vector2(69, 9.25)
+shape = SubResource("RectangleShape2D_5kwwp")
+disabled = true
+debug_color = Color(1, 0, 0, 0.513726)
+
 [node name="mid_hit_manager" type="Node2D" parent="hitbox_manager"]
 script = ExtResource("25_kdefj")
 
@@ -2332,34 +2360,10 @@ shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.513726)
 
-[node name="high_hit_manager" type="Node2D" parent="hitbox_manager"]
-script = ExtResource("26_bexjm")
-metadata/_custom_type_script = "uid://bfu4ky4oduc73"
-
-[node name="j5_L_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
-
-[node name="j5_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_L_area"]
-position = Vector2(68, 53)
-shape = SubResource("RectangleShape2D_5kwwp")
-disabled = true
-debug_color = Color(1, 0, 0, 0.513726)
-
-[node name="j5_M_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
-
-[node name="j5_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_M_area"]
-position = Vector2(69.5, 51.5)
-shape = SubResource("RectangleShape2D_5kwwp")
-disabled = true
-debug_color = Color(1, 0, 0, 0.513726)
-
-[node name="j5_H_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
-
-[node name="j5_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_H_area"]
-position = Vector2(69, 9.25)
-shape = SubResource("RectangleShape2D_5kwwp")
-disabled = true
-debug_color = Color(1, 0, 0, 0.513726)
-
+[connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]
+[connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_L_area" to="hitbox_manager/high_hit_manager" method="_on_j_5_l_area_area_entered"]
+[connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_M_area" to="hitbox_manager/high_hit_manager" method="_on_j_5_m_area_area_entered"]
+[connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_H_area" to="hitbox_manager/high_hit_manager" method="_on_j_5_h_area_area_entered"]
 [connection signal="mid_hit_signal" from="hitbox_manager/mid_hit_manager" to="hitbox_manager" method="_on__hit_manager_mid_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_L_area" to="hitbox_manager/mid_hit_manager" method="_on__l_area_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_M_area" to="hitbox_manager/mid_hit_manager" method="_on__m_area_area_entered"]
@@ -2368,7 +2372,3 @@ debug_color = Color(1, 0, 0, 0.513726)
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_L_area" to="hitbox_manager/low_hit_manager" method="_on__l_area_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_M_area" to="hitbox_manager/low_hit_manager" method="_on__m_area_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_H_area" to="hitbox_manager/low_hit_manager" method="_on__h_area_area_entered"]
-[connection signal="hig_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_hig_hit_signal"]
-[connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_L_area" to="hitbox_manager/high_hit_manager" method="_on_j_5_l_area_area_entered"]
-[connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_M_area" to="hitbox_manager/high_hit_manager" method="_on_j_5_m_area_area_entered"]
-[connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_H_area" to="hitbox_manager/high_hit_manager" method="_on_j_5_h_area_area_entered"]
