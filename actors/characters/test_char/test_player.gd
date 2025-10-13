@@ -29,9 +29,10 @@ func _physics_process(delta: float) -> void:
 	input_state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
-	j5_L_hitbox.disabled = true
-	j5_M_hitbox.disabled = true
-	j5_H_hitbox.disabled = true
+	if is_on_floor():
+		j5_L_hitbox.disabled = true
+		j5_M_hitbox.disabled = true
+		j5_H_hitbox.disabled = true
 	
 	#print(str($dash_timer.time_left))j
 	#input_state_machine.process_frame(delta)
