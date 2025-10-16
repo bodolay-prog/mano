@@ -40,7 +40,8 @@ func enter() -> void:
 
 func process_input(Event: InputEvent) -> State:	
 	if parent.is_on_floor():
-
+	
+				
 		if attack_input_handler() == 'L':
 			return _5_L_State
 		if attack_input_handler() == 'M':

@@ -6,7 +6,9 @@ var animations_player: AnimationPlayer = $animation_player
 @onready
 var input_state_machine: Node = $input_state_machine
 @onready
-var hitbox_manager: Area2D = $hitbot_manager
+var node_hitbox_manager: hitbox_manager = $hitbox_manager
+@onready
+var node_hurtbox_manager: hurtbox_manager = $hurtbox_manager
 @onready
 var j5_L_hitbox = $hitbox_manager/high_hit_manager/j5_L_area/j5_L_hitbox
 @onready
@@ -20,7 +22,7 @@ var old_state = $input_state_machine.old_state
 
 
 func _ready() -> void:
-	input_state_machine.init(self, animations_player, hitbox_manager, player_input_component)
+	input_state_machine.init(self, animations_player, node_hitbox_manager, node_hurtbox_manager, player_input_component)
 
 func _unhandled_input(event: InputEvent) -> void:
 	input_state_machine.process_input(event)

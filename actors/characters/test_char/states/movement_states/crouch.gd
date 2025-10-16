@@ -39,6 +39,7 @@ func enter() -> void:
 func process_input(Event: InputEvent) -> State:	
 
 	if parent.is_on_floor():
+	
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 			# 2 attack inputs
 			if attack_input_handler() == 'L':

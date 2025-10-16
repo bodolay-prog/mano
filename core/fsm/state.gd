@@ -10,7 +10,8 @@ var animations: AnimatedSprite2D
 var input_component
 var parent: CharacterBody2D
 var animations_player: AnimationPlayer
-var hitbox_manager : Area2D
+var node_hitbox_manager : hitbox_manager
+var node_hurtbox_manager: hurtbox_manager
 
 		
 func enter() -> void:
