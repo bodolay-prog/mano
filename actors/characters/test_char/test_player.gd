@@ -21,8 +21,15 @@ var player_input_component = $player_input_component
 var old_state = $input_state_machine.old_state
 
 
+func get_info(block_stun_frames: int, hit_stun_frames: int, hit_variant: String) -> void:
+	print(block_stun_frames)
+	print(hit_stun_frames)
+	print(hit_variant)
+
+
 func _ready() -> void:
 	input_state_machine.init(self, animations_player, node_hitbox_manager, node_hurtbox_manager, player_input_component)
+	node_hitbox_manager.connect("hit",get_info)
 
 func _unhandled_input(event: InputEvent) -> void:
 	input_state_machine.process_input(event)
