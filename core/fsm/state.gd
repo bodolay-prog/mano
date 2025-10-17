@@ -13,7 +13,7 @@ var animations_player: AnimationPlayer
 var node_hitbox_manager : hitbox_manager
 var node_hurtbox_manager: hurtbox_manager
 
-		
+func get_info
 func enter() -> void:
 	animations_player.play(animation_name)
 	
