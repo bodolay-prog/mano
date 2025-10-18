@@ -30,7 +30,7 @@ var _2_M_State: State
 @export
 var _2_H_State: State
 
-func process_input(Event: InputEvent) -> State:		
+func process_input() -> State:	
 	
 	if parent.get_hit_variant() == "low_hit":
 		print(parent.get_hit_variant())

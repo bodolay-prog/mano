@@ -15,14 +15,14 @@ var node_hurtbox_manager: hurtbox_manager
 
 func enter() -> void:
 	animations_player.play(animation_name)
+	
+func exit() -> void:
 	parent.block_stun_frames = 0
 	parent.hit_stun_frames = 0
 	parent.hit_variant = ""
-	
-func exit() -> void:
-	pass
+	parent.hurt_state = ""
 
-func process_input(event: InputEvent) -> State:
+func process_input() -> State:
 	return null
 
 func process_frame(delta: float) -> State:

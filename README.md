@@ -8,9 +8,10 @@ Propriedades do jogo:
 - State machine (concluido)
 - State sciprt (concluido)
 - Hitbox (concluido)
-- Hurtbox (nao concluido)
-- Get Hurt (nao concluido)
-- Blocking (nao concluido)
+- Hurtbox (concluido)
+- Get Hurt (concluido)
+- Blocking (concluido)
+- Teste (meio concluido)
 
 Fases ate a entrega:
 - Beta (Atual)

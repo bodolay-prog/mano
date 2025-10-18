@@ -1,5 +1,11 @@
 extends State
 
+#Char States
+@export
+var on_hit_state: State
+@export
+var on_block_state: State
+
 @export
 var idle_state: State
 @export
@@ -37,9 +43,27 @@ func enter() -> void:
 	super()
 	parent.velocity.x = 0
 
-func process_input(Event: InputEvent) -> State:	
+func process_input() -> State:	
 	
 	if parent.is_on_floor():
+		
+		if parent.get_hurt_state() == "mid":
+			if input_handler() == 1 or input_handler() == 4:
+				return on_block_state
+			return on_hit_state
+			
+		if parent.get_hurt_state() == "low":
+			if input_handler() == 1:
+				return on_block_state
+			return on_hit_state
+			
+		if parent.get_hurt_state() == "high":
+			if input_handler() == 4:
+				return on_block_state
+			if input_handler() == 1:
+				return on_hit_state
+			return on_hit_state
+			
 		if attack_input_handler() == 'L':
 			return _5_L_State
 		if attack_input_handler() == 'M':

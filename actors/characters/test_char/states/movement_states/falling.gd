@@ -1,5 +1,10 @@
 extends State
 
+#Char States
+@export
+var on_air_hit_state: State
+@export
+var on_air_block_state: State
 
 # Movement States
 @export
@@ -42,6 +47,17 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	
 	if !parent.is_on_floor():
+		if parent.get_hurt_state() == "high":
+			if input_handler() == 1 or input_handler() == 4:
+				return on_air_block_state
+			return on_air_hit_state
+		if parent.get_hurt_state() == "mid":
+			if input_handler() == 1 or input_handler() == 4:
+				return on_air_block_state
+			return on_air_hit_state
+		if parent.get_hurt_state() == "low":
+			return on_air_hit_state
+		
 		if attack_input_handler() == 'L':
 			return _5_jL_State
 		if attack_input_handler() == 'M':

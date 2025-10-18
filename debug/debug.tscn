@@ -1,21 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://uxvnmrhb5qpq"]
+[gd_scene load_steps=9 format=3 uid="uid://uxvnmrhb5qpq"]
 
 [ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="1_ifkhq"]
+[ext_resource type="Script" uid="uid://docm3l0mwqam5" path="res://debug/debug.gd" id="1_jfkso"]
 [ext_resource type="PackedScene" uid="uid://ccinwek15y7pd" path="res://actors/characters/test_char/test_player.tscn" id="2_25h3d"]
+[ext_resource type="Script" uid="uid://cq8pi8vf4i60g" path="res://debug/hitbox_manager_debuig.gd" id="4_sm0j5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifkhq"]
 size = Vector2(125, 280)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydp0h"]
+size = Vector2(99, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7210"]
+size = Vector2(98, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv6g7"]
+size = Vector2(103, 69)
+
 [node name="debug" type="Node2D"]
+script = ExtResource("1_jfkso")
 
 [node name="Map" parent="." instance=ExtResource("1_ifkhq")]
 
 [node name="Player" parent="." instance=ExtResource("2_25h3d")]
-position = Vector2(57, 613)
+position = Vector2(85, 609)
 
-[node name="Area2D" type="Area2D" parent="." groups=["test_enemy"]]
+[node name="hurtbox" type="Area2D" parent="." groups=["hurt_box_test_enemy"]]
 position = Vector2(566, 433)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(52.5, 130)
 shape = SubResource("RectangleShape2D_ifkhq")
+
+[node name="hitbox_manager_debuig" type="Node2D" parent="."]
+script = ExtResource("4_sm0j5")
+metadata/_custom_type_script = "uid://bfu4ky4oduc73"
+
+[node name="high_area" type="Area2D" parent="hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
+position = Vector2(129, 138)
+
+[node name="high_hit" type="CollisionShape2D" parent="hitbox_manager_debuig/high_area" groups=["hitbox_test_enemy"]]
+position = Vector2(351.5, 480.5)
+shape = SubResource("RectangleShape2D_ydp0h")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="mid_area" type="Area2D" parent="hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
+
+[node name="mid_hit" type="CollisionShape2D" parent="hitbox_manager_debuig/mid_area" groups=["hitbox_test_enemy"]]
+position = Vector2(352, 582.5)
+shape = SubResource("RectangleShape2D_f7210")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="low_area" type="Area2D" parent="hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
+
+[node name="low_hit" type="CollisionShape2D" parent="hitbox_manager_debuig/low_area" groups=["hitbox_test_enemy"]]
+position = Vector2(352.5, 667.5)
+shape = SubResource("RectangleShape2D_iv6g7")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[connection signal="hit_reset" from="." to="Player" method="_on_debug_hit_reset"]
+[connection signal="hit_test" from="hitbox_manager_debuig" to="Player" method="_on_hitbox_manager_debuig_hit_test"]
+[connection signal="area_entered" from="hitbox_manager_debuig/high_area" to="hitbox_manager_debuig" method="_on_high_area_area_entered"]
+[connection signal="area_entered" from="hitbox_manager_debuig/mid_area" to="hitbox_manager_debuig" method="_on_mid_area_area_entered"]
+[connection signal="area_entered" from="hitbox_manager_debuig/low_area" to="hitbox_manager_debuig" method="_on_low_area_area_entered"]

@@ -32,7 +32,7 @@ var _2_H_State: State
 
 
 
-func process_input(Event: InputEvent) -> State:		
+func process_input() -> State:	
 
 	if parent.get_hit_variant() == "mid_hit":
 		if input_handler() == 2:
@@ -48,8 +48,6 @@ func process_input(Event: InputEvent) -> State:
 			return _5_M_State
 		if attack_input_handler() == 'H':
 			return _5_H_State
-		
-		
 	
 	await animations_player.animation_finished
 

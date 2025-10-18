@@ -2,7 +2,7 @@ extends State
 
 #Char States
 @export
-var on_hit_combo_state: State
+var on_hit_state: State
 @export
 var on_block_state: State
 
@@ -48,20 +48,9 @@ func enter() -> void:
 	super()
 	if state_machine_path.old_state == crouch_state:
 		animations_player.play("low_hurt")
-		
 	
 
 func process_input() -> State:	
-	
-	if parent.get_hurt_state() == "mid":
-		if input_handler() == 1 or input_handler() == 4:
-			return on_block_state
-		return on_hit_combo_state
-			
-	if parent.get_hurt_state() == "low":
-		if input_handler() == 1:
-			return on_block_state
-		on_hit_combo_state
 	
 	await animations_player.animation_finished
 	
@@ -69,12 +58,12 @@ func process_input() -> State:
 		if parent.get_hurt_state() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_block_state
-			return on_hit_combo_state
+			return on_hit_state
 			
-		if parent.get_hurt_state() == "low":
-			if input_handler() == 1:
-				return on_block_state
-			on_hit_combo_state
+	if parent.get_hurt_state() == "low":
+		if input_handler() == 1:
+			return on_block_state
+		return on_hit_state
 	
 		if input_handler() == 6:
 			return moving_foward_state

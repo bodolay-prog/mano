@@ -20,7 +20,7 @@ func init(parent: Character, animations_player: AnimationPlayer, node_hitbox_man
 
 # Change to the new state by first calling any exit logic on the current state.
 func change_state(new_state: State) -> void:
-	if current_state:
+	if current_state or current_state == new_state:
 		current_state.exit()
 
 	current_state = new_state
@@ -34,8 +34,8 @@ func process_physics(delta: float) -> void:
 		old_state = current_state
 		change_state(new_state)
 
-func process_input(event: InputEvent) -> void:
-	var new_state = await current_state.process_input(event)
+func process_input() -> void:
+	var new_state = await current_state.process_input()
 	if new_state:
 		old_state = current_state
 		change_state(new_state)
