@@ -40,14 +40,10 @@ func enter() -> void:
 func process_input(Event: InputEvent) -> State:	
 	
 	if parent.is_on_floor():
-			
-		if attack_input_handler() == 'L':
-			return _5_L_State
-		if attack_input_handler() == 'M':
-			return _5_M_State
-		if attack_input_handler() == 'H':
-			return _5_H_State
-			
+		
+		if input_handler() == 6:
+			return moving_foward_state
+		
 		if input_handler() == 7:
 			return back_jump_state
 				
@@ -56,9 +52,6 @@ func process_input(Event: InputEvent) -> State:
 			
 		if input_handler() == 9 :
 			return foward_jump_state
-			
-		if input_handler() == 6:
-			return moving_foward_state
 			
 		if input_handler() == 66:
 			return dash_foward_state
@@ -76,6 +69,14 @@ func process_input(Event: InputEvent) -> State:
 			if attack_input_handler() == 'H':
 				return _2_H_State
 			return crouch_state
+			
+		if attack_input_handler() == 'L':
+			return _5_L_State
+		if attack_input_handler() == 'M':
+			return _5_M_State
+		if attack_input_handler() == 'H':
+			return _5_H_State
+		
 	return null
 		
 

@@ -8,20 +8,21 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var animations: AnimatedSprite2D
 var input_component
-var parent: CharacterBody2D
+var parent: Character
 var animations_player: AnimationPlayer
 var node_hitbox_manager : hitbox_manager
 var node_hurtbox_manager: hurtbox_manager
 
-func get_info
 func enter() -> void:
 	animations_player.play(animation_name)
+	parent.block_stun_frames = 0
+	parent.hit_stun_frames = 0
+	parent.hit_variant = ""
 	
 func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	
 	return null
 
 func process_frame(delta: float) -> State:

@@ -31,16 +31,41 @@ var _2_M_State: State
 var _2_H_State: State
 
 func process_input(Event: InputEvent) -> State:		
-	await animations_player.animation_finished
-	if parent.is_on_floor():
-		
+	
+	if parent.get_hit_variant() == "low_hit":
+		if input_handler() == 2:
+			if attack_input_handler() == 'L':
+				return _2_L_State
+			if attack_input_handler() == 'M':
+				return _2_M_State
+			if attack_input_handler() == 'H':
+				return _2_H_State
 		if attack_input_handler() == 'L':
 			return _5_L_State
 		if attack_input_handler() == 'M':
 			return _5_M_State
 		if attack_input_handler() == 'H':
 			return _5_H_State
+	
+	await animations_player.animation_finished
+	if parent.is_on_floor():
+		
+		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			if attack_input_handler() == 'L':
+				return _2_L_State
+			if attack_input_handler() == 'M':
+				return _2_M_State
+			if attack_input_handler() == 'H':
+				return _2_H_State
+			return crouch_state
 			
+		if attack_input_handler() == 'L':
+			return _5_L_State
+		if attack_input_handler() == 'M':
+			return _5_M_State
+		if attack_input_handler() == 'H':
+			return _5_H_State
+		
 		if input_handler() == 7:
 			return back_jump_state
 				
@@ -54,15 +79,6 @@ func process_input(Event: InputEvent) -> State:
 			return moving_foward_state
 		if input_handler() == 4:
 			return moving_back_state
-			
-		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			if attack_input_handler() == 'L':
-				return _2_L_State
-			if attack_input_handler() == 'M':
-				return _2_M_State
-			if attack_input_handler() == 'H':
-				return _2_H_State
-			return crouch_state
 		
 		if attack_input_handler() == 'N':
 			return idle_state

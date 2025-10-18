@@ -7,7 +7,7 @@ var current_state: State
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
-func init(parent: CharacterBody2D, animations_player: AnimationPlayer, node_hitbox_manager: hitbox_manager, node_hurtbox_manager: hurtbox_manager, input_component) -> void:
+func init(parent: Character, animations_player: AnimationPlayer, node_hitbox_manager: hitbox_manager, node_hurtbox_manager: hurtbox_manager, input_component) -> void:
 	for child in get_children():
 		child.parent = parent
 		child.animations_player = animations_player
