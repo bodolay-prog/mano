@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://chus1u7ie6pnw"]
+[gd_scene load_steps=2 format=3 uid="uid://xf4tvq1htogk"]
+
+[ext_resource type="PackedScene" uid="uid://cs3r1m1vrk5kt" path="res://core/camera/camera.tscn" id="1_ktms8"]
 
 [node name="Practice" type="Node2D"]
+
+[node name="Camera" parent="." instance=ExtResource("1_ktms8")]
