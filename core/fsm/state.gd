@@ -3,25 +3,26 @@ extends Node
 
 @export
 var animation_name: String
-@export
-var animation_player_name: String
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var animations: AnimatedSprite2D
 var input_component
-var parent: CharacterBody2D
+var parent: Character
 var animations_player: AnimationPlayer
+var node_hitbox_manager : hitbox_manager
+var node_hurtbox_manager: hurtbox_manager
 
 func enter() -> void:
-	animations.play(animation_name)
-	if animation_name.is_empty():
-		animations_player.animation(animation_player_name)
-
+	animations_player.play(animation_name)
+	
 func exit() -> void:
-	pass
+	parent.block_stun_frames = 0
+	parent.hit_stun_frames = 0
+	parent.hit_variant = ""
+	parent.hurt_state = ""
 
-func process_input(event: InputEvent) -> State:
+func process_input() -> State:
 	return null
 
 func process_frame(delta: float) -> State:

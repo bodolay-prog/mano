@@ -1,5 +1,11 @@
 extends State
 
+#Char States
+@export
+var on_hit_state: State
+@export
+var on_block_state: State
+
 # Movement States
 @export
 var moving_foward_state: State
@@ -13,6 +19,10 @@ var foward_jump_state: State
 var back_jump_state: State
 @export 
 var crouch_state: State
+@export
+var dash_foward_state: State
+@export
+var dash_back_state: State
 
 # Attack States
 @export
@@ -21,36 +31,74 @@ var _5_L_State: State
 var _5_M_State: State
 @export
 var _5_H_State: State
-
+@export
+var _2_L_State: State
+@export
+var _2_M_State: State
+@export
+var _2_H_State: State
+	
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
 
-func process_input(Event: InputEvent) -> State:	
+func process_input() -> State:	
+	
 	if parent.is_on_floor():
-		if attack_input_handler() == 'L':
-			return _5_L_State
+	
+		if parent.get_hurt_state() == "mid":
+			if input_handler() == 1 or input_handler() == 4:
+				return on_block_state
+			return on_hit_state
+			
+		if parent.get_hurt_state() == "low":
+			if input_handler() == 1:
+				return on_block_state
+			return on_hit_state
+			
+		if parent.get_hurt_state() == "high":
+			if input_handler() == 4:
+				return on_block_state
+			if input_handler() == 1:
+				return on_hit_state
+			return on_hit_state
+	
+		if input_handler() == 6:
+			return moving_foward_state
+		
 		if input_handler() == 7:
-			print("jump trasd")
 			return back_jump_state
 				
 		if  input_handler() == 8:
-			print("jump_neutro")
 			return neutral_jump_state
 			
 		if input_handler() == 9 :
-			print("jump frente")
 			return foward_jump_state
-		
-		if input_handler() == 6:
-			print("frente")
-			return moving_foward_state
+			
+		if input_handler() == 66:
+			return dash_foward_state
+			
 		if input_handler() == 4:
-			print("trasd")
 			return moving_back_state
+		if input_handler() == 44:
+			return dash_back_state
 			
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			if attack_input_handler() == 'L':
+				return _2_L_State
+			if attack_input_handler() == 'M':
+				return _2_M_State
+			if attack_input_handler() == 'H':
+				return _2_H_State
 			return crouch_state
+			
+		if attack_input_handler() == 'L':
+			return _5_L_State
+		if attack_input_handler() == 'M':
+			return _5_M_State
+		if attack_input_handler() == 'H':
+			return _5_H_State
+		
 	return null
 		
 
