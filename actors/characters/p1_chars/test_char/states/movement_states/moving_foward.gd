@@ -41,6 +41,8 @@ var move_foward_speed: float = 300
 
 func enter() -> void:
 	super()
+	if parent.on_right_side:
+		move_foward_speed = -move_foward_speed
 	parent.velocity.x = 0
 
 func process_input() -> P1State:	

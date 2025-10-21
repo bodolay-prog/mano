@@ -42,16 +42,17 @@ var _5_jH_P1State: P1State
 
 @export
 var vertical_jump_force: float = 500
+var horizontal_jump_force: float = -250
 
 func enter() -> void:
 	super()
 	parent.velocity.y = -vertical_jump_force
-	
+	horizontal_jump_force = -horizontal_jump_force
 
 func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
 	if parent.velocity.y < 0:
-		parent.velocity.x = -250
+		parent.velocity.x = horizontal_jump_force
 	parent.move_and_slide()
 	
 	if !parent.is_on_floor():

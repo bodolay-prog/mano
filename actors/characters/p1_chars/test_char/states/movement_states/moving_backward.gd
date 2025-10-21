@@ -41,6 +41,8 @@ var move_back_speed: float = 230
 	
 func enter() -> void:
 	super()
+	if parent.on_right_side:
+		move_back_speed = -move_back_speed
 	parent.velocity.x = 0
 
 func process_input() -> P1State:	
