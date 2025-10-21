@@ -1,0 +1,1 @@
+extends hurtbox_manager

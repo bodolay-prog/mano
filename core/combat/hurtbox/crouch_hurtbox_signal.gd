@@ -1,5 +1,5 @@
 class_name crouch_hurtbox
-extends Node
+extends Node2D
 
 signal crouch_hurtbox_hit()
 

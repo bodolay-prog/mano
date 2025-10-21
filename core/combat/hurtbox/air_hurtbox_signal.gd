@@ -1,5 +1,5 @@
 class_name air_hurtbox
-extends Node
+extends Node2D
 
 signal air_hurtbox_hit()
 

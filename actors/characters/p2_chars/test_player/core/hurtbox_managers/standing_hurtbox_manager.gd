@@ -1,0 +1,1 @@
+extends standing_hurtbox

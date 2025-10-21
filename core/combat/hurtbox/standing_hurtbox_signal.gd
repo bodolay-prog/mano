@@ -1,5 +1,5 @@
 class_name standing_hurtbox
-extends Node
+extends Node2D
 
 signal stading_hurtbox_hit()
 
