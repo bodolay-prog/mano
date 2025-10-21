@@ -38,8 +38,16 @@ var _2_M_P1State: P2State
 @export
 var _2_H_P1State: P2State
 	
+#Input Machine Path
+@onready
+var state_machine_path =$".."
+
 func enter() -> void:
 	super()
+	if state_machine_path.old_state == crouch_state:
+		animations_player.play("uncrouching")
+		await animations_player.animation_finished
+		animations_player.play("idle")
 	parent.velocity.x = 0
 
 func process_input() -> P2State:	

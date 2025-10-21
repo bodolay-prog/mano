@@ -8,7 +8,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var animations: AnimatedSprite2D
 var input_component
-var parent: P1Character
+var parent: P2Character
 var animations_player: AnimationPlayer
 var node_hitbox_manager : hitbox_manager
 var node_hurtbox_manager: hurtbox_manager

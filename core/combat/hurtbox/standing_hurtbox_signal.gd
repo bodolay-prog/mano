@@ -1,7 +1,7 @@
-class_name standing_hurtbox
+class_name ground_hurtbox
 extends Node2D
 
-signal stading_hurtbox_hit()
+signal ground_hurtbox_hit()
 
-func on_stading_hurtbox_hit() -> void:
-	stading_hurtbox_hit.emit()
+func on_ground_hurtbox_hit() -> void:
+	ground_hurtbox_hit.emit()

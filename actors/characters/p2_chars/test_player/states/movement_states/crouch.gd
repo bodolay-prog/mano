@@ -34,11 +34,9 @@ var _2_H_P1State: P2State
 var state_machine_path =$".."
 
 func enter() -> void:
-	
+	super()
 	if state_machine_path.old_state == _2_L_P1State or state_machine_path.old_state == _2_M_P1State or state_machine_path.old_state == _2_H_P1State or state_machine_path.old_state == crouch_state:
 		animations_player.play("crouched") 
-	else:
-		animations_player.play("crouch")
 		
 	parent.velocity.x = 0
 
