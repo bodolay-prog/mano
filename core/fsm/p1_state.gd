@@ -35,4 +35,4 @@ func input_handler() -> int:
 	return input_component.movement_inputs()
 
 func  attack_input_handler() -> String:
-	return input_component.attack_inputs()
+	return ""

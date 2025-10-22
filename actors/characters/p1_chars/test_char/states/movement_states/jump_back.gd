@@ -47,7 +47,8 @@ var horizontal_jump_force: float = -250
 func enter() -> void:
 	super()
 	parent.velocity.y = -vertical_jump_force
-	horizontal_jump_force = -horizontal_jump_force
+	if parent.on_right_side:
+		horizontal_jump_force = -horizontal_jump_force
 
 func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta

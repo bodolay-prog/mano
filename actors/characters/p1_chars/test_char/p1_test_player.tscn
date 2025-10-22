@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://c13f4d8amrtxc" path="res://actors/characters/p1_chars/test_char/states/movement_states/crouch.gd" id="14_n6tdv"]
 [ext_resource type="Script" uid="uid://cdks531jvy04u" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_foward.gd" id="15_vssk5"]
 [ext_resource type="Script" uid="uid://bnt8a0yla5hm" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_back.gd" id="16_7crfg"]
-[ext_resource type="Script" uid="uid://cgmf4m62ud3d6" path="res://core/input/p1_input.gd" id="17_7crfg"]
 [ext_resource type="Script" uid="uid://mtvwmg1i3slv" path="res://actors/characters/p1_chars/test_char/states/attack_states/5_m.gd" id="20_nsq6k"]
 [ext_resource type="Script" uid="uid://bq2ktjg22eug0" path="res://actors/characters/p1_chars/test_char/states/movement_states/foward_dash.gd" id="21_gjg2l"]
 [ext_resource type="Script" uid="uid://csku8fk2iak65" path="res://actors/characters/p1_chars/test_char/states/attack_states/5_h.gd" id="21_nsq6k"]
@@ -40,6 +39,7 @@
 [ext_resource type="Script" uid="uid://cjjtwpv1nf2gf" path="res://actors/characters/p1_chars/test_char/states/char_states/on_air_hit_combo.gd" id="29_jbfcu"]
 [ext_resource type="Script" uid="uid://bl1pvljxk62gj" path="res://actors/characters/p1_chars/test_char/states/char_states/on_air_block_combo.gd" id="30_jbfcu"]
 [ext_resource type="Script" uid="uid://drmgthb8eb7uo" path="res://actors/characters/p1_chars/test_char/states/char_states/get_up.gd" id="32_jbfcu"]
+[ext_resource type="Script" uid="uid://cw700eur4o483" path="res://core/input/p1_new_input.gd" id="33_ncym0"]
 [ext_resource type="Script" uid="uid://btrouuppi6nuj" path="res://actors/characters/p1_chars/test_char/core/hurtbox_manager/counter_hurtbox_manager.gd" id="42_78out"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kwwp"]
@@ -5168,7 +5168,7 @@ animation_name = "get_up"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="player_input_component" type="Node" parent="."]
-script = ExtResource("17_7crfg")
+script = ExtResource("33_ncym0")
 
 [node name="hitbox_manager" type="Node2D" parent="."]
 script = ExtResource("26_v6kur")

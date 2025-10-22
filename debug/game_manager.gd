@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @onready
 var p1: P1Character = $"../p1_player"
 @onready
@@ -29,6 +28,5 @@ func p2_is_on_right_side() -> void:
 		p2.flip_char()
 
 func _process(delta: float) -> void:
-	print(str(p1.on_right_side))
 	p1_is_on_right_side()
 	p2_is_on_right_side()

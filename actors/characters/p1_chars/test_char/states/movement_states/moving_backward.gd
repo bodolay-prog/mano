@@ -72,6 +72,7 @@ func process_input() -> P1State:
 			return _5_M_P1State
 		if attack_input_handler() == 'H':
 			return _5_H_P1State
+			
 		if input_handler() == 7:
 			return back_jump_state
 			

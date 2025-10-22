@@ -1,39 +1,46 @@
 extends Node
 
+@onready
+var p1 = $".."
+var dir 
+
+
 func movement_inputs() -> int:
+	dir = 5
 	
 	if Input.is_action_pressed('p1_down'):
 		if Input.is_action_pressed('p1_up'):
-			return 5
+			dir = 5
 		if Input.is_action_pressed('p1_left'):
-			return 1
+			dir = 1 
 		if Input.is_action_pressed('p1_right'):
-			return 3
-		return 2
+			dir = 3
+		dir = 2
 		
 	if Input.is_action_pressed('p1_left'):
 		if Input.is_action_just_pressed('p1_dash'):
-			return 44
+			dir = 44
 		if Input.is_action_pressed('p1_up'):
-			return 7
+			dir = 7
 		if Input.is_action_pressed('p1_right'):
-			return 5
-		return 4
+			dir = 5
+		dir = 4
 		
 	if Input.is_action_pressed('p1_right'):
 		if Input.is_action_just_pressed('p1_dash'):
-			return 66
+			dir = 66
 		if Input.is_action_pressed('p1_left'):
-			return 5
+			dir = 5
 		if Input.is_action_pressed('p1_up'):
-			return 9
-		return 6
+			dir = 9
+		dir = 6
 		
 	if Input.is_action_pressed('p1_up'):
-		return 8
-	return 5
+		dir = 8
 	
 	
+	return dir
+
 func attack_inputs() -> String:
 	
 	if Input.is_action_just_pressed('p1_L'):
