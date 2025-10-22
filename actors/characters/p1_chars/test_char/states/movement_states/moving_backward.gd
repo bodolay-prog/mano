@@ -38,12 +38,15 @@ var _2_M_P1State: P1State
 var _2_H_P1State: P1State
 
 var move_back_speed: float = 230
+var move_back_speed_right_side: float = -230
 	
 func enter() -> void:
 	super()
-	if parent.on_right_side:
-		move_back_speed = -move_back_speed
 	parent.velocity.x = 0
+	if parent.on_right_side:
+		move_back_speed = move_back_speed_right_side
+	else:
+		move_back_speed = 230
 
 func process_input() -> P1State:	
 		
@@ -66,11 +69,11 @@ func process_input() -> P1State:
 				return on_hit_state
 			return on_hit_state
 			
-		if attack_input_handler() == 'L':
+		if action_input_handler() == 'L':
 			return _5_L_P1State
-		if attack_input_handler() == 'M':
+		if action_input_handler() == 'M':
 			return _5_M_P1State
-		if attack_input_handler() == 'H':
+		if action_input_handler() == 'H':
 			return _5_H_P1State
 			
 		if input_handler() == 7:
@@ -95,21 +98,18 @@ func process_input() -> P1State:
 			return idle_state
 		
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			if attack_input_handler() == 'L':
+			if action_input_handler() == 'L':
 				return _2_L_P1State
-			if attack_input_handler() == 'M':
+			if action_input_handler() == 'M':
 				return _2_M_P1State
-			if attack_input_handler() == 'H':
+			if action_input_handler() == 'H':
 				return _2_H_P1State
 			return crouch_state
 
 	return null
 	
 func process_physics(delta: float) -> P1State:
-	
-
 	parent.velocity.y += gravity * delta
-
 	var movement = -move_back_speed
 	
 	parent.velocity.x = movement

@@ -96,19 +96,19 @@ func process_input() -> P2State:
 			return dash_back_state
 			
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			if attack_input_handler() == 'L':
+			if action_input_handler() == 'L':
 				return _2_L_P1State
-			if attack_input_handler() == 'M':
+			if action_input_handler() == 'M':
 				return _2_M_P1State
-			if attack_input_handler() == 'H':
+			if action_input_handler() == 'H':
 				return _2_H_P1State
 			return crouch_state
 			
-		if attack_input_handler() == 'L':
+		if action_input_handler() == 'L':
 			return _5_L_P1State
-		if attack_input_handler() == 'M':
+		if action_input_handler() == 'M':
 			return _5_M_P1State
-		if attack_input_handler() == 'H':
+		if action_input_handler() == 'H':
 			return _5_H_P1State
 		return idle_state
 	return null

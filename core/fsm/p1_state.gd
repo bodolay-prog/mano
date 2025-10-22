@@ -32,7 +32,7 @@ func process_physics(delta: float) -> P1State:
 	return null
 		
 func input_handler() -> int:
-	return input_component.movement_inputs()
+	return input_component.dir
 
-func  attack_input_handler() -> String:
-	return ""
+func  action_input_handler() -> String:
+	return input_component.action_inputs()

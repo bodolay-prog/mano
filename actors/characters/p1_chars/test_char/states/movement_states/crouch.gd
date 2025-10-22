@@ -21,7 +21,7 @@ var idle_state: P1State
 @export
 var crouch_state: P1State
 
-#attack states
+#action states
 @export
 var _2_L_P1State: P1State
 @export
@@ -34,7 +34,6 @@ var _2_H_P1State: P1State
 var state_machine_path =$".."
 
 func enter() -> void:
-	
 	if state_machine_path.old_state == _2_L_P1State or state_machine_path.old_state == _2_M_P1State or state_machine_path.old_state == _2_H_P1State or state_machine_path.old_state == crouch_state:
 		animations_player.play("crouched") 
 	else:
@@ -64,12 +63,12 @@ func process_input() -> P1State:
 			return on_hit_state
 			
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			# 2 attack inputs
-			if attack_input_handler() == 'L':
+			# 2 action inputs
+			if action_input_handler() == 'L':
 				return _2_L_P1State
-			if attack_input_handler() == 'M':
+			if action_input_handler() == 'M':
 				return _2_M_P1State
-			if attack_input_handler() == 'H':
+			if action_input_handler() == 'H':
 				return _2_H_P1State
 		
 		

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dvriy74yt7lgn" path="res://actors/characters/p2_chars/test_player/sprites/jorato_sprites/test-player-p2-spritesheet-27x27.png" id="1_5ysp4"]
 [ext_resource type="Script" uid="uid://ceoevwepiivko" path="res://actors/characters/p2_chars/test_player/p_2_test_player.gd" id="1_g6li4"]
 [ext_resource type="Script" uid="uid://bk7vvg10ybr13" path="res://core/fsm/p2_state_machine.gd" id="3_olhbm"]
-[ext_resource type="Script" uid="uid://bt0fre63bw8bj" path="res://core/input/p2_input.gd" id="4_5dmie"]
 [ext_resource type="Script" uid="uid://dm5gy3cjr236g" path="res://actors/characters/p2_chars/test_player/states/movement_states/idle.gd" id="4_6ibph"]
 [ext_resource type="Script" uid="uid://dk08tfxax7ejq" path="res://actors/characters/p2_chars/test_player/states/movement_states/moving_foward.gd" id="5_rpx6u"]
 [ext_resource type="Script" uid="uid://bsimwbtpgdpa1" path="res://actors/characters/p2_chars/test_player/core/hitbox_managers/hitbox_manager_p2.gd" id="5_sogv2"]
@@ -40,6 +39,7 @@
 [ext_resource type="Script" uid="uid://c02gyui5fjcn7" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_block.gd" id="30_iehpf"]
 [ext_resource type="Script" uid="uid://vjnt1r63br4v" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_block_combo.gd" id="31_1aj4j"]
 [ext_resource type="Script" uid="uid://bbb1vu6i2ye6f" path="res://actors/characters/p2_chars/test_player/states/char_states/get_up.gd" id="32_op0ms"]
+[ext_resource type="Script" uid="uid://c018qc58df8fn" path="res://core/input/p2_new_input.gd" id="33_6ibph"]
 [ext_resource type="Script" uid="uid://c7gcdh2uhlsvc" path="res://actors/characters/p2_chars/test_player/core/hurtbox_managers/counter_hurtbox_manager.gd" id="41_6ibph"]
 
 [sub_resource type="Animation" id="Animation_1uc2w"]
@@ -5797,7 +5797,7 @@ script = ExtResource("32_op0ms")
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="player_input_component" type="Node" parent="."]
-script = ExtResource("4_5dmie")
+script = ExtResource("33_6ibph")
 
 [node name="hitbox_manager" type="Node2D" parent="."]
 script = ExtResource("5_sogv2")
@@ -5896,7 +5896,7 @@ metadata/_custom_type_script = "uid://dg1evxmcfxq2h"
 script = ExtResource("10_6bx6x")
 metadata/_custom_type_script = "uid://bkm45ovcfudmt"
 
-[node name="air_area" type="Area2D" parent="hurtbox_manager/air_hurtbox__manager"]
+[node name="air_area" type="Area2D" parent="hurtbox_manager/air_hurtbox__manager" groups=["p2_hurtbox"]]
 
 [node name="air_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/air_hurtbox__manager/air_area"]
 position = Vector2(0, 6)
@@ -5907,7 +5907,7 @@ debug_color = Color(0, 1, 0, 0.41960785)
 script = ExtResource("11_xllya")
 metadata/_custom_type_script = "uid://b4mae8uyki5vl"
 
-[node name="ground_area" type="Area2D" parent="hurtbox_manager/ground_hurtbox_manager"]
+[node name="ground_area" type="Area2D" parent="hurtbox_manager/ground_hurtbox_manager" groups=["p2_hurtbox"]]
 
 [node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/ground_hurtbox_manager/ground_area"]
 position = Vector2(3.5, -40.5)
@@ -5923,7 +5923,7 @@ debug_color = Color(0, 1, 0, 0.41960785)
 script = ExtResource("41_6ibph")
 metadata/_custom_type_script = "uid://wcdguvpe3i15"
 
-[node name="counter_area" type="Area2D" parent="hurtbox_manager/counter_hurtbox"]
+[node name="counter_area" type="Area2D" parent="hurtbox_manager/counter_hurtbox" groups=["p2_hurtbox"]]
 
 [node name="head_area" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area"]
 position = Vector2(5.5, -36.5)

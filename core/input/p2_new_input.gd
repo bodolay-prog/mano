@@ -25,7 +25,7 @@ var motions : Array = []
 
 # === Referência ao Player ===
 @onready
-var p1 : P1Character = $".."
+var p2 : P2Character = $".."
 
 # ======= Inicialização =======
 func _ready() -> void:
@@ -42,7 +42,7 @@ func _init_buffer() -> void:
 # ======= Atualização por frame =======
 func _physics_process(delta: float) -> void:
 	#_debug_print()
-	if p1.on_right_side:
+	if p2.on_right_side:
 		facing = -1
 	else:
 		facing =  1
@@ -56,20 +56,20 @@ func _physics_process(delta: float) -> void:
 
 # ======= Leitura de Direcional (1..9) =======
 func movement_inputs() -> int:
-	if (Input.is_action_pressed("p1_left") and Input.is_action_pressed("p1_right")) \
-	or (not Input.is_action_pressed("p1_left") and not Input.is_action_pressed("p1_right")):
+	if (Input.is_action_pressed("p2_left") and Input.is_action_pressed("p2_right")) \
+	or (not Input.is_action_pressed("p2_left") and not Input.is_action_pressed("p2_right")):
 		hori = 0
-	elif Input.is_action_pressed("p1_left"):
+	elif Input.is_action_pressed("p2_left"):
 		hori = -1
-	elif Input.is_action_pressed("p1_right"):
+	elif Input.is_action_pressed("p2_right"):
 		hori = 1
 
-	if (Input.is_action_pressed("p1_up") and Input.is_action_pressed("p1_down")) \
-	or (not Input.is_action_pressed("p1_up") and not Input.is_action_pressed("p1_down")):
+	if (Input.is_action_pressed("p2_up") and Input.is_action_pressed("p2_down")) \
+	or (not Input.is_action_pressed("p2_up") and not Input.is_action_pressed("p2_down")):
 		vert = 0
-	elif Input.is_action_pressed("p1_down"):
+	elif Input.is_action_pressed("p2_down"):
 		vert = -1
-	elif Input.is_action_pressed("p1_up"):
+	elif Input.is_action_pressed("p2_up"):
 		vert = 1
 
 	return hori + 2 + ((vert + 1) * 3)
@@ -78,16 +78,16 @@ func movement_inputs() -> int:
 # Retorna o botão apertado no frame (ou "N" se nenhum)
 func action_inputs() -> String:
 	
-	if Input.is_action_just_pressed("p1_L"):
+	if Input.is_action_just_pressed("p2_L"):
 		return "L"
-	if Input.is_action_just_pressed("p1_M"):
+	if Input.is_action_just_pressed("p2_M"):
 		return "M"
-	if Input.is_action_just_pressed("p1_H"):
+	if Input.is_action_just_pressed("p2_H"):
 		return "H"
-	if Input.is_action_just_pressed("p1_S"): # botão de especial
+	if Input.is_action_just_pressed("p2_S"): # botão de especial
 		return "S"
 		
-	if Input.is_action_just_pressed("p1_dash"):
+	if Input.is_action_just_pressed("p2_dash"):
 		return "dash"
 	return "N"
 

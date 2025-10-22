@@ -818,7 +818,7 @@ size = Vector2(65.3066, 65.2969)
 
 [sub_resource type="Animation" id="Animation_nfofg"]
 resource_name = "5_H"
-length = 0.433337
+length = 0.40000334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1351,7 +1351,7 @@ tracks/23/keys = {
 
 [sub_resource type="Animation" id="Animation_dhpyy"]
 resource_name = "5_M"
-length = 0.433337
+length = 0.33333668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4034,6 +4034,42 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/head_hurtbox:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/body_hurtbox:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/more_hurtbox:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ul8en"]
 resource_name = "knockdown"
@@ -5177,25 +5213,25 @@ script = ExtResource("26_v6kur")
 script = ExtResource("26_bexjm")
 metadata/_custom_type_script = "uid://bfu4ky4oduc73"
 
-[node name="j5_L_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
+[node name="j5_L_area" type="Area2D" parent="hitbox_manager/high_hit_manager" groups=["p1_hitbox"]]
 
-[node name="j5_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_L_area" groups=["p1_hitbox"]]
+[node name="j5_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_L_area"]
 position = Vector2(68, 53)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.513726)
 
-[node name="j5_M_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
+[node name="j5_M_area" type="Area2D" parent="hitbox_manager/high_hit_manager" groups=["p1_hitbox"]]
 
-[node name="j5_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_M_area" groups=["p1_hitbox"]]
+[node name="j5_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_M_area"]
 position = Vector2(69.5, 51.5)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.513726)
 
-[node name="j5_H_area" type="Area2D" parent="hitbox_manager/high_hit_manager"]
+[node name="j5_H_area" type="Area2D" parent="hitbox_manager/high_hit_manager" groups=["p1_hitbox"]]
 
-[node name="j5_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_H_area" groups=["p1_hitbox"]]
+[node name="j5_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/high_hit_manager/j5_H_area"]
 position = Vector2(69, 9.25)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
@@ -5204,25 +5240,25 @@ debug_color = Color(1, 0, 0, 0.513726)
 [node name="mid_hit_manager" type="Node2D" parent="hitbox_manager"]
 script = ExtResource("25_kdefj")
 
-[node name="5_L_area" type="Area2D" parent="hitbox_manager/mid_hit_manager"]
+[node name="5_L_area" type="Area2D" parent="hitbox_manager/mid_hit_manager" groups=["p1_hitbox"]]
 
-[node name="5_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/mid_hit_manager/5_L_area" groups=["p1_hitbox"]]
+[node name="5_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/mid_hit_manager/5_L_area"]
 position = Vector2(67.1445, 9.48633)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.513726)
 
-[node name="5_M_area" type="Area2D" parent="hitbox_manager/mid_hit_manager"]
+[node name="5_M_area" type="Area2D" parent="hitbox_manager/mid_hit_manager" groups=["p1_hitbox"]]
 
-[node name="5_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/mid_hit_manager/5_M_area" groups=["p1_hitbox"]]
+[node name="5_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/mid_hit_manager/5_M_area"]
 position = Vector2(95.3867, 50.625)
 shape = SubResource("RectangleShape2D_nsq6k")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="5_H_area2" type="Area2D" parent="hitbox_manager/mid_hit_manager"]
+[node name="5_H_area2" type="Area2D" parent="hitbox_manager/mid_hit_manager" groups=["p1_hitbox"]]
 
-[node name="5_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/mid_hit_manager/5_H_area2" groups=["p1_hitbox"]]
+[node name="5_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/mid_hit_manager/5_H_area2"]
 position = Vector2(100.653, 49.3516)
 shape = SubResource("RectangleShape2D_nsq6k")
 disabled = true
@@ -5231,28 +5267,28 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="low_hit_manager" type="Node2D" parent="hitbox_manager"]
 script = ExtResource("26_j1tmy")
 
-[node name="2_L_area" type="Area2D" parent="hitbox_manager/low_hit_manager"]
+[node name="2_L_area" type="Area2D" parent="hitbox_manager/low_hit_manager" groups=["p1_hitbox"]]
 position = Vector2(51.773, 13)
 
-[node name="2_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/low_hit_manager/2_L_area" groups=["p1_hitbox"]]
+[node name="2_L_hitbox" type="CollisionShape2D" parent="hitbox_manager/low_hit_manager/2_L_area"]
 position = Vector2(30.227, 44)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.513726)
 
-[node name="2_M_area" type="Area2D" parent="hitbox_manager/low_hit_manager"]
+[node name="2_M_area" type="Area2D" parent="hitbox_manager/low_hit_manager" groups=["p1_hitbox"]]
 position = Vector2(51.773, 13)
 
-[node name="2_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/low_hit_manager/2_M_area" groups=["p1_hitbox"]]
+[node name="2_M_hitbox" type="CollisionShape2D" parent="hitbox_manager/low_hit_manager/2_M_area"]
 position = Vector2(38.6909, -10.1216)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.513726)
 
-[node name="2_H_area" type="Area2D" parent="hitbox_manager/low_hit_manager"]
+[node name="2_H_area" type="Area2D" parent="hitbox_manager/low_hit_manager" groups=["p1_hitbox"]]
 position = Vector2(51.773, 13)
 
-[node name="2_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/low_hit_manager/2_H_area" groups=["p1_hitbox"]]
+[node name="2_H_hitbox" type="CollisionShape2D" parent="hitbox_manager/low_hit_manager/2_H_area"]
 position = Vector2(52.227, 73.5608)
 shape = SubResource("RectangleShape2D_5kwwp")
 disabled = true
@@ -5264,9 +5300,9 @@ script = ExtResource("24_j1tmy")
 [node name="air_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
 script = ExtResource("25_cmyno")
 
-[node name="body_area" type="Area2D" parent="hurtbox_manager/air_hurtbox_manager"]
+[node name="body_area" type="Area2D" parent="hurtbox_manager/air_hurtbox_manager" groups=["p1_hurtbox"]]
 
-[node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/air_hurtbox_manager/body_area" groups=["p1_hurtbox"]]
+[node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/air_hurtbox_manager/body_area"]
 position = Vector2(8, 22)
 shape = SubResource("RectangleShape2D_v6kur")
 debug_color = Color(0, 1, 0, 0.419608)
@@ -5274,14 +5310,14 @@ debug_color = Color(0, 1, 0, 0.419608)
 [node name="ground_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
 script = ExtResource("25_sq3no")
 
-[node name="body_area" type="Area2D" parent="hurtbox_manager/ground_hurtbox_manager"]
+[node name="body_area" type="Area2D" parent="hurtbox_manager/ground_hurtbox_manager" groups=["p1_hurtbox"]]
 
-[node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/ground_hurtbox_manager/body_area" groups=["p1_hurtbox"]]
+[node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/ground_hurtbox_manager/body_area"]
 position = Vector2(6, -19)
 shape = SubResource("RectangleShape2D_bexjm")
 debug_color = Color(0, 1, 0, 0.419608)
 
-[node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/ground_hurtbox_manager/body_area" groups=["p1_hurtbox"]]
+[node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/ground_hurtbox_manager/body_area"]
 position = Vector2(5, 42)
 shape = SubResource("RectangleShape2D_j1tmy")
 debug_color = Color(0, 1, 0, 0.419608)
@@ -5290,20 +5326,20 @@ debug_color = Color(0, 1, 0, 0.419608)
 script = ExtResource("42_78out")
 metadata/_custom_type_script = "uid://wcdguvpe3i15"
 
-[node name="counter_area" type="Area2D" parent="hurtbox_manager/counter_hurtbox"]
+[node name="counter_area" type="Area2D" parent="hurtbox_manager/counter_hurtbox" groups=["p1_hurtbox"]]
 
-[node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area" groups=["p1_hurtbox"]]
+[node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area"]
 position = Vector2(25, -13)
 shape = SubResource("RectangleShape2D_bbimn")
 disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area" groups=["p1_hurtbox"]]
+[node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area"]
 position = Vector2(12, 44.5)
 shape = SubResource("RectangleShape2D_qo6np")
 debug_color = Color(0, 0, 1.0039686, 0.41960785)
 
-[node name="more_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area" groups=["p1_hurtbox"]]
+[node name="more_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox/counter_area"]
 position = Vector2(61, -13)
 shape = SubResource("RectangleShape2D_5126v")
 disabled = true
@@ -5323,5 +5359,7 @@ debug_color = Color(0, 0, 1, 0.41960785)
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_H_area" to="hitbox_manager/low_hit_manager" method="_on__h_area_area_entered"]
 [connection signal="air_hurtbox_hit" from="hurtbox_manager/air_hurtbox_manager" to="hurtbox_manager" method="_on_air_hurtbox_manager_air_hurtbox_hit"]
 [connection signal="area_entered" from="hurtbox_manager/air_hurtbox_manager/body_area" to="hurtbox_manager/air_hurtbox_manager" method="_on_body_area_area_entered"]
+[connection signal="ground_hurtbox_hit" from="hurtbox_manager/ground_hurtbox_manager" to="hurtbox_manager" method="_on_ground_hurtbox_manager_ground_hurtbox_hit"]
 [connection signal="area_entered" from="hurtbox_manager/ground_hurtbox_manager/body_area" to="hurtbox_manager/ground_hurtbox_manager" method="_on_body_area_area_entered"]
+[connection signal="counter_hurtbox_hit" from="hurtbox_manager/counter_hurtbox" to="hurtbox_manager" method="_on_counter_hurtbox_counter_hurtbox_hit"]
 [connection signal="area_entered" from="hurtbox_manager/counter_hurtbox/counter_area" to="hurtbox_manager/counter_hurtbox" method="_on_counter_area_area_entered"]

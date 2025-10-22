@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	state_machine.process_input()
 	#state_machine.process_frame(delta)
 	#print("x:" +str(velocity.x) + " y: " + str(velocity.y) )
-	#print("movement input: " + str(player_input_component.movement_inputs()))
+	#print("movement input: " + str(player_input_component.dir))
 	#print("attack input: " + str(player_input_component.attack_inputs()))
 	#if is_on_floor():
 		#print("chão")

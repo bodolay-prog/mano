@@ -59,11 +59,11 @@ func process_physics(delta: float) -> P2State:
 		return idle_state
 		
 	if parent.get_hit_variant() == "high_hit":
-		if attack_input_handler() == 'L':
+		if action_input_handler() == 'L':
 				return _5j_L_state
-		if attack_input_handler() == 'M':
+		if action_input_handler() == 'M':
 				return _5j_M_state
-		if attack_input_handler() == 'H':
+		if action_input_handler() == 'H':
 				return _5j_H_state
 				
 	await animations_player.animation_finished

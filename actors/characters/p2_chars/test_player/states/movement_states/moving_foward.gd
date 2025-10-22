@@ -39,9 +39,14 @@ var _2_M_P2State: P2State
 var _2_H_P2State: P2State
 
 var move_foward_speed: float = 300
+var move_foward_speed_right_side: float = -300
 
 func enter() -> void:
 	super()
+	if parent.on_right_side:
+		move_foward_speed = move_foward_speed_right_side
+	else:
+		move_foward_speed = 300
 	parent.velocity.x = 0
 
 func process_input() -> P2State:	
@@ -65,11 +70,11 @@ func process_input() -> P2State:
 				return on_hit_state
 			return on_hit_state
 			
-		if attack_input_handler() == 'L':
+		if action_input_handler() == 'L':
 			return _5_L_P2State
-		if attack_input_handler() == 'M':
+		if action_input_handler() == 'M':
 			return _5_M_P2State
-		if attack_input_handler() == 'H':
+		if action_input_handler() == 'H':
 			return _5_H_P2State
 		
 		if input_handler() == 7:
@@ -93,11 +98,11 @@ func process_input() -> P2State:
 			return dash_foward_state
 		
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			if attack_input_handler() == 'L':
+			if action_input_handler() == 'L':
 				return _2_L_P2State
-			if attack_input_handler() == 'M':
+			if action_input_handler() == 'M':
 				return _2_M_P2State
-			if attack_input_handler() == 'H':
+			if action_input_handler() == 'H':
 				return _2_H_P2State
 			return crouch_state
 

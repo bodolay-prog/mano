@@ -21,7 +21,7 @@ var back_jump_state: P2State
 @export
 var crouch_state: P2State
 
-#attack states
+#action states
 @export
 var _2_L_P1State: P2State
 @export
@@ -62,12 +62,12 @@ func process_input() -> P2State:
 			return on_hit_state
 			
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			# 2 attack inputs
-			if attack_input_handler() == 'L':
+			# 2 action inputs
+			if action_input_handler() == 'L':
 				return _2_L_P1State
-			if attack_input_handler() == 'M':
+			if action_input_handler() == 'M':
 				return _2_M_P1State
-			if attack_input_handler() == 'H':
+			if action_input_handler() == 'H':
 				return _2_H_P1State
 		
 		
