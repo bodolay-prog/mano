@@ -109,7 +109,6 @@ func process_input() -> P2State:
 	
 func process_physics(delta: float) -> P2State:
 	
-
 	parent.velocity.y += gravity * delta
 
 	var movement = -move_back_speed

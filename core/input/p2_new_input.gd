@@ -7,10 +7,12 @@ Detecta:
 - Botões (L, M, H, Special, Dash, etc.)
 - Combinações (ex: Hadouken + L)
 """
+# ====== Sinal de Motion ======
+signal motion_perfomed(motion_name, button)
 
 # ======= Configurações =======
 const BUFFER_SIZE : int = 48
-const DEBUG_PRINT : bool = true
+const DEBUG_PRINT : bool = false
 
 # ======= Enums =======
 enum MatchMode { STRICT, FUZZY }
@@ -198,7 +200,7 @@ func _on_motion_detected(motion: InputMotion, button: String) -> void:
 	if DEBUG_PRINT:
 		print("Motion detected:", motion.name, "Botão:", button)
 	# Aqui você pode emitir sinal ou chamar personagem:
-	# emit_signal("motion_performed", motion.name, button)
+	motion_perfomed.emit(motion.name, button)
 
 # ======= Matching auxiliar =======
 func _match_direction(current: int, target: int, mode: int) -> bool:

@@ -44,6 +44,15 @@ func enter() -> void:
 func process_input() -> P1State:	
 
 	if parent.is_on_floor():
+		
+		if parent.motion == "L_hadouken":
+			print("l hdk")	
+			
+		if parent.motion == "L_shoryuken":
+			print("l srk")	
+			
+		if parent.motion == "L_tatsumaki":
+			print("l tsk")	
 	
 		if parent.get_hurt_state() == "mid":
 			if input_handler() == 1 or input_handler() == 4:

@@ -2,6 +2,7 @@
 Jogo de Luta para entrega no Trabalho Final da cadeira de POO
 Fase: Beta
 
+# 1 frame == 5.25 u
 #Beta Fase
 Propriedades da Fase:
 - Debug Stage (concluido)

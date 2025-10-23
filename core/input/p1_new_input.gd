@@ -8,9 +8,12 @@ Detecta:
 - Combinações (ex: Hadouken + L)
 """
 
+# ====== Sinal de Motion ======
+signal motion_perfomed(motion_name, button)
+
 # ======= Configurações =======
 const BUFFER_SIZE : int = 48
-const DEBUG_PRINT : bool = true
+const DEBUG_PRINT : bool = false
 
 # ======= Enums =======
 enum MatchMode { STRICT, FUZZY }
@@ -120,7 +123,7 @@ func _register_example_motions() -> void:
 	had.add_step(6, 4, MatchMode.STRICT)
 	motions.append(had)
 	
-	var had2 = InputMotion.new("hadouken_hitbox")
+	var had2 = InputMotion.new("hadouken")
 	had2.add_step(2, 12, MatchMode.STRICT)
 	had2.add_step(6, 12, MatchMode.STRICT)
 	motions.append(had2)
@@ -131,7 +134,7 @@ func _register_example_motions() -> void:
 	tsm.add_step(4, 4, MatchMode.STRICT)
 	motions.append(tsm)
 	
-	var tsm2 = InputMotion.new("tatsumaki_hitbox")
+	var tsm2 = InputMotion.new("tatsumaki")
 	tsm2.add_step(2, 6, MatchMode.STRICT)
 	tsm2.add_step(4, 6, MatchMode.STRICT)
 	motions.append(tsm2)
@@ -142,7 +145,7 @@ func _register_example_motions() -> void:
 	srk.add_step(3, 8, MatchMode.FUZZY)
 	motions.append(srk)
 	
-	var srk2 = InputMotion.new("shoryuken_hitbox")
+	var srk2 = InputMotion.new("shoryuken")
 	srk2.add_step(6, 16, MatchMode.STRICT)
 	srk2.add_step(2, 12, MatchMode.FUZZY)
 	srk2.add_step(6, 12, MatchMode.STRICT)
@@ -156,7 +159,7 @@ func _register_example_motions() -> void:
 	qcb.add_step(4, 4, MatchMode.FUZZY)
 	motions.append(qcb)
 	
-	var qcb2 = InputMotion.new("quarter_circle_back_hitbox")
+	var qcb2 = InputMotion.new("quarter_circle_back")
 	qcb2.add_step(6, 16, MatchMode.STRICT)
 	qcb2.add_step(1, 16, MatchMode.STRICT)
 	qcb2.add_step(4, 16, MatchMode.STRICT)
@@ -196,9 +199,9 @@ func try_consume_motions(button: String) -> void:
 
 func _on_motion_detected(motion: InputMotion, button: String) -> void:
 	if DEBUG_PRINT:
-		print("Motion detected:", motion.name, "Botão:", button)
+		print("Motion detected:", motion.name, " Botão:", button)
 	# Aqui você pode emitir sinal ou chamar personagem:
-	# emit_signal("motion_performed", motion.name, button)
+	motion_perfomed.emit(motion.name, button)
 
 # ======= Matching auxiliar =======
 func _match_direction(current: int, target: int, mode: int) -> bool:

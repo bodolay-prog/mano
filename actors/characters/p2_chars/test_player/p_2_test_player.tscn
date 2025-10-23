@@ -5941,15 +5941,21 @@ shape = SubResource("RectangleShape2D_3dtab")
 disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
+[connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_L" to="hitbox_manager/high_hit_manager" method="_on_j_5_l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_M" to="hitbox_manager/high_hit_manager" method="_on_j_5_m_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_H" to="hitbox_manager/high_hit_manager" method="_on_j_5_h_area_entered"]
+[connection signal="mid_hit_signal" from="hitbox_manager/mid_hit_manager" to="hitbox_manager" method="_on_mid_hit_manager_mid_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_L" to="hitbox_manager/mid_hit_manager" method="_on__l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_M" to="hitbox_manager/mid_hit_manager" method="_on__m_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_H" to="hitbox_manager/mid_hit_manager" method="_on__h_area_entered"]
+[connection signal="low_hit_signal" from="hitbox_manager/low_hit_manager" to="hitbox_manager" method="_on_low_hit_manager_low_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_L" to="hitbox_manager/low_hit_manager" method="_on__l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_M" to="hitbox_manager/low_hit_manager" method="_on__m_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_H" to="hitbox_manager/low_hit_manager" method="_on__h_area_entered"]
+[connection signal="air_hurtbox_hit" from="hurtbox_manager/air_hurtbox__manager" to="hurtbox_manager" method="_on_air_hurtbox__manager_air_hurtbox_hit"]
 [connection signal="area_entered" from="hurtbox_manager/air_hurtbox__manager/air_area" to="hurtbox_manager/air_hurtbox__manager" method="_on_air_area_area_entered"]
+[connection signal="ground_hurtbox_hit" from="hurtbox_manager/ground_hurtbox_manager" to="hurtbox_manager" method="_on_ground_hurtbox_manager_ground_hurtbox_hit"]
 [connection signal="area_entered" from="hurtbox_manager/ground_hurtbox_manager/ground_area" to="hurtbox_manager/ground_hurtbox_manager" method="_on_ground_area_area_entered"]
+[connection signal="counter_hurtbox_hit" from="hurtbox_manager/counter_hurtbox" to="hurtbox_manager" method="_on_counter_hurtbox_counter_hurtbox_hit"]
 [connection signal="area_entered" from="hurtbox_manager/counter_hurtbox/counter_area" to="hurtbox_manager/counter_hurtbox" method="_on_counter_area_area_entered"]

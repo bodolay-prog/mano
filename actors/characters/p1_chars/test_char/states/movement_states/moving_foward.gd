@@ -43,7 +43,7 @@ var move_foward_speed_right_side: float = -300
 func enter() -> void:
 	super()
 	if parent.on_right_side:
-		move_foward_speed = move_foward_speed_right_side
+		move_foward_speed = move_foward_speed_right_side 
 	else:
 		move_foward_speed = 300
 	parent.velocity.x = 0
@@ -51,6 +51,15 @@ func enter() -> void:
 func process_input() -> P1State:	
 	
 	if parent.is_on_floor():
+		
+		if parent.motion == "L_hadouken":
+			print("l hdk")	
+			
+		if parent.motion == "L_shoryuken":
+			print("l srk")	
+			
+		if parent.motion == "L_tatsumaki":
+			print("l tsk")	
 		
 		if parent.get_hurt_state() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
@@ -111,7 +120,7 @@ func process_physics(delta: float) -> P1State:
 	
 	parent.velocity.y += gravity * delta
 
-	var movement = move_foward_speed
+	var movement = move_foward_speed 
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	return null

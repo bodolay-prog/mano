@@ -1,9 +1,9 @@
 extends Node2D
 
 @onready
-var p1: P1Character = $"../p1_player"
+var p1: P1Character = $"../p1"
 @onready
-var p2: P2Character = $"../p2_test_player"
+var p2: P2Character = $"../p2"
 
 func p1_is_on_right_side() -> void:
 	var p1_pos = p1.position

@@ -25,10 +25,10 @@ script = ExtResource("1_jfkso")
 [node name="game_manager" type="Node2D" parent="."]
 script = ExtResource("2_jfkso")
 
-[node name="p1_player" parent="." instance=ExtResource("2_25h3d")]
+[node name="p1" parent="." instance=ExtResource("2_25h3d")]
 position = Vector2(103, 609)
 
-[node name="p2_test_player" parent="." instance=ExtResource("2_sm0j5")]
+[node name="p2" parent="." instance=ExtResource("2_sm0j5")]
 position = Vector2(1087, 632)
 
 [node name="Map" parent="." instance=ExtResource("1_ifkhq")]

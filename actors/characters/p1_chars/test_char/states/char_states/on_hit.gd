@@ -63,7 +63,7 @@ func process_input() -> P1State:
 			return on_block_state
 		return on_hit_combo_state
 	
-	await animations_player.animation_finished
+	await parent.can_move
 	
 	if parent.is_on_floor():
 		if parent.get_hurt_state() == "mid":

@@ -13,14 +13,16 @@ var animations_player: AnimationPlayer
 var node_hitbox_manager : hitbox_manager
 var node_hurtbox_manager: hurtbox_manager
 
+	
 func enter() -> void:
 	animations_player.play(animation_name)
 	
 func exit() -> void:
 	parent.block_stun_frames = 0
-	parent.hit_stun_frames = 0
+	#parent.hit_stun_frames = 0
 	parent.hit_variant = ""
 	parent.hurt_state = ""
+	parent.motion = ""
 
 func process_input() -> P1State:
 	return null
