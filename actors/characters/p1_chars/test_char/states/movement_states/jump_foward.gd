@@ -90,10 +90,6 @@ func process_physics(delta: float) -> P1State:
 		if input_handler() == 8:
 			return neutral_jump_state
 		if input_handler() == 7:
-			return jump_back_state
-		if input_handler() == 6:
-			return moving_foward_state
-		if input_handler() == 4:
 			return moving_back_state
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 			if action_input_handler() == 'L':

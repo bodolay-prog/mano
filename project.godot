@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-FrayInputMap="*res://addons/fray/src/input/autoloads/fray_input_map.gd"
-FrayInput="*res://addons/fray/src/input/autoloads/fray_input.gd"
+FrayInputMap="res://addons/fray/src/input/autoloads/fray_input_map.gd"
+FrayInput="res://addons/fray/src/input/autoloads/fray_input.gd"
+P1HurtSignal="*res://core/combat/signals/p1_hurt_signal.gd"
+P2HurtSignal="*res://core/combat/signals/p2_hurt_signal.gd"
 
 [display]
 

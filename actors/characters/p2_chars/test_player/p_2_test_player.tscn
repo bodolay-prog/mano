@@ -5237,9 +5237,8 @@ _data = {
 &"walk_foward": SubResource("Animation_rpx6u")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ibph"]
-radius = 18.0
-height = 86.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dskf2"]
+size = Vector2(14, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrw4t"]
 size = Vector2(36, 25)
@@ -5301,8 +5300,8 @@ hframes = 27
 vframes = 27
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(2, 21)
-shape = SubResource("CapsuleShape2D_6ibph")
+position = Vector2(-2, 23.5)
+shape = SubResource("RectangleShape2D_dskf2")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_olhbm")

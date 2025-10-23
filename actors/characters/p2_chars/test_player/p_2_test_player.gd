@@ -31,7 +31,7 @@ func _ready() -> void:
 	player_input_component.connect("motion_perfomed", process_motion)
 
 func _process(delta: float) -> void:
-	print(hurt_state)
+	#print(hurt_state)
 	state_machine.process_input()
 	#state_machine.process_frame(delta)
 	#print("x:" +str(velocity.x) + " y: " + str(velocity.y) )

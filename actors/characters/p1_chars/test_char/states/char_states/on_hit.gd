@@ -43,6 +43,8 @@ var _2_H_P1State: P1State
 #Input Machine Path
 @onready
 var state_machine_path =$".."
+
+var knockback : float = -200
 	
 func enter() -> void:
 	super()
@@ -117,7 +119,8 @@ func process_input() -> P1State:
 
 func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
-	parent.velocity.x = 0
+	if parent.hit_stun_frames > 0:
+		parent.velocity.x = knockback * (-1 if parent.on_right_side else 1)
 	parent.move_and_slide()
 	
 	return null

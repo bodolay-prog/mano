@@ -6,6 +6,8 @@ signal can_move()
 @onready
 var hitbox_p2 : hitbox_manager = $"../p2/hitbox_manager"
 @onready
+var hurtbox_p2 : hurtbox_manager = $"../p2/hurtbox_manager"
+@onready
 var animations_player: AnimationPlayer = $animation_player
 @onready
 var input_state_machine: Node = $input_state_machine
@@ -35,7 +37,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	frame_counter()
-	print(hit_stun_frames)
+	#print(hit_stun_frames)
 	input_state_machine.process_input()
 	#input_state_machine.process_frame(delta)
 	#print("x:" +str(velocity.x) + " y: " + str(velocity.y) )
@@ -62,7 +64,7 @@ func process_motion(motion_name, button) -> void:
 	
 	if motion_name == "hadouken":
 		if button == "L":
-			motion = "L_hadouken"
+			motion = ""
 		if button == "M":
 			motion = "M_hadouken"
 		if button == "H":
@@ -105,7 +107,6 @@ func p_can_move() -> void:
 	if hit_stun_frames == 0 and block_stun_frames == 0:
 		can_move.emit()
 		
-	
 func frame_counter() -> void:
 	if hit_stun_frames > 0:
 		hit_stun_frames = hit_stun_frames - 1
@@ -131,11 +132,4 @@ func flip_char() -> void:
 
 
 # Signals
-func _on_hitbox_manager_debuig_hit_test(hit_variant: String) -> void:
-	get_hurt_info(hit_variant)
-	pass # Replace with function body.
-
-func _on_debug_hit_reset() -> void:
-	get_hurt_info("")
-	pass # Replace with function body.
 	

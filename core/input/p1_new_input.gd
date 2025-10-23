@@ -13,7 +13,7 @@ signal motion_perfomed(motion_name, button)
 
 # ======= Configurações =======
 const BUFFER_SIZE : int = 48
-const DEBUG_PRINT : bool = false
+const DEBUG_PRINT : bool = true
 
 # ======= Enums =======
 enum MatchMode { STRICT, FUZZY }
