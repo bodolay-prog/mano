@@ -38,6 +38,7 @@ var hit_true: int
 var block_stun_frames: int
 var hit_stun_frames: int
 var hurt_type : String
+var knockback: int
 var recovery_frames: int
 
 # All frames-run funcs
@@ -50,7 +51,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	frame_counter()
 	state_machine.process_input()
-	print("p2: ", hurt_type)
+	#print("p2: ", hurt_type)
 	#print(hit_buffer)
 	#print(hit)
 	

@@ -53,7 +53,7 @@ func p1_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, k
 	p1_attack_knockback = knockback
 	p1_attack_hurt_type	 = hit_variant
 	
-	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant)
+	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
 	
 	
 func p2_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, hit_variant: String) -> void:
@@ -64,26 +64,27 @@ func p2_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, k
 	p2_attack_knockback = knockback
 	p2_attack_hurt_type	 = hit_variant
 	
-	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant)
+	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
 
-func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String) -> void:
+func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
 	p1.block_stun_frames = block_stun_frames
 	p1.hit_stun_frames = hit_stun_frames
 	p1.hurt_type = hurt_type
+	p1.knockback = knockback
 
 		
-func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String) -> void:
+func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
 	p2.block_stun_frames = block_stun_frames
 	p2.hit_stun_frames = hit_stun_frames
 	p2.hurt_type = hurt_type
-
+	p2.knockback = knockback
 
 func _ready() -> void:
 	p1_hitbox_manager.connect("hit", p1_set_hit_info)
 	p2_hitbox_manager.connect("hit", p2_set_hit_info)
 	
 func _process(delta: float) -> void:
-	print(p1.hurt_type)
+	
 	p1_is_on_right_side()
 	p2_is_on_right_side()
 	

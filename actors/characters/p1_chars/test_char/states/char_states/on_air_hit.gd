@@ -47,8 +47,6 @@ func process_physics(delta: float) -> P1State:
 	if !parent.is_on_floor():
 		animations_player.play("air_hit_falling")
 		
-	
-
-	
+	 
 	return null
 	
