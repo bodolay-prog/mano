@@ -24,18 +24,19 @@ func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	
-	if parent.get_hurt_state() == "high":
+	await parent.block_can_move
+	
+	if parent.get_hurt_type() == "high":
 		if input_handler() == 1 or input_handler() == 4:
 			return on_air_block_state
 		return on_air_hit_state
-	if parent.get_hurt_state() == "mid":
+	if parent.get_hurt_type() == "mid":
 		if input_handler() == 1 or input_handler() == 4:
 			return on_air_block_state
 		return on_air_hit_state
-	if parent.get_hurt_state() == "low":
+	if parent.get_hurt_type() == "low":
 		return on_air_hit_state
-			
-	await animations_player.animation_finished
+	
 	
 	if parent.get_hit_variant() == "high_hit":
 		if action_input_handler() == 'L':

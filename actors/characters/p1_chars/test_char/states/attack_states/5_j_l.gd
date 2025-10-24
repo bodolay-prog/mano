@@ -36,6 +36,14 @@ func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	
+	if parent.hit_check() == "hit":
+			if action_input_handler() == 'L':
+					return _5j_L_state
+			if action_input_handler() == 'M':
+					return _5j_M_state
+			if action_input_handler() == 'H':
+					return _5j_H_state
+	
 	if parent.is_on_floor():
 		if input_handler() == 6:
 			return moving_foward_state
@@ -58,21 +66,12 @@ func process_physics(delta: float) -> P1State:
 			return dash_back_state
 		return idle_state
 		
-	if parent.get_hit_variant() == "high_hit":
-		if action_input_handler() == 'L':
-				return _5j_L_state
-		if action_input_handler() == 'M':
-				return _5j_M_state
-		if action_input_handler() == 'H':
-				return _5j_H_state
+	
 				
 	await animations_player.animation_finished
 	
 	if !parent.is_on_floor():
 		return falling_state
-		
-	
-	
 	
 	return null
 	

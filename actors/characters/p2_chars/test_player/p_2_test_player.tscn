@@ -5791,8 +5791,10 @@ _5j_H_state = NodePath("../j5_H")
 animation_name = "low_block"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
-[node name="get_up" type="Node" parent="state_machine"]
+[node name="get_up" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("32_op0ms")
+idle_state = NodePath("../idle")
+animation_name = "get_up"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="player_input_component" type="Node" parent="."]
@@ -5940,6 +5942,7 @@ shape = SubResource("RectangleShape2D_3dtab")
 disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
+[connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_L" to="hitbox_manager/high_hit_manager" method="_on_j_5_l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_M" to="hitbox_manager/high_hit_manager" method="_on_j_5_m_area_entered"]

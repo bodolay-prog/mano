@@ -52,25 +52,32 @@ func enter() -> void:
 
 func process_input() -> P1State:	
 	
-	await animations_player.animation_finished
+	await parent.block_can_move
 	
 	if parent.is_on_floor():
-		if parent.get_hurt_state() == "mid":
+		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_block_state
 			return on_hit_state
 			
-		if parent.get_hurt_state() == "low":
+	if parent.is_on_floor():
+		if parent.get_hurt_type() == "mid":
+			if input_handler() == 1 or input_handler() == 4:
+				return on_block_state
+			return on_hit_state
+			
+		if parent.get_hurt_type() == "low":
 			if input_handler() == 1:
 				return on_block_state
 			return on_hit_state
 	
 		if input_handler() == 6:
 			return moving_foward_state
-		
+		if input_handler() == 4:
+			return moving_back_state
+			
 		if input_handler() == 7:
 			return back_jump_state
-				
 		if  input_handler() == 8:
 			return neutral_jump_state
 			
@@ -80,8 +87,6 @@ func process_input() -> P1State:
 		if input_handler() == 66:
 			return dash_foward_state
 			
-		if input_handler() == 4:
-			return moving_back_state
 		if input_handler() == 44:
 			return dash_back_state
 			

@@ -31,8 +31,8 @@ var _2_M_P1State: P2State
 var _2_H_P1State: P2State
 
 func process_input() -> P2State:	
-
-	if parent.get_hit_variant() == "mid_hit":
+	
+	if parent.hit_check() == "hit":
 		if input_handler() == 2:
 			if action_input_handler() == 'L':
 				return _2_L_P1State

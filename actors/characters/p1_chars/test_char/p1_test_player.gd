@@ -1,8 +1,12 @@
 class_name P1Character
 extends CharacterBody2D
 
-signal can_move()
+# Signals
+signal hit_can_move()
+signal block_can_move()
+signal recovery_can_move()
 
+# Child nodes or P1 nodes vars
 @onready
 var hitbox_p2 : hitbox_manager = $"../p2/hitbox_manager"
 @onready
@@ -10,7 +14,7 @@ var hurtbox_p2 : hurtbox_manager = $"../p2/hurtbox_manager"
 @onready
 var animations_player: AnimationPlayer = $animation_player
 @onready
-var input_state_machine: Node = $input_state_machine
+var state_machine: Node = $state_machine
 @onready
 var node_hitbox_manager: hitbox_manager = $hitbox_manager
 @onready
@@ -18,27 +22,38 @@ var node_hurtbox_manager: hurtbox_manager = $hurtbox_manager
 @onready
 var player_input_component = $player_input_component
 @onready
-var old_state = $input_state_machine.old_state
+var old_state = $state_machine.old_state
 
-var block_stun_frames: int
-var hit_stun_frames: int
-var hit_variant: String
-var hurt_state: String
+
+# Vars that state_machine use
 var motion: String
 var on_right_side: bool
+
+# Frame counter for a new hit
+var hit_buffer: int = 0
+var hit: String
+
+# Vars that p1 will recieve
+var hit_true: int
+var block_stun_frames: int
+var hit_stun_frames: int
+var hurt_type : String
+var recovery_frames: int
 
 # All frames-run funcs
 func _ready() -> void:
 	
-	input_state_machine.init(self, animations_player, node_hitbox_manager, node_hurtbox_manager, player_input_component)
-	hitbox_p2.connect("hit", set_hit_info)
+	state_machine.init(self, animations_player, node_hitbox_manager, node_hurtbox_manager, player_input_component)
 	player_input_component.connect("motion_perfomed", process_motion)
 	
 
 func _process(delta: float) -> void:
 	frame_counter()
+	state_machine.process_input()
+	print("p1: ", hurt_type)
+	#print(hit_buffer)
+	#print(hit)
 	#print(hit_stun_frames)
-	input_state_machine.process_input()
 	#input_state_machine.process_frame(delta)
 	#print("x:" +str(velocity.x) + " y: " + str(velocity.y) )
 	#print("movement input: " + str(player_input_component.dir))
@@ -52,13 +67,9 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	p_can_move()
-	input_state_machine.process_physics(delta)
+	state_machine.process_physics(delta)
 	
 # Data funcs
-func set_hit_info(block_stun_frames: int, hit_stun_frames: int, hit_variant: String) -> void:
-	self.block_stun_frames = block_stun_frames
-	self.hit_stun_frames = hit_stun_frames
-	hurt_state = hit_variant
 	
 func process_motion(motion_name, button) -> void:
 	
@@ -102,34 +113,51 @@ func process_motion(motion_name, button) -> void:
 		if button == "S":
 			motion = "S_quarter_circle_back"
 		
-	
-func p_can_move() -> void:
-	if hit_stun_frames == 0 and block_stun_frames == 0:
-		can_move.emit()
-		
 func frame_counter() -> void:
+	
 	if hit_stun_frames > 0:
 		hit_stun_frames = hit_stun_frames - 1
 		await get_tree().process_frame
 		
-func get_hurt_info(char_state: String) -> void:
-	self.hurt_state = char_state
+	if block_stun_frames > 0:
+		block_stun_frames = block_stun_frames - 1
+		await get_tree().process_frame
 	
-func get_hurt_state() -> String:
-	return hurt_state
-
-func get_block_stun_frames() -> int:
-	return block_stun_frames
+	if recovery_frames > 0:
+		recovery_frames = recovery_frames - 1
+		await get_tree().process_frame
 	
-func get_hit_stun_frames() -> int:
-	return hit_stun_frames
+	if hit_buffer > 0:
+		hit_buffer = hit_buffer - 1
+		await get_tree().process_frame
 	
-func get_hit_variant() -> String:
-	return hit_variant
+func get_hurt_type() -> String:
+	return hurt_type
 
 func flip_char() -> void:
 		scale.x = -1
 
+# Signals Funcs
 
-# Signals
+func p_can_move() -> void:
 	
+	if hit_stun_frames == 0:
+		hit_can_move.emit()
+		
+	if block_stun_frames == 0:
+		block_can_move.emit()
+	
+	if recovery_frames == 0:
+		recovery_can_move.emit()
+		
+	if hit_buffer == 0:
+		hit = ""
+		
+func hit_check() -> String:
+	return hit
+
+func _on_hitbox_manager_hit_check() -> void:
+	hit = "hit"
+	hit_buffer = 24
+	
+	pass # Replace with function body.

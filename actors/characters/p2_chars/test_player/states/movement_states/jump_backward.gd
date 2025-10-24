@@ -62,15 +62,15 @@ func process_physics(delta: float) -> P2State:
 	
 	if !parent.is_on_floor():
 		
-		if parent.get_hurt_state() == "high":
+		if parent.get_hurt_type() == "high":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_air_block_state
 			return on_air_hit_state
-		if parent.get_hurt_state() == "mid":
+		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_air_block_state
 			return on_air_hit_state
-		if parent.get_hurt_state() == "low":
+		if parent.get_hurt_type() == "low":
 			return on_air_hit_state
 			
 		if action_input_handler() == 'L':

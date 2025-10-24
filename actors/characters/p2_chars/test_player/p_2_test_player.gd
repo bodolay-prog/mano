@@ -1,8 +1,16 @@
 class_name P2Character
 extends CharacterBody2D
 
+# Signals
+signal hit_can_move()
+signal block_can_move()
+signal recovery_can_move()
+
+# Child nodes or P1 nodes vars
 @onready
-var hitbox_p1: hitbox_manager = $"../p1/hitbox_manager"
+var hitbox_p1 : hitbox_manager = $"../p1/hitbox_manager"
+@onready
+var hurtbox_p1 : hurtbox_manager = $"../p1/hurtbox_manager"
 @onready
 var animations_player: AnimationPlayer = $animation_player
 @onready
@@ -16,47 +24,60 @@ var player_input_component = $player_input_component
 @onready
 var old_state = $state_machine.old_state
 
+
+# Vars that state_machine use
+var motion: String
+var on_right_side: bool
+
+# Frame counter for a new hit
+var hit_buffer: int = 0
+var hit: String
+
+# Vars that p1 will recieve
+var hit_true: int
 var block_stun_frames: int
 var hit_stun_frames: int
-var hit_variant: String
-var hurt_state: String
-var on_right_side: bool
-var motion: String
-
+var hurt_type : String
+var recovery_frames: int
 
 # All frames-run funcs
 func _ready() -> void:
+	
 	state_machine.init(self, animations_player, node_hitbox_manager, node_hurtbox_manager, player_input_component)
-	hitbox_p1.connect("hit",set_hit_info)
 	player_input_component.connect("motion_perfomed", process_motion)
+	
 
 func _process(delta: float) -> void:
-	#print(hurt_state)
+	frame_counter()
 	state_machine.process_input()
-	#state_machine.process_frame(delta)
+	print("p2: ", hurt_type)
+	#print(hit_buffer)
+	#print(hit)
+	
+	#print(hit_stun_frames)
+	
+	#input_state_machine.process_frame(delta)
 	#print("x:" +str(velocity.x) + " y: " + str(velocity.y) )
 	#print("movement input: " + str(player_input_component.dir))
+	#print(on_right_side)
 	#print("attack input: " + str(player_input_component.attack_inputs()))
 	#if is_on_floor():
 		#print("chão")
-	#print("State: " +str($state_machine.old_state))
-	#print("State: " +str($state_machine.current_state))
+	#print("State: " +str($input_state_machine.old_state))
+	#print("State: " +str($input_state_machine.current_state))
 	return 
 	
 func _physics_process(delta: float) -> void:
+	p_can_move()
 	state_machine.process_physics(delta)
 	
-# Data Funcs
-func set_hit_info(block_stun_frames: int, hit_stun_frames: int, hit_variant: String) -> void:
-	self.block_stun_frames = block_stun_frames
-	self.hit_stun_frames = hit_stun_frames
-	hurt_state = hit_variant
+# Data funcs
 	
 func process_motion(motion_name, button) -> void:
 	
 	if motion_name == "hadouken":
 		if button == "L":
-			motion = "L_hadouken"
+			motion = ""
 		if button == "M":
 			motion = "M_hadouken"
 		if button == "H":
@@ -93,32 +114,52 @@ func process_motion(motion_name, button) -> void:
 			motion = "H_quarter_circle_back"
 		if button == "S":
 			motion = "S_quarter_circle_back"
+		
+func frame_counter() -> void:
 	
-func get_hurt_info(char_state: String) -> void:
-	self.hurt_state = char_state
+	if hit_stun_frames > 0:
+		hit_stun_frames = hit_stun_frames - 1
+		await get_tree().process_frame
+		
+	if block_stun_frames > 0:
+		block_stun_frames = block_stun_frames - 1
+		await get_tree().process_frame
 	
-func get_hurt_state() -> String:
-	return hurt_state
-
-func get_block_stun_frames() -> int:
-	return block_stun_frames
+	if recovery_frames > 0:
+		recovery_frames = recovery_frames - 1
+		await get_tree().process_frame
 	
-func get_hit_stun_frames() -> int:
-	return hit_stun_frames
+	if hit_buffer > 0:
+		hit_buffer = hit_buffer - 1
+		await get_tree().process_frame
 	
-func get_hit_variant() -> String:
-	return hit_variant
+func get_hurt_type() -> String:
+	return hurt_type
 
 func flip_char() -> void:
 		scale.x = -1
-	
 
-# Signals Func
-func _on_hitbox_manager_debuig_hit_test(hit_variant: String) -> void:
-	get_hurt_info(hit_variant)
-	pass # Replace with function body.
+# Signals Funcs
 
-func _on_debug_hit_reset() -> void:
-	get_hurt_info("")
-	pass # Replace with function body.
+func p_can_move() -> void:
 	
+	if hit_stun_frames == 0:
+		hit_can_move.emit()
+		
+	if block_stun_frames == 0:
+		block_can_move.emit()
+	
+	if recovery_frames == 0:
+		recovery_can_move.emit()
+		
+	if hit_buffer == 0:
+		hit = ""
+		
+func hit_check() -> String:
+	return hit
+
+func _on_hitbox_manager_hit_check() -> void:
+	hit = "hit"
+	hit_buffer = 24
+	
+	pass # Replace with function body.

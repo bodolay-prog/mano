@@ -52,15 +52,15 @@ func enter() -> void:
 
 func process_input() -> P2State:	
 	
-	await animations_player.animation_finished
+	await parent.hit_can_move
 	
 	if parent.is_on_floor():
-		if parent.get_hurt_state() == "mid":
+		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_block_state
 			return on_hit_state
 			
-		if parent.get_hurt_state() == "low":
+		if parent.get_hurt_type() == "low":
 			if input_handler() == 1:
 				return on_block_state
 			return on_hit_state

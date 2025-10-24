@@ -18,11 +18,7 @@ func enter() -> void:
 	animations_player.play(animation_name)
 	
 func exit() -> void:
-	parent.block_stun_frames = 0
-	#parent.hit_stun_frames = 0
-	parent.hit_variant = ""
-	parent.hurt_state = ""
-	parent.motion = ""
+	parent.hurt_type = ""
 
 func process_input() -> P1State:
 	return null

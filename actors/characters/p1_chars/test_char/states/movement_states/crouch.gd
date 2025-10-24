@@ -54,17 +54,17 @@ func process_input() -> P1State:
 		if parent.motion == "L_tatsumaki":
 			print("l tsk")	
 	
-		if parent.get_hurt_state() == "mid":
+		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_block_state
 			return on_hit_state
 			
-		if parent.get_hurt_state() == "low":
+		if parent.get_hurt_type() == "low":
 			if input_handler() == 1:
 				return on_block_state
 			return on_hit_state
 			
-		if parent.get_hurt_state() == "high":
+		if parent.get_hurt_type() == "high":
 			if input_handler() == 4:
 				return on_block_state
 			if input_handler() == 1:
