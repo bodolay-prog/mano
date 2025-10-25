@@ -24,6 +24,7 @@ Fases ate a entrega:
 
 # Alpha Fase
 Propriedades da Fase Alpha:
+- Make a game Manager thats set the p1 and p2 vars (nao concluido) // on process
 - P1 and P2 logic class (não concluido) // on process
 - P1 and P2 inside a debug (concluido)
 - P1 and P2 fight logic (não concluido) // on process
@@ -33,6 +34,11 @@ Propriedades da Fase Alpha:
 - Health and Super Bars(não concluido)
 - Screens Logic (Menu Screen, Character Select, Stage Select, Fight Screen, Victory Sreen ) (não concluido)
 - Sprites (não concluido)
+
+task atual:
+	
+	fazer os estados de launcher e sweep e os sinais para o jogo entender e os estados
+
 
 Fases ate a entrega:
 - Beta (concluido)

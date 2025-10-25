@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=84 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/p1_chars/test_char/p1_test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://lafqnllb5e0g" path="res://actors/characters/p1_chars/test_char/sprites/dio_prites/spritesheet (2).png" id="2_5kwwp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c13f4d8amrtxc" path="res://actors/characters/p1_chars/test_char/states/movement_states/crouch.gd" id="14_n6tdv"]
 [ext_resource type="Script" uid="uid://cdks531jvy04u" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_foward.gd" id="15_vssk5"]
 [ext_resource type="Script" uid="uid://bnt8a0yla5hm" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_back.gd" id="16_7crfg"]
+[ext_resource type="Script" uid="uid://mam2jjic0o1k" path="res://core/fsm/p1_state.gd" id="18_78out"]
 [ext_resource type="Script" uid="uid://mtvwmg1i3slv" path="res://actors/characters/p1_chars/test_char/states/attack_states/5_m.gd" id="20_nsq6k"]
 [ext_resource type="Script" uid="uid://bq2ktjg22eug0" path="res://actors/characters/p1_chars/test_char/states/movement_states/foward_dash.gd" id="21_gjg2l"]
 [ext_resource type="Script" uid="uid://csku8fk2iak65" path="res://actors/characters/p1_chars/test_char/states/attack_states/5_h.gd" id="21_nsq6k"]
@@ -4978,6 +4979,10 @@ _2_L_P1State = NodePath("../2_L")
 _2_M_P1State = NodePath("../2_M")
 _2_H_P1State = NodePath(".")
 animation_name = "2_H"
+metadata/_custom_type_script = "uid://mam2jjic0o1k"
+
+[node name="3_H" type="Node" parent="state_machine"]
+script = ExtResource("18_78out")
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="j5_L" type="Node" parent="state_machine" node_paths=PackedStringArray("_5j_L_state", "_5j_M_state", "_5j_H_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "falling_state")]
