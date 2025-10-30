@@ -36,6 +36,8 @@ var _2_L_P1State: P1State
 var _2_M_P1State: P1State
 @export
 var _2_H_P1State: P1State
+@export
+var _3_H_P1State: P1State
 
 var move_foward_speed: float = 300
 var move_foward_speed_right_side: float = -300
@@ -69,6 +71,20 @@ func process_input() -> P1State:
 				return on_hit_state
 			return on_hit_state
 			
+		if input_handler() == 1 or input_handler() == 2:
+			if action_input_handler() == 'H':
+				if input_handler() == 3:
+					return _3_H_P1State
+				return _2_H_P1State
+			
+		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			
+			if action_input_handler() == 'L':
+				return _2_L_P1State
+			if action_input_handler() == 'M':
+				return _2_M_P1State
+			return crouch_state
+			
 		if action_input_handler() == 'L':
 			return _5_L_P1State
 		if action_input_handler() == 'M':
@@ -96,14 +112,7 @@ func process_input() -> P1State:
 		if input_handler() == 66:
 			return dash_foward_state
 		
-		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			if action_input_handler() == 'L':
-				return _2_L_P1State
-			if action_input_handler() == 'M':
-				return _2_M_P1State
-			if action_input_handler() == 'H':
-				return _2_H_P1State
-			return crouch_state
+		
 
 	return null
 	

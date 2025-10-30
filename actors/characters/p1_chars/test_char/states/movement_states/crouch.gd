@@ -28,6 +28,8 @@ var _2_L_P1State: P1State
 var _2_M_P1State: P1State
 @export
 var _2_H_P1State: P1State
+@export
+var _3_H_P1State: P1State
 
 #Input Machine Path
 @onready
@@ -44,15 +46,6 @@ func enter() -> void:
 func process_input() -> P1State:	
 
 	if parent.is_on_floor():
-		
-		if parent.motion == "L_hadouken":
-			print("l hdk")	
-			
-		if parent.motion == "L_shoryuken":
-			print("l srk")	
-			
-		if parent.motion == "L_tatsumaki":
-			print("l tsk")	
 	
 		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
@@ -71,15 +64,20 @@ func process_input() -> P1State:
 				return on_hit_state
 			return on_hit_state
 			
+		if input_handler() == 1 or input_handler() == 2:
+			if action_input_handler() == 'H':
+				return _2_H_P1State
+			
+		if input_handler() == 3:
+			if action_input_handler() == 'H':
+				return _3_H_P1State
+				
 		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
-			# 2 action inputs
 			if action_input_handler() == 'L':
 				return _2_L_P1State
 			if action_input_handler() == 'M':
 				return _2_M_P1State
-			if action_input_handler() == 'H':
-				return _2_H_P1State
-		
+			return crouch_state
 		
 		if input_handler() == 7:
 			return back_jump_state
