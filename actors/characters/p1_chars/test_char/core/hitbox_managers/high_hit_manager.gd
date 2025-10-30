@@ -14,5 +14,5 @@ func _on_j_5_m_area_area_entered(area: Area2D) -> void:
 
 func _on_j_5_h_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("p2_hurtbox"): 
-		on_hit(5, 2, 0, 0)
+		on_ender(5, 2, 0, 0)
 	pass # Replace with function body.

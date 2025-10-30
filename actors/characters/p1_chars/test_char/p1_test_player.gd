@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 	return 
 	
 func _physics_process(delta: float) -> void:
-	p_can_move()
+	can_move()
 	state_machine.process_physics(delta)
 	
 # Data funcs
@@ -140,7 +140,7 @@ func flip_char() -> void:
 
 # Signals Funcs
 
-func p_can_move() -> void:
+func can_move() -> void:
 	
 	if hit_stun_frames == 0:
 		hit_can_move.emit()

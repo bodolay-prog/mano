@@ -52,7 +52,10 @@ func enter() -> void:
 
 func process_input() -> P1State:	
 	
-	await parent.block_can_move
+	if parent.get_hurt_type() == "high":
+		if input_handler() == 4:
+			return on_combo_block_state
+		return on_hit_state
 	
 	if parent.get_hurt_type() == "mid":
 		if input_handler() == 1 or input_handler() == 4:
@@ -63,7 +66,10 @@ func process_input() -> P1State:
 		if input_handler() == 1:
 			return on_combo_block_state
 		return on_hit_state
-
+	
+	
+	await parent.block_can_move
+	
 	if parent.is_on_floor():
 		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:

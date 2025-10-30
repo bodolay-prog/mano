@@ -39,7 +39,7 @@ func process_physics(delta: float) -> P1State:
 	if parent.is_on_floor():
 		return get_up_state
 			
-	await animations_player.animation_finished
+	await parent.hit_can_move
 	
 	if parent.is_on_floor():
 		return get_up_state

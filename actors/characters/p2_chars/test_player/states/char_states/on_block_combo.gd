@@ -52,18 +52,22 @@ func enter() -> void:
 
 func process_input() -> P2State:	
 	
-	await parent.block_can_move
-	
-	if parent.is_on_floor():
-		if parent.get_hurt_type() == "mid":
-			if input_handler() == 1 or input_handler() == 4:
-				return on_block_state
-			return on_hit_state
+	if parent.get_hurt_type() == "high":
+		if input_handler() == 4:
+			return on_block_state
+		return on_hit_state
+		
+	if parent.get_hurt_type() == "mid":
+		if input_handler() == 1 or input_handler() == 4:
+			return on_block_state
+		return on_hit_state
 			
-		if parent.get_hurt_type() == "low":
-			if input_handler() == 1:
-				return on_block_state
-			return on_hit_state
+	if parent.get_hurt_type() == "low":
+		if input_handler() == 1:
+			return on_block_state
+		return on_hit_state
+		
+	await parent.block_can_move
 	
 	if parent.is_on_floor():
 		if parent.get_hurt_type() == "mid":
@@ -111,10 +115,12 @@ func process_input() -> P2State:
 		if action_input_handler() == 'H':
 			return _5_H_P1State
 		return idle_state
+		
 	return null
 		
 
 func process_physics(delta: float) -> P2State:
+	
 	parent.velocity.y += gravity * delta
 	parent.velocity.x = parent.knockback * (-1 if parent.on_right_side else 1)
 	parent.move_and_slide()

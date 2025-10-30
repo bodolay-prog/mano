@@ -49,12 +49,14 @@ func enter() -> void:
 	if state_machine_path.old_state == crouch_state:
 		animations_player.play("low_hurt")
 		
-	
 
 func process_input() -> P2State:	
 	
-	await parent.hit_can_move
-	
+	if parent.get_hurt_type() == "high":
+		if input_handler() == 4:
+			return on_block_state
+		return on_hit_combo_state
+		
 	if parent.get_hurt_type() == "mid":
 		if input_handler() == 1 or input_handler() == 4:
 			return on_block_state
@@ -64,17 +66,10 @@ func process_input() -> P2State:
 		if input_handler() == 1:
 			return on_block_state
 		return on_hit_combo_state
+		
+	await parent.hit_can_move
 	
 	if parent.is_on_floor():
-		if parent.get_hurt_type() == "mid":
-			if input_handler() == 1 or input_handler() == 4:
-				return on_block_state
-			return on_hit_combo_state
-			
-		if parent.get_hurt_type() == "low":
-			if input_handler() == 1:
-				return on_block_state
-			return on_hit_combo_state
 	
 		if input_handler() == 6:
 			return moving_foward_state
@@ -116,6 +111,7 @@ func process_input() -> P2State:
 		
 
 func process_physics(delta: float) -> P2State:
+	
 	parent.velocity.y += gravity * delta
 	parent.velocity.x = parent.knockback * (-1 if parent.on_right_side else 1)
 	parent.move_and_slide()
