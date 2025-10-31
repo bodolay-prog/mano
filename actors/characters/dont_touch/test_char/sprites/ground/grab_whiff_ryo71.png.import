@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1a5jctxlxugc"
-path="res://.godot/imported/grab_whiff_ryo71.png-03f9279f95940fcca53d59d6fe89e8d2.ctex"
+path="res://.godot/imported/grab_whiff_ryo71.png-b6fa3b2e6c6eeefbc875e6118a763e1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/ground/grab_whiff_ryo71.png"
-dest_files=["res://.godot/imported/grab_whiff_ryo71.png-03f9279f95940fcca53d59d6fe89e8d2.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/ground/grab_whiff_ryo71.png"
+dest_files=["res://.godot/imported/grab_whiff_ryo71.png-b6fa3b2e6c6eeefbc875e6118a763e1d.ctex"]
 
 [params]
 

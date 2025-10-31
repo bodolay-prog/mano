@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvoi1domolf33"
-path="res://.godot/imported/2s_ryo36.png-4017067e81be0e02e9a4eb0c5865c479.ctex"
+path="res://.godot/imported/2s_ryo36.png-1fe5ac19be3138de1d9c18a71dd8980a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/ground/normals/2s_ryo36.png"
-dest_files=["res://.godot/imported/2s_ryo36.png-4017067e81be0e02e9a4eb0c5865c479.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/ground/normals/2s_ryo36.png"
+dest_files=["res://.godot/imported/2s_ryo36.png-1fe5ac19be3138de1d9c18a71dd8980a.ctex"]
 
 [params]
 

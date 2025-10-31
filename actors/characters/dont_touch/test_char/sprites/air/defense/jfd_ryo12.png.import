@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwqy5yylqxxe8"
-path="res://.godot/imported/jfd_ryo12.png-c3cbc3afde51b7dac10f9fcc85e83491.ctex"
+path="res://.godot/imported/jfd_ryo12.png-a4d34cd8466e1148689e3457d7710ca5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/air/defense/jfd_ryo12.png"
-dest_files=["res://.godot/imported/jfd_ryo12.png-c3cbc3afde51b7dac10f9fcc85e83491.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/air/defense/jfd_ryo12.png"
+dest_files=["res://.godot/imported/jfd_ryo12.png-a4d34cd8466e1148689e3457d7710ca5.ctex"]
 
 [params]
 

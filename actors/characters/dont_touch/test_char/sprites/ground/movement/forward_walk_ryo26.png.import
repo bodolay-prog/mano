@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://82mf0b7hbi7j"
-path="res://.godot/imported/forward_walk_ryo26.png-599f972d4ce5126f061021c2baf9d66a.ctex"
+path="res://.godot/imported/forward_walk_ryo26.png-bc6eb6e46f6e979161841ae47f7da96f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/ground/movement/forward_walk_ryo26.png"
-dest_files=["res://.godot/imported/forward_walk_ryo26.png-599f972d4ce5126f061021c2baf9d66a.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/ground/movement/forward_walk_ryo26.png"
+dest_files=["res://.godot/imported/forward_walk_ryo26.png-bc6eb6e46f6e979161841ae47f7da96f.ctex"]
 
 [params]
 

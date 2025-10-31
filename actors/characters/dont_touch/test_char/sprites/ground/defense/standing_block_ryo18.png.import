@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbjbs4lonk3mx"
-path="res://.godot/imported/standing_block_ryo18.png-ec65bdcace90b565c9ce305ad0b41c0c.ctex"
+path="res://.godot/imported/standing_block_ryo18.png-fd017fb3873e95400101b0ea69ecf3ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/ground/defense/standing_block_ryo18.png"
-dest_files=["res://.godot/imported/standing_block_ryo18.png-ec65bdcace90b565c9ce305ad0b41c0c.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/ground/defense/standing_block_ryo18.png"
+dest_files=["res://.godot/imported/standing_block_ryo18.png-fd017fb3873e95400101b0ea69ecf3ec.ctex"]
 
 [params]
 

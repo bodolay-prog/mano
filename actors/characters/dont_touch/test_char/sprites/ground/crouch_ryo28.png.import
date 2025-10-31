@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c06ukrmww2j35"
-path="res://.godot/imported/crouch_ryo28.png-fc288e2a44d610431da41fe16b0a1b6b.ctex"
+path="res://.godot/imported/crouch_ryo28.png-07c8a1cdacadb83a7b723872345d13cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/ground/crouch_ryo28.png"
-dest_files=["res://.godot/imported/crouch_ryo28.png-fc288e2a44d610431da41fe16b0a1b6b.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/ground/crouch_ryo28.png"
+dest_files=["res://.godot/imported/crouch_ryo28.png-07c8a1cdacadb83a7b723872345d13cc.ctex"]
 
 [params]
 

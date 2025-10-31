@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyotlhtgk13if"
-path="res://.godot/imported/back_air_dash_ryo32.png-24d027bbd9f9fc512a8779a72a164686.ctex"
+path="res://.godot/imported/back_air_dash_ryo32.png-c6d13399797a5d312a55a310b6cda3aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/air/movement/back_air_dash_ryo32.png"
-dest_files=["res://.godot/imported/back_air_dash_ryo32.png-24d027bbd9f9fc512a8779a72a164686.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/air/movement/back_air_dash_ryo32.png"
+dest_files=["res://.godot/imported/back_air_dash_ryo32.png-c6d13399797a5d312a55a310b6cda3aa.ctex"]
 
 [params]
 

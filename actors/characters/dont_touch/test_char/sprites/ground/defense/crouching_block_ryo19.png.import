@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvhqor1o0urkt"
-path="res://.godot/imported/crouching_block_ryo19.png-eb4dd8dc241a0a2fe80c445818286710.ctex"
+path="res://.godot/imported/crouching_block_ryo19.png-1ddf6f24e54dbaa0d0a6d256c5b5849c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/ground/defense/crouching_block_ryo19.png"
-dest_files=["res://.godot/imported/crouching_block_ryo19.png-eb4dd8dc241a0a2fe80c445818286710.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/ground/defense/crouching_block_ryo19.png"
+dest_files=["res://.godot/imported/crouching_block_ryo19.png-1ddf6f24e54dbaa0d0a6d256c5b5849c.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://empry72uuivi"
-path="res://.godot/imported/forward_air_dash_ryo31.png-67b1ac9ae2ef2c1e8c0b1414d7cd92f4.ctex"
+path="res://.godot/imported/forward_air_dash_ryo31.png-9f88ff37cac11ccee7b3254ac2b8603d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/air/movement/forward_air_dash_ryo31.png"
-dest_files=["res://.godot/imported/forward_air_dash_ryo31.png-67b1ac9ae2ef2c1e8c0b1414d7cd92f4.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/air/movement/forward_air_dash_ryo31.png"
+dest_files=["res://.godot/imported/forward_air_dash_ryo31.png-9f88ff37cac11ccee7b3254ac2b8603d.ctex"]
 
 [params]
 

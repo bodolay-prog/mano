@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c41jw6c75wyqy"
-path="res://.godot/imported/forward_jump_ryo15.png-ebfb7d622cb42f7c0956d9fa1884de9e.ctex"
+path="res://.godot/imported/forward_jump_ryo15.png-c0ac681c38165e8fdc2d4d9c3d9a41be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/test_char/sprites/air/movement/forward_jump_ryo15.png"
-dest_files=["res://.godot/imported/forward_jump_ryo15.png-ebfb7d622cb42f7c0956d9fa1884de9e.ctex"]
+source_file="res://actors/characters/dont_touch/test_char/sprites/air/movement/forward_jump_ryo15.png"
+dest_files=["res://.godot/imported/forward_jump_ryo15.png-c0ac681c38165e8fdc2d4d9c3d9a41be.ctex"]
 
 [params]
 

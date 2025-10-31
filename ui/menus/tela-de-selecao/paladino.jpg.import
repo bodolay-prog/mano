@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lafqnllb5e0g"
-path="res://.godot/imported/spritesheet (2).png-af9846c237c0624354c6571e10c50e00.ctex"
+uid="uid://23t717wc2x8n"
+path="res://.godot/imported/paladino.jpg-d23f891d5d8b3f8374c4a6cea8fc5768.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/p1-chars/test-char/sprites/dio_prites/spritesheet (2).png"
-dest_files=["res://.godot/imported/spritesheet (2).png-af9846c237c0624354c6571e10c50e00.ctex"]
+source_file="res://ui/menus/tela-de-selecao/paladino.jpg"
+dest_files=["res://.godot/imported/paladino.jpg-d23f891d5d8b3f8374c4a6cea8fc5768.ctex"]
 
 [params]
 
