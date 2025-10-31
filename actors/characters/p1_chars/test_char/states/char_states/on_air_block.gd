@@ -11,6 +11,10 @@ var falling_state: P1State
 var on_air_hit_state: P1State
 @export
 var on_air_block_combo_state: P1State
+@export
+var on_sweep_state: P1State
+@export
+var on_launcher_state: P1State
 
 #Attack P1States
 @export
@@ -30,12 +34,24 @@ func process_physics(delta: float) -> P1State:
 		if input_handler() == 1 or input_handler() == 4:
 			return on_air_block_combo_state
 		return on_air_hit_state
+		
 	if parent.get_hurt_type() == "mid":
 		if input_handler() == 1 or input_handler() == 4:
 			return on_air_block_combo_state
 		return on_air_hit_state
+		
 	if parent.get_hurt_type() == "low":
 		return on_air_hit_state
+
+	if parent.get_hurt_type() == "sweep":
+		if input_handler() == 1:
+			return on_air_block_combo_state
+		return on_sweep_state
+		
+	if parent.get_hurt_type() == "launcher":
+		if input_handler() == 1:
+			return on_air_block_combo_state
+		return on_launcher_state
 	
 	await parent.block_can_move
 	

@@ -41,13 +41,13 @@ var hurt_type : String
 var knockback: int
 var recovery_frames: int
 
-# All frames-run funcs
+# Start Func
 func _ready() -> void:
 	
 	state_machine.init(self, animations_player, node_hitbox_manager, node_hurtbox_manager, player_input_component)
 	player_input_component.connect("motion_perfomed", process_motion)
 	
-
+# All frames-run funcs
 func _process(delta: float) -> void:
 	frame_counter()
 	state_machine.process_input()
@@ -70,8 +70,9 @@ func _physics_process(delta: float) -> void:
 	can_move()
 	state_machine.process_physics(delta)
 	
-# Data funcs
 	
+	
+# Data funcs
 func process_motion(motion_name, button) -> void:
 	
 	if motion_name == "hadouken":

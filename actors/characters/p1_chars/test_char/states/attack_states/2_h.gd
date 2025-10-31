@@ -36,6 +36,15 @@ func process_input() -> P1State:
 	
 	if parent.hit_check() == "hit":
 		
+		if input_handler() == 7:
+			return back_jump_state
+				
+		if  input_handler() == 8:
+			return neutral_jump_state
+			
+		if input_handler() == 9 :
+			return foward_jump_state
+			
 		if input_handler() == 1 or input_handler() == 2:
 			if action_input_handler() == 'H':
 				if input_handler() == 3:
@@ -57,6 +66,7 @@ func process_input() -> P1State:
 			return _5_H_P1State
 	
 	await animations_player.animation_finished
+	
 	if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 		return crouch_state
 	return idle_state

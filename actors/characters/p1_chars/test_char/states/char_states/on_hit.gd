@@ -5,6 +5,10 @@ extends P1State
 var on_hit_combo_state: P1State
 @export
 var on_block_state: P1State
+@export
+var on_sweep_state: P1State
+@export
+var on_launcher_state: P1State
 
 # Movement P1States
 @export
@@ -58,23 +62,49 @@ func enter() -> void:
 func process_input() -> P1State:	
 		
 	if parent.get_hurt_type() == "high":
-		if input_handler() == 4:
-			return on_block_state
 		return on_hit_combo_state
 		
 	if parent.get_hurt_type() == "mid":
-		if input_handler() == 1 or input_handler() == 4:
-			return on_block_state
 		return on_hit_combo_state
 			
 	if parent.get_hurt_type() == "low":
-		if input_handler() == 1:
-			return on_block_state
 		return on_hit_combo_state
+
+	if parent.get_hurt_type() == "sweep":
+		return on_sweep_state
+			
+	if parent.get_hurt_type() == "launcher":
+		return on_launcher_state
+		
 		
 	await parent.hit_can_move
 	
 	if parent.is_on_floor():
+		
+		if parent.get_hurt_type() == "high":
+			if input_handler() == 4:
+				return on_block_state
+			return on_hit_combo_state
+		
+		if parent.get_hurt_type() == "mid":
+			if input_handler() == 1 or input_handler() == 4:
+				return on_block_state
+			return on_hit_combo_state
+			
+		if parent.get_hurt_type() == "low":
+			if input_handler() == 1:
+				return on_block_state
+			return on_hit_combo_state
+
+		if parent.get_hurt_type() == "sweep":
+			if input_handler() == 1:
+				return on_block_state
+			return on_sweep_state
+			
+		if parent.get_hurt_type() == "launcher":
+			if input_handler() == 1:
+				return on_block_state
+			return on_launcher_state
 		
 		if input_handler() == 1 or input_handler() == 2:
 			if action_input_handler() == 'H':

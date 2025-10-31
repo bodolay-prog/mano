@@ -5,6 +5,10 @@ extends P1State
 var on_air_hit_state: P1State
 @export
 var on_air_block_state: P1State
+@export
+var on_sweep_state: P1State
+@export
+var on_launcher_state: P1State
 
 # Movement P1States
 @export
@@ -67,12 +71,20 @@ func process_physics(delta: float) -> P1State:
 			if input_handler() == 1 or input_handler() == 4:
 				return on_air_block_state
 			return on_air_hit_state
+			
 		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
 				return on_air_block_state
 			return on_air_hit_state
+			
 		if parent.get_hurt_type() == "low":
 			return on_air_hit_state
+			
+		if parent.get_hurt_type() == "sweep":
+			return on_sweep_state
+			
+		if parent.get_hurt_type() == "launcher":
+			return on_launcher_state
 			
 		if action_input_handler() == 'L':
 			return _5_jL_P1State

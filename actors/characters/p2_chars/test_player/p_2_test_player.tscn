@@ -5953,6 +5953,7 @@ disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
+[connection signal="ender_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_ender_hit_signal"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_L" to="hitbox_manager/high_hit_manager" method="_on_j_5_l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_M" to="hitbox_manager/high_hit_manager" method="_on_j_5_m_area_entered"]
@@ -5961,7 +5962,9 @@ debug_color = Color(0, 0, 1, 0.41960785)
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_L" to="hitbox_manager/mid_hit_manager" method="_on__l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_M" to="hitbox_manager/mid_hit_manager" method="_on__m_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/mid_hit_manager/5_H" to="hitbox_manager/mid_hit_manager" method="_on__h_area_entered"]
+[connection signal="launcher_hit_signal" from="hitbox_manager/low_hit_manager" to="hitbox_manager" method="_on_low_hit_manager_launcher_hit_signal"]
 [connection signal="low_hit_signal" from="hitbox_manager/low_hit_manager" to="hitbox_manager" method="_on_low_hit_manager_low_hit_signal"]
+[connection signal="sweep_hit_signal" from="hitbox_manager/low_hit_manager" to="hitbox_manager" method="_on_low_hit_manager_sweep_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_L" to="hitbox_manager/low_hit_manager" method="_on__l_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_M" to="hitbox_manager/low_hit_manager" method="_on__m_area_entered"]
 [connection signal="area_entered" from="hitbox_manager/low_hit_manager/2_H" to="hitbox_manager/low_hit_manager" method="_on__h_area_entered"]

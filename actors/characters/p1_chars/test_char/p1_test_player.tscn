@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://c13f4d8amrtxc" path="res://actors/characters/p1_chars/test_char/states/movement_states/crouch.gd" id="14_n6tdv"]
 [ext_resource type="Script" uid="uid://cdks531jvy04u" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_foward.gd" id="15_vssk5"]
 [ext_resource type="Script" uid="uid://bnt8a0yla5hm" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_back.gd" id="16_7crfg"]
-[ext_resource type="Script" uid="uid://mam2jjic0o1k" path="res://core/fsm/p1_state.gd" id="18_78out"]
 [ext_resource type="Script" uid="uid://tbjwnopiylu3" path="res://actors/characters/p1_chars/test_char/states/attack_states/3_h.gd" id="18_qo6np"]
 [ext_resource type="Script" uid="uid://mtvwmg1i3slv" path="res://actors/characters/p1_chars/test_char/states/attack_states/5_m.gd" id="20_nsq6k"]
 [ext_resource type="Script" uid="uid://bq2ktjg22eug0" path="res://actors/characters/p1_chars/test_char/states/movement_states/foward_dash.gd" id="21_gjg2l"]
@@ -24,6 +23,7 @@
 [ext_resource type="Script" uid="uid://djovbx1gncghv" path="res://actors/characters/p1_chars/test_char/states/char_states/on_block.gd" id="24_5txxm"]
 [ext_resource type="Script" uid="uid://b5dguhbm43rib" path="res://actors/characters/p1_chars/test_char/states/attack_states/2_h.gd" id="24_bexjm"]
 [ext_resource type="Script" uid="uid://c8o4dcvb0b4j5" path="res://actors/characters/p1_chars/test_char/core/hurtbox_manager/hurtbox_manager.gd" id="24_j1tmy"]
+[ext_resource type="Script" uid="uid://c5oppxw4oj2mn" path="res://actors/characters/p1_chars/test_char/states/char_states/on_launch.gd" id="25_bbimn"]
 [ext_resource type="Script" uid="uid://b3bjauk5gg8wd" path="res://actors/characters/p1_chars/test_char/core/hurtbox_manager/air_hurtbox_manager.gd" id="25_cmyno"]
 [ext_resource type="Script" uid="uid://cby3yid0ykeny" path="res://actors/characters/p1_chars/test_char/states/attack_states/5_j_l.gd" id="25_j1tmy"]
 [ext_resource type="Script" uid="uid://ly7icyhghaxi" path="res://actors/characters/p1_chars/test_char/core/hitbox_managers/mid_hit_manager.gd" id="25_kdefj"]
@@ -4397,12 +4397,12 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245]
 }
 
@@ -5088,10 +5088,12 @@ shape = SubResource("RectangleShape2D_ncym0")
 script = ExtResource("8_mpk8s")
 starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("9_jyar5")
 on_hit_state = NodePath("../on_hit")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
 neutral_jump_state = NodePath("../jump_neutral")
@@ -5110,10 +5112,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "idle"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="moving_foward" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="moving_foward" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("10_vssk5")
 on_hit_state = NodePath("../on_hit")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_back_state = NodePath("../moving_backward")
 neutral_jump_state = NodePath("../jump_neutral")
@@ -5132,10 +5136,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "walk_foward"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="moving_backward" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "idle_state", "moving_foward_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="moving_backward" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("11_7crfg")
 on_hit_state = NodePath("../on_hit")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 neutral_jump_state = NodePath("../jump_neutral")
@@ -5154,10 +5160,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "walk_backward"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="jump_neutral" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "idle_state", "moving_foward_state", "moving_back_state", "crouch_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
+[node name="jump_neutral" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "crouch_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
 script = ExtResource("12_1mff4")
 on_air_hit_state = NodePath("../on_air_hit")
 on_air_block_state = NodePath("../on_air_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5175,10 +5183,12 @@ _5_jH_P1State = NodePath("../j5_H")
 animation_name = "jump_neutral"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="jump_foward" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "jump_back_state", "crouch_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
+[node name="jump_foward" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "jump_back_state", "crouch_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
 script = ExtResource("15_vssk5")
 on_air_hit_state = NodePath("../on_air_hit")
 on_air_block_state = NodePath("../on_air_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5198,10 +5208,12 @@ _5_jH_P1State = NodePath("../j5_H")
 animation_name = "jump_neutral"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="jump_back" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "crouch_state", "jump_foward_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
+[node name="jump_back" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "crouch_state", "jump_foward_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
 script = ExtResource("16_7crfg")
 on_air_hit_state = NodePath("../on_air_hit")
 on_air_block_state = NodePath("../on_air_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5221,10 +5233,12 @@ _5_jH_P1State = NodePath("../j5_H")
 animation_name = "jump_neutral"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="crouch" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "idle_state", "crouch_state", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="crouch" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "idle_state", "crouch_state", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("14_n6tdv")
 on_hit_state = NodePath("../on_hit")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
 neutral_jump_state = NodePath("../jump_neutral")
@@ -5239,10 +5253,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "crouch"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="falling" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
+[node name="falling" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_air_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "_5_jL_P1State", "_5_jM_P1State", "_5_jH_P1State")]
 script = ExtResource("28_sq3no")
 on_air_hit_state = NodePath("../on_air_hit")
 on_air_block_state = NodePath("../on_air_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5470,13 +5486,15 @@ animation_name = "post_dash"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="on_launch" type="Node" parent="state_machine"]
-script = ExtResource("18_78out")
+script = ExtResource("25_bbimn")
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_combo_state", "on_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="on_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_combo_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("23_nfofg")
 on_hit_combo_state = NodePath("../on_hit_combo")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5496,10 +5514,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "mid_hurt"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_hit_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="on_hit_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("25_pqplh")
 on_hit_state = NodePath("../on_hit")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5519,10 +5539,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "mid_hurt"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_block" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_combo_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="on_block" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_combo_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("24_5txxm")
 on_hit_state = NodePath("../on_hit")
 on_combo_block_state = NodePath("../on_block_combo")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5542,10 +5564,12 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "high_block"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_block_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
+[node name="on_block_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State")]
 script = ExtResource("26_ysehe")
 on_hit_state = NodePath("../on_hit")
 on_block_state = NodePath("../on_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5565,9 +5589,11 @@ _3_H_P1State = NodePath("../3_H")
 animation_name = "high_block"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_air_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_combo_state", "get_up_state", "neutral_jump_state", "foward_jump_state", "back_jump_state")]
+[node name="on_air_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_combo_state", "on_sweep_state", "on_launcher_state", "get_up_state", "neutral_jump_state", "foward_jump_state", "back_jump_state")]
 script = ExtResource("28_6ngd5")
 on_air_hit_combo_state = NodePath("../on_air_hit_combo")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 get_up_state = NodePath("../get_up")
 neutral_jump_state = NodePath("../jump_neutral")
 foward_jump_state = NodePath("../jump_foward")
@@ -5575,9 +5601,11 @@ back_jump_state = NodePath("../jump_back")
 animation_name = "air_hit"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_air_hit_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "get_up_state", "neutral_jump_state", "foward_jump_state", "back_jump_state")]
+[node name="on_air_hit_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_state", "on_sweep_state", "on_launcher_state", "get_up_state", "neutral_jump_state", "foward_jump_state", "back_jump_state")]
 script = ExtResource("29_jbfcu")
 on_air_hit_state = NodePath("../on_air_hit")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 get_up_state = NodePath("../get_up")
 neutral_jump_state = NodePath("../jump_neutral")
 foward_jump_state = NodePath("../jump_foward")
@@ -5585,32 +5613,38 @@ back_jump_state = NodePath("../jump_back")
 animation_name = "air_hit"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_air_block" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "falling_state", "on_air_hit_state", "on_air_block_combo_state", "_5j_L_state", "_5j_M_state", "_5j_H_state")]
+[node name="on_air_block" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "falling_state", "on_air_hit_state", "on_air_block_combo_state", "on_sweep_state", "on_launcher_state", "_5j_L_state", "_5j_M_state", "_5j_H_state")]
 script = ExtResource("29_6ngd5")
 idle_state = NodePath("../idle")
 falling_state = NodePath("../falling")
 on_air_hit_state = NodePath("../on_air_hit")
 on_air_block_combo_state = NodePath("../on_air_block_combo")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 _5j_L_state = NodePath("../j5_L")
 _5j_M_state = NodePath("../j5_M")
 _5j_H_state = NodePath("../j5_H")
 animation_name = "low_block"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_air_block_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "falling_state", "on_air_hit_state", "on_air_block_state", "_5j_L_state", "_5j_M_state", "_5j_H_state")]
+[node name="on_air_block_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "falling_state", "on_air_hit_state", "on_air_block_state", "on_sweep_state", "on_launcher_state", "_5j_L_state", "_5j_M_state", "_5j_H_state")]
 script = ExtResource("30_jbfcu")
 idle_state = NodePath("../idle")
 falling_state = NodePath("../falling")
 on_air_hit_state = NodePath("../on_air_hit")
 on_air_block_state = NodePath("../on_air_block")
+on_sweep_state = NodePath("../on_sweep")
+on_launcher_state = NodePath("../on_launch")
 _5j_L_state = NodePath("../j5_L")
 _5j_M_state = NodePath("../j5_M")
 _5j_H_state = NodePath("../j5_H")
 animation_name = "low_block"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
-[node name="on_sweep" type="Node" parent="state_machine"]
+[node name="on_sweep" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("34_bbimn")
+idle_state = NodePath("../idle")
+animation_name = "knockdown"
 metadata/_custom_type_script = "uid://mam2jjic0o1k"
 
 [node name="get_up" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
