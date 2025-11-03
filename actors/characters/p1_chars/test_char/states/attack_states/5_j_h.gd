@@ -57,16 +57,15 @@ func process_physics(delta: float) -> P1State:
 		if input_handler() == 9 :
 			return foward_jump_state
 			
-		if input_handler() == 66:
+		if action_input_handler() == "dash":
 			return dash_foward_state
 			
 		if input_handler() == 4:
+			if action_input_handler() == "dash":
+				return dash_back_state
 			return moving_back_state
-		if input_handler() == 44:
-			return dash_back_state
+			
 		return idle_state
-		
-	
 				
 	await animations_player.animation_finished
 	

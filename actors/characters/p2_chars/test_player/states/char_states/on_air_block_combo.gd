@@ -1,18 +1,22 @@
 extends P2State
 
-#Movement P1States
+#Movement P2States
 @export
 var idle_state: P2State
 @export
 var falling_state: P2State
 
-#Char P1States
+#Char P2States
 @export
 var on_air_hit_state: P2State
 @export
 var on_air_block_state: P2State
+@export
+var on_sweep_state: P2State
+@export
+var on_launcher_state: P2State
 
-#Attack P1States
+#Attack P2States
 @export
 var _5j_L_state: P2State
 @export
@@ -37,10 +41,21 @@ func process_physics(delta: float) -> P2State:
 		
 	if parent.get_hurt_type() == "low":
 		return on_air_hit_state
-	
+
+	if parent.get_hurt_type() == "sweep":
+		if input_handler() == 1:
+			return on_air_block_state
+		return on_sweep_state
+		
+	if parent.get_hurt_type() == "launcher":
+		if input_handler() == 1:
+			return on_air_block_state
+		return on_launcher_state
+		
 	await parent.block_can_move
 	
 	if parent.get_hit_variant() == "high_hit":
+		
 		if action_input_handler() == 'L':
 				return _5j_L_state
 		if action_input_handler() == 'M':
@@ -53,7 +68,6 @@ func process_physics(delta: float) -> P2State:
 		
 	if parent.is_on_floor():
 		return idle_state	
-	
 	
 	return null
 	

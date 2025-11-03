@@ -33,20 +33,21 @@ func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	
-	if parent.get_hurt_type() == "high":
-		return on_air_hit_combo_state
-		
-	if parent.get_hurt_type() == "mid":
-		return on_air_hit_combo_state
-		
-	if parent.get_hurt_type() == "low":
-		return on_air_hit_combo_state
-		
-	if parent.get_hurt_type() == "sweep":
-		return on_sweep_state
+	if !parent.is_on_floor():
+		if parent.get_hurt_type() == "high":
+			return on_air_hit_combo_state
 			
-	if parent.get_hurt_type() == "launcher":
-		return on_launcher_state
+		if parent.get_hurt_type() == "mid":
+			return on_air_hit_combo_state
+			
+		if parent.get_hurt_type() == "low":
+			return on_air_hit_combo_state
+			
+		if parent.get_hurt_type() == "sweep":
+			return on_sweep_state
+				
+		if parent.get_hurt_type() == "launcher":
+			return on_air_hit_combo_state
 	
 	
 	if parent.is_on_floor():
