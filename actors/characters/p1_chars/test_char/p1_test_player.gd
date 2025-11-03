@@ -49,8 +49,9 @@ func _ready() -> void:
 	
 # All frames-run funcs
 func _process(delta: float) -> void:
-	frame_counter()
 	state_machine.process_input()
+	frame_counter()
+	#print(knockback)
 	#print("p1: ", hurt_type)
 	#print(hit_buffer)
 	#print(hit)
@@ -62,8 +63,8 @@ func _process(delta: float) -> void:
 	#print("attack input: " + str(player_input_component.attack_inputs()))
 	#if is_on_floor():
 		#print("chão")
-	#print("State: " +str($input_state_machine.old_state))
-	#print("State: " +str($input_state_machine.current_state))
+	print("State: " +str($state_machine.old_state))
+	print("State: " +str($state_machine.current_state))
 	return 
 	
 func _physics_process(delta: float) -> void:

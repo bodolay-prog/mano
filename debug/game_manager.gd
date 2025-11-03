@@ -51,7 +51,7 @@ func p1_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, k
 	p1_block_stun_frames = hit_stun_frames
 	p1_attack_damage = damage
 	p1_attack_knockback = knockback
-	p1_attack_hurt_type	 = hit_variant
+	p1_attack_hurt_type = hit_variant
 	
 	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
 	

@@ -145,7 +145,7 @@ func process_input() -> P1State:
 			return moving_back_state
 		if input_handler() == 44:
 			return dash_back_state
-			
+		
 		return idle_state
 		
 	return null

@@ -789,6 +789,58 @@ tracks/18/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_1aj4j"]
+resource_name = "3_H"
+length = 0.26667002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [458, 459, 460, 461, 462, 463, 464, 465]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00078036886),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, 19)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:disabled")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.00078036886, 0.10144795, 0.16465783),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38.5, 42.5)]
+}
+
 [sub_resource type="Animation" id="Animation_owqhs"]
 resource_name = "5_H"
 length = 0.26667002
@@ -4775,6 +4827,94 @@ tracks/13/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_op0ms"]
+resource_name = "sweep_knockdown"
+length = 0.5333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hurtbox_manager/air_hurtbox__manager/air_area/air_hurtbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hurtbox_manager/ground_hurtbox_manager/ground_area/head_hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hurtbox_manager/ground_hurtbox_manager/ground_area/body_hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/head_area:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/body_area:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/more_area:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_lrw4t"]
 resource_name = "uncrouching"
 length = 0.06667
@@ -5257,146 +5397,6 @@ tracks/13/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_1aj4j"]
-resource_name = "3_H"
-length = 0.26667002
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [458, 459, 460, 461, 462, 463, 464, 465]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:shape:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00078036886),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(79, 19)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:disabled")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.00078036886, 0.10144795, 0.16465783),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [true, false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(38.5, 42.5)]
-}
-
-[sub_resource type="Animation" id="Animation_op0ms"]
-resource_name = "sweep_knockdown"
-length = 0.5333367
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hurtbox_manager/air_hurtbox__manager/air_area/air_hurtbox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hurtbox_manager/ground_hurtbox_manager/ground_area/head_hurtbox:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("hurtbox_manager/ground_hurtbox_manager/ground_area/body_hurtbox:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/head_area:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/body_area:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("hurtbox_manager/counter_hurtbox/counter_area/more_area:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iehpf"]
 _data = {
 &"2_H": SubResource("Animation_1uc2w"),
@@ -5818,9 +5818,9 @@ metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="j5_L" type="Node" parent="state_machine" node_paths=PackedStringArray("_5j_L_state", "_5j_M_state", "_5j_H_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "falling_state")]
 script = ExtResource("18_owego")
-_5j_L_state = NodePath("../5_L")
-_5j_M_state = NodePath("../5_M")
-_5j_H_state = NodePath("../5_H")
+_5j_L_state = NodePath(".")
+_5j_M_state = NodePath("../j5_M")
+_5j_H_state = NodePath("../j5_H")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5836,9 +5836,9 @@ metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="j5_M" type="Node" parent="state_machine" node_paths=PackedStringArray("_5j_L_state", "_5j_M_state", "_5j_H_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "falling_state")]
 script = ExtResource("19_dskf2")
-_5j_L_state = NodePath("../5_L")
-_5j_M_state = NodePath("../5_M")
-_5j_H_state = NodePath("../5_H")
+_5j_L_state = NodePath("../j5_L")
+_5j_M_state = NodePath(".")
+_5j_H_state = NodePath("../j5_H")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
@@ -5854,9 +5854,9 @@ metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="j5_H" type="Node" parent="state_machine" node_paths=PackedStringArray("_5j_L_state", "_5j_M_state", "_5j_H_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "falling_state")]
 script = ExtResource("20_yw1mn")
-_5j_L_state = NodePath("../5_L")
-_5j_M_state = NodePath("../5_M")
-_5j_H_state = NodePath("../5_H")
+_5j_L_state = NodePath("../j5_L")
+_5j_M_state = NodePath("../j5_M")
+_5j_H_state = NodePath(".")
 idle_state = NodePath("../idle")
 moving_foward_state = NodePath("../moving_foward")
 moving_back_state = NodePath("../moving_backward")
