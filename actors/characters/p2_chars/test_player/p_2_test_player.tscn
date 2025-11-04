@@ -235,10 +235,10 @@ tracks/15/path = NodePath("hitbox_manager/low_hit_manager/2_H/2_H:shape:size")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0.024978187),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.024978187),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(52, 86)]
+"values": [Vector2(65, 86), Vector2(52, 86)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -4198,6 +4198,30 @@ tracks/11/keys = {
 "update": 1,
 "values": [84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 94, 95, 94, 95, 94, 95, 94, 95]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("hitbox_manager/low_hit_manager/_3_H/_3_H:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("hitbox_manager/low_hit_manager/2_H/2_H:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_dskf2"]
 resource_name = "knockdown"
@@ -5909,6 +5933,7 @@ get_up_state = NodePath("../get_up")
 neutral_jump_state = NodePath("../jump_neutral")
 foward_jump_state = NodePath("../jump_foward")
 back_jump_state = NodePath("../jump_backward")
+animation_name = "air_knockdown"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="on_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_combo_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State")]

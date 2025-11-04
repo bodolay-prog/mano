@@ -47,7 +47,6 @@ func process_input() -> P2State:
 				return _2_L_P2State
 			if action_input_handler() == 'M':
 				return _2_M_P2State
-			return crouch_state
 			
 		if action_input_handler() == 'L':
 			return _5_L_P2State
@@ -57,6 +56,7 @@ func process_input() -> P2State:
 			return _5_H_P2State
 	
 	await animations_player.animation_finished
+	
 	if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
 		return crouch_state
 	return idle_state

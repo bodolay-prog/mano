@@ -162,6 +162,6 @@ func hit_check() -> String:
 
 func _on_hitbox_manager_hit_check() -> void:
 	hit = "hit"
-	hit_buffer = 24
+	hit_buffer = 30
 	
 	pass # Replace with function body.

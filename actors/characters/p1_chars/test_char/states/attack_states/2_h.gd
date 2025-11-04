@@ -56,7 +56,6 @@ func process_input() -> P1State:
 				return _2_L_P1State
 			if action_input_handler() == 'M':
 				return _2_M_P1State
-			return crouch_state
 			
 		if action_input_handler() == 'L':
 			return _5_L_P1State

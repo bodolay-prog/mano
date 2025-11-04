@@ -26,7 +26,6 @@ var state_machine =$".."
 func enter() -> void:
 	super()
 	parent.velocity.y = -550
-	
 
 func process_physics(delta: float) -> P1State:
 
@@ -63,4 +62,5 @@ func process_physics(delta: float) -> P1State:
 		
 	 
 	return null
+	
 	
