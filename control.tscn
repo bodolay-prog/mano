@@ -17,17 +17,16 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
 offset_top = 1.0
-offset_right = 2.0
-offset_bottom = 1.0
+offset_right = -129.0
+offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qtu10")
 
 [node name="CenarioTelaAysu" type="Sprite2D" parent="."]
-position = Vector2(575, 323)
-scale = Vector2(1.5652174, 2.1881356)
+position = Vector2(639.5, 357.12497)
+scale = Vector2(1.7350543, 2.4330509)
 texture = ExtResource("1_62e2m")
 
 [node name="Label" type="Label" parent="."]
@@ -35,10 +34,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -108.0
-offset_top = 46.0
-offset_right = 92.0
-offset_bottom = 129.0
+offset_left = -71.5
+offset_top = 95.0
+offset_right = 150.5
+offset_bottom = 178.0
 grow_horizontal = 2
 text = "A Y S U"
 label_settings = SubResource("LabelSettings_ee4bf")
@@ -51,15 +50,15 @@ autoplay = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.56700003
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.56700003
 anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = 33.0
-offset_right = 89.0
-offset_bottom = 262.0
+offset_left = -113.617065
+offset_top = 70.0
+offset_right = 68.382935
+offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
