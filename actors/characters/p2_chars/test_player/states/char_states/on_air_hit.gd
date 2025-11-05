@@ -31,6 +31,7 @@ func enter() -> void:
 func process_physics(delta: float) -> P2State:
 
 	parent.velocity.y += gravity * delta
+	parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1) * 0.55
 	parent.move_and_slide()
 	
 	if parent.get_hurt_type() == "high":

@@ -33,10 +33,9 @@ var falling_state: P2State
 
 
 func process_physics(delta: float) -> P2State:
-	parent.velocity.y += gravity * delta
-	parent.move_and_slide()
 	
 	if parent.hit_check() == "hit":
+		
 		if action_input_handler() == 'L':
 				return _5j_L_state
 		if action_input_handler() == 'M':
@@ -69,7 +68,10 @@ func process_physics(delta: float) -> P2State:
 			return moving_back_state
 			
 		return idle_state
-			
+	
+	parent.velocity.y += gravity * delta
+	parent.move_and_slide()
+	
 	await animations_player.animation_finished
 	
 	if !parent.is_on_floor():

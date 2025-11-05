@@ -22,8 +22,8 @@ var p2_attack_damage
 var p2_attack_knockback
 
 func p1_is_on_right_side() -> void:
-	var p1_pos = p1.position
-	var p2_pos = p2.position
+	var p1_pos = p1.position.x
+	var p2_pos = p2.position.x
 	
 	if p1_pos > p2_pos and !p1.on_right_side:
 		p1.on_right_side = true
@@ -34,8 +34,8 @@ func p1_is_on_right_side() -> void:
 		p1.flip_char()
 
 func p2_is_on_right_side() -> void:
-	var p1_pos = p1.position
-	var p2_pos = p2.position
+	var p1_pos = p1.position.x
+	var p2_pos = p2.position.x
 	
 	if p2_pos > p1_pos and !p2.on_right_side:
 		p2.on_right_side = true
@@ -85,6 +85,9 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	
-	p1_is_on_right_side()
-	p2_is_on_right_side()
+	if p1.is_on_floor():
+		p1_is_on_right_side()
+	
+	if p2.is_on_floor():
+		p2_is_on_right_side()
 	
