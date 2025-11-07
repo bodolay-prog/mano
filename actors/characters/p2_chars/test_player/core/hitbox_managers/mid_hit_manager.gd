@@ -2,14 +2,14 @@ extends mid_hit
 
 func _on__l_area_entered(area: Area2D) -> void:
 	if area.is_in_group("p1_hurtbox"): 
-		on_hit(20, 36, 0, 150)
+		on_hit(32, 36, 150, 120)
 
 
 func _on__m_area_entered(area: Area2D) -> void:
 	if area.is_in_group("p1_hurtbox"): 	
-		on_hit(4, 32, 0, 170)
+		on_hit(4, 32, 200, 140)
 
 
 func _on__h_area_entered(area: Area2D) -> void:
 	if area.is_in_group("p1_hurtbox"): 
-		on_hit(2, 2, 0, 200)
+		on_hit(2, 2, 325, 150)

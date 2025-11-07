@@ -14,7 +14,8 @@ func _on__m_area_area_entered(area: Area2D) -> void:
 
 func _on__h_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("p2_hurtbox"):  
-		on_launcher(3, -5, 0, 0)
+		print("launcher")
+		on_launcher(3, 5, 0, 0)
 	pass # Replace with function body.
 
 

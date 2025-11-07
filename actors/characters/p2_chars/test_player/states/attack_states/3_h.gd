@@ -8,6 +8,9 @@ var crouch_state: P2State
 
 func process_input() -> P2State:	
 	
+	if parent.hit_check():
+		parent.sp += 50
+	
 	await animations_player.animation_finished
 	
 	if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:

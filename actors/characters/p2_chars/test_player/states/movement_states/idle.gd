@@ -47,6 +47,8 @@ var _3_H_P2State: P2State
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
+	parent.times_hited = 0
+	parent.launched_times = 0
 
 func process_input() -> P2State:	
 	

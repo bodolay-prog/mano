@@ -5520,8 +5520,7 @@ hframes = 27
 vframes = 27
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-2, 23.5)
+position = Vector2(-2, 22)
 shape = SubResource("RectangleShape2D_dskf2")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
@@ -5936,53 +5935,23 @@ back_jump_state = NodePath("../jump_backward")
 animation_name = "air_knockdown"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
-[node name="on_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_combo_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State")]
+[node name="on_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_combo_state", "on_sweep_state", "on_launcher_state", "idle_state", "crouch_state")]
 script = ExtResource("24_ira4u")
 on_hit_combo_state = NodePath("../on_hit_combo")
-on_block_state = NodePath("../on_block")
 on_sweep_state = NodePath("../on_sweep")
 on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
-moving_foward_state = NodePath("../moving_foward")
-moving_back_state = NodePath("../moving_backward")
-neutral_jump_state = NodePath("../jump_neutral")
-foward_jump_state = NodePath("../jump_foward")
-back_jump_state = NodePath("../jump_backward")
 crouch_state = NodePath("../crouch")
-dash_foward_state = NodePath("../foward_dash")
-dash_back_state = NodePath("../back_dash")
-_5_L_P2State = NodePath("../5_L")
-_5_M_P2State = NodePath("../5_M")
-_5_H_P2State = NodePath("../5_H")
-_2_L_P2State = NodePath("../2_L")
-_2_M_P2State = NodePath("../2_M")
-_2_H_P2State = NodePath("../2_H")
-_3_H_P2State = NodePath("../3_H")
 animation_name = "stading_hurt"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
-[node name="on_hit_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State")]
+[node name="on_hit_combo" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_sweep_state", "on_launcher_state", "idle_state", "crouch_state")]
 script = ExtResource("25_fbhvb")
 on_hit_state = NodePath("../on_hit")
-on_block_state = NodePath("../on_block")
 on_sweep_state = NodePath("../on_sweep")
 on_launcher_state = NodePath("../on_launch")
 idle_state = NodePath("../idle")
-moving_foward_state = NodePath("../moving_foward")
-moving_back_state = NodePath("../moving_backward")
-neutral_jump_state = NodePath("../jump_neutral")
-foward_jump_state = NodePath("../jump_foward")
-back_jump_state = NodePath("../jump_backward")
 crouch_state = NodePath("../crouch")
-dash_foward_state = NodePath("../foward_dash")
-dash_back_state = NodePath("../back_dash")
-_5_L_P2State = NodePath("../5_L")
-_5_M_P2State = NodePath("../5_M")
-_5_H_P2State = NodePath("../5_H")
-_2_L_P2State = NodePath("../2_L")
-_2_M_P2State = NodePath("../2_M")
-_2_H_P2State = NodePath("../2_H")
-_3_H_P2State = NodePath("../3_H")
 animation_name = "staing_hurt"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 

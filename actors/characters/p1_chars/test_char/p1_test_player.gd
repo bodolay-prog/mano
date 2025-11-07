@@ -24,10 +24,15 @@ var player_input_component = $player_input_component
 @onready
 var old_state = $state_machine.old_state
 
+# Char Stats
+var health: int  = 10000
+var sp: int = 0
 
 # Vars that state_machine use
 var motion: String
 var on_right_side: bool
+var launched_times: int
+var times_hited: int
 
 # Frame counter for a new hit
 var hit_buffer: int = 0
@@ -51,6 +56,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	state_machine.process_input()
 	frame_counter()
+	if is_on_floor():
+			launched_times = 0
+	
+	# Degub Lines
+	#print("p1 health: ", health)
+	#print(times_hited)
+	print(launched_times)
 	#print(knockback)
 	#print("p1: ", hurt_type)
 	#print(hit_buffer)
@@ -64,10 +76,11 @@ func _process(delta: float) -> void:
 	#if is_on_floor():
 		#print("chão")
 	#print("State: " +str($state_machine.old_state))
-	#print("State: " +str($state_machine.current_state))
+	print("State: " +str($state_machine.current_state))
 	return 
 	
 func _physics_process(delta: float) -> void:
+	
 	can_move()
 	state_machine.process_physics(delta)
 	
