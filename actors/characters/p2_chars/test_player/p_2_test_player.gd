@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 
 	state_machine.process_input()
 	frame_counter()
-		
+	
 	# Degub Lines
 	#print("p2 health: ", health)
 	#print("p2: ", hurt_type)
