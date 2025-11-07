@@ -55,16 +55,14 @@ func _ready() -> void:
 
 # All frames-run funcs
 func _process(delta: float) -> void:
-	
-	frame_counter()
+
 	state_machine.process_input()
-	if is_on_floor():
-			launched_times = 0
+	frame_counter()
 		
 	# Degub Lines
 	#print("p2 health: ", health)
 	#print("p2: ", hurt_type)
-	#print(launched_times)
+	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)
 	#print(hit)
 	#print(hit_stun_frames)

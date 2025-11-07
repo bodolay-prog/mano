@@ -48,6 +48,7 @@ func enter() -> void:
 	super()
 	parent.velocity.x = 0
 	parent.times_hited = 0
+	parent.launched_times = 0
 
 func process_input() -> P1State:	
 	

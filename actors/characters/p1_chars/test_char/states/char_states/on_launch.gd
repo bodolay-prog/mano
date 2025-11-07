@@ -25,13 +25,13 @@ var state_machine =$".."
 
 func enter() -> void:
 	super()
-	parent.launched_times += 1
 	parent.velocity.y = -550
+	parent.launched_times += 1
 	parent.times_hited += 1
 
 func process_physics(delta: float) -> P1State:
 
-	parent.velocity.y += gravity * delta + (parent.times_hited * 0.95)
+	parent.velocity.y += gravity * delta + (parent.times_hited * 1.25)
 	if parent.hit_stun_frames > 0:
 		parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1)
 	parent.move_and_slide()
@@ -50,7 +50,7 @@ func process_physics(delta: float) -> P1State:
 			return on_sweep_state
 				
 		if parent.get_hurt_type() == "launcher":
-			if parent.launched_times >= 1:
+			if parent.launched_times >= 2:
 				return on_air_hit_combo_state
 			return on_launcher_state
 	
