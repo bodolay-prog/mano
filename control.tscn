@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcwsh6hgokrtx"]
+[gd_scene load_steps=6 format=3 uid="uid://cwjaqid3pfwcg"]
 
-[ext_resource type="Texture2D" uid="uid://bsvylsrsaba7r" path="res://cenario_tela_aysu.jpeg" id="1_62e2m"]
-[ext_resource type="Script" uid="uid://tu8t20updn5t" path="res://control.gd" id="1_qtu10"]
-[ext_resource type="AudioStream" uid="uid://ccf5hcd8tw3os" path="res://combat-fast-paced-8-bit-chiptune-for-action-games-374457.mp3" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://dnt6kargow0gk" path="res://cenario_tela_aysu.jpeg" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://c835isbctn42e" path="res://control.gd" id="1_qtu10"]
+[ext_resource type="AudioStream" uid="uid://mkof3scguaua" path="res://combat-fast-paced-8-bit-chiptune-for-action-games-374457.mp3" id="2_qtu10"]
 [ext_resource type="FontFile" uid="uid://dtrwi5mjyg2h" path="res://hoshiko_satsuki/Hoshiko Satsuki.ttf" id="3_ee4bf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ee4bf"]
@@ -12,16 +12,14 @@ font_color = Color(0, 0, 0, 1)
 shadow_size = 20
 shadow_color = Color(1, 1, 1, 0.6666667)
 
-[node name="Control" type="Control"]
-layout_mode = 3
+[node name="Menu" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_right = -129.0
-offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_qtu10")
 
 [node name="CenarioTelaAysu" type="Sprite2D" parent="."]
@@ -31,13 +29,12 @@ texture = ExtResource("1_62e2m")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -71.5
-offset_top = 95.0
-offset_right = 150.5
-offset_bottom = 178.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = 55.0
+offset_right = -2.0
+offset_bottom = 115.0
 grow_horizontal = 2
 text = "A Y S U"
 label_settings = SubResource("LabelSettings_ee4bf")
@@ -51,14 +48,14 @@ autoplay = true
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.56700003
-anchor_top = 0.5
-anchor_right = 0.56700003
-anchor_bottom = 0.5
-offset_left = -113.617065
-offset_top = 70.0
-offset_right = 68.382935
-offset_bottom = 299.0
+anchor_left = 0.5
+anchor_top = 0.58900005
+anchor_right = 0.5
+anchor_bottom = 0.628
+offset_left = -83.0
+offset_top = -70.08005
+offset_right = 83.0
+offset_bottom = 85.84
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20

@@ -1,0 +1,153 @@
+[gd_scene load_steps=4 format=3 uid="uid://bijaypego4ae0"]
+
+[ext_resource type="Script" uid="uid://jhtj0m8h6joh" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://d1o5fnb2mqg37" path="res://AIDrawing_251109_371759a3-7bbd-4267-ac65-d4e5dc47bbd2_0_MiriCanvas.png" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://dqdhmikhjuece" path="res://AIDrawing_251109_da726062-310e-497c-8b2e-4667b03abf9e_0_MiriCanvas.png" id="2_mae5d"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="Intro" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Select" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15224487, 0.13728634, 0.12831002, 1)
+
+[node name="playerOne" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -145.0
+offset_right = 610.0
+offset_bottom = 145.0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -147.0
+offset_right = 129.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ouk20")
+expand_mode = 1
+
+[node name="ButtonOne" type="Button" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="playerTwo" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -630.0
+offset_top = -145.0
+offset_bottom = 145.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -139.0
+offset_right = 121.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mae5d")
+expand_mode = 1
+
+[node name="ButtonTwo" type="Button" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="mouse_entered" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_mouse_entered"]
+[connection signal="mouse_exited" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_mouse_exited"]
+[connection signal="pressed" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_pressed"]
+[connection signal="mouse_entered" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_enteredTwo"]
+[connection signal="mouse_exited" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_exitedTwo"]
+[connection signal="pressed" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_pressed"]
