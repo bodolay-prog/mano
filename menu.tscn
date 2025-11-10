@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bijaypego4ae0"]
+[gd_scene load_steps=5 format=3 uid="uid://bijaypego4ae0"]
 
-[ext_resource type="Script" uid="uid://jhtj0m8h6joh" path="res://menu.gd" id="1_mae5d"]
-[ext_resource type="Texture2D" uid="uid://d1o5fnb2mqg37" path="res://AIDrawing_251109_371759a3-7bbd-4267-ac65-d4e5dc47bbd2_0_MiriCanvas.png" id="1_ouk20"]
-[ext_resource type="Texture2D" uid="uid://dqdhmikhjuece" path="res://AIDrawing_251109_da726062-310e-497c-8b2e-4667b03abf9e_0_MiriCanvas.png" id="2_mae5d"]
+[ext_resource type="Script" uid="uid://bjbidv2ej4fw2" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://ch6mqe5iq8kwc" path="res://AIDrawing_251109_371759a3-7bbd-4267-ac65-d4e5dc47bbd2_0_MiriCanvas.png" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://jd2ve420gqy1" path="res://1351304.png" id="2_4hy44"]
+[ext_resource type="Texture2D" uid="uid://bell8cm8vq7io" path="res://AIDrawing_251109_da726062-310e-497c-8b2e-4667b03abf9e_0_MiriCanvas.png" id="2_mae5d"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -37,7 +38,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Select"]
+position = Vector2(640.99994, 360.99997)
+scale = Vector2(0.43818682, 0.43750003)
+texture = ExtResource("2_4hy44")
+
 [node name="background" type="ColorRect" parent="Select"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
