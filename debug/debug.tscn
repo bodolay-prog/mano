@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://uxvnmrhb5qpq"]
+[gd_scene load_steps=13 format=3 uid="uid://uxvnmrhb5qpq"]
 
 [ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="1_ifkhq"]
 [ext_resource type="Script" uid="uid://docm3l0mwqam5" path="res://debug/debug.gd" id="1_jfkso"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://c1sho0hhgeasc" path="res://debug/game_manager.gd" id="2_jfkso"]
 [ext_resource type="PackedScene" uid="uid://b86fmder868yb" path="res://actors/characters/p2_chars/test_player/p_2_test_player.tscn" id="2_sm0j5"]
 [ext_resource type="Script" uid="uid://cq8pi8vf4i60g" path="res://debug/hitbox_manager_debuig.gd" id="4_sm0j5"]
+[ext_resource type="Script" uid="uid://drvh2teo0jlru" path="res://inputs-history/control.gd" id="7_nlbt3"]
+[ext_resource type="PackedScene" uid="uid://cko7is4ed1mww" path="res://inputs-history/input_history.tscn" id="9_iv6g7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifkhq"]
 size = Vector2(125, 280)
@@ -67,6 +69,21 @@ position = Vector2(-671, -39)
 position = Vector2(352.5, 667.5)
 shape = SubResource("RectangleShape2D_iv6g7")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="input_shower" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 158.0
+offset_top = 605.0
+offset_right = 239.0
+offset_bottom = 674.0
+script = ExtResource("7_nlbt3")
+
+[node name="input_history" parent="." instance=ExtResource("9_iv6g7")]
+offset_left = 36.0
+offset_top = 47.0
+offset_right = 36.0
+offset_bottom = 47.0
 
 [connection signal="area_entered" from="hitbox_manager_debuig/high_area" to="hitbox_manager_debuig" method="_on_high_area_area_entered"]
 [connection signal="area_entered" from="hitbox_manager_debuig/mid_area" to="hitbox_manager_debuig" method="_on_mid_area_area_entered"]

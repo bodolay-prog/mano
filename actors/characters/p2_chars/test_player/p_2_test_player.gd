@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 	frame_counter()
 	
 	# Degub Lines
-	#print("p2 health: ", health)
+	print("p2 health: ", health)
 	#print("p2: ", hurt_type)
 	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)

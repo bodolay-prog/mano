@@ -5822,7 +5822,6 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="hurtbox_manager" type="Node2D" parent="."]
-visible = false
 script = ExtResource("24_j1tmy")
 
 [node name="air_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
