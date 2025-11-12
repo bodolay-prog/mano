@@ -1,19 +1,26 @@
 extends Control
 
-const CHARACTER_SELECT_SCENE = "res://Scenes/CharacterSelect.tscn"
+const SELECTION_SCENE_PATH := "res://menu.tscn"
 
-# Botão "2 Jogadores" (x_1)
-func _on_x_1_pressed() -> void:
-	GameState.set_game_mode(true, false) # 2 jogadores, sem treino
+func _ready() -> void:
+	# Garante clean
 	GameState.reset_characters()
-	get_tree().change_scene_to_file(CHARACTER_SELECT_SCENE)
 
-# Botão "Treinamento" (x_ia)
-func _on_x_ia_pressed() -> void:
-	GameState.set_game_mode(false, true) # 1 jogador, treino
+func _on__x_1_pressed() -> void:
+	GameState.set_game_mode(true, false)
 	GameState.reset_characters()
-	get_tree().change_scene_to_file(CHARACTER_SELECT_SCENE)
+	if FileAccess.file_exists(SELECTION_SCENE_PATH):
+		get_tree().change_scene_to_file(SELECTION_SCENE_PATH)
+	else:
+		printerr("ERRO: Cena de seleção não encontrada em:", SELECTION_SCENE_PATH)
 
-# Botão "Sair"
+func _on__x_ia_pressed() -> void:
+	GameState.set_game_mode(false, true)
+	GameState.reset_characters()
+	if FileAccess.file_exists(SELECTION_SCENE_PATH):
+		get_tree().change_scene_to_file(SELECTION_SCENE_PATH)
+	else:
+		printerr("ERRO: Cena de seleção não encontrada em:", SELECTION_SCENE_PATH)
+
 func _on_exit_pressed() -> void:
 	get_tree().quit()

@@ -15,22 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mae5d")
 
-[node name="Intro" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Menu" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Select" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -43,16 +27,6 @@ grow_vertical = 2
 position = Vector2(640.99994, 360.99997)
 scale = Vector2(0.43818682, 0.43750003)
 texture = ExtResource("2_4hy44")
-
-[node name="background" type="ColorRect" parent="Select"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.15224487, 0.13728634, 0.12831002, 1)
 
 [node name="playerOne" type="ColorRect" parent="Select"]
 layout_mode = 1
@@ -102,6 +76,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+
+[node name="nick01" type="ColorRect" parent="Select/playerOne"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 300.0
+offset_right = 323.0
+offset_bottom = 360.0
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="Label" type="Label" parent="Select/playerOne/nick01"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -15.5
+offset_right = 99.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 30
+text = "DOM  OTAVIO"
 
 [node name="playerTwo" type="ColorRect" parent="Select"]
 layout_mode = 1
@@ -155,7 +154,32 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Label" type="Label" parent="Select"]
+[node name="nick02" type="ColorRect" parent="Select/playerTwo"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 348.0
+offset_bottom = 360.0
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="Label" type="Label" parent="Select/playerTwo/nick02"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -15.5
+offset_right = 99.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 30
+text = "SR  CIRINEU"
+
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -173,6 +197,6 @@ text = "Selecione o seu personagem"
 [connection signal="mouse_entered" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_mouse_entered"]
 [connection signal="mouse_exited" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_mouse_exited"]
 [connection signal="pressed" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_pressed"]
-[connection signal="mouse_entered" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_enteredTwo"]
-[connection signal="mouse_exited" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_exitedTwo"]
+[connection signal="mouse_entered" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_entered"]
+[connection signal="mouse_exited" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_exited"]
 [connection signal="pressed" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_pressed"]
