@@ -10,13 +10,13 @@ var p1_hitbox_manager: hitbox_manager = $"../p1/hitbox_manager"
 var p2_hitbox_manager: hitbox_manager = $"../p2/hitbox_manager"
 
 @onready
-var attacklabel: attackdata = $"../labels/attacklabel"
+var attacklabel: attackdata = $"../layer/data/labels/attacklabel"
 @onready
-var frameslabel: attackdata = $"../labels/frameslabel"
+var frameslabel: attackdata = $"../layer/data/labels/frameslabel"
 @onready
-var damagelabel: attackdata = $"../labels/damagelabel"
+var damagelabel: attackdata = $"../layer/data/labels/damagelabel"
 @onready
-var knockbacklabel: attackdata = $"../labels/knockbacklabel"
+var knockbacklabel: attackdata = $"../layer/data/labels/knockbacklabel"
 
 
 var p1_block_stun_frames: int 

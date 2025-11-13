@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy6etmmagty4k"]
+
+[ext_resource type="Script" uid="uid://hdf4q7s1o3rx" path="res://core/camera/camera_2d.gd" id="1_5gvjs"]
+[ext_resource type="Script" uid="uid://dtjplvnq1ab5t" path="res://core/camera/camera.gd" id="1_nchjg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nchjg"]
+size = Vector2(33.25, 483.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afmxw"]
+size = Vector2(4, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l04uh"]
+size = Vector2(14.5, 480)
+
+[node name="Camera" type="Node2D"]
+script = ExtResource("1_nchjg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(427, 240)
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+script = ExtResource("1_5gvjs")
+
+[node name="left_side_area" type="Area2D" parent="Camera2D"]
+disable_mode = 1
+
+[node name="left_coll" type="CollisionShape2D" parent="Camera2D/left_side_area"]
+position = Vector2(-432.25, 1.625)
+shape = SubResource("RectangleShape2D_nchjg")
+
+[node name="right_side_area" type="Area2D" parent="Camera2D"]
+position = Vector2(10, 0)
+disable_mode = 1
+
+[node name="right_coll" type="CollisionShape2D" parent="Camera2D/right_side_area"]
+position = Vector2(423.625, 2)
+shape = SubResource("RectangleShape2D_nchjg")
+
+[node name="left" type="StaticBody2D" parent="Camera2D"]
+visible = false
+position = Vector2(0, 1)
+
+[node name="left_body" type="CollisionShape2D" parent="Camera2D/left"]
+position = Vector2(-429, -1)
+shape = SubResource("RectangleShape2D_afmxw")
+
+[node name="right" type="StaticBody2D" parent="Camera2D"]
+visible = false
+
+[node name="right_body" type="CollisionShape2D" parent="Camera2D/right"]
+position = Vector2(434.75, 0)
+shape = SubResource("RectangleShape2D_l04uh")
+
+[connection signal="area_entered" from="Camera2D/left_side_area" to="Camera2D" method="_on_left_side_area_area_entered"]
+[connection signal="area_entered" from="Camera2D/right_side_area" to="Camera2D" method="_on_right_side_area_area_entered"]

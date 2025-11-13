@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://uxvnmrhb5qpq"]
+[gd_scene load_steps=18 format=3 uid="uid://uxvnmrhb5qpq"]
 
 [ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="1_ifkhq"]
 [ext_resource type="Script" uid="uid://docm3l0mwqam5" path="res://debug/debug.gd" id="1_jfkso"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dg86xmyjo27ru" path="res://debug/frames_label.gd" id="10_nd4er"]
 [ext_resource type="Script" uid="uid://cn80g5lqttqe0" path="res://debug/damage_label.gd" id="11_vwwkk"]
 [ext_resource type="Script" uid="uid://bvq0d8sm4dptl" path="res://debug/knockback_label.gd" id="12_ec46a"]
+[ext_resource type="PackedScene" uid="uid://cy6etmmagty4k" path="res://core/camera/camera.tscn" id="13_nd4er"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifkhq"]
 size = Vector2(125, 280)
@@ -32,10 +33,10 @@ script = ExtResource("1_jfkso")
 script = ExtResource("2_jfkso")
 
 [node name="p1" parent="." instance=ExtResource("2_25h3d")]
-position = Vector2(103, 609)
+position = Vector2(252, 542)
 
 [node name="p2" parent="." instance=ExtResource("2_sm0j5")]
-position = Vector2(1087, 632)
+position = Vector2(1009, 591)
 
 [node name="Map" parent="." instance=ExtResource("1_ifkhq")]
 
@@ -76,28 +77,45 @@ position = Vector2(352.5, 667.5)
 shape = SubResource("RectangleShape2D_iv6g7")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="input_shower" type="Control" parent="."]
+[node name="Camera" parent="." node_paths=PackedStringArray("p1", "p2") instance=ExtResource("13_nd4er")]
+position = Vector2(211, 223)
+p1 = NodePath("../p1")
+p2 = NodePath("../p2")
+
+[node name="layer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="data" type="Control" parent="layer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 158.0
-offset_top = 605.0
-offset_right = 239.0
-offset_bottom = 674.0
+offset_left = 211.0
+offset_top = 223.0
+offset_right = 251.0
+offset_bottom = 263.0
+
+[node name="input_history" parent="layer/data" instance=ExtResource("9_iv6g7")]
+layout_mode = 1
+offset_left = -188.0
+offset_top = -203.0
+offset_right = -188.0
+offset_bottom = -203.0
+
+[node name="input_shower" type="Control" parent="layer/data"]
+anchors_preset = 0
+offset_left = -150.0
+offset_top = 382.0
+offset_right = -69.0
+offset_bottom = 451.0
 script = ExtResource("7_nlbt3")
 
-[node name="input_history" parent="." instance=ExtResource("9_iv6g7")]
-offset_left = 36.0
-offset_top = 47.0
-offset_right = 36.0
-offset_bottom = 47.0
-
-[node name="labels" type="Control" parent="."]
-layout_mode = 3
+[node name="labels" type="Control" parent="layer/data"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -148.0
+offset_top = -400.0
+offset_right = -108.0
+offset_bottom = -360.0
 
-[node name="deaultlabel" type="RichTextLabel" parent="labels"]
+[node name="deaultlabel" type="RichTextLabel" parent="layer/data/labels"]
 layout_mode = 0
 offset_left = 1060.0
 offset_top = 300.0
@@ -105,7 +123,7 @@ offset_right = 1229.0
 offset_bottom = 324.0
 text = "Attack Data:"
 
-[node name="attacklabel" type="RichTextLabel" parent="labels"]
+[node name="attacklabel" type="RichTextLabel" parent="layer/data/labels"]
 layout_mode = 0
 offset_left = 1060.0
 offset_top = 324.0
@@ -114,7 +132,7 @@ offset_bottom = 348.0
 text = "Attack Type: "
 script = ExtResource("9_pfhb5")
 
-[node name="frameslabel" type="RichTextLabel" parent="labels"]
+[node name="frameslabel" type="RichTextLabel" parent="layer/data/labels"]
 layout_mode = 0
 offset_left = 1060.0
 offset_top = 348.0
@@ -123,7 +141,7 @@ offset_bottom = 372.0
 text = "Frames:"
 script = ExtResource("10_nd4er")
 
-[node name="damagelabel" type="RichTextLabel" parent="labels"]
+[node name="damagelabel" type="RichTextLabel" parent="layer/data/labels"]
 layout_mode = 0
 offset_left = 1060.0
 offset_top = 372.0
@@ -132,7 +150,7 @@ offset_bottom = 396.0
 text = "Damage:"
 script = ExtResource("11_vwwkk")
 
-[node name="knockbacklabel" type="RichTextLabel" parent="labels"]
+[node name="knockbacklabel" type="RichTextLabel" parent="layer/data/labels"]
 layout_mode = 0
 offset_left = 1060.0
 offset_top = 396.0

@@ -35,6 +35,7 @@ p2_hitbox="Hitbox from a player 2"
 p2_hurtbox="Hurtbox from a player 2"
 p1_hitbox="Hitbox from a player 1"
 p1_hurtbox="Hurtbox from a player 1"
+char="group that represents a char"
 
 [input]
 

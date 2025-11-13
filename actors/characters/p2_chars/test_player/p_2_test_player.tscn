@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://b86fmder868yb"]
+[gd_scene load_steps=93 format=3 uid="uid://b86fmder868yb"]
 
 [ext_resource type="Texture2D" uid="uid://dvriy74yt7lgn" path="res://actors/characters/p2_chars/test_player/sprites/jorato_sprites/test-player-p2-spritesheet-27x27.png" id="1_5ysp4"]
 [ext_resource type="Script" uid="uid://ceoevwepiivko" path="res://actors/characters/p2_chars/test_player/p_2_test_player.gd" id="1_g6li4"]
@@ -5454,8 +5454,11 @@ _data = {
 &"walk_foward": SubResource("Animation_rpx6u")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yw1mn"]
+size = Vector2(59, 116)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dskf2"]
-size = Vector2(14, 85)
+size = Vector2(45, 63.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrw4t"]
 size = Vector2(36, 25)
@@ -5519,8 +5522,17 @@ texture = ExtResource("1_5ysp4")
 hframes = 27
 vframes = 27
 
+[node name="camera_coll" type="Area2D" parent="." groups=["char"]]
+disable_mode = 1
+
+[node name="cam_coll" type="CollisionShape2D" parent="camera_coll"]
+position = Vector2(-2.5, 9)
+shape = SubResource("RectangleShape2D_yw1mn")
+debug_color = Color(0, 0, 0, 0.41960785)
+
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 22)
+visible = false
+position = Vector2(-0.5, 32.75)
 shape = SubResource("RectangleShape2D_dskf2")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
@@ -6073,6 +6085,7 @@ metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 script = ExtResource("33_6ibph")
 
 [node name="hitbox_manager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("5_sogv2")
 metadata/_custom_type_script = "uid://cqrgw4ymsbrr0"
 
@@ -6170,6 +6183,7 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="hurtbox_manager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("9_r0j16")
 metadata/_custom_type_script = "uid://dg1evxmcfxq2h"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://ccinwek15y7pd"]
+[gd_scene load_steps=90 format=3 uid="uid://ccinwek15y7pd"]
 
 [ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/p1_chars/test_char/p1_test_player.gd" id="1_8cjhs"]
 [ext_resource type="Texture2D" uid="uid://lafqnllb5e0g" path="res://actors/characters/p1_chars/test_char/sprites/dio_prites/spritesheet (2).png" id="2_5kwwp"]
@@ -5145,8 +5145,11 @@ _data = {
 &"walk_foward": SubResource("Animation_nsq6k")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjxt6"]
+size = Vector2(65, 120)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncym0"]
-size = Vector2(16, 73)
+size = Vector2(38, 67.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3cwi"]
 size = Vector2(57, 21)
@@ -5169,8 +5172,17 @@ texture = ExtResource("2_5kwwp")
 hframes = 30
 vframes = 30
 
+[node name="camera_area" type="Area2D" parent="." groups=["char"]]
+disable_mode = 1
+
+[node name="coll_camera" type="CollisionShape2D" parent="camera_area"]
+position = Vector2(7.5, 32)
+shape = SubResource("RectangleShape2D_jjxt6")
+debug_color = Color(0, 0, 0, 0.41960785)
+
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(1, 52)
+visible = false
+position = Vector2(6, 54.75)
 shape = SubResource("RectangleShape2D_ncym0")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
@@ -5726,6 +5738,7 @@ metadata/_custom_type_script = "uid://mam2jjic0o1k"
 script = ExtResource("33_ncym0")
 
 [node name="hitbox_manager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("26_v6kur")
 
 [node name="high_hit_manager" type="Node2D" parent="hitbox_manager"]
@@ -5822,6 +5835,7 @@ disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="hurtbox_manager" type="Node2D" parent="."]
+visible = false
 script = ExtResource("24_j1tmy")
 
 [node name="air_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
