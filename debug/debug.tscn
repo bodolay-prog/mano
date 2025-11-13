@@ -39,37 +39,39 @@ position = Vector2(1087, 632)
 
 [node name="Map" parent="." instance=ExtResource("1_ifkhq")]
 
-[node name="hurtbox" type="Area2D" parent="." groups=["p2_hurtbox"]]
+[node name="test_hits" type="Node2D" parent="."]
+
+[node name="hurtbox" type="Area2D" parent="test_hits" groups=["p2_hurtbox"]]
 position = Vector2(-328, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" groups=["p2_hurtbox"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test_hits/hurtbox" groups=["p2_hurtbox"]]
 position = Vector2(52.5, 130)
 shape = SubResource("RectangleShape2D_ifkhq")
 
-[node name="hitbox_manager_debuig" type="Node2D" parent="."]
+[node name="hitbox_manager_debuig" type="Node2D" parent="test_hits"]
 script = ExtResource("4_sm0j5")
 metadata/_custom_type_script = "uid://bfu4ky4oduc73"
 
-[node name="high_area" type="Area2D" parent="hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
+[node name="high_area" type="Area2D" parent="test_hits/hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
 position = Vector2(-542, 99)
 
-[node name="high_hit" type="CollisionShape2D" parent="hitbox_manager_debuig/high_area" groups=["p2_hitbox"]]
+[node name="high_hit" type="CollisionShape2D" parent="test_hits/hitbox_manager_debuig/high_area" groups=["p2_hitbox"]]
 position = Vector2(351.5, 480.5)
 shape = SubResource("RectangleShape2D_ydp0h")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="mid_area" type="Area2D" parent="hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
+[node name="mid_area" type="Area2D" parent="test_hits/hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
 position = Vector2(-671, -39)
 
-[node name="mid_hit" type="CollisionShape2D" parent="hitbox_manager_debuig/mid_area" groups=["p2_hitbox"]]
+[node name="mid_hit" type="CollisionShape2D" parent="test_hits/hitbox_manager_debuig/mid_area" groups=["p2_hitbox"]]
 position = Vector2(352, 582.5)
 shape = SubResource("RectangleShape2D_f7210")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="low_area" type="Area2D" parent="hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
+[node name="low_area" type="Area2D" parent="test_hits/hitbox_manager_debuig" groups=["hitbox_test_enemy"]]
 position = Vector2(-671, -39)
 
-[node name="low_hit" type="CollisionShape2D" parent="hitbox_manager_debuig/low_area" groups=["p2_hitbox"]]
+[node name="low_hit" type="CollisionShape2D" parent="test_hits/hitbox_manager_debuig/low_area" groups=["p2_hitbox"]]
 position = Vector2(352.5, 667.5)
 shape = SubResource("RectangleShape2D_iv6g7")
 debug_color = Color(1, 0, 0, 0.419608)
@@ -139,6 +141,6 @@ offset_bottom = 420.0
 text = "Knockback:"
 script = ExtResource("12_ec46a")
 
-[connection signal="area_entered" from="hitbox_manager_debuig/high_area" to="hitbox_manager_debuig" method="_on_high_area_area_entered"]
-[connection signal="area_entered" from="hitbox_manager_debuig/mid_area" to="hitbox_manager_debuig" method="_on_mid_area_area_entered"]
-[connection signal="area_entered" from="hitbox_manager_debuig/low_area" to="hitbox_manager_debuig" method="_on_low_area_area_entered"]
+[connection signal="area_entered" from="test_hits/hitbox_manager_debuig/high_area" to="test_hits/hitbox_manager_debuig" method="_on_high_area_area_entered"]
+[connection signal="area_entered" from="test_hits/hitbox_manager_debuig/mid_area" to="test_hits/hitbox_manager_debuig" method="_on_mid_area_area_entered"]
+[connection signal="area_entered" from="test_hits/hitbox_manager_debuig/low_area" to="test_hits/hitbox_manager_debuig" method="_on_low_area_area_entered"]
