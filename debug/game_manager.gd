@@ -9,7 +9,17 @@ var p1_hitbox_manager: hitbox_manager = $"../p1/hitbox_manager"
 @onready
 var p2_hitbox_manager: hitbox_manager = $"../p2/hitbox_manager"
 
-var p1_block_stun_frames
+@onready
+var attacklabel: attackdata = $"../labels/attacklabel"
+@onready
+var frameslabel: attackdata = $"../labels/frameslabel"
+@onready
+var damagelabel: attackdata = $"../labels/damagelabel"
+@onready
+var knockbacklabel: attackdata = $"../labels/knockbacklabel"
+
+
+var p1_block_stun_frames: int 
 var p1_hit_stun_frames
 var p1_attack_hurt_type
 var p1_attack_damage
@@ -90,13 +100,25 @@ func _ready() -> void:
 	p2_hitbox_manager.connect("hit", p2_set_hit_info)
 	
 	
+func update_info() -> void:
+	
+	attacklabel.value = p1_attack_hurt_type
+	if p1_block_stun_frames > 0:
+		frameslabel.value = p2.block_stun_frames
+	else: 
+		frameslabel.value = p2.hit_stun_frames
+	damagelabel.value = p1_attack_damage
+	knockbacklabel.value = p1_attack_knockback
+	
 func p1_update_healt(damage: int) -> void:
 	p1.health -= damage
 	
 func p2_update_health(damage: int) -> void:
 	p2.health -= damage
-	
+
 func _process(delta: float) -> void:
+	
+	update_info()
 	
 	if p1.is_on_floor():
 		p1_is_on_right_side()

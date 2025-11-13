@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://uxvnmrhb5qpq"]
+[gd_scene load_steps=17 format=3 uid="uid://uxvnmrhb5qpq"]
 
 [ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="1_ifkhq"]
 [ext_resource type="Script" uid="uid://docm3l0mwqam5" path="res://debug/debug.gd" id="1_jfkso"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://cq8pi8vf4i60g" path="res://debug/hitbox_manager_debuig.gd" id="4_sm0j5"]
 [ext_resource type="Script" uid="uid://drvh2teo0jlru" path="res://inputs-history/control.gd" id="7_nlbt3"]
 [ext_resource type="PackedScene" uid="uid://cko7is4ed1mww" path="res://inputs-history/input_history.tscn" id="9_iv6g7"]
+[ext_resource type="Script" uid="uid://dmd0nrk4htunv" path="res://debug/attacktype_label.gd" id="9_pfhb5"]
+[ext_resource type="Script" uid="uid://dg86xmyjo27ru" path="res://debug/frames_label.gd" id="10_nd4er"]
+[ext_resource type="Script" uid="uid://cn80g5lqttqe0" path="res://debug/damage_label.gd" id="11_vwwkk"]
+[ext_resource type="Script" uid="uid://bvq0d8sm4dptl" path="res://debug/knockback_label.gd" id="12_ec46a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifkhq"]
 size = Vector2(125, 280)
@@ -84,6 +88,56 @@ offset_left = 36.0
 offset_top = 47.0
 offset_right = 36.0
 offset_bottom = 47.0
+
+[node name="labels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="deaultlabel" type="RichTextLabel" parent="labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 300.0
+offset_right = 1229.0
+offset_bottom = 324.0
+text = "Attack Data:"
+
+[node name="attacklabel" type="RichTextLabel" parent="labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 324.0
+offset_right = 1229.0
+offset_bottom = 348.0
+text = "Attack Type: "
+script = ExtResource("9_pfhb5")
+
+[node name="frameslabel" type="RichTextLabel" parent="labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 348.0
+offset_right = 1229.0
+offset_bottom = 372.0
+text = "Frames:"
+script = ExtResource("10_nd4er")
+
+[node name="damagelabel" type="RichTextLabel" parent="labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 372.0
+offset_right = 1229.0
+offset_bottom = 396.0
+text = "Damage:"
+script = ExtResource("11_vwwkk")
+
+[node name="knockbacklabel" type="RichTextLabel" parent="labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 396.0
+offset_right = 1229.0
+offset_bottom = 420.0
+text = "Knockback:"
+script = ExtResource("12_ec46a")
 
 [connection signal="area_entered" from="hitbox_manager_debuig/high_area" to="hitbox_manager_debuig" method="_on_high_area_area_entered"]
 [connection signal="area_entered" from="hitbox_manager_debuig/mid_area" to="hitbox_manager_debuig" method="_on_mid_area_area_entered"]
