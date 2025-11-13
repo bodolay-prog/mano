@@ -74,7 +74,8 @@ func update_display() -> void:
 			label.text = input
 			hbox.add_child(label)
 
-		vbox.add_child(hbox)
+		if input != "5":
+			vbox.add_child(hbox)
 
 func get_arrow_path(symbol: String) -> String:
 	match symbol:

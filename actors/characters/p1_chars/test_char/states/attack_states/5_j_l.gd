@@ -36,11 +36,8 @@ func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 	
-	#972 
 	
 	if parent.hit_check() == "hit":
-		
-		parent.sp += 50
 		
 		if action_input_handler() == 'L':
 				return _5j_L_state

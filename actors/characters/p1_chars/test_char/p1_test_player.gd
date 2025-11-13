@@ -58,8 +58,8 @@ func _process(delta: float) -> void:
 	frame_counter()
 	
 	# Degub Lines
-	print("p1 health: ", health)
-	print("p1 sp: ", sp)
+	#print("p1 health: ", health)
+	#print("p1 sp: ", sp)
 	#print(times_hited)
 	#print("p1 lt: ", launched_times)
 	#print(knockback)
@@ -171,8 +171,8 @@ func hit_check() -> String:
 	return hit
 
 func _on_hitbox_manager_hit_check() -> void:
-	print("hit")
 	hit = "hit"
+	sp += 50
 	hit_buffer = 24
 	
 	pass # Replace with function body.

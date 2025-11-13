@@ -38,8 +38,6 @@ func process_physics(delta: float) -> P1State:
 	
 	if parent.hit_check() == "hit":
 		
-		parent.sp += 50
-		
 		if action_input_handler() == 'L':
 				return _5j_L_state
 		if action_input_handler() == 'M':

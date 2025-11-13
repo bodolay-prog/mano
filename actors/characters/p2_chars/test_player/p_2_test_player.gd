@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 	frame_counter()
 	
 	# Degub Lines
-	print("p2 health: ", health)
+	#print("p2 health: ", health)
 	#print("p2: ", hurt_type)
 	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)
@@ -171,6 +171,6 @@ func hit_check() -> String:
 
 func _on_hitbox_manager_hit_check() -> void:
 	hit = "hit"
-	hit_buffer = 30
-	
+	sp += 50
+	hit_buffer = 24
 	pass # Replace with function body.
