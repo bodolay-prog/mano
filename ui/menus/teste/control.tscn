@@ -1,0 +1,222 @@
+[gd_scene load_steps=12 format=3 uid="uid://k5fyohiqvknd"]
+
+[ext_resource type="Texture2D" uid="uid://bdamwgjm38owm" path="res://mago.jpg" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://cuwariet7mhck" path="res://fundo.jpg" id="1_kbped"]
+[ext_resource type="Script" uid="uid://cxn0q32rlpqf" path="res://button.gd" id="2_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://dqqy8ne3wihko" path="res://mecha.jpg" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://23t717wc2x8n" path="res://paladino.jpg" id="3_ee4bf"]
+
+[sub_resource type="SystemFont" id="SystemFont_kbped"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fj5cn"]
+font = SubResource("SystemFont_kbped")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iy58a"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtu10"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9999998, 0.7585613, 0.0816, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.97357136, 0.7733428, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_iy58a"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_right = 154.0
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "A Y S U"
+label_settings = SubResource("LabelSettings_fj5cn")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 60
+text = "Select One"
+label_settings = SubResource("LabelSettings_iy58a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.92883, 325)
+scale = Vector2(1.5654111, 1.3731422)
+texture = ExtResource("1_kbped")
+
+[node name="DonOtavio" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 170.0
+offset_right = 274.0
+offset_bottom = 482.0
+color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+
+[node name="TextureRect" type="TextureRect" parent="DonOtavio"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 6.0
+offset_top = 13.0
+offset_right = 250.0
+offset_bottom = 257.0
+texture = ExtResource("1_0fbet")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="DonOtavio"]
+layout_mode = 0
+offset_top = 252.0
+offset_right = 260.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0.5792863, 0.000100978315, 0.5166302, 1)
+theme_override_font_sizes/font_size = 38
+text = "Don Otavio"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="DonOtavio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Danielzin" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 170.0
+offset_right = 706.0
+offset_bottom = 482.0
+color = Color(0.23874414, 0.23874447, 0.23874411, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Danielzin"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 252.0
+offset_bottom = 255.0
+texture = ExtResource("2_qtu10")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Danielzin"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 257.0
+offset_right = 271.0
+offset_bottom = 324.0
+theme_override_colors/font_color = Color(0.29071283, 0.4655273, 0.08424217, 1)
+theme_override_font_sizes/font_size = 38
+text = "Master Daniel"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Danielzin"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_qtu10")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ee4bf")
+flat = true
+
+[node name="SirCirineu" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 170.0
+offset_right = 1141.0
+offset_bottom = 482.0
+
+[node name="TextureRect" type="TextureRect" parent="SirCirineu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 252.0
+offset_bottom = 257.0
+texture = ExtResource("3_ee4bf")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SirCirineu"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 254.0
+offset_right = 232.0
+offset_bottom = 309.0
+theme_override_colors/font_color = Color(0.43381444, 0.13762471, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "Sir Cirineu"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="SirCirineu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -128.0
+offset_right = 55.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_iy58a")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+flat = true
+script = ExtResource("2_ee4bf")
+
+[connection signal="mouse_entered" from="DonOtavio/Button" to="DonOtavio/Button" method="_on_ButtonOtavio_mouse_entered"]
+[connection signal="mouse_exited" from="DonOtavio/Button" to="DonOtavio/Button" method="_on_ButtonOtavio_mouse_exited"]
+[connection signal="mouse_entered" from="Danielzin/Button" to="DonOtavio/Button" method="_on_ButtonDanielzin_mouse_entered"]
+[connection signal="mouse_exited" from="Danielzin/Button" to="DonOtavio/Button" method="_on_ButtonDanielzin_mouse_exited"]
+[connection signal="mouse_entered" from="SirCirineu/Button" to="DonOtavio/Button" method="_on_ButtonCirineu_mouse_entered"]
+[connection signal="mouse_exited" from="SirCirineu/Button" to="DonOtavio/Button" method="_on_ButtonCirineu_mouse_exited"]
+[connection signal="pressed" from="Button" to="Button" method="_on_exit_pressed"]

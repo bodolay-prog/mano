@@ -1,0 +1,245 @@
+[gd_scene load_steps=4 format=3 uid="uid://chc8oxw40a5d6"]
+
+[ext_resource type="Script" uid="uid://dvf2aoq1ljacx" path="res://ui/menus/config/main_menu.gd" id="1_cdkms"]
+[ext_resource type="Script" uid="uid://csrhkncpx1yxk" path="res://ui/menus/config/video.gd" id="1_xn48w"]
+[ext_resource type="Script" uid="uid://c7niqqwxghkmr" path="res://ui/menus/config/audio.gd" id="3_8g5js"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("menu", "main_settings", "audio_settings", "video_settings", "settings_button", "back_button", "video_button", "audio_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdkms")
+menu = NodePath("Menu")
+main_settings = NodePath("Settings")
+audio_settings = NodePath("Audio")
+video_settings = NodePath("Video")
+settings_button = NodePath("Menu/Control3/settings")
+back_button = NodePath("Back")
+video_button = NodePath("Settings/Control2/Video")
+audio_button = NodePath("Settings/Control/Audio")
+quit_button = NodePath("Menu/Control4/Quit")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="2 Players" type="Button" parent="Menu/Control"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 31.0
+pivot_offset = Vector2(50, 15.5)
+text = "2 Players"
+
+[node name="Control2" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="1 Player" type="Button" parent="Menu/Control2"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 31.0
+pivot_offset = Vector2(50, 15.5)
+text = "1 Player"
+
+[node name="Control3" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+
+[node name="settings" type="Button" parent="Menu/Control3"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 31.0
+pivot_offset = Vector2(50, 15.5)
+text = "Settings"
+
+[node name="Control4" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+size_flags_stretch_ratio = 1.45
+
+[node name="Quit" type="Button" parent="Menu/Control4"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 31.0
+pivot_offset = Vector2(50, 15.5)
+text = "Exit"
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 20.0
+
+[node name="Control" type="Control" parent="Settings"]
+layout_mode = 2
+
+[node name="Audio" type="Button" parent="Settings/Control"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 31.0
+pivot_offset = Vector2(50, 65)
+text = "Áudio"
+
+[node name="Control2" type="Control" parent="Settings"]
+layout_mode = 2
+
+[node name="Video" type="Button" parent="Settings/Control2"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 61.0
+pivot_offset = Vector2(50, 65)
+text = "Video"
+
+[node name="Video" type="VBoxContainer" parent="." node_paths=PackedStringArray("resolution_option", "fullscreen_check", "borderless_check", "vsync_check")]
+visible = false
+layout_mode = 0
+offset_left = -85.0
+offset_top = -75.0
+offset_right = 80.0
+offset_bottom = 75.0
+script = ExtResource("1_xn48w")
+resolution_option = NodePath("Resolucao/Resolucao")
+fullscreen_check = NodePath("Tela_cheia/Tela_cheia")
+borderless_check = NodePath("Borda/borda")
+vsync_check = NodePath("VSync/vsync")
+
+[node name="Label" type="Label" parent="Video"]
+layout_mode = 2
+text = "Vídeo"
+horizontal_alignment = 1
+
+[node name="Resolucao" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/Resolucao"]
+layout_mode = 2
+text = "Resolução"
+
+[node name="Resolucao" type="OptionButton" parent="Video/Resolucao"]
+layout_mode = 2
+
+[node name="Tela_cheia" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/Tela_cheia"]
+layout_mode = 2
+text = "Tela Cheia"
+
+[node name="Tela_cheia" type="CheckBox" parent="Video/Tela_cheia"]
+layout_mode = 2
+
+[node name="Borda" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/Borda"]
+layout_mode = 2
+text = "Sem borda"
+
+[node name="borda" type="CheckBox" parent="Video/Borda"]
+layout_mode = 2
+
+[node name="VSync" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/VSync"]
+layout_mode = 2
+text = "VSync"
+
+[node name="vsync" type="CheckBox" parent="Video/VSync"]
+layout_mode = 2
+
+[node name="Audio" type="VBoxContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+visible = false
+layout_mode = 0
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 95.0
+offset_bottom = 75.0
+script = ExtResource("3_8g5js")
+master_slider = NodePath("HBoxContainer/Master")
+music_slider = NodePath("HBoxContainer2/Music")
+sfx_slider = NodePath("HBoxContainer3/SFX")
+
+[node name="Label" type="Label" parent="Audio"]
+layout_mode = 2
+text = "Áudio"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer2"]
+layout_mode = 2
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer3"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="Audio/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -155.0
+offset_top = -675.0
+offset_right = -110.0
+offset_bottom = -644.0
+grow_vertical = 0
+text = "Back"
