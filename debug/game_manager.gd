@@ -22,7 +22,7 @@ var p1_attack_hurt_type
 var p1_attack_damage
 var p1_attack_knockback
 
-var p2_block_stun_frames
+var p2_block_stun_frames: int
 var p2_hit_stun_frames
 var p2_attack_hurt_type
 var p2_attack_damage
@@ -79,6 +79,7 @@ func p2_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, k
 	p1_update_healt(damage)
 
 func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
+	
 	p1.block_stun_frames = block_stun_frames
 	p1.hit_stun_frames = hit_stun_frames
 	p1.hurt_type = hurt_type
@@ -86,6 +87,7 @@ func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : 
 
 		
 func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
+	
 	p2.block_stun_frames = block_stun_frames
 	p2.hit_stun_frames = hit_stun_frames
 	p2.hurt_type = hurt_type
