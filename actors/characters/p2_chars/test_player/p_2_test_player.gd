@@ -8,10 +8,6 @@ signal recovery_can_move()
 
 # Child nodes or P1 nodes vars
 @onready
-var hitbox_p1 : hitbox_manager = $"../p1/hitbox_manager"
-@onready
-var hurtbox_p1 : hurtbox_manager = $"../p1/hurtbox_manager"
-@onready
 var animations_player: AnimationPlayer = $animation_player
 @onready
 var state_machine: Node = $state_machine
@@ -60,7 +56,8 @@ func _process(delta: float) -> void:
 	frame_counter()
 	
 	# Degub Lines
-	#print("p2 health: ", health)
+	print("p2 health: ", health)
+	print("p2 sp: ", sp)
 	#print("p2: ", hurt_type)
 	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)

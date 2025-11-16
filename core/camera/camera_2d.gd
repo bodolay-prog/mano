@@ -1,13 +1,10 @@
 extends Camera2D
 
 @onready
-var left_area: Area2D = $left_side_area
+var left_area: Area2D = $left_all/left_side_area
 @onready
-var left_coll: CollisionShape2D = $left_side_area/left_coll
-@onready
-var right_area: Area2D = $right_side_area
-@onready
-var right_coll: CollisionShape2D = $right_side_area/right_coll
+var right_area: Area2D = $right_all/right_side_area
+
 
 func _process(delta):
 	var left_side = []

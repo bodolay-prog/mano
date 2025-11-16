@@ -1,6 +1,6 @@
 extends Control
 
-@export var max_history_size: int = 10
+@export var max_history_size: int = 16
 var input_history: Array[String] = []
 
 func _unhandled_input(event: InputEvent) -> void:

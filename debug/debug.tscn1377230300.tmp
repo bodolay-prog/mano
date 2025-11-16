@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://uxvnmrhb5qpq"]
+[gd_scene load_steps=19 format=3 uid="uid://uxvnmrhb5qpq"]
 
 [ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="1_ifkhq"]
 [ext_resource type="Script" uid="uid://docm3l0mwqam5" path="res://debug/debug.gd" id="1_jfkso"]
+[ext_resource type="PackedScene" uid="uid://ccinwek15y7pd" path="res://actors/characters/p1_chars/test_char/p1_test_player.tscn" id="2_25h3d"]
 [ext_resource type="Script" uid="uid://c1sho0hhgeasc" path="res://debug/game_manager.gd" id="2_jfkso"]
+[ext_resource type="PackedScene" uid="uid://b86fmder868yb" path="res://actors/characters/p2_chars/test_player/p_2_test_player.tscn" id="2_sm0j5"]
 [ext_resource type="Script" uid="uid://b7x1jwib8e8q7" path="res://debug/chars.gd" id="2_vwwkk"]
 [ext_resource type="Script" uid="uid://cq8pi8vf4i60g" path="res://debug/hitbox_manager_debuig.gd" id="4_sm0j5"]
 [ext_resource type="Script" uid="uid://drvh2teo0jlru" path="res://inputs-history/control.gd" id="7_nlbt3"]
@@ -30,10 +32,15 @@ script = ExtResource("1_jfkso")
 
 [node name="chars" type="Node2D" parent="."]
 script = ExtResource("2_vwwkk")
-charnode_path = NodePath(".")
 
 [node name="game_manager" type="Node2D" parent="."]
 script = ExtResource("2_jfkso")
+
+[node name="p1" parent="." instance=ExtResource("2_25h3d")]
+position = Vector2(71, 440)
+
+[node name="p2" parent="." instance=ExtResource("2_sm0j5")]
+position = Vector2(86, 287)
 
 [node name="Map" parent="." instance=ExtResource("1_ifkhq")]
 

@@ -36,7 +36,6 @@ func process_input() -> P2State:
 	
 	if parent.hit_check() == "hit":
 		
-		parent.sp += 50
 		
 		if input_handler() == 1 or input_handler() == 2:
 			if action_input_handler() == 'H':

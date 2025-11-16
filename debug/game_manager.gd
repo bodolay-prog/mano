@@ -1,13 +1,10 @@
 extends Node2D
 
 @onready
-var p1: P1Character = $"../p1"
-@onready
-var p2: P2Character = $"../p2"
-@onready
-var p1_hitbox_manager: hitbox_manager = $"../p1/hitbox_manager"
-@onready
-var p2_hitbox_manager: hitbox_manager = $"../p2/hitbox_manager"
+var charnode = $"../chars"
+
+var p1:P1Character 
+var p2:P2Character
 
 @onready
 var attacklabel: attackdata = $"../layer/data/labels/attacklabel"
@@ -96,10 +93,24 @@ func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : 
 
 
 func _ready() -> void:
-	p1_hitbox_manager.connect("hit", p1_set_hit_info)
-	p2_hitbox_manager.connect("hit", p2_set_hit_info)
-	
-	
+	call_deferred("_late_start")
+
+func _late_start():
+	if charnode.has_node("p1_instance"):
+		p1 = charnode.get_node("p1_instance")
+
+	if charnode.has_node("p2_instance"):
+		p2 = charnode.get_node("p2_instance")
+
+	# conecta os hitboxes
+	if p1:
+		var p1_hitbox_manager = p1.get_node("hitbox_manager")
+		p1_hitbox_manager.connect("hit", p1_set_hit_info)
+
+	if p2:
+		var p2_hitbox_manager = p2.get_node("hitbox_manager")
+		p2_hitbox_manager.connect("hit", p2_set_hit_info)
+
 func update_info() -> void:
 	
 	attacklabel.value = p1_attack_hurt_type
@@ -110,6 +121,7 @@ func update_info() -> void:
 	damagelabel.value = p1_attack_damage
 	knockbacklabel.value = p1_attack_knockback
 	
+	
 func p1_update_healt(damage: int) -> void:
 	p1.health -= damage
 	
@@ -119,10 +131,10 @@ func p2_update_health(damage: int) -> void:
 func _process(delta: float) -> void:
 	
 	update_info()
-	
-	if p1.is_on_floor():
+	if p1 and p1.is_on_floor():
 		p1_is_on_right_side()
-	
-	if p2.is_on_floor():
+
+	if p2 and p2.is_on_floor():
 		p2_is_on_right_side()
+
 	

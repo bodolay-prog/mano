@@ -36,7 +36,6 @@ func process_input() -> P2State:
 	
 	if parent.hit_check() == "hit":
 		
-		parent.sp += 50
 		
 		if input_handler() == 7:
 			return back_jump_state

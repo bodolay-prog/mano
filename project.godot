@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FrayInputMap="*res://addons/fray/src/input/autoloads/fray_input_map.gd"
 FrayInput="*res://addons/fray/src/input/autoloads/fray_input.gd"
+CharsGlobals="*res://core/globals/chars_globals.gd"
 
 [display]
 
