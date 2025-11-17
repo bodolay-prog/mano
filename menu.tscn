@@ -1,0 +1,202 @@
+[gd_scene load_steps=6 format=3 uid="uid://bijaypego4ae0"]
+
+[ext_resource type="Script" uid="uid://bjbidv2ej4fw2" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://ch6mqe5iq8kwc" path="res://AIDrawing_251109_371759a3-7bbd-4267-ac65-d4e5dc47bbd2_0_MiriCanvas.png" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://jd2ve420gqy1" path="res://1351304.png" id="2_4hy44"]
+[ext_resource type="Texture2D" uid="uid://bell8cm8vq7io" path="res://AIDrawing_251109_da726062-310e-497c-8b2e-4667b03abf9e_0_MiriCanvas.png" id="2_mae5d"]
+[ext_resource type="FontFile" uid="uid://dtrwi5mjyg2h" path="res://hoshiko_satsuki/Hoshiko Satsuki.ttf" id="5_ytr4m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="Select" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Select"]
+position = Vector2(640.99994, 360.99997)
+scale = Vector2(0.43818682, 0.43750003)
+texture = ExtResource("2_4hy44")
+
+[node name="playerOne" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = -145.0
+offset_right = 515.0
+offset_bottom = 145.0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -147.0
+offset_right = 129.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ouk20")
+expand_mode = 1
+
+[node name="ButtonOne" type="Button" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="nick01" type="ColorRect" parent="Select/playerOne"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 300.0
+offset_right = 323.0
+offset_bottom = 360.0
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="Label" type="Label" parent="Select/playerOne/nick01"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -15.5
+offset_right = 99.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 30
+text = "DOM  OTAVIO"
+
+[node name="playerTwo" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -145.0
+offset_right = -97.0
+offset_bottom = 145.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -139.0
+offset_right = 121.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mae5d")
+expand_mode = 1
+
+[node name="ButtonTwo" type="Button" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="nick02" type="ColorRect" parent="Select/playerTwo"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 348.0
+offset_bottom = 360.0
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="Label" type="Label" parent="Select/playerTwo/nick02"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -15.5
+offset_right = 99.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 30
+text = "SR  CIRINEU"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = 26.0
+offset_right = 239.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 45
+text = "Selecione o seu personagem"
+
+[connection signal="mouse_entered" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_mouse_entered"]
+[connection signal="mouse_exited" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_mouse_exited"]
+[connection signal="pressed" from="Select/playerOne/ButtonOne" to="." method="_on_button_one_pressed"]
+[connection signal="mouse_entered" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_entered"]
+[connection signal="mouse_exited" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_mouse_exited"]
+[connection signal="pressed" from="Select/playerTwo/ButtonTwo" to="." method="_on_button_two_pressed"]
