@@ -3,17 +3,19 @@ extends Node2D
 @onready
 var charnode = $"../chars"
 
+@onready
+var attacklabel: attackdata = $"../control_layer/control_training/data/labels/attacklabel"
+@onready
+var frameslabel: attackdata = $"../control_layer/control_training/data/labels/frameslabel"
+@onready
+var damagelabel: attackdata = $"../control_layer/control_training/data/labels/damagelabel"
+@onready
+var knockbacklabel: attackdata = $"../control_layer/control_training/data/labels/knockbacklabel"
+
 var p1:P1Character 
 var p2:P2Character
 
-@onready
-var attacklabel: attackdata = $"../layer/data/labels/attacklabel"
-@onready
-var frameslabel: attackdata = $"../layer/data/labels/frameslabel"
-@onready
-var damagelabel: attackdata = $"../layer/data/labels/damagelabel"
-@onready
-var knockbacklabel: attackdata = $"../layer/data/labels/knockbacklabel"
+
 
 
 var p1_block_stun_frames: int 

@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0k1gdvtue4k8"]
+
+[ext_resource type="PackedScene" uid="uid://cko7is4ed1mww" path="res://inputs-history/input_history.tscn" id="1_ueyh8"]
+[ext_resource type="Script" path="res://inputs-history/control.gd" id="2_02bra"]
+[ext_resource type="Script" uid="uid://dmd0nrk4htunv" path="res://ui/training_data/attacktype_label.gd" id="3_1f7j8"]
+[ext_resource type="Script" uid="uid://dg86xmyjo27ru" path="res://ui/training_data/frames_label.gd" id="4_2opi4"]
+[ext_resource type="Script" uid="uid://cn80g5lqttqe0" path="res://ui/training_data/damage_label.gd" id="5_2exfc"]
+[ext_resource type="Script" uid="uid://bvq0d8sm4dptl" path="res://ui/training_data/knockback_label.gd" id="6_oyxaw"]
+
+[node name="control_layer" type="Node2D"]
+
+[node name="control_training" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="data" type="Control" parent="control_training"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 211.0
+offset_top = 223.0
+offset_right = 251.0
+offset_bottom = 263.0
+
+[node name="input_history" parent="control_training/data" instance=ExtResource("1_ueyh8")]
+layout_mode = 1
+offset_left = -188.0
+offset_top = -203.0
+offset_right = -188.0
+offset_bottom = -203.0
+
+[node name="input_shower" type="Control" parent="control_training/data"]
+anchors_preset = 0
+offset_left = -150.0
+offset_top = 382.0
+offset_right = -69.0
+offset_bottom = 451.0
+script = ExtResource("2_02bra")
+
+[node name="labels" type="Control" parent="control_training/data"]
+anchors_preset = 0
+offset_left = -179.0
+offset_top = -400.0
+offset_right = -139.0
+offset_bottom = -360.0
+
+[node name="deaultlabel" type="RichTextLabel" parent="control_training/data/labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 300.0
+offset_right = 1229.0
+offset_bottom = 324.0
+text = "Attack Data:"
+
+[node name="attacklabel" type="RichTextLabel" parent="control_training/data/labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 324.0
+offset_right = 1229.0
+offset_bottom = 348.0
+text = "Attack Type: "
+script = ExtResource("3_1f7j8")
+
+[node name="frameslabel" type="RichTextLabel" parent="control_training/data/labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 348.0
+offset_right = 1229.0
+offset_bottom = 372.0
+text = "Frames:"
+script = ExtResource("4_2opi4")
+
+[node name="damagelabel" type="RichTextLabel" parent="control_training/data/labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 372.0
+offset_right = 1229.0
+offset_bottom = 396.0
+text = "Damage:"
+script = ExtResource("5_2exfc")
+
+[node name="knockbacklabel" type="RichTextLabel" parent="control_training/data/labels"]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 396.0
+offset_right = 1229.0
+offset_bottom = 420.0
+text = "Knockback:"
+script = ExtResource("6_oyxaw")

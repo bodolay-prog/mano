@@ -1,0 +1,120 @@
+extends Node2D
+
+@onready
+var charnode = $"../chars"
+
+var p1:P1Character 
+var p2:P2Character
+
+var p1_block_stun_frames: int 
+var p1_hit_stun_frames
+var p1_attack_hurt_type
+var p1_attack_damage
+var p1_attack_knockback
+
+var p2_block_stun_frames: int
+var p2_hit_stun_frames
+var p2_attack_hurt_type
+var p2_attack_damage
+var p2_attack_knockback
+
+# Flip Chars Funcs
+func p1_is_on_right_side() -> void:
+	var p1_pos = p1.position.x
+	var p2_pos = p2.position.x
+	
+	if p1_pos > p2_pos and !p1.on_right_side:
+		p1.on_right_side = true
+		p1.flip_char()
+		
+	if p1_pos < p2_pos and p1.on_right_side:
+		p1.on_right_side = false
+		p1.flip_char()
+
+func p2_is_on_right_side() -> void:
+	var p1_pos = p1.position.x
+	var p2_pos = p2.position.x
+	
+	if p2_pos > p1_pos and !p2.on_right_side:
+		p2.on_right_side = true
+		p2.flip_char()
+		
+	if p2_pos < p1_pos and p2.on_right_side:
+		p2.on_right_side = false
+		p2.flip_char()
+		
+		
+# Set infos Funcs
+func p1_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, hit_variant: String) -> void:
+
+	p1_hit_stun_frames = block_stun_frames
+	p1_block_stun_frames = hit_stun_frames
+	p1_attack_damage = damage
+	p1_attack_knockback = knockback
+	p1_attack_hurt_type = hit_variant
+	
+	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
+	p2_update_health(damage)
+	
+	
+func p2_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, hit_variant: String) -> void:
+	
+	p2_hit_stun_frames = block_stun_frames
+	p2_block_stun_frames = hit_stun_frames
+	p2_attack_damage = damage
+	p2_attack_knockback = knockback
+	p2_attack_hurt_type	 = hit_variant
+	
+	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
+	p1_update_healt(damage)
+
+func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
+	
+	p1.block_stun_frames = block_stun_frames
+	p1.hit_stun_frames = hit_stun_frames
+	p1.hurt_type = hurt_type
+	p1.knockback = knockback
+
+		
+func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
+	
+	p2.block_stun_frames = block_stun_frames
+	p2.hit_stun_frames = hit_stun_frames
+	p2.hurt_type = hurt_type
+	p2.knockback = knockback
+
+
+func _ready() -> void:
+	call_deferred("_late_start")
+
+func _late_start():
+	if charnode.has_node("p1_instance"):
+		p1 = charnode.get_node("p1_instance")
+
+	if charnode.has_node("p2_instance"):
+		p2 = charnode.get_node("p2_instance")
+
+	# conecta os hitboxes
+	if p1:
+		var p1_hitbox_manager = p1.get_node("hitbox_manager")
+		p1_hitbox_manager.connect("hit", p1_set_hit_info)
+
+	if p2:
+		var p2_hitbox_manager = p2.get_node("hitbox_manager")
+		p2_hitbox_manager.connect("hit", p2_set_hit_info)
+
+func p1_update_healt(damage: int) -> void:
+	p1.health -= damage
+	
+func p2_update_health(damage: int) -> void:
+	p2.health -= damage
+
+func _process(delta: float) -> void:
+	
+	if p1 and p1.is_on_floor():
+		p1_is_on_right_side()
+
+	if p2 and p2.is_on_floor():
+		p2_is_on_right_side()
+
+	
