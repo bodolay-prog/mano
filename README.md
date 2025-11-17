@@ -37,8 +37,9 @@ Propriedades da Fase Alpha:
 
 task atual:
 	
-	fazer os estados de launcher e sweep e os sinais para o jogo entender e os estados ( em processo)
-	fazer scaling de damage ( em processo)
+	fazer p1 e p2 finais, (ryu e ken) (em processo)
+	fazer função que recebee valores de specials (em precosso)
+	fazer scaling de damage (em processo)
 
 
 Fases ate a entrega:

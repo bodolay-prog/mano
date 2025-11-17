@@ -18,6 +18,7 @@ func _ready() -> void:
 	load_chars()
 
 func load_chars() -> void:
+	
 	var container = get_node(charnode_path)
 
 	if CharsGlobals.p1char_scene:

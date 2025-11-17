@@ -38,6 +38,12 @@ p1_hitbox="Hitbox from a player 1"
 p1_hurtbox="Hurtbox from a player 1"
 char="group that represents a char"
 
+[importer_defaults]
+
+animation_library={
+&"animation/fps": 60.0
+}
+
 [input]
 
 p1_right={

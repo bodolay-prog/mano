@@ -5738,7 +5738,6 @@ metadata/_custom_type_script = "uid://mam2jjic0o1k"
 script = ExtResource("33_ncym0")
 
 [node name="hitbox_manager" type="Node2D" parent="."]
-visible = false
 script = ExtResource("26_v6kur")
 
 [node name="high_hit_manager" type="Node2D" parent="hitbox_manager"]
