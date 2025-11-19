@@ -1,3 +1,4 @@
+class_name _j5_h_p2
 extends P2State
 
 @export

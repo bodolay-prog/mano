@@ -1,3 +1,4 @@
+class_name jump_foward_p2
 extends P2State
 
 #Char P2States

@@ -1,3 +1,4 @@
+class_name on_sweep_p2
 extends P2State
 
 @export

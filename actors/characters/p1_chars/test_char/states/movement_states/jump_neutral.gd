@@ -1,3 +1,4 @@
+class_name jump_neutral_p1
 extends P1State
 
 #Char P1States

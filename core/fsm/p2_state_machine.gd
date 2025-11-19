@@ -1,3 +1,4 @@
+class_name state_machine_p2
 extends Node
 
 @export

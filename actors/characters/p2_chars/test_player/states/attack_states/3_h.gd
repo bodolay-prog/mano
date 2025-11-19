@@ -1,3 +1,4 @@
+class_name _3_h_p2
 extends P2State
 
 # Movement P2States

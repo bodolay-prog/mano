@@ -5508,7 +5508,7 @@ size = Vector2(46, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dtab"]
 size = Vector2(22, 20)
 
-[node name="p2_test_player" type="CharacterBody2D"]
+[node name="p2_player" type="CharacterBody2D"]
 script = ExtResource("1_g6li4")
 
 [node name="animation_player" type="AnimationPlayer" parent="."]

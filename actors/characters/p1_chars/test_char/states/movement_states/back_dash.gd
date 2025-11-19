@@ -1,3 +1,4 @@
+class_name back_dash_p1
 extends P1State
 
 @export

@@ -1,3 +1,4 @@
+class_name on_air_hit_p2
 extends P2State
 
 #Char P2States

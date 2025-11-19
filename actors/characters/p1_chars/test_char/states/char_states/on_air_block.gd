@@ -1,3 +1,4 @@
+class_name on_air_block_p1
 extends P1State
 
 #Movement P1States

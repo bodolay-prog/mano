@@ -1,3 +1,4 @@
+class_name moving_foward_p2
 extends P2State
 
 #Char P2States

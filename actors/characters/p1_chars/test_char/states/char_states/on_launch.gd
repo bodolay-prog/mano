@@ -1,3 +1,4 @@
+class_name on_lauch_p1
 extends P1State
 
 #Char P1States

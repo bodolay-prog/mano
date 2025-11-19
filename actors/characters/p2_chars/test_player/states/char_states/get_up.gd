@@ -1,3 +1,4 @@
+class_name get_up_p2
 extends P2State
 
 @export

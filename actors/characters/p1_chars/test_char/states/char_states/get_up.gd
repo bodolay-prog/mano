@@ -1,3 +1,4 @@
+class_name get_up_p1
 extends P1State
 
 @export

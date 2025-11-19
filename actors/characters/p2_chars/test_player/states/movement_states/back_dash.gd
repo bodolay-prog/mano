@@ -1,3 +1,4 @@
+class_name back_dash_p2
 extends P2State
 
 @export

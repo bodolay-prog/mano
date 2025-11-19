@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://caqn0gwy6lsi1"]
+
+[ext_resource type="Script" uid="uid://dpovk6hpwob1t" path="res://actors/characters/p1_chars/test_char/p1_test_player.gd" id="1_lrc3w"]
+
+[node name="P1Character" type="CharacterBody2D"]
+script = ExtResource("1_lrc3w")
+metadata/_custom_type_script = "uid://dpovk6hpwob1t"
