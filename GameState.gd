@@ -20,22 +20,23 @@ const FIGHT_SCENE_PATH = "res://Scenes/FightStage.tscn"
 
 ## --- FUNÇÕES DE CONTROLE DE ESTADO ---
 
-# Define o modo de jogo (chamado pelo Menu Principal)
 func set_game_mode(is_2p: bool, is_training: bool) -> void:
 	is_two_player = is_2p
 	is_training_mode = is_training
 	print("Modo definido: 2P =", is_two_player, "| Treinamento =", is_training_mode)
 
 
-# Reseta as escolhas de personagem
 func reset_characters() -> void:
 	player_1_character_name = ""
 	player_2_character_name = ""
 	print("Escolhas de personagem resetadas.")
 
 
-# Registra a escolha do personagem
 func select_character(player_index: int, character_name: String) -> void:
+	if not CHARACTER_PATHS.has(character_name):
+		printerr("Erro: Personagem desconhecido:", character_name)
+		return
+		
 	if player_index == 1:
 		player_1_character_name = character_name
 		print("P1 escolheu:", character_name)
@@ -45,8 +46,11 @@ func select_character(player_index: int, character_name: String) -> void:
 	else:
 		printerr("Erro: índice de jogador inválido:", player_index)
 
+# NOVO: Função para obter o caminho da cena do personagem
+func get_character_scene_path(character_name: String) -> String:
+	return CHARACTER_PATHS.get(character_name, "")
 
-# Inicia a cena principal de luta/treinamento
+
 func start_fight_scene() -> void:
 	if FileAccess.file_exists(FIGHT_SCENE_PATH):
 		get_tree().change_scene_to_file(FIGHT_SCENE_PATH)

@@ -1,84 +1,88 @@
-# menu.gd (cole este arquivo na cena de SELEÇÃO de personagem)
 extends Control
 
 var current_player: int = 1
 
-# Ajuste os caminhos abaixo se a sua árvore for diferente.
-# Recomendo substituir "playerOne/ColorRect" pelo Node Path copiado do editor, se necessário.
-@onready var player_one_frame = get_node_or_null("playerOne/ColorRect")
-@onready var player_two_frame = get_node_or_null("playerTwo/ColorRect")
-@onready var player_two_node = get_node_or_null("playerTwo")
+# Ajuste os caminhos se necessário.
+@onready var player_one_frame = get_node_or_null("Select/playerOne/ColorRect")
+@onready var player_two_frame = get_node_or_null("Select/playerTwo/ColorRect")
+@onready var player_two_node = get_node_or_null("Select/playerTwo")
+
+# --- GRUPO PARA BOTÕES ---
+# Lembre-se de adicionar todos os botões de personagem ao grupo "character_selection"
+const CHARACTER_BUTTON_GROUP = "character_selection"
+
 
 func _ready() -> void:
-	current_player = 1
-	# usa GameStatus (nome do seu autoload)
-	if Engine.has_singleton("GameStatus"):
-		GameState.reset_characters()
+	# Correção: Verificar pelo nome correto do Autoload
+	if Engine.has_singleton("GameState"):
+		# Garante estado limpo, mas é redundante se o Control.gd funcionar corretamente
+		# Deixamos como segurança.
+		GameState.reset_characters() 
 	else:
-		printerr("Autoload 'GameStatus' não encontrado. Verifique Project > Project Settings > AutoLoad.")
+		printerr("Autoload 'GameState' não encontrado. Verifique Project > Project Settings > AutoLoad.")
+	
+	current_player = 1
 	update_selection_ui()
+	
+	# Conecta a função de seleção a todos os botões do grupo
+	for node in get_tree().get_nodes_in_group(CHARACTER_BUTTON_GROUP):
+		if node is Button:
+			node.pressed.connect(_on_character_button_pressed.bind(node.name))
+
+# Função única para todos os botões de personagem
+func _on_character_button_pressed(button_name: String) -> void:
+	# Usamos o nome do botão como o nome do personagem. 
+	# Ex: Botão chamado "Otavio" seleciona "Otavio".
+	handle_selection(button_name)
+
 
 func update_selection_ui() -> void:
+	# 1. Zera ou configura cores/visibilidade
+	
 	# Checa e zera cores com segurança
 	if player_one_frame:
 		player_one_frame.modulate = Color.WHITE
-	else:
-		printerr("menu.gd: player_one_frame é null. Verifique o path 'playerOne/ColorRect' e se o script está na cena certa.")
-
 	if player_two_frame:
 		player_two_frame.modulate = Color.WHITE
-	else:
-		# apenas log, não quebra
-		# printerr("menu.gd: player_two_frame é null. Verifique o path 'playerTwo/ColorRect'.")
-		pass
 
-	# Mostrar/Esconder P2 no modo treino
-	if GameState.is_training_mode:
-		if player_two_node:
-			player_two_node.visible = false
-		else:
-			printerr("menu.gd: node 'playerTwo' não encontrado ao tentar esconder P2.")
+	# Mostrar/Esconder P2 no modo Treinamento (IA)
+	if player_two_node:
+		# is_training_mode implica que não é 2P, e P2 deve ser escondido
+		player_two_node.visible = not GameState.is_training_mode
 	else:
-		if player_two_node:
-			player_two_node.visible = true
+		printerr("menu.gd: node 'playerTwo' não encontrado.")
 
-	# Destacar jogador atual
+	# 2. Destacar jogador atual
 	if current_player == 1:
 		if player_one_frame:
 			player_one_frame.modulate = Color.YELLOW
 	elif current_player == 2 and GameState.is_two_player:
 		if player_two_frame:
 			player_two_frame.modulate = Color.YELLOW
-
+	
+	# Se for modo treino, o P2 nunca precisa de destaque, pois é IA/Dummy.
 
 func handle_selection(character_name: String) -> void:
-	# grava escolha
+	# 1. Grava escolha
 	GameState.select_character(current_player, character_name)
 
+	# 2. Transição de estado
 	if GameState.is_two_player:
 		if current_player == 1:
 			current_player = 2
 			update_selection_ui()
-		else:
+		else: # current_player == 2
 			print("Seleção completa — iniciando luta 2P.")
 			GameState.start_fight_scene()
 	else:
-		# treino: define Dummy e inicia
+		# Modo Treino/IA: P2 é sempre "Dummy" (ou outro nome predefinido)
 		GameState.select_character(2, "Dummy")
 		print("Seleção completa — iniciando treino.")
 		GameState.start_fight_scene()
 
 
-func _on_otavio_selected() -> void:
-	handle_selection("Otavio")
-
-func _on_cirineu_selected() -> void:
-	handle_selection("Cirineu")
-
-
 func _on_button_one_mouse_entered() -> void:
 	get_node("Select/playerOne").color = Color.YELLOW
-
 
 func _on_button_one_mouse_exited() -> void:
 	get_node("Select/playerOne").color = Color.WHITE
@@ -86,6 +90,7 @@ func _on_button_one_mouse_exited() -> void:
 
 func _on_button_two_mouse_entered() -> void:
 	get_node("Select/playerTwo").color = Color.YELLOW
+
 
 func _on_button_two_mouse_exited() -> void:
 	get_node("Select/playerTwo").color = Color.WHITE
