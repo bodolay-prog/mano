@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfoop2xu12gdo"
-path="res://.godot/imported/ken 21x20.png-0f90037447d42f41f9297c7e1c140e79.ctex"
+uid="uid://bvqstd7m8eg4u"
+path="res://.godot/imported/ken 21x20 real.png-5dcdc730f51f23cd9bc02573a570e42b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/characters/p1_chars/shoto_ken/sprites/ken 21x20.png"
-dest_files=["res://.godot/imported/ken 21x20.png-0f90037447d42f41f9297c7e1c140e79.ctex"]
+source_file="res://actors/characters/p2_chars/shoto_ken/sprites/ken 21x20 real.png"
+dest_files=["res://.godot/imported/ken 21x20 real.png-5dcdc730f51f23cd9bc02573a570e42b.ctex"]
 
 [params]
 

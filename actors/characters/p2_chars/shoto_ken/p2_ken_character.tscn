@@ -1,7 +1,856 @@
-[gd_scene load_steps=2 format=3 uid="uid://b87q0btamrnrn"]
+[gd_scene load_steps=83 format=3 uid="uid://b87q0btamrnrn"]
 
 [ext_resource type="Script" uid="uid://ceoevwepiivko" path="res://actors/characters/p2_chars/test_player/p_2_test_player.gd" id="1_h8ml4"]
+[ext_resource type="Texture2D" uid="uid://bvqstd7m8eg4u" path="res://actors/characters/p2_chars/shoto_ken/sprites/ken 21x20 real.png" id="2_5pegb"]
+[ext_resource type="Script" uid="uid://bk7vvg10ybr13" path="res://core/fsm/p2_state_machine.gd" id="3_qgwv3"]
+[ext_resource type="Script" uid="uid://dm5gy3cjr236g" path="res://actors/characters/p2_chars/test_player/states/movement_states/idle.gd" id="4_3mxwo"]
+[ext_resource type="Script" uid="uid://dk08tfxax7ejq" path="res://actors/characters/p2_chars/test_player/states/movement_states/moving_foward.gd" id="5_t1rlp"]
+[ext_resource type="Script" uid="uid://bx7q8dd8he5sq" path="res://actors/characters/p2_chars/test_player/states/movement_states/moving_backward.gd" id="6_eora6"]
+[ext_resource type="Script" uid="uid://cjj7kf0cf883x" path="res://actors/characters/p2_chars/test_player/states/movement_states/jump_neutral.gd" id="7_kh5oh"]
+[ext_resource type="Script" uid="uid://ddqpcnabspvyy" path="res://actors/characters/p2_chars/test_player/states/movement_states/jump_foward.gd" id="8_13ryg"]
+[ext_resource type="Script" uid="uid://qe01m0cxt28k" path="res://actors/characters/p2_chars/test_player/states/movement_states/jump_backward.gd" id="9_bn6v5"]
+[ext_resource type="Script" uid="uid://cl4bu6qreby3n" path="res://actors/characters/p2_chars/test_player/states/movement_states/crouch.gd" id="10_k6smb"]
+[ext_resource type="Script" uid="uid://b6k66lokgmd6w" path="res://actors/characters/p2_chars/test_player/states/movement_states/falling.gd" id="11_mw1l1"]
+[ext_resource type="Script" uid="uid://cvuwid0bhkx0f" path="res://actors/characters/p2_chars/test_player/states/attack_states/5_l.gd" id="12_586fc"]
+[ext_resource type="Script" uid="uid://cqqnmq2yeowhq" path="res://actors/characters/p2_chars/test_player/states/attack_states/5_m.gd" id="13_1p0tn"]
+[ext_resource type="Script" uid="uid://c3fl6d6dxxcdt" path="res://actors/characters/p2_chars/test_player/states/attack_states/5_h.gd" id="14_c3ls2"]
+[ext_resource type="Script" uid="uid://svekvmwg54cb" path="res://actors/characters/p2_chars/test_player/states/attack_states/2_l.gd" id="15_xga3s"]
+[ext_resource type="Script" uid="uid://cuil7tqnpdss5" path="res://actors/characters/p2_chars/test_player/states/attack_states/2_m.gd" id="16_f34uk"]
+[ext_resource type="Script" uid="uid://cgec4smndq36w" path="res://actors/characters/p2_chars/test_player/states/attack_states/2_h.gd" id="17_1ydx5"]
+[ext_resource type="Script" uid="uid://bol0pua3qmvue" path="res://actors/characters/p2_chars/test_player/states/attack_states/3_h.gd" id="18_ranjl"]
+[ext_resource type="Script" uid="uid://cf6mlgtvwty1s" path="res://actors/characters/p2_chars/test_player/states/attack_states/j_5_l.gd" id="19_s1jk8"]
+[ext_resource type="Script" uid="uid://3nc2fhd2qa2i" path="res://actors/characters/p2_chars/test_player/states/attack_states/j_5_m.gd" id="20_l16k3"]
+[ext_resource type="Script" uid="uid://23sfd8thsgfb" path="res://actors/characters/p2_chars/test_player/states/attack_states/j_5_h.gd" id="21_j0nq1"]
+[ext_resource type="Script" uid="uid://hvf4te1wxytb" path="res://actors/characters/p2_chars/test_player/states/movement_states/post_dash.gd" id="22_iffpa"]
+[ext_resource type="Script" uid="uid://h352gpq8qii" path="res://actors/characters/p2_chars/test_player/states/movement_states/foward_dash.gd" id="23_kl5a8"]
+[ext_resource type="Script" uid="uid://bcu340iulbp0q" path="res://actors/characters/p2_chars/test_player/states/movement_states/back_dash.gd" id="24_jh4f6"]
+[ext_resource type="Script" uid="uid://d2anxb6jpna7t" path="res://actors/characters/p2_chars/test_player/states/char_states/on_launch.gd" id="25_a4q6o"]
+[ext_resource type="Script" uid="uid://bj8spwld27kx4" path="res://actors/characters/p2_chars/test_player/states/char_states/on_hit.gd" id="26_trh82"]
+[ext_resource type="Script" uid="uid://gdnlejkpov41" path="res://actors/characters/p2_chars/test_player/states/char_states/on_hit_combo.gd" id="27_7eq1t"]
+[ext_resource type="Script" uid="uid://cf5vecw8yjdbj" path="res://actors/characters/p2_chars/test_player/states/char_states/on_block.gd" id="28_jm17d"]
+[ext_resource type="Script" uid="uid://x4ss2v74tws0" path="res://actors/characters/p2_chars/test_player/states/char_states/on_block_combo.gd" id="29_axnuv"]
+[ext_resource type="Script" uid="uid://xb5nl5t6lk5r" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_hit.gd" id="30_6h3t1"]
+[ext_resource type="Script" uid="uid://b5gjprsl0wp4q" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_hit_combo.gd" id="31_qdrf4"]
+[ext_resource type="Script" uid="uid://c02gyui5fjcn7" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_block.gd" id="32_4vuwg"]
+[ext_resource type="Script" uid="uid://vjnt1r63br4v" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_block_combo.gd" id="33_04wbj"]
+[ext_resource type="Script" uid="uid://cgkju10pl8ef1" path="res://actors/characters/p2_chars/test_player/states/char_states/on_sweep.gd" id="34_wlxdb"]
+[ext_resource type="Script" uid="uid://bbb1vu6i2ye6f" path="res://actors/characters/p2_chars/test_player/states/char_states/get_up.gd" id="35_83kub"]
+[ext_resource type="Script" uid="uid://c018qc58df8fn" path="res://core/input/p2_new_input.gd" id="36_en1ka"]
+[ext_resource type="Script" uid="uid://cqrgw4ymsbrr0" path="res://core/combat/hitbox/hitbox_manager.gd" id="37_qp2o7"]
+[ext_resource type="Script" uid="uid://bfu4ky4oduc73" path="res://core/combat/hitbox/high_hitbox_signal.gd" id="38_xp5mr"]
+[ext_resource type="Script" uid="uid://bthjc4scmjjj7" path="res://core/combat/hitbox/mid_hitbox_signal.gd" id="39_ggwkh"]
+[ext_resource type="Script" uid="uid://b6e6dhpqrspvr" path="res://core/combat/hitbox/low_hitbox_signal.gd" id="40_qwahc"]
+[ext_resource type="Script" uid="uid://dg1evxmcfxq2h" path="res://core/combat/hurtbox/hurtbox_manager.gd" id="41_dsfgo"]
+[ext_resource type="Script" uid="uid://bkm45ovcfudmt" path="res://core/combat/hurtbox/air_hurtbox_signal.gd" id="42_hs7xa"]
+[ext_resource type="Script" uid="uid://b4mae8uyki5vl" path="res://core/combat/hurtbox/standing_hurtbox_signal.gd" id="43_hkpao"]
+[ext_resource type="Script" uid="uid://wcdguvpe3i15" path="res://core/combat/hurtbox/counter_hurtbox_signal.gd" id="44_jq1wr"]
 
-[node name="P2Character" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_8cl7y"]
+resource_name = "idle"
+length = 0.30000335
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [39, 40, 41, 42, 43, 44, 45, 46]
+}
+
+[sub_resource type="Animation" id="Animation_nxobu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [39]
+}
+
+[sub_resource type="Animation" id="Animation_mgnws"]
+resource_name = "crouched"
+length = 0.03333667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [47]
+}
+
+[sub_resource type="Animation" id="Animation_4um6x"]
+resource_name = "move_foward"
+length = 0.16667001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [48, 49, 50, 51, 52]
+}
+
+[sub_resource type="Animation" id="Animation_kyx24"]
+resource_name = "move_back"
+length = 0.20000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [53, 54, 55, 56, 57, 58]
+}
+
+[sub_resource type="Animation" id="Animation_ohwnp"]
+resource_name = "dash_foward"
+length = 0.10000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [59, 60, 61]
+}
+
+[sub_resource type="Animation" id="Animation_bsg8a"]
+resource_name = "dash_back"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [62, 63, 64, 65, 66]
+}
+
+[sub_resource type="Animation" id="Animation_7r7rw"]
+resource_name = "jump_neutral"
+length = 0.20000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [67, 68, 69, 70, 71, 72]
+}
+
+[sub_resource type="Animation" id="Animation_fse4r"]
+resource_name = "falling"
+length = 0.03333667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [72]
+}
+
+[sub_resource type="Animation" id="Animation_dbk6k"]
+resource_name = "jump_foward"
+length = 0.20000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [73, 74, 75, 76, 77, 78]
+}
+
+[sub_resource type="Animation" id="Animation_yybdl"]
+resource_name = "crouch"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [79, 80]
+}
+
+[sub_resource type="Animation" id="Animation_w1hqw"]
+resource_name = "stading_block"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [87, 88]
+}
+
+[sub_resource type="Animation" id="Animation_fwqqg"]
+resource_name = "crouch_block"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [89, 90]
+}
+
+[sub_resource type="Animation" id="Animation_chlh7"]
+resource_name = "air_block"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [91, 92]
+}
+
+[sub_resource type="Animation" id="Animation_yqxwf"]
+resource_name = "win_round"
+length = 0.23333667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99, 100, 101, 102]
+}
+
+[sub_resource type="Animation" id="Animation_iw2ut"]
+resource_name = "5_l"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [140, 141, 141, 140]
+}
+
+[sub_resource type="Animation" id="Animation_va06o"]
+resource_name = "5_m"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [142, 143, 144, 143, 142]
+}
+
+[sub_resource type="Animation" id="Animation_l5h34"]
+resource_name = "5_h"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [145, 146, 146, 145]
+}
+
+[sub_resource type="Animation" id="Animation_05nx0"]
+resource_name = "2_l"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [170, 171, 171, 170]
+}
+
+[sub_resource type="Animation" id="Animation_x516a"]
+resource_name = "2_m"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [172, 173, 173, 172]
+}
+
+[sub_resource type="Animation" id="Animation_y4h1v"]
+resource_name = "3_h"
+length = 0.20000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [174, 175, 176, 177, 177, 177]
+}
+
+[sub_resource type="Animation" id="Animation_keend"]
+resource_name = "2_h"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [167, 168, 169, 169, 169]
+}
+
+[sub_resource type="Animation" id="Animation_6j30o"]
+resource_name = "j5_l"
+length = 0.10000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [182, 183, 182]
+}
+
+[sub_resource type="Animation" id="Animation_6fo5h"]
+resource_name = "j5_h"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [180, 180, 181, 181, 182]
+}
+
+[sub_resource type="Animation" id="Animation_svc2y"]
+resource_name = "j5_m"
+length = 0.20000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [197, 198, 199, 199, 198, 197]
+}
+
+[sub_resource type="Animation" id="Animation_bv6gj"]
+resource_name = "hdk"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [223, 224, 225, 226, 227]
+}
+
+[sub_resource type="Animation" id="Animation_sveh0"]
+resource_name = "srk"
+length = 0.23333667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [228, 229, 230, 231, 232, 233, 234]
+}
+
+[sub_resource type="Animation" id="Animation_3u2ty"]
+resource_name = "tmk"
+length = 0.33333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [235, 236, 237, 238, 239, 240, 241, 242, 243, 244]
+}
+
+[sub_resource type="Animation" id="Animation_jnopm"]
+resource_name = "stading_hurt"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [283, 284, 285, 286]
+}
+
+[sub_resource type="Animation" id="Animation_ki0tp"]
+resource_name = "stading_hurt_2"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [287, 288, 289, 290]
+}
+
+[sub_resource type="Animation" id="Animation_8hbmc"]
+resource_name = "crouch_hurt"
+length = 0.10000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [291, 292, 293]
+}
+
+[sub_resource type="Animation" id="Animation_ogq2j"]
+resource_name = "air_hit"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [314, 315, 316, 317]
+}
+
+[sub_resource type="Animation" id="Animation_0ktoa"]
+resource_name = "knockdown"
+length = 0.36667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [317, 318, 319, 320, 321, 322, 323, 323, 323, 323]
+}
+
+[sub_resource type="Animation" id="Animation_exbvl"]
+resource_name = "get_up"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [106, 107, 108, 109]
+}
+
+[sub_resource type="Animation" id="Animation_vsyhh"]
+resource_name = "win_game"
+length = 0.36667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333667, 0.26667002, 0.30000335, 0.33333668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [132, 133, 134, 135, 135, 135, 135, 135, 135, 135, 135]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3gtv5"]
+_data = {
+&"2_h": SubResource("Animation_keend"),
+&"2_l": SubResource("Animation_05nx0"),
+&"2_m": SubResource("Animation_x516a"),
+&"3_h": SubResource("Animation_y4h1v"),
+&"5_h": SubResource("Animation_l5h34"),
+&"5_l": SubResource("Animation_iw2ut"),
+&"5_m": SubResource("Animation_va06o"),
+&"RESET": SubResource("Animation_nxobu"),
+&"air_block": SubResource("Animation_chlh7"),
+&"air_hit": SubResource("Animation_ogq2j"),
+&"crouch": SubResource("Animation_yybdl"),
+&"crouch_block": SubResource("Animation_fwqqg"),
+&"crouch_hurt": SubResource("Animation_8hbmc"),
+&"crouched": SubResource("Animation_mgnws"),
+&"dash_back": SubResource("Animation_bsg8a"),
+&"dash_foward": SubResource("Animation_ohwnp"),
+&"falling": SubResource("Animation_fse4r"),
+&"get_up": SubResource("Animation_exbvl"),
+&"hdk": SubResource("Animation_bv6gj"),
+&"idle": SubResource("Animation_8cl7y"),
+&"j5_h": SubResource("Animation_6fo5h"),
+&"j5_l": SubResource("Animation_6j30o"),
+&"j5_m": SubResource("Animation_svc2y"),
+&"jump_foward": SubResource("Animation_dbk6k"),
+&"jump_neutral": SubResource("Animation_7r7rw"),
+&"knockdown": SubResource("Animation_0ktoa"),
+&"move_back": SubResource("Animation_kyx24"),
+&"move_foward": SubResource("Animation_4um6x"),
+&"srk": SubResource("Animation_sveh0"),
+&"stading_block": SubResource("Animation_w1hqw"),
+&"stading_hurt": SubResource("Animation_jnopm"),
+&"stading_hurt_2": SubResource("Animation_ki0tp"),
+&"tmk": SubResource("Animation_3u2ty"),
+&"win_game": SubResource("Animation_vsyhh"),
+&"win_round": SubResource("Animation_yqxwf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iamnq"]
+size = Vector2(66, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixh5m"]
+size = Vector2(61, 61)
+
+[node name="P2_ken" type="CharacterBody2D"]
 script = ExtResource("1_h8ml4")
 metadata/_custom_type_script = "uid://ceoevwepiivko"
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3gtv5")
+}
+speed_scale = 0.45
+
+[node name="sprites" type="Sprite2D" parent="."]
+texture = ExtResource("2_5pegb")
+hframes = 21
+vframes = 20
+frame = 39
+
+[node name="sprites_vfx" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_5pegb")
+
+[node name="camera_area" type="Area2D" parent="."]
+visible = false
+
+[node name="cam_coll" type="CollisionShape2D" parent="camera_area"]
+position = Vector2(-6, 5.5)
+shape = SubResource("RectangleShape2D_iamnq")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="collsion" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 21.5)
+shape = SubResource("RectangleShape2D_ixh5m")
+debug_color = Color(0.33871302, 0, 1.0039216, 0.41960785)
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_qgwv3")
+starting_state = NodePath("idle_p2")
+metadata/_custom_type_script = "uid://bk7vvg10ybr13"
+
+[node name="idle_p2" type="Node" parent="state_machine"]
+script = ExtResource("4_3mxwo")
+metadata/_custom_type_script = "uid://dm5gy3cjr236g"
+
+[node name="moving_foward_p2" type="Node" parent="state_machine"]
+script = ExtResource("5_t1rlp")
+metadata/_custom_type_script = "uid://dk08tfxax7ejq"
+
+[node name="moving_backward_p2" type="Node" parent="state_machine"]
+script = ExtResource("6_eora6")
+metadata/_custom_type_script = "uid://bx7q8dd8he5sq"
+
+[node name="jump_neutral_p2" type="Node" parent="state_machine"]
+script = ExtResource("7_kh5oh")
+metadata/_custom_type_script = "uid://cjj7kf0cf883x"
+
+[node name="jump_foward_p2" type="Node" parent="state_machine"]
+script = ExtResource("8_13ryg")
+metadata/_custom_type_script = "uid://ddqpcnabspvyy"
+
+[node name="jump_backward_p2" type="Node" parent="state_machine"]
+script = ExtResource("9_bn6v5")
+metadata/_custom_type_script = "uid://qe01m0cxt28k"
+
+[node name="crouch_p2" type="Node" parent="state_machine"]
+script = ExtResource("10_k6smb")
+metadata/_custom_type_script = "uid://cl4bu6qreby3n"
+
+[node name="falling_p2" type="Node" parent="state_machine"]
+script = ExtResource("11_mw1l1")
+metadata/_custom_type_script = "uid://b6k66lokgmd6w"
+
+[node name="_5_l_p2" type="Node" parent="state_machine"]
+script = ExtResource("12_586fc")
+metadata/_custom_type_script = "uid://cvuwid0bhkx0f"
+
+[node name="_5_m_p2" type="Node" parent="state_machine"]
+script = ExtResource("13_1p0tn")
+metadata/_custom_type_script = "uid://cqqnmq2yeowhq"
+
+[node name="_5_h_p2" type="Node" parent="state_machine"]
+script = ExtResource("14_c3ls2")
+metadata/_custom_type_script = "uid://c3fl6d6dxxcdt"
+
+[node name="_2_l_p2" type="Node" parent="state_machine"]
+script = ExtResource("15_xga3s")
+metadata/_custom_type_script = "uid://svekvmwg54cb"
+
+[node name="_2_m_p2" type="Node" parent="state_machine"]
+script = ExtResource("16_f34uk")
+metadata/_custom_type_script = "uid://cuil7tqnpdss5"
+
+[node name="_2_h_p2" type="Node" parent="state_machine"]
+script = ExtResource("17_1ydx5")
+metadata/_custom_type_script = "uid://cgec4smndq36w"
+
+[node name="_3_h_p2" type="Node" parent="state_machine"]
+script = ExtResource("18_ranjl")
+metadata/_custom_type_script = "uid://bol0pua3qmvue"
+
+[node name="_j5_l_p2" type="Node" parent="state_machine"]
+script = ExtResource("19_s1jk8")
+metadata/_custom_type_script = "uid://cf6mlgtvwty1s"
+
+[node name="_j5_m_p2" type="Node" parent="state_machine"]
+script = ExtResource("20_l16k3")
+metadata/_custom_type_script = "uid://3nc2fhd2qa2i"
+
+[node name="_j5_h_p2" type="Node" parent="state_machine"]
+script = ExtResource("21_j0nq1")
+metadata/_custom_type_script = "uid://23sfd8thsgfb"
+
+[node name="post_dash_p2" type="Node" parent="state_machine"]
+script = ExtResource("22_iffpa")
+metadata/_custom_type_script = "uid://hvf4te1wxytb"
+
+[node name="foward_dash_p2" type="Node" parent="state_machine"]
+script = ExtResource("23_kl5a8")
+metadata/_custom_type_script = "uid://h352gpq8qii"
+
+[node name="back_dash_p2" type="Node" parent="state_machine"]
+script = ExtResource("24_jh4f6")
+metadata/_custom_type_script = "uid://bcu340iulbp0q"
+
+[node name="on_launch_p2" type="Node" parent="state_machine"]
+script = ExtResource("25_a4q6o")
+metadata/_custom_type_script = "uid://d2anxb6jpna7t"
+
+[node name="on_hit_p2" type="Node" parent="state_machine"]
+script = ExtResource("26_trh82")
+metadata/_custom_type_script = "uid://bj8spwld27kx4"
+
+[node name="on_hit_combo_p2" type="Node" parent="state_machine"]
+script = ExtResource("27_7eq1t")
+metadata/_custom_type_script = "uid://gdnlejkpov41"
+
+[node name="on_block_p2" type="Node" parent="state_machine"]
+script = ExtResource("28_jm17d")
+metadata/_custom_type_script = "uid://cf5vecw8yjdbj"
+
+[node name="on_block_combo_p2" type="Node" parent="state_machine"]
+script = ExtResource("29_axnuv")
+metadata/_custom_type_script = "uid://x4ss2v74tws0"
+
+[node name="on_air_hit_p2" type="Node" parent="state_machine"]
+script = ExtResource("30_6h3t1")
+metadata/_custom_type_script = "uid://xb5nl5t6lk5r"
+
+[node name="on_air_hit_combo_p2" type="Node" parent="state_machine"]
+script = ExtResource("31_qdrf4")
+metadata/_custom_type_script = "uid://b5gjprsl0wp4q"
+
+[node name="on_air_block_p2" type="Node" parent="state_machine"]
+script = ExtResource("32_4vuwg")
+metadata/_custom_type_script = "uid://c02gyui5fjcn7"
+
+[node name="on_air_block_combo_p2" type="Node" parent="state_machine"]
+script = ExtResource("33_04wbj")
+metadata/_custom_type_script = "uid://vjnt1r63br4v"
+
+[node name="on_sweep_p2" type="Node" parent="state_machine"]
+script = ExtResource("34_wlxdb")
+metadata/_custom_type_script = "uid://cgkju10pl8ef1"
+
+[node name="get_up_p2" type="Node" parent="state_machine"]
+script = ExtResource("35_83kub")
+metadata/_custom_type_script = "uid://bbb1vu6i2ye6f"
+
+[node name="player_input_component" type="Node" parent="."]
+script = ExtResource("36_en1ka")
+
+[node name="hitbox_manager" type="Node2D" parent="."]
+script = ExtResource("37_qp2o7")
+metadata/_custom_type_script = "uid://cqrgw4ymsbrr0"
+
+[node name="high_hit_manager" type="Node2D" parent="hitbox_manager"]
+script = ExtResource("38_xp5mr")
+metadata/_custom_type_script = "uid://bfu4ky4oduc73"
+
+[node name="mid_hit_manager" type="Node2D" parent="hitbox_manager"]
+script = ExtResource("39_ggwkh")
+metadata/_custom_type_script = "uid://bthjc4scmjjj7"
+
+[node name="low_hit_manager" type="Node2D" parent="hitbox_manager"]
+script = ExtResource("40_qwahc")
+metadata/_custom_type_script = "uid://b6e6dhpqrspvr"
+
+[node name="hurtbox_manager" type="Node2D" parent="."]
+script = ExtResource("41_dsfgo")
+metadata/_custom_type_script = "uid://dg1evxmcfxq2h"
+
+[node name="air_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
+script = ExtResource("42_hs7xa")
+metadata/_custom_type_script = "uid://bkm45ovcfudmt"
+
+[node name="ground_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
+script = ExtResource("43_hkpao")
+metadata/_custom_type_script = "uid://b4mae8uyki5vl"
+
+[node name="counter_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
+script = ExtResource("44_jq1wr")
+metadata/_custom_type_script = "uid://wcdguvpe3i15"

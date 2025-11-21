@@ -28,6 +28,11 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 character_selection=""
+char="its a char"
+p1_hitbox=""
+p2_hitbox=""
+p2_hurtbox=""
+p1_hurtbox=""
 
 [rendering]
 

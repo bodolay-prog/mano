@@ -1,4 +1,4 @@
-class_name on_sweep
+class_name on_sweep_p1
 extends P1State
 
 @export
