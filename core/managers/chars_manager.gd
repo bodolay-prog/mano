@@ -1,7 +1,7 @@
 extends Node2D
 
-var p1_scene: PackedScene = load(CharsGlobals.p1char_path)
-var p2_scene: PackedScene = load(CharsGlobals.p2char_path)
+var p1_scene: PackedScene = load(CharsGlobals.p1ryuchar_path)
+var p2_scene: PackedScene = load(CharsGlobals.p2kenchar_path)
 
 @export var charnode_path: NodePath
 

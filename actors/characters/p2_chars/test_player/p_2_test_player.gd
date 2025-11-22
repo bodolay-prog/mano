@@ -56,8 +56,8 @@ func _process(delta: float) -> void:
 	frame_counter()
 	
 	# Degub Lines
-	print("p2 health: ", health)
-	print("p2 sp: ", sp)
+	#print("p2 health: ", health)
+	#print("p2 sp: ", sp)
 	#print("p2: ", hurt_type)
 	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)
@@ -171,3 +171,34 @@ func _on_hitbox_manager_hit_check() -> void:
 	sp += 50
 	hit_buffer = 24
 	pass # Replace with function body.
+
+# Check Funcs
+
+@export var push_radius: float = 14.0
+
+func apply_push(other: Node2D, delta: float):
+	var offset = other.global_position - global_position
+
+	# distância real 2D (horizontal + vertical)
+	var dist = offset.length()
+	var min_dist = push_radius * 2.0
+
+	if dist == 0 or dist >= min_dist:
+		return
+
+	# Quanto está sobrepondo
+	var overlap = min_dist - dist
+
+	# Direção normalizada 2D
+	var dir = offset.normalized()
+
+	# MAS só empurramos na horizontal (igual jogos de luta)
+	var slide_x = dir.x
+
+	# Se estiver exatamente em cima (dir.x == 0), força um pequeno empurrão
+	if abs(slide_x) < 0.01:
+		slide_x = 1.0 if global_position.x < other.global_position.x else -1.0
+
+	# Aplica separação lateral suave
+	global_position.x -= slide_x * (overlap * 0.5)
+	other.global_position.x += slide_x * (overlap * 0.5)

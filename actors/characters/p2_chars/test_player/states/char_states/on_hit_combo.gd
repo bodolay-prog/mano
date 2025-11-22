@@ -23,7 +23,7 @@ var state_machine_path =$".."
 func enter() -> void:
 	super()
 	if state_machine_path.old_state == crouch_state:
-		animations_player.play("low_hurt")
+		animations_player.play("crouch_hurt")
 	parent.times_hited += 1
 	
 

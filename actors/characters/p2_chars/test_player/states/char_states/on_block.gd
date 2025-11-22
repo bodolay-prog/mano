@@ -54,7 +54,7 @@ var state_machine_path =$".."
 func enter() -> void:
 	super()
 	if state_machine_path.old_state == crouch_state:
-		animations_player.play("low_block")
+		animations_player.play("crouch_block")
 
 
 func process_input() -> P2State:	

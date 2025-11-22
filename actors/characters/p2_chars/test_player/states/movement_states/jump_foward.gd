@@ -67,6 +67,7 @@ func process_physics(delta: float) -> P2State:
 	if parent.velocity.y < 0:
 		parent.velocity.x = horizontal_jump_force
 	parent.move_and_slide()
+
 	
 	if !parent.is_on_floor():
 		if parent.get_hurt_type() == "high":

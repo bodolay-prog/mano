@@ -140,5 +140,16 @@ func _process(delta: float) -> void:
 
 	if p2 and p2.is_on_floor():
 		p2_is_on_right_side()
+		
+
+func _physics_process(delta):
+	
+	if p1:
+		p1.apply_push(p2, delta)
+		
+	if p2:
+		p2.apply_push(p1, delta)
+
+	
 
 	
