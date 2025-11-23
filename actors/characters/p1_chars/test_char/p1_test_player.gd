@@ -40,6 +40,7 @@ var block_stun_frames: int
 var hit_stun_frames: int
 var hurt_type : String
 var knockback: int
+var knockback_y: int
 var recovery_frames: int
 
 # Start Func

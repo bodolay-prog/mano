@@ -40,6 +40,7 @@ var block_stun_frames: int
 var hit_stun_frames: int
 var hurt_type : String
 var knockback: int
+var knockback_y: int
 var recovery_frames: int
 
 # Start Func
@@ -59,6 +60,7 @@ func _process(delta: float) -> void:
 	#print("p2 health: ", health)
 	#print("p2 sp: ", sp)
 	#print("p2: ", hurt_type)
+	print(motion)
 	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)
 	#print(hit)
@@ -85,7 +87,7 @@ func process_motion(motion_name, button) -> void:
 	
 	if motion_name == "hadouken":
 		if button == "L":
-			motion = ""
+			motion = "L_hadouken"
 		if button == "M":
 			motion = "M_hadouken"
 		if button == "H":

@@ -1,6 +1,10 @@
 class_name _j5_l_p1
 extends P1State
 
+# Char States
+@export
+var on_hit_state: P1State
+
 @export
 var _5j_L_state: P1State
 @export
@@ -36,8 +40,10 @@ var falling_state: P1State
 func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
-	
-	
+
+	if parent.get_hurt_type() == "counter":
+		return on_hit_state
+
 	if parent.hit_check() == "hit":
 		
 		if action_input_handler() == 'L':

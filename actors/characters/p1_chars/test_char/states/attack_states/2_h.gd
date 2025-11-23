@@ -1,6 +1,10 @@
 class_name _2_h_p1
 extends P1State
 
+# Char States
+@export
+var on_hit_state: P1State
+
 # Movement P1States
 @export
 var idle_state: P1State
@@ -34,7 +38,10 @@ var _2_H_P1State: P1State
 var _3_H_P1State: P1State
 
 func process_input() -> P1State:	
-	
+
+	if parent.get_hurt_type() == "counter":
+		return on_hit_state
+
 	if parent.hit_check() == "hit":
 		
 		if input_handler() == 7:

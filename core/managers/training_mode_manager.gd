@@ -23,12 +23,14 @@ var p1_hit_stun_frames
 var p1_attack_hurt_type
 var p1_attack_damage
 var p1_attack_knockback
+var p1_attack_knockback_y
 
 var p2_block_stun_frames: int
 var p2_hit_stun_frames
 var p2_attack_hurt_type
 var p2_attack_damage
 var p2_attack_knockback
+var p2_attack_knockback_y
 
 # Flip Chars Funcs
 func p1_is_on_right_side() -> void:
@@ -57,43 +59,51 @@ func p2_is_on_right_side() -> void:
 		
 		
 # Set infos Funcs
-func p1_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, hit_variant: String) -> void:
+func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
+
+	Hitstop.hitstop(0.05, 0.31)
 
 	p1_hit_stun_frames = block_stun_frames
 	p1_block_stun_frames = hit_stun_frames
 	p1_attack_damage = damage
 	p1_attack_knockback = knockback
+	p1_attack_knockback_y = knockback_y
 	p1_attack_hurt_type = hit_variant
 	
-	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
+	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback, knockback_y)
 	p2_update_health(damage)
 	
 	
-func p2_set_hit_info(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, hit_variant: String) -> void:
+func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
+	
+	Hitstop.hitstop(0.05, 0.31)
 	
 	p2_hit_stun_frames = block_stun_frames
 	p2_block_stun_frames = hit_stun_frames
 	p2_attack_damage = damage
 	p2_attack_knockback = knockback
+	p2_attack_knockback_y = knockback_y
 	p2_attack_hurt_type	 = hit_variant
 	
-	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback)
+	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback, knockback_y)
 	p1_update_healt(damage)
 
-func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
+func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int, knockback_y: int) -> void:
 	
 	p1.block_stun_frames = block_stun_frames
 	p1.hit_stun_frames = hit_stun_frames
 	p1.hurt_type = hurt_type
 	p1.knockback = knockback
+	p1.knockback_y = knockback_y
 
 		
-func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int) -> void:
+func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int, knockback_y: int) -> void:
 	
 	p2.block_stun_frames = block_stun_frames
 	p2.hit_stun_frames = hit_stun_frames
 	p2.hurt_type = hurt_type
 	p2.knockback = knockback
+	p2.knockback_y = knockback_y
 
 
 func _ready() -> void:
@@ -118,7 +128,7 @@ func _late_start():
 func update_info() -> void:
 	
 	attacklabel.value = p1_attack_hurt_type
-	if p1_block_stun_frames > 0:
+	if p1_block_stun_frames < 0:
 		frameslabel.value = p2.block_stun_frames
 	else: 
 		frameslabel.value = p2.hit_stun_frames
@@ -133,6 +143,8 @@ func p2_update_health(damage: int) -> void:
 	p2.health -= damage
 
 func _process(delta: float) -> void:
+	
+	print(p2_attack_knockback_y)
 	
 	update_info()
 	if p1 and p1.is_on_floor():

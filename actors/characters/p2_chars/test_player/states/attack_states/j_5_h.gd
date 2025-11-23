@@ -1,6 +1,10 @@
 class_name _j5_h_p2
 extends P2State
 
+# Char States
+@export
+var on_hit_state: P2State
+
 @export
 var _5j_L_state: P2State
 @export
@@ -34,6 +38,9 @@ var falling_state: P2State
 
 
 func process_physics(delta: float) -> P2State:
+
+	if parent.get_hurt_type() == "counter":
+		return on_hit_state
 	
 	if parent.hit_check() == "hit":
 		

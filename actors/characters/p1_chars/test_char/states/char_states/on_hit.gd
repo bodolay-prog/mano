@@ -60,6 +60,7 @@ func process_input() -> P1State:
 
 func process_physics(delta: float) -> P1State:
 	parent.velocity.y += gravity * delta
+	parent.velocity.y += parent.knockback_y
 	if parent.hit_stun_frames > 0:
 		parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1)
 	parent.move_and_slide()

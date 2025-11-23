@@ -1,6 +1,10 @@
 class_name _3_h_p2
 extends P2State
 
+# Char States
+@export
+var on_hit_state: P2State
+		
 # Movement P2States
 @export
 var idle_state: P2State
@@ -8,6 +12,9 @@ var idle_state: P2State
 var crouch_state: P2State
 
 func process_input() -> P2State:	
+
+	if parent.get_hurt_type() == "counter":
+		return on_hit_state
 		
 	await animations_player.animation_finished
 	

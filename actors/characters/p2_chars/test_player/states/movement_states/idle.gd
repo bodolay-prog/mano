@@ -44,6 +44,8 @@ var _2_M_P2State: P2State
 var _2_H_P2State: P2State
 @export
 var _3_H_P2State: P2State
+@export
+var tmk_l_state: P2State
 	
 func enter() -> void:
 	super()
@@ -54,6 +56,10 @@ func enter() -> void:
 func process_input() -> P2State:	
 	
 	if parent.is_on_floor():
+		
+		if parent.motion == "L_tatsumaki":
+			return tmk_l_state
+		
 		
 		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:
