@@ -11,7 +11,12 @@ var _5j_L_state: P2State
 var _5j_M_state: P2State
 @export
 var _5j_H_state: P2State
-
+@export
+var tmk_l_state: P2State
+@export
+var tmk_m_state: P2State
+@export
+var tmk_ex_state: P2State
 
 # Movement P1States
 @export
@@ -34,6 +39,7 @@ var dash_foward_state: P2State
 var dash_back_state: P2State
 @export
 var falling_state: P2State
+
 
 
 

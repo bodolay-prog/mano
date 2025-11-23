@@ -36,6 +36,19 @@ var _2_M_P2State: P2State
 var _2_H_P2State: P2State
 @export
 var _3_H_P2State: P2State
+@export
+var tmk_l_state: P2State
+@export
+var tmk_m_state: P2State
+@export
+var tmk_ex_state: P2State
+@export
+var srk_l_state: P2State
+@export
+var srk_m_state: P2State
+@export
+var srk_ex_state: P2State
+
 
 func process_input() -> P2State:	
 
@@ -43,6 +56,18 @@ func process_input() -> P2State:
 		return on_hit_state
 	
 	if parent.hit_check() == "hit":
+		
+		if parent.motion == "L_tatsumaki":
+			return tmk_l_state
+			
+		if parent.motion == "M_tatsumaki":
+			return tmk_m_state
+		
+		if parent.motion == "L_shoryuken":
+			return srk_l_state
+			
+		if parent.motion == "M_shoryuken":
+			return srk_m_state
 		
 		if input_handler() == 7:
 			return back_jump_state

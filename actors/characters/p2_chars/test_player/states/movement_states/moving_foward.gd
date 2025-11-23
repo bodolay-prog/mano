@@ -44,6 +44,13 @@ var _2_M_P2State: P2State
 var _2_H_P2State: P2State
 @export
 var _3_H_P2State: P2State
+@export
+var srk_l_state: P2State
+@export
+var srk_m_state: P2State
+@export
+var srk_ex_state: P2State
+
 
 var move_foward_speed: float = 300
 var move_foward_speed_right_side: float = -300
@@ -59,6 +66,12 @@ func enter() -> void:
 func process_input() -> P2State:	
 	
 	if parent.is_on_floor():
+		
+		if parent.motion == "L_shoryuken":
+			return srk_l_state
+			
+		if parent.motion == "M_shoryuken":
+			return srk_m_state
 		
 		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:

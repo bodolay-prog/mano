@@ -8,6 +8,8 @@ signal recovery_can_move()
 
 # Child nodes or P1 nodes vars
 @onready
+var special_manager: special_hit = $hitbox_manager/special_hit_manager
+@onready
 var animations_player: AnimationPlayer = $animation_player
 @onready
 var state_machine: Node = $state_machine

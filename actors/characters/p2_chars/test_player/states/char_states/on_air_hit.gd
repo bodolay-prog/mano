@@ -27,14 +27,13 @@ var state_machine =$".."
 func enter() -> void:
 	super()
 	parent.velocity.y = -250
+	parent.velocity.y += parent.knockback_y
 	parent.times_hited += 1
 	
 
 func process_physics(delta: float) -> P2State:
 
 	parent.velocity.y += gravity * delta + (parent.times_hited * 1.25)
-	if parent.knockback_y > 0:	
-		parent.velocity.y += parent.knockback_y
 	if parent.hit_stun_frames > 0:
 		parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1)
 	parent.move_and_slide()

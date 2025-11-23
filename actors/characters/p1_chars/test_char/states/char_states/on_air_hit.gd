@@ -5,6 +5,10 @@ extends P1State
 @export
 var on_air_hit_combo_state: P1State
 @export
+var on_hit_state: P1State
+@export
+var on_hit_combo_state:P1State
+@export
 var on_sweep_state: P1State
 @export
 var on_launcher_state: P1State
@@ -26,14 +30,16 @@ var state_machine =$".."
 
 func enter() -> void:
 	super()
-	parent.velocity.y = -250
+	if state_machine.old_state != on_hit_state or state_machine.old_state != on_hit_combo_state:
+		parent.velocity.y = -250
+	if state_machine.old_state != on_hit_state or state_machine.old_state != on_hit_combo_state:
+		parent.velocity.y += parent.knockback_y
 	parent.times_hited += 1
 	
 
 func process_physics(delta: float) -> P1State:
 
 	parent.velocity.y += gravity * delta + (parent.times_hited * 1.25)
-	parent.velocity.y += parent.knockback_y
 	parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1) * 0.55
 	parent.move_and_slide()
 	
