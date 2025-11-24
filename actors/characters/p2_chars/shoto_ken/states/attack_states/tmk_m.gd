@@ -21,7 +21,7 @@ func enter() -> void:
 	parent.motion = " "
 	special.hit_stun_frames = 20
 	special.block_stun_frames = 10
-	special.knockback = 150
+	special.knockback = 325
 	special.knockback_y = -330
 
 func process_input() -> P2State:	

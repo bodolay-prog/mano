@@ -59,7 +59,7 @@ func p2_is_on_right_side() -> void:
 # Set infos Funcs
 func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
 
-	Hitstop.hitstop(0.05, 0.35)
+	Hitstop.hitstop(0.05, 0.25)
 
 	p1_hit_stun_frames = block_stun_frames
 	p1_block_stun_frames = hit_stun_frames
@@ -74,7 +74,7 @@ func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, 
 	
 func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
 	
-	Hitstop.hitstop(0.05, 0.35)
+	Hitstop.hitstop(0.05, 0.25)
 	
 	p2_hit_stun_frames = block_stun_frames
 	p2_block_stun_frames = hit_stun_frames
