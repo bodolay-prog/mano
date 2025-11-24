@@ -1,0 +1,300 @@
+[gd_scene load_steps=4 format=3 uid="uid://bne32dksv6mbt"]
+
+[ext_resource type="Script" uid="uid://5oykx66gk2hi" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Script" uid="uid://bo3xrdfnsnag0" path="res://video.gd" id="2_jix8l"]
+[ext_resource type="Script" uid="uid://yja6ehrmry0a" path="res://audio.gd" id="3_glbon"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("menu", "main_settings", "audio_settings", "video_settings", "settings_button", "back_button", "video_button", "audio_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+menu = NodePath("Menu")
+main_settings = NodePath("Settings")
+audio_settings = NodePath("Audio")
+video_settings = NodePath("Video")
+settings_button = NodePath("Menu/Control3/Settings")
+back_button = NodePath("Back")
+video_button = NodePath("Settings/Control2/Video")
+audio_button = NodePath("Settings/Control/Audio")
+quit_button = NodePath("Menu/Control4/Button")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="2 Players" type="Button" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 15.5)
+text = "2 Players"
+
+[node name="Control2" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 0
+
+[node name="1 Player" type="Button" parent="Menu/Control2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 15.5)
+text = "1 Player"
+
+[node name="Control3" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Settings" type="Button" parent="Menu/Control3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 15.5)
+text = "Settings"
+
+[node name="Control4" type="Control" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Button" type="Button" parent="Menu/Control4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 15.5)
+text = "Exit"
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -35.0
+offset_right = 50.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Audio" type="Button" parent="Settings/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Áudio"
+
+[node name="Control2" type="Control" parent="Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Video" type="Button" parent="Settings/Control2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Vídeo"
+
+[node name="Video" type="VBoxContainer" parent="." node_paths=PackedStringArray("resolution_option", "fullscreen_check", "borderless_check", "vsync_check")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -75.0
+offset_right = 82.5
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_jix8l")
+resolution_option = NodePath("Resolucao/Resolucao")
+fullscreen_check = NodePath("TelaCheia/TelaCheia")
+borderless_check = NodePath("SemBorda/SemBorda")
+vsync_check = NodePath("VSync/SemBorda")
+
+[node name="Label" type="Label" parent="Video"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Vídeo"
+horizontal_alignment = 1
+
+[node name="Resolucao" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/Resolucao"]
+layout_mode = 2
+text = "Resolução"
+
+[node name="Resolucao" type="OptionButton" parent="Video/Resolucao"]
+layout_mode = 2
+
+[node name="TelaCheia" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/TelaCheia"]
+layout_mode = 2
+text = "Tela Cheia"
+
+[node name="TelaCheia" type="CheckBox" parent="Video/TelaCheia"]
+layout_mode = 2
+
+[node name="SemBorda" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/SemBorda"]
+layout_mode = 2
+text = "Sem Borda"
+
+[node name="SemBorda" type="CheckBox" parent="Video/SemBorda"]
+layout_mode = 2
+
+[node name="VSync" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Video/VSync"]
+layout_mode = 2
+text = "VSync"
+
+[node name="SemBorda" type="CheckBox" parent="Video/VSync"]
+layout_mode = 2
+
+[node name="Audio" type="VBoxContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -75.0
+offset_right = 97.5
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_glbon")
+master_slider = NodePath("HBoxContainer/Master")
+music_slider = NodePath("HBoxContainer2/Music")
+sfx_slider = NodePath("HBoxContainer3/SFX")
+
+[node name="Label" type="Label" parent="Audio"]
+layout_mode = 2
+text = "Áudio"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer2"]
+layout_mode = 2
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer3"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="Audio/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 400.0
+offset_top = 449.0
+offset_right = 445.0
+offset_bottom = 480.0
+text = "Back"
