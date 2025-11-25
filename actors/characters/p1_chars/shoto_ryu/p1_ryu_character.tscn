@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://ofq3cw5bvhg2"]
+[gd_scene load_steps=101 format=3 uid="uid://ofq3cw5bvhg2"]
 
 [ext_resource type="Script" uid="uid://dbv6bptpobnax" path="res://actors/characters/p1_chars/shoto_ryu/p_1_ryu_character.gd" id="1_nwdry"]
 [ext_resource type="Texture2D" uid="uid://3vtojaj2ir7t" path="res://actors/characters/p1_chars/shoto_ryu/sprites/ryu 21x21.png" id="2_eeord"]
@@ -44,6 +44,7 @@
 [ext_resource type="Script" uid="uid://cjsipyil8p3t5" path="res://actors/characters/p1_chars/shoto_ryu/core/hurtbox_managers/air_hurtbox_manager.gd" id="42_s5bnd"]
 [ext_resource type="Script" uid="uid://c6cak7nxylmkn" path="res://actors/characters/p1_chars/shoto_ryu/core/hurtbox_managers/ground_hurtbox_manager.gd" id="43_fp1lc"]
 [ext_resource type="Script" uid="uid://drmt0wu5a37bm" path="res://actors/characters/p1_chars/shoto_ryu/core/hurtbox_managers/counter_hurtbox_manager.gd" id="44_67lc0"]
+[ext_resource type="PackedScene" uid="uid://bvmomwu6l5q8v" path="res://hud/healthbar/HealthBarP1.tscn" id="45_s5bnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od1wh"]
 
@@ -10420,6 +10421,8 @@ debug_color = Color(0, 0, 1, 0.41960785)
 position = Vector2(10, 26)
 shape = SubResource("RectangleShape2D_y5yjc")
 debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="health" parent="." instance=ExtResource("45_s5bnd")]
 
 [connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]

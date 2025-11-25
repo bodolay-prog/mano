@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://b87q0btamrnrn"]
+[gd_scene load_steps=109 format=3 uid="uid://b87q0btamrnrn"]
 
 [ext_resource type="Script" uid="uid://c0ebp0vcrwp" path="res://actors/characters/p2_chars/shoto_ken/p_2_ken_character.gd" id="1_5pegb"]
 [ext_resource type="Texture2D" uid="uid://bvqstd7m8eg4u" path="res://actors/characters/p2_chars/shoto_ken/sprites/ken 21x20 real.png" id="2_5pegb"]
@@ -51,6 +51,7 @@
 [ext_resource type="Script" uid="uid://detyofuyi4l17" path="res://actors/characters/p2_chars/shoto_ken/core/hurtbox_managers/air_hurtbox_manager.gd" id="42_kh5oh"]
 [ext_resource type="Script" uid="uid://cxmhvc78ai05c" path="res://actors/characters/p2_chars/shoto_ken/core/hurtbox_managers/ground_hurtbox_manager.gd" id="43_13ryg"]
 [ext_resource type="Script" uid="uid://csa0ckd0plhuh" path="res://actors/characters/p2_chars/shoto_ken/core/hurtbox_managers/counter_hurtbox_manager.gd" id="44_bn6v5"]
+[ext_resource type="PackedScene" uid="uid://cyaxkx7ajs3k8" path="res://hud/healthbar/HealthBarP2.tscn" id="52_k6smb"]
 
 [sub_resource type="Animation" id="Animation_keend"]
 resource_name = "2_h"
@@ -11166,6 +11167,8 @@ debug_color = Color(0, 0, 1, 0.41960785)
 position = Vector2(9.5, 23)
 shape = SubResource("RectangleShape2D_a4q6o")
 debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="health" parent="." instance=ExtResource("52_k6smb")]
 
 [connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]

@@ -14,6 +14,8 @@ var knockbacklabel: attackdata = $"../control_layer/control_training/data/labels
 
 var p1:P1Character 
 var p2:P2Character
+var health_p1
+var health_p2
 
 
 var p1_block_stun_frames: int 
@@ -116,10 +118,12 @@ func _late_start():
 	# conecta os hitboxes
 	if p1:
 		var p1_hitbox_manager = p1.get_node("hitbox_manager")
+		health_p1 = p1.get_node("health/CanvasLayer/health_bar")
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
 
 	if p2:
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
+		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 
 func update_info() -> void:
@@ -134,9 +138,12 @@ func update_info() -> void:
 	
 	
 func p1_update_healt(damage: int) -> void:
+	health_p1._set_health(p1.health - damage)
 	p1.health -= damage
+
 	
 func p2_update_health(damage: int) -> void:
+	health_p2._set_health(p2.health - damage)
 	p2.health -= damage
 
 func _process(delta: float) -> void:

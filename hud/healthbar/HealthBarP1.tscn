@@ -1,0 +1,182 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvmomwu6l5q8v"]
+
+[ext_resource type="Script" uid="uid://cho44x8edrqnc" path="res://hud/healthbar/control.gd" id="1_gkwbf"]
+[ext_resource type="Texture2D" uid="uid://cmgpbabxuysuv" path="res://assets/icons/portraits/ken_port.png" id="2_cqc80"]
+[ext_resource type="Script" uid="uid://d2wkvk8hijwu" path="res://hud/healthbar/health_bar.gd" id="3_4k45s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncnku"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13f3j"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.17254902, 0.69411767, 0.58431375, 1)
+skew = Vector2(1, 0)
+border_color = Color(0, 0, 0, 0)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ohk1"]
+bg_color = Color(0.17283267, 0.17283267, 0.17283258, 1)
+skew = Vector2(1, 0)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.27450982)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp02r"]
+bg_color = Color(0.19607843, 0.19607843, 0.19607843, 0)
+skew = Vector2(1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k45s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncnku"]
+bg_color = Color(0, 0.6784314, 0.91764706, 1)
+expand_margin_left = 3.0
+shadow_color = Color(0, 0, 0, 0.27450982)
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ohk1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nrhu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjy55"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pisu"]
+bg_color = Color(0.6431373, 0.5411765, 0.81960785, 0)
+border_width_right = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gkwbf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="char_portrait" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(25.000002, 27)
+scale = Vector2(0.38899997, 0.40661818)
+texture = ExtResource("2_cqc80")
+
+[node name="health_bar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+offset_left = 58.0
+offset_top = 32.0
+offset_right = 598.0
+offset_bottom = 50.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ncnku")
+theme_override_styles/fill = SubResource("StyleBoxFlat_13f3j")
+value = 60.0
+show_percentage = false
+script = ExtResource("3_4k45s")
+
+[node name="damage_bar" type="ProgressBar" parent="CanvasLayer/health_bar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_6ohk1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dp02r")
+value = 80.0
+show_percentage = false
+
+[node name="timer" type="Timer" parent="CanvasLayer/health_bar"]
+wait_time = 0.2
+one_shot = true
+
+[node name="name_char" type="Label" parent="CanvasLayer/health_bar"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 20.0
+offset_right = 25.0
+offset_bottom = 43.0
+text = "Ken"
+horizontal_alignment = 1
+
+[node name="sp_bar" type="ProgressBar" parent="CanvasLayer/health_bar"]
+z_index = 2
+layout_mode = 0
+offset_left = -22.0
+offset_top = 620.0
+offset_right = 178.0
+offset_bottom = 640.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_4k45s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ncnku")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="backbround" type="ProgressBar" parent="CanvasLayer/health_bar/sp_bar"]
+z_index = 4
+layout_mode = 0
+offset_left = -4.0
+offset_right = 199.0
+offset_bottom = 20.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_6ohk1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3nrhu")
+value = 100.0
+show_percentage = false
+
+[node name="sp_250" type="ProgressBar" parent="CanvasLayer/health_bar/sp_bar"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_tjy55")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2pisu")
+value = 100.0
+show_percentage = false
+
+[node name="sp_500" type="ProgressBar" parent="CanvasLayer/health_bar/sp_bar"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_tjy55")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2pisu")
+value = 100.0
+show_percentage = false
+
+[node name="sp_750" type="ProgressBar" parent="CanvasLayer/health_bar/sp_bar"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_tjy55")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2pisu")
+value = 100.0
+show_percentage = false
+
+[connection signal="timeout" from="CanvasLayer/health_bar/timer" to="CanvasLayer/health_bar" method="_on_timer_timeout"]
