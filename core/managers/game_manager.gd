@@ -5,6 +5,9 @@ var charnode = $"../chars"
 
 var p1:P1Character 
 var p2:P2Character
+var health_p1
+var health_p2
+
 
 var p1_block_stun_frames: int 
 var p1_hit_stun_frames
@@ -49,7 +52,7 @@ func p2_is_on_right_side() -> void:
 # Set infos Funcs
 func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
 
-	Hitstop.hitstop(0.05, 0.31)
+	Hitstop.hitstop(0.05, 0.25)
 
 	p1_hit_stun_frames = block_stun_frames
 	p1_block_stun_frames = hit_stun_frames
@@ -64,7 +67,7 @@ func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, 
 	
 func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
 	
-	Hitstop.hitstop(0.05, 0.31)
+	Hitstop.hitstop(0.05, 0.25)
 	
 	p2_hit_stun_frames = block_stun_frames
 	p2_block_stun_frames = hit_stun_frames
@@ -83,7 +86,6 @@ func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : 
 	p1.hurt_type = hurt_type
 	p1.knockback = knockback
 	p1.knockback_y = knockback_y
-
 		
 func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int, knockback_y: int) -> void:
 	
@@ -107,16 +109,21 @@ func _late_start():
 	# conecta os hitboxes
 	if p1:
 		var p1_hitbox_manager = p1.get_node("hitbox_manager")
+		health_p1 = p1.get_node("health/CanvasLayer/health_bar")
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
 
 	if p2:
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
+		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 
 func p1_update_healt(damage: int) -> void:
+	health_p1._set_health(p1.health - damage)
 	p1.health -= damage
+
 	
 func p2_update_health(damage: int) -> void:
+	health_p2._set_health(p2.health - damage)
 	p2.health -= damage
 
 func _process(delta: float) -> void:

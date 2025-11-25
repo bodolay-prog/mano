@@ -9691,10 +9691,12 @@ shape = SubResource("RectangleShape2D_0ybgc")
 debug_color = Color(0, 0, 0, 0.41960785)
 
 [node name="collsion_head" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-13, -39)
 polygon = PackedVector2Array(19, 30, 0, -10, -19, 30)
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-15, 20.5)
 shape = SubResource("RectangleShape2D_llaba")
 debug_color = Color(0.3372549, 0, 1, 0.41960785)

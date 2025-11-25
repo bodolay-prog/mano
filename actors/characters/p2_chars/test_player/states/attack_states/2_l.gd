@@ -64,10 +64,20 @@ func process_input() -> P2State:
 		if parent.motion == "M_tatsumaki":
 			return tmk_m_state
 		
+		if parent.motion == "H_tatsumaki":
+			if parent.sp >= 250:
+				return tmk_ex_state
+			return tmk_m_state
+			
 		if parent.motion == "L_shoryuken":
 			return srk_l_state
 			
 		if parent.motion == "M_shoryuken":
+			return srk_m_state
+			
+		if parent.motion == "H_shoryuken":
+			if parent.sp >= 250:
+				return srk_ex_state
 			return srk_m_state
 		
 		if input_handler() == 1 or input_handler() == 2:
