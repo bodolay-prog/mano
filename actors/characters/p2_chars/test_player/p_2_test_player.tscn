@@ -6236,7 +6236,6 @@ shape = SubResource("RectangleShape2D_3dtab")
 disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="ender_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_ender_hit_signal"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]
 [connection signal="area_entered" from="hitbox_manager/high_hit_manager/j5_L" to="hitbox_manager/high_hit_manager" method="_on_j_5_l_area_entered"]

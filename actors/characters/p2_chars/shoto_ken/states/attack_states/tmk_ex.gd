@@ -21,7 +21,7 @@ func enter() -> void:
 	parent.velocity.x = 0
 	parent.position.y += -3
 	parent.motion = " "
-	special.hit_stun_frames = 20
+	special.hit_stun_frames = 45
 	special.block_stun_frames = 10
 	special.knockback = 50
 	special.knockback_y = 0

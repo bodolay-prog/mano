@@ -172,7 +172,8 @@ func hit_check() -> String:
 
 func _on_hitbox_manager_hit_check() -> void:
 	hit = "hit"
-	sp += 50
+	if sp < 1000:
+		sp += 50
 	hit_buffer = 24
 	
 	pass # Replace with function body.
