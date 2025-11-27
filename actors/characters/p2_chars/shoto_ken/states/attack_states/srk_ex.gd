@@ -16,8 +16,8 @@ var special: special_hit = $"../../hitbox_manager/special_hit_manager"
 
 func enter() -> void:
 	super()
-	animations_player.set_deferred("Speed Scale", 0.55)
-	parent.sp -= 250
+	animations_player.set_deferred("Speed Scale", 0.65)
+	parent.sp += - 500
 	parent.velocity.x = 20
 	parent.velocity.y = -350
 	parent.motion = " "

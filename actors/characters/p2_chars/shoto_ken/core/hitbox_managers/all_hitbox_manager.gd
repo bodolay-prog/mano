@@ -1,5 +1,7 @@
 extends hitbox_manager
 
+func  _ready() -> void:
+	connect("hdk_signal_p2", hit_signal_emit)
 
 func _on_high_hit_manager_high_hit_signal(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int) -> void:
 	hit_signal_emit(block_stun_frames, hit_stun_frames, damage, knockback, 0, "high")
@@ -29,3 +31,4 @@ func _on_low_hit_manager_sweep_hit_signal(block_stun_frames: int, hit_stun_frame
 func _on_special_hit_manager_special_hit_signal(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int) -> void:
 	hit_signal_emit(block_stun_frames, hit_stun_frames, damage, knockback, knockback_y, "mid")
 	pass # Replace with function body.
+	

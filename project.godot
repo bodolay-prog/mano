@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameState="*res://GameState.gd"
 CharsGlobals="*res://core/globals/chars_globals.gd"
 Hitstop="*res://core/globals/hitstop.gd"
+SpecialSignal="*res://core/combat/signals/special_signal.gd"
 
 [display]
 

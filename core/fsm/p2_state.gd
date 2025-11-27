@@ -18,6 +18,7 @@ func enter() -> void:
 	
 func exit() -> void:
 	parent.hurt_type = ""
+	parent.motion = " "
 	parent.animations_player.set_deferred("Speed Scale", 0.45)
 
 func process_input() -> P2State:
