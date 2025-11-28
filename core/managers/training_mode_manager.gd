@@ -152,6 +152,8 @@ func p2_update_health() -> void:
 
 func _process(delta: float) -> void:
 	
+	print(p2_attack_knockback)
+	
 	update_info()
 	if p1 and p1.is_on_floor():
 		p1_is_on_right_side()

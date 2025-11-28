@@ -30,21 +30,19 @@ func start_hadouken() -> void:
 
 func def_hadouken() -> void:
 	
-	hdk_instance.velo = 500
+	hdk_instance.velo = 500 * (-1 if parent.on_right_side else 1)
 	hdk_instance.pos = hdk_pos.global_position
 	hdk_instance.block_stun_frames = 30
 	hdk_instance.hit_stun_frames = 36
 	hdk_instance.damage = 250
+	hdk_instance.knockback = 150 
+	hdk_instance.knockback_y = -200
 	
 	if parent.on_right_side:
 		hdk_instance.direction = -1
 	else:
 		hdk_instance.direction =  1
 		
-	hdk_instance.knockback = 150 * (1 if parent.on_right_side else -1)
-	hdk_instance.knockback_y = -200
-	
-
 
 func process_input() -> P2State:	
 

@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 	#print("p2 health: ", health)
 	#print("p2 sp: ", sp)
 	#print("p2: ", hurt_type)
-	print(motion)
+	#print(motion)
 	#print("p2 lt: ", launched_times)
 	#print(hit_buffer)
 	#print(hit)
@@ -75,8 +75,8 @@ func _process(delta: float) -> void:
 	#print("attack input: " + str(player_input_component.attack_inputs()))
 	#if is_on_floor():
 		#print("chão")
-	print("State: " +str($state_machine.old_state))
-	print("State: " +str($state_machine.current_state))
+	#print("State: " +str($state_machine.old_state))
+	#print("State: " +str($state_machine.current_state))
 	
 	return 
 	
