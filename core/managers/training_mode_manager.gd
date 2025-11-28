@@ -71,7 +71,6 @@ func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, 
 	p1_attack_hurt_type = hit_variant
 	
 	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback, knockback_y)
-	p2_update_health(damage)
 	
 	
 func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
@@ -86,7 +85,6 @@ func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, 
 	p2_attack_hurt_type	 = hit_variant
 	
 	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback, knockback_y)
-	p1_update_healt(damage)
 
 func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int, knockback_y: int) -> void:
 	
@@ -118,13 +116,19 @@ func _late_start():
 	# conecta os hitboxes
 	if p1:
 		var p1_hitbox_manager = p1.get_node("hitbox_manager")
+		p1.connect("hurt",p1_update_health)
+		p1.connect("hurt", p2.set_sp)
 		health_p1 = p1.get_node("health/CanvasLayer/health_bar")
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
-
+		CharsGlobals.p1hitboxall = p1_hitbox_manager
+		
 	if p2:
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
+		p2.connect("hurt", p2_update_health)
+		p2.connect("hurt", p1.set_sp)
 		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
+		CharsGlobals.p2hitboxall = p2_hitbox_manager
 
 func update_info() -> void:
 	
@@ -137,14 +141,14 @@ func update_info() -> void:
 	knockbacklabel.value = p1_attack_knockback
 	
 	
-func p1_update_healt(damage: int) -> void:
-	health_p1._set_health(p1.health - damage)
-	p1.health -= damage
+func p1_update_health() -> void:
+	health_p1._set_health(p1.health - p2_attack_damage)
+	p1.health -= p2_attack_damage
 
 	
-func p2_update_health(damage: int) -> void:
-	health_p2._set_health(p2.health - damage)
-	p2.health -= damage
+func p2_update_health() -> void:
+	health_p2._set_health(p2.health - p1_attack_damage)
+	p2.health -= p1_attack_damage
 
 func _process(delta: float) -> void:
 	

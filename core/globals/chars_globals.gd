@@ -9,6 +9,12 @@ var p2kenchar_path: String = "res://actors/characters/p2_chars/shoto_ken/p2_ken_
 
 
 @onready
-var p2char_scene: PackedScene = load(p1ryuchar_path)
+var p1char_scene: PackedScene = load(p1ryuchar_path)
 @onready
-var p1char_scene: PackedScene = load(p2kenchar_path)
+var p2char_scene: PackedScene = load(p2kenchar_path)
+
+var p1: P1Character
+var p2: P2Character
+
+var p1hitboxall: hitbox_manager 
+var p2hitboxall: hitbox_manager 

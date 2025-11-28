@@ -1,0 +1,161 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3tut48tp7e6o"]
+
+[ext_resource type="Script" uid="uid://c1phtg0u5omr8" path="res://core/combat/hadouken/hdk_bodyP2.gd" id="1_1f6m4"]
+[ext_resource type="Texture2D" uid="uid://da0dxo5igso1d" path="res://assets/icons/fx/ken 21x20.png" id="2_e2bcg"]
+
+[sub_resource type="Animation" id="Animation_kwulg"]
+resource_name = "hadouken"
+length = 0.23333667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hdk_body/sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [379, 380, 381, 382, 383, 384, 385]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hdk_body/sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hdk_body/hitbox_area/hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dyk8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hdk_body/sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [379]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hdk_body/sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hdk_body/hitbox_area/hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2mxax"]
+resource_name = "hit"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hdk_body/sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [389, 390, 391, 392]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hdk_body/sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hdk_body/hitbox_area/hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iugjr"]
+_data = {
+&"RESET": SubResource("Animation_dyk8r"),
+&"hadouken": SubResource("Animation_kwulg"),
+&"hit": SubResource("Animation_2mxax")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f6m4"]
+size = Vector2(87, 71)
+
+[node name="hadouken" type="Node2D"]
+
+[node name="animations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_iugjr")
+}
+speed_scale = 0.45
+
+[node name="hdk_body" type="CharacterBody2D" parent="."]
+script = ExtResource("1_1f6m4")
+
+[node name="sprites" type="Sprite2D" parent="hdk_body"]
+visible = false
+texture = ExtResource("2_e2bcg")
+hframes = 21
+vframes = 20
+frame = 379
+
+[node name="hitbox_area" type="Area2D" parent="hdk_body" groups=["p2_hitbox"]]
+
+[node name="hitbox" type="CollisionShape2D" parent="hdk_body/hitbox_area"]
+position = Vector2(-31.5, 51.5)
+shape = SubResource("RectangleShape2D_1f6m4")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[connection signal="area_entered" from="hdk_body/hitbox_area" to="hdk_body" method="_on_hitbox_area_area_entered"]

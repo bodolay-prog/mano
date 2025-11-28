@@ -26,6 +26,7 @@ var state_machine =$".."
 
 func enter() -> void:
 	super()
+	parent.hurt.emit()
 	parent.velocity.y = -250
 	parent.velocity.y += parent.knockback_y
 	parent.times_hited += 1

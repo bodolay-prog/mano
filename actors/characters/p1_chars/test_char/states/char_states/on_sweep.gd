@@ -4,6 +4,9 @@ extends P1State
 @export
 var idle_state: P1State
 
+func enter() -> void:
+	parent.hurt.emit()
+
 func process_input() -> P1State: 
 	parent.velocity.x = 0
 	parent.move_and_slide()

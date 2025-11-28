@@ -2,6 +2,7 @@ class_name P1Character
 extends CharacterBody2D
 
 # Signals
+signal hurt()
 signal hit_can_move()
 signal block_can_move()
 signal recovery_can_move()
@@ -57,8 +58,8 @@ func _process(delta: float) -> void:
 	
 	# Degub Lines
 	#print(knockback_y)
-	print("p1 health: ", health)
-	print("p1 sp: ", sp)
+	#print("p1 health: ", health)
+	#print("p1 sp: ", sp)
 	#print(times_hited)
 	#print("p1 lt: ", launched_times)
 	#print(knockback)

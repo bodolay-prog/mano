@@ -26,6 +26,7 @@ var state_machine =$".."
 
 func enter() -> void:
 	super()
+	parent.hurt.emit()
 	if state_machine.old_state != on_hit_state:
 		parent.velocity.y = -250
 	if state_machine.old_state != on_hit_state:

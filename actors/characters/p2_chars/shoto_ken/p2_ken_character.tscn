@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://b87q0btamrnrn"]
+[gd_scene load_steps=116 format=3 uid="uid://b87q0btamrnrn"]
 
 [ext_resource type="Script" uid="uid://c0ebp0vcrwp" path="res://actors/characters/p2_chars/shoto_ken/p_2_ken_character.gd" id="1_5pegb"]
 [ext_resource type="Texture2D" uid="uid://bvqstd7m8eg4u" path="res://actors/characters/p2_chars/shoto_ken/sprites/ken 21x20 real.png" id="2_5pegb"]
@@ -33,9 +33,12 @@
 [ext_resource type="Script" uid="uid://bj8spwld27kx4" path="res://actors/characters/p2_chars/test_player/states/char_states/on_hit.gd" id="26_trh82"]
 [ext_resource type="Script" uid="uid://gdnlejkpov41" path="res://actors/characters/p2_chars/test_player/states/char_states/on_hit_combo.gd" id="27_7eq1t"]
 [ext_resource type="Script" uid="uid://dd7sanyxdn5jv" path="res://actors/characters/p2_chars/shoto_ken/states/attack_states/srk_ex.gd" id="27_mw1l1"]
+[ext_resource type="Script" uid="uid://cwvepklf3vm4u" path="res://actors/characters/p2_chars/shoto_ken/states/attack_states/hdk_l.gd" id="28_1p0tn"]
 [ext_resource type="Script" uid="uid://cf5vecw8yjdbj" path="res://actors/characters/p2_chars/test_player/states/char_states/on_block.gd" id="28_jm17d"]
 [ext_resource type="Script" uid="uid://x4ss2v74tws0" path="res://actors/characters/p2_chars/test_player/states/char_states/on_block_combo.gd" id="29_axnuv"]
+[ext_resource type="Script" uid="uid://d1kmj2tl8udci" path="res://actors/characters/p2_chars/shoto_ken/states/attack_states/hdk_m.gd" id="29_c3ls2"]
 [ext_resource type="Script" uid="uid://xb5nl5t6lk5r" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_hit.gd" id="30_6h3t1"]
+[ext_resource type="Script" uid="uid://deqji53gosjxk" path="res://actors/characters/p2_chars/shoto_ken/states/attack_states/hdk_ex.gd" id="30_xga3s"]
 [ext_resource type="Script" uid="uid://b5gjprsl0wp4q" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_hit_combo.gd" id="31_qdrf4"]
 [ext_resource type="Script" uid="uid://c02gyui5fjcn7" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_block.gd" id="32_4vuwg"]
 [ext_resource type="Script" uid="uid://vjnt1r63br4v" path="res://actors/characters/p2_chars/test_player/states/char_states/on_air_block_combo.gd" id="33_04wbj"]
@@ -13128,7 +13131,7 @@ script = ExtResource("3_qgwv3")
 starting_state = NodePath("idle_p2")
 metadata/_custom_type_script = "uid://bk7vvg10ybr13"
 
-[node name="idle_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="idle_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("4_3mxwo")
 on_hit_state = NodePath("../on_hit_p2")
 on_block_state = NodePath("../on_block_p2")
@@ -13155,10 +13158,11 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "idle"
 metadata/_custom_type_script = "uid://dm5gy3cjr236g"
 
-[node name="moving_foward_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state")]
+[node name="moving_foward_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "idle_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_back_state", "dash_foward_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("5_t1rlp")
 on_hit_state = NodePath("../on_hit_p2")
 on_block_state = NodePath("../on_block_p2")
@@ -13184,6 +13188,8 @@ tmk_m_state = NodePath("../tmk_m")
 tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
+srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "move_foward"
 metadata/_custom_type_script = "uid://dk08tfxax7ejq"
 
@@ -13287,7 +13293,7 @@ _5_jH_P2State = NodePath("../_j5_h_p2")
 animation_name = "jump_neutral"
 metadata/_custom_type_script = "uid://qe01m0cxt28k"
 
-[node name="crouch_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "idle_state", "crouch_state", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="crouch_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "idle_state", "crouch_state", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("10_k6smb")
 on_hit_state = NodePath("../on_hit_p2")
 on_block_state = NodePath("../on_block_p2")
@@ -13310,6 +13316,7 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "crouch"
 metadata/_custom_type_script = "uid://cl4bu6qreby3n"
 
@@ -13339,7 +13346,7 @@ _5_jH_P2State = NodePath("../_j5_h_p2")
 animation_name = "falling"
 metadata/_custom_type_script = "uid://b6k66lokgmd6w"
 
-[node name="_5_l_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="_5_l_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("12_586fc")
 on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
@@ -13362,10 +13369,11 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "5_l"
 metadata/_custom_type_script = "uid://cvuwid0bhkx0f"
 
-[node name="_5_m_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="_5_m_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("13_1p0tn")
 on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
@@ -13388,10 +13396,11 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "5_m"
 metadata/_custom_type_script = "uid://cqqnmq2yeowhq"
 
-[node name="_5_h_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="_5_h_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("14_c3ls2")
 on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
@@ -13414,10 +13423,11 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "5_h"
 metadata/_custom_type_script = "uid://c3fl6d6dxxcdt"
 
-[node name="_2_l_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="_2_l_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("15_xga3s")
 on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
@@ -13440,10 +13450,11 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "2_l"
 metadata/_custom_type_script = "uid://svekvmwg54cb"
 
-[node name="_2_m_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="_2_m_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("16_f34uk")
 on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
@@ -13466,10 +13477,11 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "2_m"
 metadata/_custom_type_script = "uid://cuil7tqnpdss5"
 
-[node name="_2_h_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state")]
+[node name="_2_h_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state")]
 script = ExtResource("17_1ydx5")
 on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
@@ -13492,6 +13504,7 @@ tmk_ex_state = NodePath("../tmk_ex")
 srk_l_state = NodePath("../srk_l")
 srk_m_state = NodePath("../srk_m")
 srk_ex_state = NodePath("../srk_ex")
+hdk_l_state = NodePath("../hdk_l")
 animation_name = "2_h"
 metadata/_custom_type_script = "uid://cgec4smndq36w"
 
@@ -13606,6 +13619,22 @@ on_hit_state = NodePath("../on_hit_p2")
 idle_state = NodePath("../idle_p2")
 crouch_state = NodePath("../crouch_p2")
 animation_name = "srk_ex"
+metadata/_custom_type_script = "uid://4pnh2aflfuyd"
+
+[node name="hdk_l" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "idle_state", "crouch_state")]
+script = ExtResource("28_1p0tn")
+on_hit_state = NodePath("../on_hit_p2")
+idle_state = NodePath("../idle_p2")
+crouch_state = NodePath("../crouch_p2")
+animation_name = "hdk"
+metadata/_custom_type_script = "uid://4pnh2aflfuyd"
+
+[node name="hdk_m" type="Node" parent="state_machine"]
+script = ExtResource("29_c3ls2")
+metadata/_custom_type_script = "uid://4pnh2aflfuyd"
+
+[node name="hdk_ex" type="Node" parent="state_machine"]
+script = ExtResource("30_xga3s")
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="post_dash_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State")]
@@ -13983,6 +14012,9 @@ shape = SubResource("RectangleShape2D_a4q6o")
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="health" parent="." instance=ExtResource("52_k6smb")]
+
+[node name="hdk_pos" type="StaticBody2D" parent="."]
+position = Vector2(86, -60)
 
 [connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]

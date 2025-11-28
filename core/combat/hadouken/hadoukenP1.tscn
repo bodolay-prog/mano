@@ -8,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("hdk_body/sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,7 +20,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:visible")
+tracks/1/path = NodePath("hdk_body/sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -73,7 +73,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("hdk_body/sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -85,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:visible")
+tracks/1/path = NodePath("hdk_body/sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -137,7 +137,7 @@ length = 0.16667001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("hdk_body/sprite:frame")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -149,7 +149,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:visible")
+tracks/1/path = NodePath("hdk_body/sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -189,24 +189,23 @@ libraries = {
 }
 speed_scale = 0.45
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="hdk_body" type="CharacterBody2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("2_5eka8")
+
+[node name="sprite" type="Sprite2D" parent="hdk_body"]
 visible = false
+position = Vector2(0, -1)
 texture = ExtResource("1_1v2d0")
 hframes = 21
 vframes = 21
 frame = 397
 
-[node name="hdk_body" type="CharacterBody2D" parent="."]
-position = Vector2(0, 1)
-script = ExtResource("2_5eka8")
-
-[node name="hitbox_area" type="Area2D" parent="hdk_body"]
+[node name="hitbox_area" type="Area2D" parent="hdk_body" groups=["p1_hitbox"]]
 
 [node name="hitbox" type="CollisionShape2D" parent="hdk_body/hitbox_area"]
 position = Vector2(-18.5, 49)
 shape = SubResource("RectangleShape2D_h8lec")
 debug_color = Color(1, 0, 0, 0.41960785)
-
-[node name="test" type="CollisionShape2D" parent="hdk_body"]
 
 [connection signal="area_entered" from="hdk_body/hitbox_area" to="hdk_body" method="_on_hitbox_area_area_entered"]

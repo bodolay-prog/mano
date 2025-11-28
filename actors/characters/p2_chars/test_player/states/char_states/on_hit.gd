@@ -23,6 +23,7 @@ var knockback : float = -200
 	
 func enter() -> void:
 	super()
+	parent.hurt.emit()
 	if state_machine_path.old_state == crouch_state:
 		animations_player.play("crouch_hurt")
 	parent.times_hited += 1

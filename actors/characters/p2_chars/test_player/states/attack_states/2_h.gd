@@ -48,6 +48,12 @@ var srk_l_state: P2State
 var srk_m_state: P2State
 @export
 var srk_ex_state: P2State
+@export
+var hdk_l_state: P2State
+@export
+var hdk_m_state: P2State
+@export
+var hdk_ex_state: P2State
 
 
 func process_input() -> P2State:	
@@ -78,6 +84,17 @@ func process_input() -> P2State:
 			if parent.sp >= 250:
 				return srk_ex_state
 			return srk_m_state
+		
+		if parent.motion == "L_hadouken":
+			return hdk_l_state
+			
+		if parent.motion == "M_hadouken":
+			return hdk_m_state
+			
+		if parent.motion == "H_hadouken":
+			if parent.sp >= 250:
+				return hdk_ex_state
+			return hdk_m_state
 		
 		if input_handler() == 7:
 			return back_jump_state

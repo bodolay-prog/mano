@@ -1,5 +1,10 @@
 extends Node
 
-signal hadouken_hit_signal_p1(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, knockback_y: int)
-signal hadouken_hit_signal_p2(block_stun_frames: int, hit_stun_frames:int, damage: int, knockback: int, knockback_y: int)
-	
+
+var hdkp1_scene_path = "res://core/combat/hadouken/hadoukenP1.tscn"
+var hdkp2_scene_path = "res://core/combat/hadouken/hadoukenP2.tscn"
+
+@onready
+var hdkp1_scene: PackedScene = load(hdkp1_scene_path)
+@onready
+var hdkp2_scene: PackedScene = load(hdkp2_scene_path)

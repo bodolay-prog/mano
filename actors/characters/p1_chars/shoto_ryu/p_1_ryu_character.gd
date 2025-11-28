@@ -10,11 +10,14 @@ func _ready() -> void:
 	health_bar.set_things()
 	health_bar_config.init_health(self.health)
 	health_bar_config.init_sp(self.sp)
+
+	
+func set_sp() -> void:
+	sp += 50
+	health_bar_config._set_sp(sp)
 	
 func _on_hitbox_manager_hit_check() -> void:
 	hit = "hit"
-	sp += 50
-	health_bar_config._set_sp(sp)
 	hit_buffer = 24
 	
 	pass # Replace with function body.
