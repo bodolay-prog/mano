@@ -11,6 +11,10 @@ func _ready() -> void:
 	health_bar_config.init_health(self.health)
 	health_bar_config.init_sp(self.sp)
 	
+func _process(delta: float) -> void:
+	super(delta)
+	health_bar_config._set_sp(sp)	
+
 func set_sp() -> void:
 	sp += 50
 	health_bar_config._set_sp(sp)

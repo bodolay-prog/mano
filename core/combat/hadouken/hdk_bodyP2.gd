@@ -26,8 +26,12 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_hitbox_area_area_entered(area: Area2D) -> void:
+	
+	if area.is_in_group("wall"):
+		animation_player.play("hit")
+		velocity.x = 0
+	
 	if area.is_in_group("p1_hurtbox"):
-		print(knockback)
 		animation_player.play("hit")
 		velocity.x = 0
 		CharsGlobals.p2hitboxall.hit_signal_emit(block_stun_frames, hit_stun_frames, damage, knockback, knockback_y, "mid")

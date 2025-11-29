@@ -5,10 +5,11 @@ extends P2State
 @export
 var on_air_hit_state: P2State
 @export
+var on_hit_state: P2State
+@export
 var on_sweep_state: P2State
 @export
 var on_launcher_state: P2State
-
 
 #Movement P2States
 @export
@@ -26,15 +27,16 @@ var state_machine =$".."
 func enter() -> void:
 	super()
 	parent.hurt.emit()
-	parent.velocity.y = -250
-	parent.velocity.y += parent.knockback_y
+	if state_machine.old_state != on_hit_state:
+		parent.velocity.y = -250
+	if state_machine.old_state != on_hit_state:
+		parent.velocity.y += parent.knockback_y
 	parent.times_hited += 1
 
 func process_physics(delta: float) -> P2State:
 	
 	parent.velocity.y += gravity * delta + (parent.times_hited * 1.25)
-	if parent.hit_stun_frames > 0:
-		parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1)
+	parent.velocity.x = parent.knockback * (1 if parent.on_right_side else -1) * 0.55
 	parent.move_and_slide()
 	
 	if parent.get_hurt_type() == "high":

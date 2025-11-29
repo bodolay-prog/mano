@@ -44,6 +44,12 @@ var _2_M_P1State: P1State
 var _2_H_P1State: P1State
 @export
 var _3_H_P1State: P1State
+@export
+var tmk_l_state: P1State
+@export
+var tmk_m_state: P1State
+@export
+var tmk_ex_state: P1State
 
 var move_back_speed: float = 230
 var move_back_speed_right_side: float = -230
@@ -60,6 +66,16 @@ func process_input() -> P1State:
 		
 	if parent.is_on_floor():
 		
+		if parent.motion == "L_tatsumaki":
+			return tmk_l_state
+			
+		if parent.motion == "M_tatsumaki":
+			return tmk_m_state
+		
+		if parent.motion == "H_tatsumaki":
+			if parent.sp >= 500:
+				return tmk_ex_state
+			return tmk_m_state
 
 		if parent.get_hurt_type() == "mid":
 			if input_handler() == 1 or input_handler() == 4:

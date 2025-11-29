@@ -90,7 +90,7 @@ func process_motion(motion_name, button) -> void:
 	
 	if motion_name == "hadouken":
 		if button == "L":
-			motion = ""
+			motion = "L_hadouken"
 		if button == "M":
 			motion = "M_hadouken"
 		if button == "H":

@@ -36,6 +36,7 @@ p1_hitbox=""
 p2_hitbox=""
 p2_hurtbox=""
 p1_hurtbox=""
+wall=""
 
 [input]
 

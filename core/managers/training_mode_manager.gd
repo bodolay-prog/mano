@@ -121,6 +121,7 @@ func _late_start():
 		health_p1 = p1.get_node("health/CanvasLayer/health_bar")
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
 		CharsGlobals.p1hitboxall = p1_hitbox_manager
+		p1.sp = 1000
 		
 	if p2:
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
@@ -129,7 +130,8 @@ func _late_start():
 		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 		CharsGlobals.p2hitboxall = p2_hitbox_manager
-
+		p2.sp = 1000
+	
 func update_info() -> void:
 	
 	attacklabel.value = p1_attack_hurt_type

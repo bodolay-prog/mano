@@ -30,7 +30,7 @@ func start_hadouken() -> void:
 
 func def_hadouken() -> void:
 	
-	hdk_instance.velo = 500 * (-1 if parent.on_right_side else 1)
+	hdk_instance.velo = 250 * (-1 if parent.on_right_side else 1)
 	hdk_instance.pos = hdk_pos.global_position
 	hdk_instance.block_stun_frames = 30
 	hdk_instance.hit_stun_frames = 36

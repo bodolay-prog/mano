@@ -5,6 +5,7 @@ extends P1State
 var idle_state: P1State
 
 func enter() -> void:
+	super()
 	parent.hurt.emit()
 
 func process_input() -> P1State: 

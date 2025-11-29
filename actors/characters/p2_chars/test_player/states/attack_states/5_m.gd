@@ -71,7 +71,7 @@ func process_input() -> P2State:
 			return tmk_m_state
 		
 		if parent.motion == "H_tatsumaki":
-			if parent.sp >= 250:
+			if parent.sp >= 500:
 				return tmk_ex_state
 			return tmk_m_state
 			
@@ -82,7 +82,7 @@ func process_input() -> P2State:
 			return srk_m_state
 			
 		if parent.motion == "H_shoryuken":
-			if parent.sp >= 250:
+			if parent.sp >= 500:
 				return srk_ex_state
 			return srk_m_state
 			
@@ -93,7 +93,7 @@ func process_input() -> P2State:
 			return hdk_m_state
 			
 		if parent.motion == "H_hadouken":
-			if parent.sp >= 250:
+			if parent.sp >= 500:
 				return hdk_ex_state
 			return hdk_m_state
 		

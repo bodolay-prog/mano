@@ -1,36 +1,30 @@
-class_name srk_ex
-extends P2State
+class_name srk_m_p1
+extends P1State
 
 # Char States
 @export
-var on_hit_state: P2State
+var on_hit_state: P1State
 		
-# Movement P2States
+# Movement P1States
 @export
-var idle_state: P2State
+var idle_state: P1State
 @export 
-var crouch_state: P2State
+var crouch_state: P1State
 
 @onready
 var special: special_hit = $"../../hitbox_manager/special_hit_manager"
 
 func enter() -> void:
 	super()
-	animations_player.set_deferred("Speed Scale", 0.65)
-	parent.sp += - 500
-	parent.velocity.x = 20
-	parent.velocity.y = -350
+	parent.velocity.x = 0
+	parent.velocity.y += -350
 	parent.motion = " "
-	special.hit_stun_frames = 45
+	special.hit_stun_frames = 20
 	special.block_stun_frames = 10
-	special.knockback = 50
-	special.knockback_y = -185
-	special.ender_hit_stun_frames = 28
-	special.ender_block_stun_frames = 18
-	special.ender_knockback = 100
-	special.ender_knockback_y = -430
-	
-func process_input() -> P2State:	
+	special.knockback = 150
+	special.knockback_y = -300
+
+func process_input() -> P1State:	
 
 	parent.velocity.x = 30 * (-1 if parent.on_right_side else 1)
 	parent.move_and_slide()
@@ -47,7 +41,7 @@ func process_input() -> P2State:
 		
 	return
 	
-func process_physics(delta: float) -> P2State:
+func process_physics(delta: float) -> P1State:
 	
 	parent.velocity.y += gravity * delta 
 	parent.move_and_slide()
