@@ -1,6 +1,7 @@
 class_name idle_p2
 extends P2State
 
+
 #Char P2States
 @export
 var on_hit_state: P2State

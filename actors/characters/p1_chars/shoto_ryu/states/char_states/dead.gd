@@ -6,6 +6,7 @@ signal is_on_floor()
 
 func enter() -> void:
 	super()
+	animations_player.speed_scale = 0.20
 	parent.velocity.y += -350
 	parent.knockback = 70
 	
@@ -17,6 +18,7 @@ func process_physics(delta: float) -> P1State:
 	parent.move_and_slide()
 	
 	if !parent.is_on_floor():
+		animations_player.play("air_hit")
 		Hitstop.hitstop(0.05, 1)
 	
 	if parent.is_on_floor() and !is_dead_on_floor:
@@ -30,6 +32,8 @@ func process_physics(delta: float) -> P1State:
 		
 		
 	await is_on_floor
+	await animations_player.animation_finished
+	animations_player.active = false
 	parent.p1_dead.emit()
 	
 	return 

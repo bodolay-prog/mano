@@ -58,7 +58,7 @@ func process_physics(delta: float) -> P1State:
 	
 	await parent.block_can_move
 	
-	if parent.get_hit_variant() == "high_hit":
+	if parent.get_hurt_type() == "high_hit":
 		
 		if action_input_handler() == 'L':
 				return _5j_L_state

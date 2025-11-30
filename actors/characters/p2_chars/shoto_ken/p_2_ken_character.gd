@@ -1,7 +1,5 @@
 extends P2Character
 
-
-
 @onready var health_bar: HealthBarP2 = $health
 @onready var health_bar_config: HealthBarConfigP2 = $health/CanvasLayer/health_bar
 

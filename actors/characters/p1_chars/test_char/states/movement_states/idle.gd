@@ -1,6 +1,8 @@
 class_name idle_p1
 extends P1State
 
+var will_move: bool = false
+
 #Char P1States
 @export
 var on_hit_state: P1State

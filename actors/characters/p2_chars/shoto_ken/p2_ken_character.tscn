@@ -1,9 +1,10 @@
-[gd_scene load_steps=122 format=3 uid="uid://b87q0btamrnrn"]
+[gd_scene load_steps=123 format=3 uid="uid://b87q0btamrnrn"]
 
 [ext_resource type="Script" uid="uid://c0ebp0vcrwp" path="res://actors/characters/p2_chars/shoto_ken/p_2_ken_character.gd" id="1_5pegb"]
 [ext_resource type="Texture2D" uid="uid://bvqstd7m8eg4u" path="res://actors/characters/p2_chars/shoto_ken/sprites/ken 21x20 real.png" id="2_5pegb"]
 [ext_resource type="Script" uid="uid://bk7vvg10ybr13" path="res://core/fsm/p2_state_machine.gd" id="3_qgwv3"]
 [ext_resource type="Script" uid="uid://dm5gy3cjr236g" path="res://actors/characters/p2_chars/test_player/states/movement_states/idle.gd" id="4_3mxwo"]
+[ext_resource type="Script" uid="uid://cjs348e72epod" path="res://actors/characters/p2_chars/shoto_ken/start_game.gd" id="4_ranjl"]
 [ext_resource type="Script" uid="uid://dk08tfxax7ejq" path="res://actors/characters/p2_chars/test_player/states/movement_states/moving_foward.gd" id="5_t1rlp"]
 [ext_resource type="Script" uid="uid://bx7q8dd8he5sq" path="res://actors/characters/p2_chars/test_player/states/movement_states/moving_backward.gd" id="6_eora6"]
 [ext_resource type="Script" uid="uid://cjj7kf0cf883x" path="res://actors/characters/p2_chars/test_player/states/movement_states/jump_neutral.gd" id="7_kh5oh"]
@@ -13738,7 +13739,7 @@ _data = {
 size = Vector2(66, 93)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixh5m"]
-size = Vector2(20, 60)
+size = Vector2(20, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw1l1"]
 size = Vector2(45, 55)
@@ -13794,8 +13795,9 @@ size = Vector2(30, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4q6o"]
 size = Vector2(27, 52)
 
-[node name="P2_ken" type="CharacterBody2D" node_paths=PackedStringArray("dead_state", "win_state", "draw_state", "lose_state")]
+[node name="P2_ken" type="CharacterBody2D" node_paths=PackedStringArray("initial_state", "dead_state", "win_state", "draw_state", "lose_state")]
 script = ExtResource("1_5pegb")
+initial_state = NodePath("state_machine/idle_p2")
 dead_state = NodePath("state_machine/dead")
 win_state = NodePath("state_machine/win")
 draw_state = NodePath("state_machine/draw")
@@ -13803,6 +13805,7 @@ lose_state = NodePath("state_machine/lose")
 metadata/_custom_type_script = "uid://ceoevwepiivko"
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
+reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_3gtv5")
 }
@@ -13812,7 +13815,7 @@ speed_scale = 0.45
 texture = ExtResource("2_5pegb")
 hframes = 21
 vframes = 20
-frame = 39
+frame = 314
 
 [node name="sprites_vfx" type="Sprite2D" parent="."]
 visible = false
@@ -13821,7 +13824,7 @@ scale = Vector2(-1, 1)
 texture = ExtResource("2_5pegb")
 hframes = 21
 vframes = 20
-frame = 31
+frame = 408
 
 [node name="camera_area" type="Area2D" parent="." groups=["char"]]
 visible = false
@@ -13837,15 +13840,19 @@ position = Vector2(-6, -38)
 polygon = PackedVector2Array(19, 30, 0, -10, -19, 30)
 
 [node name="collsion" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-9, 21)
+position = Vector2(-9, 19)
 shape = SubResource("RectangleShape2D_ixh5m")
 debug_color = Color(0.33871302, 0, 1.0039216, 0.41960785)
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_qgwv3")
-starting_state = NodePath("idle_p2")
+starting_state = NodePath("start_game")
 metadata/_custom_type_script = "uid://bk7vvg10ybr13"
+
+[node name="start_game" type="Node" parent="state_machine"]
+script = ExtResource("4_ranjl")
+animation_name = "win_game"
+metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
 [node name="idle_p2" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P2State", "_5_M_P2State", "_5_H_P2State", "_2_L_P2State", "_2_M_P2State", "_2_H_P2State", "_3_H_P2State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state", "hdk_m_state", "hdk_ex_state")]
 script = ExtResource("4_3mxwo")
@@ -14719,6 +14726,7 @@ debug_color = Color(1, 0, 0, 0.41960785)
 [node name="srk_hitbox" type="CollisionShape2D" parent="hitbox_manager/special_hit_manager/srk_ender_area"]
 position = Vector2(30, -25)
 shape = SubResource("RectangleShape2D_7eq1t")
+disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="hurtbox_manager" type="Node2D" parent="."]
@@ -14735,7 +14743,6 @@ metadata/_custom_type_script = "uid://bkm45ovcfudmt"
 [node name="air_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/air_hurtbox_manager/air_hurtbox_area"]
 position = Vector2(-5.5, 7.5)
 shape = SubResource("RectangleShape2D_j0nq1")
-disabled = true
 debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="ground_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
@@ -14765,16 +14772,19 @@ metadata/_custom_type_script = "uid://wcdguvpe3i15"
 [node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(-11, 5)
 shape = SubResource("RectangleShape2D_k6smb")
+disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(-20, 28.5)
 shape = SubResource("RectangleShape2D_jh4f6")
+disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="body_hurtbox2" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(9.5, 23)
 shape = SubResource("RectangleShape2D_a4q6o")
+disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="health" parent="." instance=ExtResource("52_k6smb")]

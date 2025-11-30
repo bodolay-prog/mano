@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 # Signals
 signal hurt()
+signal is_ready()
+signal will_move()
+signal p1_lose()
 signal p1_dead()
 signal p1_win()
 signal hit_can_move()
@@ -10,6 +13,7 @@ signal block_can_move()
 signal recovery_can_move()
 
 # Child nodes or P1 nodes vars
+@export var initial_state: P1State
 @export var win_state: P1State
 @export var draw_state: P1State
 @export var dead_state: P1State
@@ -50,7 +54,16 @@ var knockback: int
 var knockback_y: int
 var recovery_frames: int
 
-# End game Funcs
+var start: bool = false
+
+# Start and End game Funcs
+func start_game() -> void:
+	
+	await GlobalSignals.timer3.timeout
+	if !start:
+		start = true
+		state_machine.change_state(initial_state)
+
 func win_game() -> void:
 	state_machine.change_state(win_state)
 	

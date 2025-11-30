@@ -23,7 +23,7 @@ func process_physics(delta: float) -> P2State:
 		
 		
 	await is_on_floor
-	parent.p2_dead.emit()
+	parent.p2_lose.emit()
 	
 	return 
 	

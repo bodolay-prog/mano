@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvmomwu6l5q8v"]
+[gd_scene load_steps=17 format=3 uid="uid://bvmomwu6l5q8v"]
 
 [ext_resource type="Script" uid="uid://cho44x8edrqnc" path="res://hud/healthbar/HealthBarP1.gd" id="1_gkwbf"]
 [ext_resource type="Texture2D" uid="uid://cmgpbabxuysuv" path="res://assets/icons/portraits/ken_port.png" id="2_cqc80"]
 [ext_resource type="Script" uid="uid://d2wkvk8hijwu" path="res://hud/healthbar/health_bar.gd" id="3_4k45s"]
+[ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="4_6ohk1"]
 [ext_resource type="PackedScene" uid="uid://5668nu77mvsq" path="res://ui/combohits/combo_hitsP1.tscn" id="4_ncnku"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncnku"]
@@ -12,7 +13,7 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.17254902, 0.69411767, 0.58431375, 1)
+bg_color = Color(0.7759656, 0.5557401, 0.13907355, 1)
 skew = Vector2(1, 0)
 border_color = Color(0, 0, 0, 0)
 shadow_color = Color(0, 0, 0, 0)
@@ -30,6 +31,9 @@ shadow_offset = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp02r"]
 bg_color = Color(0.19607843, 0.19607843, 0.19607843, 0)
 skew = Vector2(1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dp02r"]
+font = ExtResource("4_6ohk1")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k45s"]
 
@@ -84,7 +88,8 @@ offset_right = 598.0
 offset_bottom = 50.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_ncnku")
 theme_override_styles/fill = SubResource("StyleBoxFlat_13f3j")
-value = 60.0
+max_value = 1000.0
+value = 600.0
 show_percentage = false
 script = ExtResource("3_4k45s")
 
@@ -108,10 +113,11 @@ one_shot = true
 [node name="name_char" type="Label" parent="CanvasLayer/health_bar"]
 layout_mode = 0
 offset_left = -15.0
-offset_top = 20.0
+offset_top = 26.0
 offset_right = 25.0
-offset_bottom = 43.0
+offset_bottom = 49.0
 text = "Ken"
+label_settings = SubResource("LabelSettings_dp02r")
 horizontal_alignment = 1
 
 [node name="sp_bar" type="ProgressBar" parent="CanvasLayer/health_bar"]
@@ -182,7 +188,7 @@ show_percentage = false
 
 [node name="combo_hits" parent="CanvasLayer/health_bar" instance=ExtResource("4_ncnku")]
 layout_mode = 1
-offset_top = 85.0
-offset_bottom = 85.0
+offset_top = 91.0
+offset_bottom = 91.0
 
 [connection signal="timeout" from="CanvasLayer/health_bar/timer" to="CanvasLayer/health_bar" method="_on_timer_timeout"]

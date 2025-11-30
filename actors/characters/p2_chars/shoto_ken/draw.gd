@@ -22,5 +22,5 @@ func process_physics(delta: float) -> P2State:
 
 	await animations_player.animation_finished
 	
-	return 
+	return null
 	

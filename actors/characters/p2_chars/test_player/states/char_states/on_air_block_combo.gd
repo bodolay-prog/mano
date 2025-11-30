@@ -26,10 +26,11 @@ var _5j_M_state: P2State
 var _5j_H_state: P2State
 
 func process_physics(delta: float) -> P2State:
-	
+		
 	parent.velocity.y += gravity * delta
 	if parent.block_stun_frames > 0:
 		parent.velocity.x = (parent.knockback * (1 if parent.on_right_side else -1)) * 0.5
+	
 	parent.move_and_slide()
 	
 	if parent.get_hurt_type() == "high":

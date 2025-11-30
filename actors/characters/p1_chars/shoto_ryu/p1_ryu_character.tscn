@@ -1,9 +1,10 @@
-[gd_scene load_steps=122 format=3 uid="uid://ofq3cw5bvhg2"]
+[gd_scene load_steps=123 format=3 uid="uid://ofq3cw5bvhg2"]
 
 [ext_resource type="Script" uid="uid://dbv6bptpobnax" path="res://actors/characters/p1_chars/shoto_ryu/p_1_ryu_character.gd" id="1_nwdry"]
 [ext_resource type="Texture2D" uid="uid://3vtojaj2ir7t" path="res://actors/characters/p1_chars/shoto_ryu/sprites/ryu 21x21.png" id="2_eeord"]
 [ext_resource type="Script" uid="uid://chlgr6vkfplwn" path="res://core/fsm/p1_state_machine.gd" id="2_ncv3n"]
 [ext_resource type="Script" uid="uid://dfl1lpjutfifu" path="res://actors/characters/p1_chars/test_char/states/movement_states/idle.gd" id="3_k7yyg"]
+[ext_resource type="Script" uid="uid://cslhacnwyd307" path="res://actors/characters/p1_chars/shoto_ryu/start_game.gd" id="4_jc24f"]
 [ext_resource type="Script" uid="uid://ces800ovfakxf" path="res://actors/characters/p1_chars/test_char/states/movement_states/moving_foward.gd" id="4_nsen1"]
 [ext_resource type="Script" uid="uid://cx0swm5l1aefx" path="res://actors/characters/p1_chars/test_char/states/movement_states/moving_backward.gd" id="5_ywthy"]
 [ext_resource type="Script" uid="uid://ca78hxjat2r1l" path="res://actors/characters/p1_chars/test_char/states/movement_states/jump_neutral.gd" id="6_3ree3"]
@@ -13551,8 +13552,9 @@ size = Vector2(35, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5yjc"]
 size = Vector2(20, 50)
 
-[node name="P1_ryu" type="CharacterBody2D" node_paths=PackedStringArray("win_state", "draw_state", "dead_state", "lose_state")]
+[node name="P1_ryu" type="CharacterBody2D" node_paths=PackedStringArray("initial_state", "win_state", "draw_state", "dead_state", "lose_state")]
 script = ExtResource("1_nwdry")
+initial_state = NodePath("state_machine/idle_p1")
 win_state = NodePath("state_machine/win")
 draw_state = NodePath("state_machine/draw")
 dead_state = NodePath("state_machine/dead")
@@ -13560,6 +13562,7 @@ lose_state = NodePath("state_machine/lose")
 metadata/_custom_type_script = "uid://dpovk6hpwob1t"
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
+reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_y1ys4")
 }
@@ -13574,11 +13577,10 @@ vframes = 21
 frame = 52
 
 [node name="sprites" type="Sprite2D" parent="."]
-modulate = Color(0.21960784, 0.4745098, 0.90588236, 1)
 texture = ExtResource("2_eeord")
 hframes = 21
 vframes = 21
-frame = 61
+frame = 125
 
 [node name="camera_area" type="Area2D" parent="." groups=["char"]]
 
@@ -13601,8 +13603,13 @@ debug_color = Color(0.3372549, 0, 1, 0.41960785)
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_ncv3n")
-starting_state = NodePath("idle_p1")
+starting_state = NodePath("start_game")
 metadata/_custom_type_script = "uid://chlgr6vkfplwn"
+
+[node name="start_game" type="Node" parent="state_machine"]
+script = ExtResource("4_jc24f")
+animation_name = "start_round"
+metadata/_custom_type_script = "uid://dt5wn7idkdrwf"
 
 [node name="idle_p1" type="Node" parent="state_machine" node_paths=PackedStringArray("on_hit_state", "on_block_state", "on_sweep_state", "on_launcher_state", "moving_foward_state", "moving_back_state", "neutral_jump_state", "foward_jump_state", "back_jump_state", "crouch_state", "dash_foward_state", "dash_back_state", "_5_L_P1State", "_5_M_P1State", "_5_H_P1State", "_2_L_P1State", "_2_M_P1State", "_2_H_P1State", "_3_H_P1State", "tmk_l_state", "tmk_m_state", "tmk_ex_state", "srk_l_state", "srk_m_state", "srk_ex_state", "hdk_l_state", "hdk_m_state", "hdk_ex_state")]
 script = ExtResource("3_k7yyg")
@@ -14518,16 +14525,19 @@ metadata/_custom_type_script = "uid://wcdguvpe3i15"
 [node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(-9, -12)
 shape = SubResource("RectangleShape2D_od1wh")
+disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(-17.5, 20)
 shape = SubResource("RectangleShape2D_relgi")
+disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="body_hurtbox2" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(10, 26)
 shape = SubResource("RectangleShape2D_y5yjc")
+disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="health" parent="." instance=ExtResource("45_s5bnd")]
