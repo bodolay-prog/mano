@@ -3,17 +3,23 @@ extends CharacterBody2D
 
 # Signals
 signal hurt()
+signal p2_dead()
+signal p2_win()
 signal hit_can_move()
 signal block_can_move()
 signal recovery_can_move()
 
 # Child nodes or P1 nodes vars
+@export var dead_state: P2State
+@export var win_state: P2State
+@export var draw_state: P2State
+@export var lose_state: P2State
 @onready
 var special_manager: special_hit = $hitbox_manager/special_hit_manager
 @onready
 var animations_player: AnimationPlayer = $animation_player
 @onready
-var state_machine: Node = $state_machine
+var state_machine: state_machine_p2 = $state_machine
 @onready
 var node_hitbox_manager: hitbox_manager = $hitbox_manager
 @onready
@@ -31,7 +37,7 @@ var sp: int = 0
 var motion: String
 var on_right_side: bool
 var launched_times: int
-var times_hited: int
+var times_hited: int 
 
 # Frame counter for a new hit
 var hit_buffer: int = 0
@@ -46,6 +52,16 @@ var knockback: int
 var knockback_y: int
 var recovery_frames: int
 
+# End game Funcs
+func win_game() -> void:
+	state_machine.change_state(win_state)
+	
+func lose_game() -> void:
+	state_machine.change_state(lose_state)
+	
+func draw_game() -> void:
+	state_machine.change_state(draw_state)
+
 # Start Func
 func _ready() -> void:
 	
@@ -56,6 +72,7 @@ func _ready() -> void:
 # All frames-run funcs
 func _process(delta: float) -> void:
 
+	GlobalSignals.hit_times_p2 = times_hited
 	state_machine.process_input()
 	frame_counter()
 	

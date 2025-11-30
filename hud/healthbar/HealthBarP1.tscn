@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvmomwu6l5q8v"]
+[gd_scene load_steps=15 format=3 uid="uid://bvmomwu6l5q8v"]
 
-[ext_resource type="Script" uid="uid://cho44x8edrqnc" path="res://hud/healthbar/control.gd" id="1_gkwbf"]
+[ext_resource type="Script" uid="uid://cho44x8edrqnc" path="res://hud/healthbar/HealthBarP1.gd" id="1_gkwbf"]
 [ext_resource type="Texture2D" uid="uid://cmgpbabxuysuv" path="res://assets/icons/portraits/ken_port.png" id="2_cqc80"]
 [ext_resource type="Script" uid="uid://d2wkvk8hijwu" path="res://hud/healthbar/health_bar.gd" id="3_4k45s"]
+[ext_resource type="PackedScene" uid="uid://5668nu77mvsq" path="res://ui/combohits/combo_hitsP1.tscn" id="4_ncnku"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncnku"]
 
@@ -178,5 +179,10 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_tjy55")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2pisu")
 value = 100.0
 show_percentage = false
+
+[node name="combo_hits" parent="CanvasLayer/health_bar" instance=ExtResource("4_ncnku")]
+layout_mode = 1
+offset_top = 85.0
+offset_bottom = 85.0
 
 [connection signal="timeout" from="CanvasLayer/health_bar/timer" to="CanvasLayer/health_bar" method="_on_timer_timeout"]

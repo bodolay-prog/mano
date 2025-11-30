@@ -1,5 +1,7 @@
 extends Node2D
 
+signal on_draw()
+
 @onready
 var charnode = $"../chars"
 
@@ -11,6 +13,10 @@ var frameslabel: attackdata = $"../control_layer/control_training/data/labels/fr
 var damagelabel: attackdata = $"../control_layer/control_training/data/labels/damagelabel"
 @onready
 var knockbacklabel: attackdata = $"../control_layer/control_training/data/labels/knockbacklabel"
+
+var p1_win: bool = false
+var p2_win: bool = false
+
 
 var p1:P1Character 
 var p2:P2Character
@@ -102,9 +108,32 @@ func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : 
 	p2.knockback = knockback
 	p2.knockback_y = knockback_y
 
+func p1_wins() -> void:
+	if !p1_win:
+		p1_win = true
+		print("p1 wins!")
+	
+func p2_wins() -> void:
+	if !p2_win:
+		p2_win = true
+		print("p2 wins!")
+		
+
+func on_timeout() -> void:
+	
+	if p1.health == p2.health:
+		print("draw")
+		on_draw.emit()
+		
+	if p1.health > p2.health:
+		p2.p2_dead.emit()
+		
+	if p2.health > p1.health:
+		p1.p1_dead.emit()
 
 func _ready() -> void:
 	call_deferred("_late_start")
+	GlobalSignals.timer.connect("timeout", on_timeout)
 
 func _late_start():
 	if charnode.has_node("p1_instance"):
@@ -118,6 +147,10 @@ func _late_start():
 		var p1_hitbox_manager = p1.get_node("hitbox_manager")
 		p1.connect("hurt",p1_update_health)
 		p1.connect("hurt", p2.set_sp)
+		p1.connect("p1_dead", p2_wins)
+		p1.connect("p1_dead", p2.win_game)
+		p1.connect("p1_dead", p1.lose_game)
+		connect("on_draw" , p1.draw_game)
 		health_p1 = p1.get_node("health/CanvasLayer/health_bar")
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
 		CharsGlobals.p1hitboxall = p1_hitbox_manager
@@ -127,6 +160,10 @@ func _late_start():
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
 		p2.connect("hurt", p2_update_health)
 		p2.connect("hurt", p1.set_sp)
+		p2.connect("p2_dead", p1_wins)
+		p2.connect("p2_dead", p1.win_game)
+		p2.connect("p2_dead", p2.lose_game)
+		connect("on_draw" , p2.draw_game)
 		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 		CharsGlobals.p2hitboxall = p2_hitbox_manager
@@ -153,8 +190,6 @@ func p2_update_health() -> void:
 	p2.health -= p1_attack_damage
 
 func _process(delta: float) -> void:
-	
-	print(p2_attack_knockback)
 	
 	update_info()
 	if p1 and p1.is_on_floor():

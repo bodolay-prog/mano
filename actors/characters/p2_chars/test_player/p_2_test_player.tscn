@@ -6017,9 +6017,8 @@ _3_H_P2State = NodePath("../3_H")
 animation_name = "high_block"
 metadata/_custom_type_script = "uid://4pnh2aflfuyd"
 
-[node name="on_air_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_air_hit_combo_state", "on_sweep_state", "on_launcher_state", "get_up_state", "neutral_jump_state", "foward_jump_state", "back_jump_state")]
+[node name="on_air_hit" type="Node" parent="state_machine" node_paths=PackedStringArray("on_sweep_state", "on_launcher_state", "get_up_state", "neutral_jump_state", "foward_jump_state", "back_jump_state")]
 script = ExtResource("28_lfx5w")
-on_air_hit_combo_state = NodePath("../on_air_hit_combo")
 on_sweep_state = NodePath("../on_sweep")
 on_launcher_state = NodePath("../on_launch")
 get_up_state = NodePath("../get_up")

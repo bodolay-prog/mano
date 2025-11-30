@@ -23,9 +23,9 @@ offset_bottom = 263.0
 [node name="input_history" parent="control_training/data" instance=ExtResource("1_ueyh8")]
 layout_mode = 1
 offset_left = -196.0
-offset_top = -187.0
+offset_top = -155.0
 offset_right = -196.0
-offset_bottom = -187.0
+offset_bottom = -155.0
 
 [node name="input_shower" type="Control" parent="control_training/data"]
 anchors_preset = 0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://uxvnmrhb5qpq"]
+[gd_scene load_steps=7 format=3 uid="uid://uxvnmrhb5qpq"]
 
 [ext_resource type="Script" uid="uid://b7x1jwib8e8q7" path="res://core/managers/chars_manager.gd" id="1_l80ol"]
 [ext_resource type="Script" uid="uid://yi8m64fqqfwo" path="res://core/managers/training_mode_manager.gd" id="2_eyyde"]
 [ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="3_a5dcq"]
 [ext_resource type="PackedScene" uid="uid://cy6etmmagty4k" path="res://core/camera/camera.tscn" id="4_ir1s3"]
 [ext_resource type="PackedScene" uid="uid://b0k1gdvtue4k8" path="res://inputs-history/control_layer.tscn" id="5_cjb0w"]
+[ext_resource type="PackedScene" uid="uid://1nald7aubhkq" path="res://ui/timer/timer.tscn" id="6_eyyde"]
 
 [node name="debug" type="Node2D"]
 
@@ -21,3 +22,5 @@ script = ExtResource("2_eyyde")
 position = Vector2(203, 298)
 
 [node name="control_layer" parent="." instance=ExtResource("5_cjb0w")]
+
+[node name="Control" parent="." instance=ExtResource("6_eyyde")]

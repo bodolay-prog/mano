@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyaxkx7ajs3k8"]
+[gd_scene load_steps=15 format=3 uid="uid://cyaxkx7ajs3k8"]
 
 [ext_resource type="Script" uid="uid://bd6ol6lajwjd0" path="res://hud/healthbar/health_bar2.gd" id="1_sw0fg"]
 [ext_resource type="Texture2D" uid="uid://cmgpbabxuysuv" path="res://assets/icons/portraits/ken_port.png" id="3_4alg6"]
 [ext_resource type="Script" uid="uid://3cbk2pjxlfp2" path="res://hud/healthbar/health_barp2.gd" id="3_sw0fg"]
+[ext_resource type="PackedScene" uid="uid://brd7vgxurpnt5" path="res://ui/combohits/combo_hitsP2.tscn" id="4_vcw6b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyv3d"]
 
@@ -176,3 +177,10 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_w57nn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6ht0r")
 value = 100.0
 show_percentage = false
+
+[node name="combo_hits" parent="CanvasLayer/health_bar" instance=ExtResource("4_vcw6b")]
+layout_mode = 1
+offset_left = 467.0
+offset_top = 85.0
+offset_right = 467.0
+offset_bottom = 85.0

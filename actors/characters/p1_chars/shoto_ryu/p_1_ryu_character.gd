@@ -1,22 +1,32 @@
 extends P1Character
 
+
 @onready var health_bar: HealthBarP1 = $health
 @onready var health_bar_config: HealthBarConfigP1 = $health/CanvasLayer/health_bar
 
+var is_dead: bool = false
+
 func _ready() -> void:
 	super()
+	self.health = 250
 	health_bar.text_name = "Ryu"
 	health_bar.texture_path = "res://assets/icons/portraits/ryu_port.png"
 	health_bar.set_things()
 	health_bar_config.init_health(self.health)
 	health_bar_config.init_sp(self.sp)
 	
+	
 func _process(delta: float) -> void:
 	super(delta)
 	health_bar_config._set_sp(sp)
+	
+	if self.health <= 0 and !is_dead:
+		is_dead = true
+		state_machine.change_state(dead_state)
 
 func set_sp() -> void:
-	sp += 50
+	if sp < 1000:
+		sp += 50
 	health_bar_config._set_sp(sp)
 	
 func _on_hitbox_manager_hit_check() -> void:

@@ -3,6 +3,9 @@ extends Node2D
 @onready
 var charnode = $"../chars"
 
+var p1_win: bool = false
+var p2_win: bool = false
+
 var p1:P1Character 
 var p2:P2Character
 var health_p1
@@ -62,7 +65,6 @@ func p1_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, 
 	p1_attack_hurt_type = hit_variant
 	
 	set_p2_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback, knockback_y)
-	p2_update_health(damage)
 	
 	
 func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, knockback: int, knockback_y: int, hit_variant: String) -> void:
@@ -77,7 +79,7 @@ func p2_set_hit_info(block_stun_frames: int, hit_stun_frames: int, damage: int, 
 	p2_attack_hurt_type	 = hit_variant
 	
 	set_p1_hurt_vars(block_stun_frames, hit_stun_frames, hit_variant, knockback, knockback_y)
-	p1_update_healt(damage)
+	
 
 func set_p1_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : String, knockback: int, knockback_y: int) -> void:
 	
@@ -94,7 +96,16 @@ func set_p2_hurt_vars(block_stun_frames: int, hit_stun_frames: int, hurt_type : 
 	p2.hurt_type = hurt_type
 	p2.knockback = knockback
 	p2.knockback_y = knockback_y
-
+	
+func p1_wins() -> void:
+	if !p1_win:
+		p1_win = true
+		print("p1 wins!")
+	
+func p2_wins() -> void:
+	if !p2_win:
+		p2_win = true
+		print("p2 wins!")
 
 func _ready() -> void:
 	call_deferred("_late_start")
@@ -109,22 +120,33 @@ func _late_start():
 	# conecta os hitboxes
 	if p1:
 		var p1_hitbox_manager = p1.get_node("hitbox_manager")
+		p1.connect("hurt",p1_update_health)
+		p1.connect("hurt", p2.set_sp)
+		p1.connect("p1_dead", p2_wins)
+		p1.connect("p1_dead", p2.win_game)
 		health_p1 = p1.get_node("health/CanvasLayer/health_bar")
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
+		CharsGlobals.p1hitboxall = p1_hitbox_manager
 
 	if p2:
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
+		p2.connect("hurt", p2_update_health)
+		p2.connect("hurt", p1.set_sp)
+		p2.connect("p2_dead", p1_wins)
+		p2.connect("p2_dead", p1.win_game)
 		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
+		CharsGlobals.p2hitboxall = p2_hitbox_manager
 
-func p1_update_healt(damage: int) -> void:
-	health_p1._set_health(p1.health - damage)
-	p1.health -= damage
+func p1_update_health() -> void:
+	health_p1._set_health(p1.health - p2_attack_damage)
+	p1.health -= p2_attack_damage
 
 	
-func p2_update_health(damage: int) -> void:
-	health_p2._set_health(p2.health - damage)
-	p2.health -= damage
+func p2_update_health() -> void:
+	health_p2._set_health(p2.health - p1_attack_damage)
+	p2.health -= p1_attack_damage
+	
 
 func _process(delta: float) -> void:
 	
@@ -133,5 +155,12 @@ func _process(delta: float) -> void:
 
 	if p2 and p2.is_on_floor():
 		p2_is_on_right_side()
+		
 
+func _physics_process(delta):
 	
+	if p1:
+		p1.apply_push(p2, delta)
+		
+	if p2:
+		p2.apply_push(p1, delta)
