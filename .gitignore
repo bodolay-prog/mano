@@ -1,0 +1,7 @@
+# Godot
+.godot/
+*.md5
+*.ctex
+*.cache
+uid_cache.bin
+
