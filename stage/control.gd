@@ -2,6 +2,9 @@ extends Control
 
 const MAP_BUTTON_GROUP = "map_selection"
 
+var stg1_path
+var stg2_path
+
 func _ready() -> void:
 	# Conecta a função de seleção a todos os botões do grupo
 	for node in get_tree().get_nodes_in_group(MAP_BUTTON_GROUP):

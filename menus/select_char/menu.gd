@@ -19,6 +19,9 @@ var current_player: int = 1
 @onready var vlken_: AudioStreamPlayer = $Select/playerOne/vl
 @onready var vlryu_: AudioStreamPlayer = $Select/playerTwo/vl
 
+var traning_stage_path = "res://debug/debug_training.tscn"
+var degub_stage = "res://debug/debug.tscn"
+
 # Ajuste os caminhos se necessário.
 @onready var player_one_frame = get_node_or_null("Select/playerOne/ColorRect")
 @onready var player_two_frame = get_node_or_null("Select/playerTwo/ColorRect")
@@ -27,6 +30,9 @@ var current_player: int = 1
 # GRUPO PARA BOTÕES
 const CHARACTER_BUTTON_GROUP = "character_selection"
 
+
+func change_to(_path) -> void:
+	get_tree().change_scene_to_file(_path)
 
 func _ready() -> void:
 	if Engine.has_singleton("GameState"):
@@ -74,12 +80,6 @@ func update_selection_ui() -> void:
 	if player_two_frame:
 		player_two_frame.modulate = Color.WHITE
 
-	# Mostrar/Esconder P2 no modo Treinamento
-	if player_two_node:
-		player_two_node.visible = not GameState.is_training_mode
-	else:
-		printerr("menu.gd: node 'playerTwo' não encontrado.")
-
 	# Destacar jogador atual
 	if current_player == 1:
 		if player_one_frame:
@@ -100,14 +100,15 @@ func handle_selection(character_name: String) -> void:
 		else: # current_player == 2
 			print("Seleção completa — iniciando seleção de mapa 2P.")
 			# VAI PARA A SELEÇÃO DE MAPA
-			GameState.start_map_selection()
+			change_to(degub_stage)
+			#GameState.start_map_selection()
 	else:
 		# Modo Treino
-		CharsGlobals.p2n = 1
-		GameState.select_character(2, "Dummy")
+		GameState.select_character(2, "Ken")
 		print("Seleção completa — iniciando seleção de mapa Treino.")
 		# VAI PARA A SELEÇÃO DE MAPA
-		GameState.start_map_selection()
+		change_to(traning_stage_path)
+		#GameState.start_map_selection()
 
 
 # Funções de cor dos botoes

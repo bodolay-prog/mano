@@ -28,6 +28,7 @@ var p2:P2Character
 
 var health_p1
 var health_p2
+var p2_combo_hits
 
 
 var p1_block_stun_frames: int 
@@ -159,7 +160,6 @@ func start_timer() -> void:
 func _ready() -> void:
 	
 	await get_tree().process_frame
-	
 	call_deferred("_late_start")
 	GlobalSignals.timer3.connect("timeout", start_timer)
 	GlobalSignals.timer.connect("timeout", on_timeout)
@@ -201,6 +201,7 @@ func _late_start():
 		p2.connect("p2_lose", p2.lose_game)
 		connect("on_draw" , p2.draw_game)
 		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
+		p2_combo_hits = health_p2.get_node("combo_hits")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 		CharsGlobals.p2hitboxall = p2_hitbox_manager
 		p2.sp = 1000
@@ -242,6 +243,7 @@ func _physics_process(delta):
 		
 	if p2:
 		p2.apply_push(p1, delta)
+		p2_combo_hits.visible = false
 
 	
 

@@ -1,5 +1,8 @@
 extends Node2D
 
+var p1n = CharsGlobals.p1n
+var p2n = CharsGlobals.p2n
+
 var p1_scene: PackedScene 
 var p2_scene: PackedScene 
 
@@ -17,13 +20,14 @@ var p2_instance: P2Character
 var p1_hitbox_manager: hitbox_manager
 var p2_hitbox_manager: hitbox_manager
 
+func load_scenes() -> void:
+	p1_scene = load(CharsGlobals.p1char_array[p1n])
+	p2_scene = load(CharsGlobals.p2char_array[p2n])
+	
 func _ready() -> void:
 	
 	await get_tree().process_frame
-	
-	p1_scene = load(CharsGlobals.p1char_scene)
-	p2_scene = load(CharsGlobals.p2char_scene)
-	
+	load_scenes()
 	load_chars()
 
 func load_chars() -> void:

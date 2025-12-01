@@ -10,7 +10,7 @@ func test() -> void:
 	print("test")
 
 func _ready() -> void:
-	
+	connect("selected", test)
 	add_child(timer)
 	add_child(timer2)
 	add_child(timer3)

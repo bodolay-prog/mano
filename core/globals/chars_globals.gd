@@ -14,11 +14,6 @@ var p2char_array := [p2ryuchar_path, p2kenchar_path]
 var p1char_scene := ""
 var p2char_scene := ""
 
-func _ready():
-	p1char_scene = p1char_array[p1n]
-	p2char_scene = p2char_array[p2n]
-
-
 var p1: P1Character
 var p2: P2Character
 
@@ -27,6 +22,10 @@ var p2hitboxall: hitbox_manager
 
 func _process(delta: float) -> void:
 	
+	#print(p1char_scene, p1n)
+	#print(p2char_scene, p2n)
+	#print("p1n:", p1n)
+	#print("p2n:", p2n)
 	p1char_scene = p1char_array[p1n]
 	p2char_scene = p2char_array[p2n]
 	pass
