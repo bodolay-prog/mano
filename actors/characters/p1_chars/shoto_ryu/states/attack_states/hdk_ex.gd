@@ -12,11 +12,13 @@ var idle_state: P1State
 var crouch_state: P1State
 
 @onready var hdk_pos = $"../../hdk_pos"
+@onready var hdk: AudioStreamPlayer = $"../../sfx/hdk"
 var hdk_scene : PackedScene = load(SpecialSignal.hdkp1_scene_path)
 var hdk_instance: HadoukenP1
 
 func enter() -> void:
 	super()
+	hdk.play()
 	parent.sp += - 500
 	animations_player.set_deferred("Speed Scale", 0.50)
 

@@ -1,9 +1,16 @@
 extends Label
 
 @onready var timer: Timer = $"../counter"
+@onready var counter: AudioStreamPlayer = $"../countingdown"
 
+var main_menu_path = "res://menus/main_menu/control.tscn"
+var fight_path
+
+func start_tine() -> void:
+	timer.start(9)
+	
 func _ready() -> void:
-	timer.start(10)
+	start_tine()
 	timer.connect("timeout", go_main_menu)
 
 func _process(delta: float) -> void:
@@ -18,9 +25,9 @@ func _process(delta: float) -> void:
 		go_main_menu()
 
 func go_main_menu() -> void:
+	get_tree().change_scene_to_file(main_menu_path)
 	pass
 	
 func on_start() -> void:
 	pass
-	
 	

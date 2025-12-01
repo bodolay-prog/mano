@@ -15,3 +15,4 @@ func _ready() -> void:
 	add_child(timer2)
 	add_child(timer3)
 	timer3.set_deferred("one_shot", true)
+	

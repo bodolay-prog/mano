@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://b87q0btamrnrn"]
+[gd_scene load_steps=128 format=3 uid="uid://b87q0btamrnrn"]
 
 [ext_resource type="Script" uid="uid://c0ebp0vcrwp" path="res://actors/characters/p2_chars/shoto_ken/p_2_ken_character.gd" id="1_5pegb"]
 [ext_resource type="Texture2D" uid="uid://bvqstd7m8eg4u" path="res://actors/characters/p2_chars/shoto_ken/sprites/ken 21x20 real.png" id="2_5pegb"]
@@ -60,6 +60,11 @@
 [ext_resource type="Script" uid="uid://rnrlk2vwl4ib" path="res://actors/characters/p2_chars/shoto_ken/states/char_states/win.gd" id="46_xga3s"]
 [ext_resource type="Script" uid="uid://ml5cky8fogay" path="res://actors/characters/p2_chars/shoto_ken/draw.gd" id="47_1ydx5"]
 [ext_resource type="PackedScene" uid="uid://cyaxkx7ajs3k8" path="res://hud/healthbar/HealthBarP2.tscn" id="52_k6smb"]
+[ext_resource type="AudioStream" uid="uid://g0r05g15wo2f" path="res://assets/sfx/ken_vl/tmk_ken.ogg" id="61_kl5a8"]
+[ext_resource type="AudioStream" uid="uid://bh6aig5cnjhr7" path="res://assets/sfx/ken_vl/srk_ken.ogg" id="62_jh4f6"]
+[ext_resource type="AudioStream" uid="uid://diiyj00dr1pvm" path="res://assets/sfx/ken_vl/hdk_ken.ogg" id="63_a4q6o"]
+[ext_resource type="AudioStream" uid="uid://cxrlxc02ytphw" path="res://assets/sfx/ken_vl/ken_hit.ogg" id="64_trh82"]
+[ext_resource type="AudioStream" uid="uid://mwhyct3cglrj" path="res://assets/sfx/ken_vl/dead_ken.ogg" id="65_7eq1t"]
 
 [sub_resource type="Animation" id="Animation_keend"]
 resource_name = "2_h"
@@ -13815,7 +13820,7 @@ speed_scale = 0.45
 texture = ExtResource("2_5pegb")
 hframes = 21
 vframes = 20
-frame = 314
+frame = 102
 
 [node name="sprites_vfx" type="Sprite2D" parent="."]
 visible = false
@@ -14743,6 +14748,7 @@ metadata/_custom_type_script = "uid://bkm45ovcfudmt"
 [node name="air_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/air_hurtbox_manager/air_hurtbox_area"]
 position = Vector2(-5.5, 7.5)
 shape = SubResource("RectangleShape2D_j0nq1")
+disabled = true
 debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="ground_hurtbox_manager" type="Node2D" parent="hurtbox_manager"]
@@ -14791,6 +14797,28 @@ debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="hdk_pos" type="StaticBody2D" parent="."]
 position = Vector2(95, -60)
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="tmk" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("61_kl5a8")
+volume_db = -25.0
+
+[node name="srk" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("62_jh4f6")
+volume_db = -25.0
+
+[node name="hdk" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("63_a4q6o")
+volume_db = -25.0
+
+[node name="hit" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("64_trh82")
+volume_db = -25.0
+
+[node name="dead" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("65_7eq1t")
+volume_db = -25.0
 
 [connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]

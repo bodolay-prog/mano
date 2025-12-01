@@ -23,9 +23,11 @@ var back_jump_state: P2State
 
 @onready
 var state_machine =$".."
+@onready var hit: AudioStreamPlayer = $"../../sfx/hit"
 
 func enter() -> void:
 	super()
+	hit.play()
 	parent.hurt.emit()
 	if state_machine.old_state != on_hit_state:
 		parent.velocity.y = -250

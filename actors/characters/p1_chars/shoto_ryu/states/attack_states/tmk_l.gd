@@ -13,9 +13,12 @@ var crouch_state: P1State
 
 @onready
 var special: special_hit = $"../../hitbox_manager/special_hit_manager"
+@onready
+var tmk: AudioStreamPlayer = $"../../sfx/tmk"
 
 func enter() -> void:
 	super()
+	tmk.play()
 	parent.velocity.x = 0
 	parent.position.y += -3
 	parent.motion = " "

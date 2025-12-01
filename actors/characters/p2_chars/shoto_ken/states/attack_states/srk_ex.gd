@@ -13,9 +13,11 @@ var crouch_state: P2State
 
 @onready
 var special: special_hit = $"../../hitbox_manager/special_hit_manager"
+@onready var srk: AudioStreamPlayer = $"../../sfx/srk"
 
 func enter() -> void:
 	super()
+	srk.play()
 	animations_player.set_deferred("Speed Scale", 0.65)
 	parent.sp += - 500
 	parent.velocity.x = 20

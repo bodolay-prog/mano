@@ -1,0 +1,336 @@
+[gd_scene load_steps=20 format=3 uid="uid://bijaypego4ae0"]
+
+[ext_resource type="Script" uid="uid://bjbidv2ej4fw2" path="res://menus/select_char/menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://qdx6x0t8qex0" path="res://Shrine.jpg" id="2_ytr4m"]
+[ext_resource type="Script" uid="uid://c0vd6nqegljy3" path="res://menus/select_char/ken.gd" id="3_28axq"]
+[ext_resource type="Texture2D" uid="uid://da0dxo5igso1d" path="res://assets/icons/fx/ken 21x20.png" id="4_bgs7l"]
+[ext_resource type="FontFile" uid="uid://dtrwi5mjyg2h" path="res://hoshiko_satsuki/Hoshiko Satsuki.ttf" id="5_ytr4m"]
+[ext_resource type="AudioStream" uid="uid://bjlttxane0eah" path="res://assets/intro_vl/ken_intro_vl.ogg" id="6_jena2"]
+[ext_resource type="Script" uid="uid://dqbifugu0gpyj" path="res://menus/select_char/ryu.gd" id="6_s5t6r"]
+[ext_resource type="Texture2D" uid="uid://t71jnbshcpuk" path="res://assets/icons/fx/ryu 21x21.png" id="7_jena2"]
+[ext_resource type="AudioStream" uid="uid://dqycvnj1ho2vq" path="res://assets/intro_vl/ryu_intro_vl.ogg" id="9_rlfi8"]
+[ext_resource type="AudioStream" uid="uid://b0w568dklt086" path="res://assets/sfx/na_vls/select_sfx.wav" id="10_jena2"]
+[ext_resource type="AudioStream" uid="uid://byvsi5qpw6oyl" path="res://assets/bgm/Marvel-Vs.-Capcom-2_-Character-Select.ogg" id="10_rlfi8"]
+
+[sub_resource type="Animation" id="Animation_rlfi8"]
+resource_name = "idle"
+length = 0.26667002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ken:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [39, 40, 41, 42, 43, 44, 45, 46]
+}
+
+[sub_resource type="Animation" id="Animation_s0d5u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ken:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [39]
+}
+
+[sub_resource type="Animation" id="Animation_txjwv"]
+resource_name = "on_select"
+length = 0.23333667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ken:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [96, 97, 98, 99, 100, 101, 102]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdhai"]
+_data = {
+&"RESET": SubResource("Animation_s0d5u"),
+&"idle": SubResource("Animation_rlfi8"),
+&"on_select": SubResource("Animation_txjwv")
+}
+
+[sub_resource type="Animation" id="Animation_p6bd0"]
+resource_name = "idle"
+length = 0.26667002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [61, 62, 63, 64, 65, 66, 67, 68]
+}
+
+[sub_resource type="Animation" id="Animation_pvju2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [61]
+}
+
+[sub_resource type="Animation" id="Animation_mbfr2"]
+resource_name = "on_select"
+length = 0.7333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41u66"]
+_data = {
+&"RESET": SubResource("Animation_pvju2"),
+&"idle": SubResource("Animation_p6bd0"),
+&"on_select": SubResource("Animation_mbfr2")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="Select" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Sprite2D" parent="Select"]
+position = Vector2(641, 361)
+scale = Vector2(0.8306295, 1.3407406)
+texture = ExtResource("2_ytr4m")
+
+[node name="playerOne" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = -145.0
+offset_right = 515.0
+offset_bottom = 145.0
+grow_vertical = 2
+script = ExtResource("3_28axq")
+
+[node name="ColorRect" type="ColorRect" parent="Select/playerOne"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="ken" type="Sprite2D" parent="Select/playerOne"]
+position = Vector2(214.99998, 154)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bgs7l")
+hframes = 21
+vframes = 20
+frame = 39
+
+[node name="animation" type="AnimationPlayer" parent="Select/playerOne"]
+libraries = {
+&"": SubResource("AnimationLibrary_sdhai")
+}
+speed_scale = 0.45
+
+[node name="Ken" type="Button" parent="Select/playerOne" groups=["character_selection"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="nick01" type="ColorRect" parent="Select/playerOne"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 300.0
+offset_right = 323.0
+offset_bottom = 360.0
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="Label" type="Label" parent="Select/playerOne/nick01"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -15.5
+offset_right = 39.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 30
+text = "KEN"
+
+[node name="vl" type="AudioStreamPlayer" parent="Select/playerOne"]
+stream = ExtResource("6_jena2")
+volume_db = -20.0
+
+[node name="playerTwo" type="ColorRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -145.0
+offset_right = -97.0
+offset_bottom = 145.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("6_s5t6r")
+
+[node name="ColorRect" type="ColorRect" parent="Select/playerTwo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="ryu" type="Sprite2D" parent="Select/playerTwo"]
+position = Vector2(196, 150)
+scale = Vector2(-2, 2)
+texture = ExtResource("7_jena2")
+hframes = 21
+vframes = 21
+frame = 61
+
+[node name="animation" type="AnimationPlayer" parent="Select/playerTwo"]
+root_node = NodePath("../ryu")
+libraries = {
+&"": SubResource("AnimationLibrary_41u66")
+}
+speed_scale = 0.24
+
+[node name="Ryu" type="Button" parent="Select/playerTwo" groups=["character_selection"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="nick02" type="ColorRect" parent="Select/playerTwo"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 348.0
+offset_bottom = 360.0
+color = Color(0.15, 0.13520001, 0.12600002, 1)
+
+[node name="Label" type="Label" parent="Select/playerTwo/nick02"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -15.5
+offset_right = 39.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 30
+text = "RYU"
+
+[node name="vl" type="AudioStreamPlayer" parent="Select/playerTwo"]
+stream = ExtResource("9_rlfi8")
+volume_db = -20.0
+
+[node name="main_text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = 26.0
+offset_right = 239.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 45
+text = "Selecione o seu personagem"
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rlfi8")
+volume_db = -30.0
+autoplay = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_jena2")
+volume_db = -20.0
+
+[connection signal="mouse_entered" from="Select/playerOne/Ken" to="." method="_on_button_one_mouse_entered"]
+[connection signal="mouse_exited" from="Select/playerOne/Ken" to="." method="_on_button_one_mouse_exited"]
+[connection signal="pressed" from="Select/playerOne/Ken" to="." method="_on_button_one_pressed"]
+[connection signal="pressed" from="Select/playerOne/Ken" to="Select/playerOne" method="_on_ken_pressed"]
+[connection signal="mouse_entered" from="Select/playerTwo/Ryu" to="." method="_on_button_two_mouse_entered"]
+[connection signal="mouse_exited" from="Select/playerTwo/Ryu" to="." method="_on_button_two_mouse_exited"]
+[connection signal="pressed" from="Select/playerTwo/Ryu" to="." method="_on_button_two_pressed"]
+[connection signal="pressed" from="Select/playerTwo/Ryu" to="Select/playerTwo" method="_on_ryu_pressed"]

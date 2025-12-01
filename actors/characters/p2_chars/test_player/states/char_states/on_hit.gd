@@ -22,9 +22,11 @@ var crouch_state: P2State
 #Input Machine Path
 @onready
 var state_machine_path =$".."
+@onready var hit: AudioStreamPlayer = $"../../sfx/hit"
 
 func enter() -> void:
 	super()
+	hit.play()
 	parent.hurt.emit()
 	if state_machine_path.old_state == crouch_state:
 		animations_player.play("crouch_hurt")

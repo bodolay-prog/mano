@@ -4,8 +4,11 @@ extends P1State
 var is_dead_on_floor: bool = false
 signal is_on_floor()
 
+@onready var dead: AudioStreamPlayer = $"../../sfx/dead"
+
 func enter() -> void:
 	super()
+	dead.play()
 	animations_player.speed_scale = 0.20
 	parent.velocity.y += -350
 	parent.knockback = 70

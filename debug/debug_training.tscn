@@ -48,3 +48,5 @@ text = "READY?"
 label_settings = SubResource("LabelSettings_bxnvi")
 horizontal_alignment = 1
 script = ExtResource("8_cjb0w")
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://ofq3cw5bvhg2"]
+[gd_scene load_steps=128 format=3 uid="uid://ofq3cw5bvhg2"]
 
 [ext_resource type="Script" uid="uid://dbv6bptpobnax" path="res://actors/characters/p1_chars/shoto_ryu/p_1_ryu_character.gd" id="1_nwdry"]
 [ext_resource type="Texture2D" uid="uid://3vtojaj2ir7t" path="res://actors/characters/p1_chars/shoto_ryu/sprites/ryu 21x21.png" id="2_eeord"]
@@ -60,6 +60,11 @@
 [ext_resource type="Script" uid="uid://ct1t5eta5mvku" path="res://actors/characters/p1_chars/shoto_ryu/lose.gd" id="46_od1wh"]
 [ext_resource type="Script" uid="uid://c5v621ia3dne6" path="res://actors/characters/p1_chars/shoto_ryu/draw.gd" id="47_3gv5h"]
 [ext_resource type="Script" uid="uid://dbl50uqwg0ujj" path="res://actors/characters/p1_chars/shoto_ryu/core/hitbox_managers/special_hit.gd" id="50_dug0s"]
+[ext_resource type="AudioStream" uid="uid://csosdy66pslwb" path="res://assets/sfx/ryu_vl/tmk_ryu.ogg" id="61_e2l3t"]
+[ext_resource type="AudioStream" uid="uid://cstr5vbtkpv4g" path="res://assets/sfx/ryu_vl/srk_ryu.ogg" id="62_grjpe"]
+[ext_resource type="AudioStream" uid="uid://bivwbxp0mcvob" path="res://assets/sfx/ryu_vl/hdk_ryu.ogg" id="63_1n305"]
+[ext_resource type="AudioStream" uid="uid://cixv41euxy8t2" path="res://assets/sfx/ryu_vl/hit_ryu.ogg" id="64_c5yqm"]
+[ext_resource type="AudioStream" uid="uid://nhnfs2os18lf" path="res://assets/sfx/ryu_vl/dead_ryu.ogg" id="65_al70c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od1wh"]
 
@@ -13580,7 +13585,7 @@ frame = 52
 texture = ExtResource("2_eeord")
 hframes = 21
 vframes = 21
-frame = 125
+frame = 161
 
 [node name="camera_area" type="Area2D" parent="." groups=["char"]]
 
@@ -14544,6 +14549,28 @@ debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="hdk_pos" type="StaticBody2D" parent="."]
 position = Vector2(95, -60)
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="tmk" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("61_e2l3t")
+volume_db = -25.0
+
+[node name="srk" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("62_grjpe")
+volume_db = -25.0
+
+[node name="hdk" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("63_1n305")
+volume_db = -25.0
+
+[node name="hit" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("64_c5yqm")
+volume_db = -25.0
+
+[node name="dead" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("65_al70c")
+volume_db = -25.0
 
 [connection signal="hit_check" from="hitbox_manager" to="." method="_on_hitbox_manager_hit_check"]
 [connection signal="high_hit_signal" from="hitbox_manager/high_hit_manager" to="hitbox_manager" method="_on_high_hit_manager_high_hit_signal"]
