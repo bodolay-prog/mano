@@ -1,0 +1,6 @@
+extends Node
+
+func hitstop(time_scale: float, duration: float) -> void:
+	Engine.time_scale = time_scale
+	await get_tree().create_timer(duration * time_scale).timeout
+	Engine.time_scale = 1.0

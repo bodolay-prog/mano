@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://1nald7aubhkq"]
+
+[ext_resource type="Script" uid="uid://bjgs60ewoytlh" path="res://ui/timer/timer.gd" id="1_876bi"]
+[ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="1_xd8hc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_876bi"]
+font = ExtResource("1_xd8hc")
+font_size = 25
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="timer" type="Label" parent="canvas_layer"]
+offset_left = 620.0
+offset_top = 34.0
+offset_right = 660.0
+offset_bottom = 57.0
+text = "99"
+label_settings = SubResource("LabelSettings_876bi")
+horizontal_alignment = 1
+script = ExtResource("1_876bi")

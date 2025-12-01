@@ -1,0 +1,66 @@
+class_name hdk_ex
+extends P2State
+
+# Char States
+@export
+var on_hit_state: P2State
+		
+# Movement P2States
+@export
+var idle_state: P2State
+@export 
+var crouch_state: P2State
+
+@onready var hdk_pos = $"../../hdk_pos"
+@onready var hdk: AudioStreamPlayer = $"../../sfx/hdk"
+var hdk_scene : PackedScene = load(SpecialSignal.hdkp2_scene_path)
+var hdk_instance: HadoukenP2
+
+func enter() -> void:
+	super()
+	hdk.play()
+	parent.sp += - 500
+	animations_player.set_deferred("Speed Scale", 0.50)
+
+
+func start_hadouken() -> void:
+	if SpecialSignal.hdkp2_scene:
+		var container = hdk_scene.instantiate()
+		get_tree().current_scene.add_child(container)
+		hdk_instance = container.get_node("hdk_body")
+		
+		def_hadouken()
+		hdk_instance.setup()
+
+func def_hadouken() -> void:
+	
+	hdk_instance.velo = 750 * (-1 if parent.on_right_side else 1)
+	hdk_instance.pos = hdk_pos.global_position
+	hdk_instance.block_stun_frames = 30
+	hdk_instance.hit_stun_frames = 36
+	hdk_instance.damage = 600
+	hdk_instance.knockback = 150 
+	hdk_instance.knockback_y = -200
+	
+	if parent.on_right_side:
+		hdk_instance.direction = -1
+	else:
+		hdk_instance.direction =  1
+		
+
+func process_input() -> P2State:	
+
+	if parent.get_hurt_type() == "counter":
+		return on_hit_state
+	
+		
+	await animations_player.animation_finished
+	
+	start_hadouken()
+	
+	if parent.is_on_floor():
+		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			return crouch_state
+		return idle_state
+
+	return	

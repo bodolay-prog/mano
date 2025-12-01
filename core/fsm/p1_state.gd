@@ -1,0 +1,38 @@
+class_name P1State
+extends Node
+
+@export
+var animation_name: String
+
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var animations: AnimatedSprite2D
+var input_component
+var parent: P1Character
+var animations_player: AnimationPlayer
+var node_hitbox_manager : hitbox_manager
+var node_hurtbox_manager: hurtbox_manager
+
+	
+func enter() -> void:
+	animations_player.play(animation_name)
+	
+func exit() -> void:
+	parent.hurt_type = ""
+	parent.motion = " "
+	parent.animations_player.set_deferred("Speed Scale", 0.45)
+
+func process_input() -> P1State:
+	return null
+
+func process_frame(delta: float) -> P1State:
+	return null
+
+func process_physics(delta: float) -> P1State:
+	return null
+		
+func input_handler() -> int:
+	return input_component.dir
+
+func  action_input_handler() -> String:
+	return input_component.action_inputs()

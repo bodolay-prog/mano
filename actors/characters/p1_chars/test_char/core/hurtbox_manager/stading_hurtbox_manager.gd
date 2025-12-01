@@ -1,0 +1,1 @@
+extends ground_hurtbox

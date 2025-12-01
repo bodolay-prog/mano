@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://5668nu77mvsq"]
+
+[ext_resource type="Script" uid="uid://c7reot3paempu" path="res://ui/combohits/combos_hitsP1.gd" id="1_bew21"]
+[ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="1_cjwtd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojpwq"]
+font = ExtResource("1_cjwtd")
+font_size = 40
+shadow_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjwtd"]
+font = ExtResource("1_cjwtd")
+font_size = 40
+
+[node name="combo_hits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="combos hits" type="Label" parent="."]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 55.0
+text = "21"
+label_settings = SubResource("LabelSettings_ojpwq")
+script = ExtResource("1_bew21")
+
+[node name="X" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_right = 96.0
+offset_bottom = 69.0
+text = "x
+"
+label_settings = SubResource("LabelSettings_cjwtd")

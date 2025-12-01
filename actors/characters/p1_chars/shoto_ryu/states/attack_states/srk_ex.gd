@@ -1,0 +1,56 @@
+class_name srk_ex_p1
+extends P1State
+
+# Char States
+@export
+var on_hit_state: P1State
+		
+# Movement P1States
+@export
+var idle_state: P1State
+@export 
+var crouch_state: P1State
+
+@onready
+var special: special_hit = $"../../hitbox_manager/special_hit_manager"
+@onready var srk: AudioStreamPlayer = $"../../sfx/srk"
+
+func enter() -> void:
+	super()
+	srk.play()
+	animations_player.set_deferred("Speed Scale", 0.65)
+	parent.sp += - 500
+	parent.velocity.x = 20
+	parent.velocity.y = -300
+	parent.motion = " "
+	special.ender_hit_stun_frames = 28
+	special.ender_block_stun_frames = 18
+	special.ender_knockback = 150
+	special.ender_knockback_y = -600
+	
+func process_input() -> P1State:	
+
+	parent.velocity.x = 25 * (-1 if parent.on_right_side else 1)
+	parent.move_and_slide()
+	
+	if parent.get_hurt_type() == "counter":
+		return on_hit_state
+		
+	await animations_player.animation_finished
+	
+	if parent.is_on_floor():
+		if input_handler() == 1 or input_handler() == 2 or input_handler() == 3:
+			return crouch_state
+		return idle_state
+		
+	return
+	
+func process_physics(delta: float) -> P1State:
+	
+	parent.velocity.y += gravity * delta 
+	parent.move_and_slide()
+	
+	if parent.is_on_floor():
+		return idle_state
+	
+	return

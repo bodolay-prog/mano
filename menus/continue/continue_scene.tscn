@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://0m5is37t4nrt"]
+
+[ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="1_aebq1"]
+[ext_resource type="Texture2D" uid="uid://dc2wcncaeug8x" path="res://actors/characters/p2_chars/shoto_ken/core/hitbox_managers/Ryu 442.png" id="1_qr2tk"]
+[ext_resource type="Script" uid="uid://cuen8766xit6a" path="res://menus/continue/timer_continue.gd" id="2_2khq5"]
+[ext_resource type="AudioStream" uid="uid://3dsi4i7i7kld" path="res://assets/sfx/na_vls/continue.wav" id="4_3yq6q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sbq4l"]
+font = ExtResource("1_aebq1")
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_2obyk"]
+font = ExtResource("1_aebq1")
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_s128a"]
+font = ExtResource("1_aebq1")
+font_size = 60
+
+[node name="continue_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1926, 1832)
+scale = Vector2(50, 50)
+texture = ExtResource("1_qr2tk")
+
+[node name="continue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 248.0
+offset_right = 936.0
+offset_bottom = 346.0
+text = "CONTINUE?"
+label_settings = SubResource("LabelSettings_sbq4l")
+horizontal_alignment = 1
+
+[node name="timer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 990.0
+offset_top = 248.0
+offset_right = 1170.0
+offset_bottom = 346.0
+text = "10"
+label_settings = SubResource("LabelSettings_2obyk")
+script = ExtResource("2_2khq5")
+
+[node name="press_start" type="Label" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 550.0
+offset_right = 1161.0
+offset_bottom = 648.0
+text = "PRESS START TO CONTINUE"
+label_settings = SubResource("LabelSettings_s128a")
+horizontal_alignment = 1
+
+[node name="counter" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3yq6q")
+volume_db = -15.0
+autoplay = true
