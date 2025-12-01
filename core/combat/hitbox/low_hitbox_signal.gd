@@ -1,7 +1,0 @@
-class_name low_hit
-extends Node2D
-
-signal low_hit_signal(block_stun_frames: int,hit_stun_frames: int)
-
-func on_hit(block_stun_frames: int, hit_stun_frames: int) -> void:
-	low_hit_signal.emit(block_stun_frames,hit_stun_frames)
