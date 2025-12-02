@@ -22,6 +22,7 @@ CharsGlobals="*res://core/globals/chars_globals.gd"
 Hitstop="*res://core/globals/hitstop.gd"
 SpecialSignal="*res://core/combat/signals/special_signal.gd"
 GlobalSignals="*res://core/globals/global_signals.gd"
+Bgm="*res://assets/bgm/bgm.gd"
 
 [display]
 

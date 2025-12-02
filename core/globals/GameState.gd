@@ -15,10 +15,9 @@ const CHARACTER_PATHS = {
 }
 
 ## DICIONÁRIO DE CENÁRIOS/MAPAS
-const MAP_PATHS = {
-	"Dojo": "res://Scenes/Maps/Dojo.tscn",
-	"Street": "res://Scenes/Maps/Street.tscn",
-}
+var stg1_path
+var stg2_path
+var stg3_path
 
 ## CAMINHOS DAS CENAS
 const MAP_SELECTION_SCENE_PATH = "res://stage/control.tscn" # Caminho da tela de seleção de mapa
@@ -72,19 +71,26 @@ func select_character(player_index: int, character_name: String) -> void:
 
 # Função para registrar o cenário escolhido
 func select_map(map_name: String) -> void:
-	if MAP_PATHS.has(map_name):
-		selected_map_name = map_name
+	
+	if map_name != null:
+		
+		if map_name == "stg1":
+			jump_to(stg1_path)
+			
+		if map_name == "stg2":
+			jump_to(stg2_path)
+			
+		if map_name == "stg3":
+			jump_to(stg3_path)
+		
 		print("Cenário escolhido:", map_name)
+		
 	else:
 		printerr("Erro: Cenário desconhecido:", map_name)
 
 
 func get_character_scene_path(character_name: String) -> String:
 	return CHARACTER_PATHS.get(character_name, "")
-	
-# Função para obter o caminho da cena do mapa
-func get_map_scene_path(map_name: String) -> String:
-	return MAP_PATHS.get(map_name, "")
 
 
 # Função para iniciar a seleção de mapa

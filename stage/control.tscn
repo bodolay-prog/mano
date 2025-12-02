@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://chr65q4qo8sii"]
+[gd_scene load_steps=11 format=3 uid="uid://chr65q4qo8sii"]
 
 [ext_resource type="Script" uid="uid://cpnxaq5b4226h" path="res://stage/control.gd" id="1_raam8"]
 [ext_resource type="Texture2D" uid="uid://dpxo3rd8h1wyi" path="res://street.jpg" id="2_cd4he"]
 [ext_resource type="Texture2D" uid="uid://cc8oneo3ds5j0" path="res://Ghosts.jpg" id="2_raam8"]
 [ext_resource type="Texture2D" uid="uid://qdx6x0t8qex0" path="res://Shrine.jpg" id="3_raam8"]
+[ext_resource type="FontFile" uid="uid://dtrwi5mjyg2h" path="res://hoshiko_satsuki/Hoshiko Satsuki.ttf" id="5_0auyg"]
+[ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="6_5o3e8"]
+[ext_resource type="AudioStream" uid="uid://b0w568dklt086" path="res://assets/sfx/na_vls/select_sfx.wav" id="7_5o3e8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_raam8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1jpt"]
+font = ExtResource("5_0auyg")
+font_size = 40
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjo8g"]
+font = ExtResource("6_5o3e8")
+font_size = 50
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,8 +30,9 @@ grow_vertical = 2
 script = ExtResource("1_raam8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(640.00006, 208.99998)
-scale = Vector2(0.82965606, 0.7685185)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(640.00006, 361.25)
+scale = Vector2(0.82965606, 1.3324075)
 texture = ExtResource("2_raam8")
 
 [node name="Control" type="Control" parent="."]
@@ -26,16 +42,20 @@ offset_bottom = 40.0
 
 [node name="Preview" type="Button" parent="."]
 layout_mode = 0
-offset_top = -3.0
-offset_right = 1279.0
-offset_bottom = 720.0
+offset_left = -155.67358
+offset_top = -109.0
+offset_right = 1491.2821
+offset_bottom = 822.0
+icon = SubResource("ViewportTexture_raam8")
+icon_alignment = 1
+expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 190.0
-offset_top = 150.0
-offset_right = 560.0
-offset_bottom = 300.0
+offset_left = 24.0
+offset_top = 304.0
+offset_right = 394.0
+offset_bottom = 454.0
 texture = ExtResource("2_cd4he")
 expand_mode = 1
 
@@ -50,10 +70,10 @@ flat = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 703.0
-offset_top = 150.0
-offset_right = 1073.0
-offset_bottom = 300.0
+offset_left = 450.0
+offset_top = 304.0
+offset_right = 820.0
+offset_bottom = 454.0
 texture = ExtResource("3_raam8")
 expand_mode = 1
 
@@ -66,5 +86,44 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 304.0
+offset_right = 1255.0
+offset_bottom = 454.0
+texture = ExtResource("3_raam8")
+expand_mode = 1
+
+[node name="stg3" type="Button" parent="TextureRect3" groups=["map_selection"]]
+layout_mode = 0
+offset_right = 370.0
+offset_bottom = 150.0
+flat = true
+
+[node name="main_text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 64.0
+offset_right = 850.0
+offset_bottom = 104.0
+text = "SELECIONE O CENÁRIO"
+label_settings = SubResource("LabelSettings_n1jpt")
+
+[node name="stg_name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 638.0
+offset_right = 721.0
+offset_bottom = 680.0
+text = "STG1"
+label_settings = SubResource("LabelSettings_cjo8g")
+horizontal_alignment = 1
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5o3e8")
+volume_db = -25.0
+
 [connection signal="mouse_entered" from="TextureRect/stg1" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="TextureRect2/stg2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_entered" from="TextureRect3/stg3" to="." method="_on_stg_3_mouse_entered"]

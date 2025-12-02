@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwjaqid3pfwcg"]
+[gd_scene load_steps=11 format=3 uid="uid://cwjaqid3pfwcg"]
 
 [ext_resource type="Script" uid="uid://c835isbctn42e" path="res://menus/main_menu/control.gd" id="1_qtu10"]
 [ext_resource type="Texture2D" uid="uid://dpxo3rd8h1wyi" path="res://street.jpg" id="2_ee4bf"]
-[ext_resource type="VideoStream" uid="uid://cfwljjdljptvs" path="res://assets/intro/intro_real_real.ogv" id="2_ycw3r"]
+[ext_resource type="VideoStream" uid="uid://ccy2h23txru8t" path="res://assets/intro/intro_real_real_real_real.ogv" id="2_ycw3r"]
 [ext_resource type="FontFile" uid="uid://dtrwi5mjyg2h" path="res://hoshiko_satsuki/Hoshiko Satsuki.ttf" id="3_ee4bf"]
 [ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="4_ycw3r"]
 [ext_resource type="Script" uid="uid://dggy0yjbesej3" path="res://menus/main_menu/game_name.gd" id="5_5gjwg"]
 [ext_resource type="Script" uid="uid://ce3xpe807fei4" path="res://menus/main_menu/buttons.gd" id="6_ycw3r"]
+[ext_resource type="AudioStream" uid="uid://c8wmgn7rs1d76" path="res://assets/bgm/main_menu_bgm.ogg" id="8_gqxwi"]
+[ext_resource type="AudioStream" uid="uid://b0w568dklt086" path="res://assets/sfx/na_vls/select_sfx.wav" id="9_0brn6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ee4bf"]
 font = ExtResource("4_ycw3r")
@@ -25,6 +27,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_qtu10")
 
+[node name="CenarioTelaAysu" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(641, 360.00003)
+scale = Vector2(0.8306296, 1.3333334)
+texture = ExtResource("2_ee4bf")
+
 [node name="intro" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
 offset_top = -106.0
@@ -32,12 +40,6 @@ offset_right = 1280.0
 offset_bottom = 854.0
 stream = ExtResource("2_ycw3r")
 autoplay = true
-
-[node name="CenarioTelaAysu" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(641, 360.00003)
-scale = Vector2(0.8306296, 1.3333334)
-texture = ExtResource("2_ee4bf")
 
 [node name="game_name" type="Label" parent="."]
 visible = false
@@ -90,8 +92,20 @@ theme_override_fonts/font = ExtResource("3_ee4bf")
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
+[node name="bmg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gqxwi")
+volume_db = -30.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0brn6")
+volume_db = -25.0
+
+[connection signal="finished" from="intro" to="." method="_on_intro_finished"]
 [connection signal="finished" from="intro" to="game_name" method="_on_intro_finished"]
 [connection signal="finished" from="intro" to="VBoxContainer" method="_on_intro_finished"]
+[connection signal="mouse_entered" from="VBoxContainer/1 x 1" to="." method="_on__x_1_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/1 x 1" to="." method="_on__x_1_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/1 x IA" to="." method="_on__x_ia_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/1 x IA" to="." method="_on__x_ia_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/exit" to="." method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]

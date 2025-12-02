@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bijaypego4ae0"]
+[gd_scene load_steps=19 format=3 uid="uid://bijaypego4ae0"]
 
 [ext_resource type="Script" uid="uid://bjbidv2ej4fw2" path="res://menus/select_char/menu.gd" id="1_mae5d"]
 [ext_resource type="Texture2D" uid="uid://qdx6x0t8qex0" path="res://Shrine.jpg" id="2_ytr4m"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://t71jnbshcpuk" path="res://assets/icons/fx/ryu 21x21.png" id="7_jena2"]
 [ext_resource type="AudioStream" uid="uid://dqycvnj1ho2vq" path="res://assets/intro_vl/ryu_intro_vl.ogg" id="9_rlfi8"]
 [ext_resource type="AudioStream" uid="uid://b0w568dklt086" path="res://assets/sfx/na_vls/select_sfx.wav" id="10_jena2"]
-[ext_resource type="AudioStream" uid="uid://byvsi5qpw6oyl" path="res://assets/bgm/Marvel-Vs.-Capcom-2_-Character-Select.ogg" id="10_rlfi8"]
 
 [sub_resource type="Animation" id="Animation_s0d5u"]
 length = 0.001
@@ -317,14 +316,9 @@ theme_override_fonts/font = ExtResource("5_ytr4m")
 theme_override_font_sizes/font_size = 45
 text = "Selecione o seu personagem"
 
-[node name="bgm" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_rlfi8")
-volume_db = -30.0
-autoplay = true
-
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jena2")
-volume_db = -20.0
+volume_db = -25.0
 
 [connection signal="mouse_entered" from="Select/playerOne/Ken" to="." method="_on_button_one_mouse_entered"]
 [connection signal="mouse_exited" from="Select/playerOne/Ken" to="." method="_on_button_one_mouse_exited"]

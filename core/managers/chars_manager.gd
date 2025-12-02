@@ -21,6 +21,7 @@ var p1_hitbox_manager: hitbox_manager
 var p2_hitbox_manager: hitbox_manager
 
 func load_scenes() -> void:
+	
 	p1_scene = load(CharsGlobals.p1char_array[p1n])
 	p2_scene = load(CharsGlobals.p2char_array[p2n])
 	
@@ -34,7 +35,7 @@ func load_chars() -> void:
 	
 	var container = get_node(charnode_path)
 
-	if CharsGlobals.p1char_scene:
+	if p1_scene:
 		p1_instance = p1_scene.instantiate()
 		p1_instance.name = "p1_instance"
 		container.add_child(p1_instance)
@@ -42,7 +43,7 @@ func load_chars() -> void:
 
 		p1_hitbox_manager = p1_instance.get_node("hitbox_manager")
 
-	if CharsGlobals.p2char_scene:
+	if p2_scene:
 		p2_instance = p2_scene.instantiate()
 		p2_instance.name = "p2_instance"
 		container.add_child(p2_instance)

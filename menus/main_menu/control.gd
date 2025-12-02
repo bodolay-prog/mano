@@ -2,9 +2,23 @@ extends Control
 
 const SELECTION_SCENE_PATH := "res://menus/select_char/menu.tscn"
 
+@onready var bmg: AudioStreamPlayer = $bmg
+@onready var intro: VideoStreamPlayer = $intro
+@onready var sfx: AudioStreamPlayer = $sfx
+
 func _ready() -> void:
-	# Garante estado limpo antes que o jogador escolha o modo
+	# Garante estado limpo antes que o jogador escolha o modo]
+	intro.visible = true
+	intro.play()
 	GameState.reset_characters()
+
+func play_sfx() -> void:
+	sfx.play()
+
+func skip_intro() -> void:
+	intro.stop()
+	intro.visible = false
+	intro.finished.emit()
 
 func _on__x_1_pressed() -> void:
 	# Modo 2 Jogadores (is_2p=true, is_training=false)
@@ -18,6 +32,8 @@ func _on__x_1_pressed() -> void:
 	else:
 		printerr("ERRO: Cena de seleção não encontrada em:", SELECTION_SCENE_PATH)
 
+
+
 func _on__x_ia_pressed() -> void:
 	GameState.set_game_mode(false, true)
 	GameState.reset_characters()
@@ -29,3 +45,31 @@ func _on__x_ia_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_intro_finished() -> void:
+	intro.visible = false
+	bmg.play()
+	pass # Replace with function body.
+
+func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("p1_start"):
+		skip_intro()
+		
+	return
+
+
+func _on__x_1_mouse_entered() -> void:
+	play_sfx()
+	pass # Replace with function body.
+
+
+func _on__x_ia_mouse_entered() -> void:
+	play_sfx()
+	pass # Replace with function body.
+
+
+func _on_exit_mouse_entered() -> void:
+	play_sfx()
+	pass # Replace with function body.

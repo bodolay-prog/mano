@@ -1,7 +1,7 @@
 extends Node2D
 
-var p1n: int 
-var p2n: int 
+var p1n: int = 0 
+var p2n: int = 1
 
 var p1ryuchar_path := "res://actors/characters/p1_chars/shoto_ryu/p1_ryu_character.tscn"
 var p2ryuchar_path := "res://actors/characters/p2_chars/shoto_ryu/p2_ryu_character.tscn"
@@ -28,4 +28,3 @@ func _process(delta: float) -> void:
 	#print("p2n:", p2n)
 	p1char_scene = p1char_array[p1n]
 	p2char_scene = p2char_array[p2n]
-	pass

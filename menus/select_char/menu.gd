@@ -35,6 +35,7 @@ func change_to(_path) -> void:
 	get_tree().change_scene_to_file(_path)
 
 func _ready() -> void:
+	Bgm.play_music_level()
 	if Engine.has_singleton("GameState"):
 		GameState.reset_characters()
 	else:
@@ -100,15 +101,15 @@ func handle_selection(character_name: String) -> void:
 		else: # current_player == 2
 			print("Seleção completa — iniciando seleção de mapa 2P.")
 			# VAI PARA A SELEÇÃO DE MAPA
-			change_to(degub_stage)
-			#GameState.start_map_selection()
+			#change_to(degub_stage)
+			GameState.start_map_selection()
 	else:
 		# Modo Treino
 		GameState.select_character(2, "Ken")
 		print("Seleção completa — iniciando seleção de mapa Treino.")
 		# VAI PARA A SELEÇÃO DE MAPA
-		change_to(traning_stage_path)
-		#GameState.start_map_selection()
+		#change_to(traning_stage_path)
+		GameState.start_map_selection()
 
 
 # Funções de cor dos botoes

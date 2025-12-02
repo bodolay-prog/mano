@@ -7,7 +7,7 @@ var is_dead: bool = false
 
 func _ready() -> void:
 	super()
-	self.health = 10000
+	self.health = 250
 	health_bar.text_name = "Ken"
 	health_bar.texture_path = "res://assets/icons/portraits/ken_port.png"
 	health_bar.set_things()

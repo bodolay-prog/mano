@@ -155,7 +155,7 @@ func on_timeout() -> void:
 		p1.p1_lose.emit()
 
 func start_timer() -> void:
-	GlobalSignals.timer.start(99)
+	GlobalSignals.timer.start(3)
 
 func _ready() -> void:
 	
@@ -228,7 +228,9 @@ func p2_update_health() -> void:
 
 func _process(delta: float) -> void:
 	
-	update_info()
+	if p1 and p2:
+		update_info()
+		
 	if p1 and p1.is_on_floor():
 		p1_is_on_right_side()
 

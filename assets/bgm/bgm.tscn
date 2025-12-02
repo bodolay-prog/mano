@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp44q458r8ygn"]
+
+[ext_resource type="AudioStream" uid="uid://byvsi5qpw6oyl" path="res://assets/bgm/Marvel-Vs.-Capcom-2_-Character-Select.ogg" id="1_b0nq5"]
+[ext_resource type="Script" uid="uid://4xa66mdydo84" path="res://assets/bgm/bgm.gd" id="1_ku77p"]
+
+[node name="bgm" type="AudioStreamPlayer"]
+stream = ExtResource("1_b0nq5")
+volume_db = -30.0
+script = ExtResource("1_ku77p")

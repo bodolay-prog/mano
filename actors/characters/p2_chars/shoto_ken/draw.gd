@@ -21,6 +21,7 @@ func process_physics(delta: float) -> P2State:
 		animations_player.play("win_round")
 
 	await animations_player.animation_finished
+	animations_player.active = false
 	
 	return null
 	
