@@ -146,7 +146,7 @@ func on_timeout() -> void:
 		p1.p1_lose.emit()
 
 func start_timer() -> void:
-	GlobalSignals.timer.start(5)
+	GlobalSignals.timer.start(99)
 
 func _ready() -> void:
 	

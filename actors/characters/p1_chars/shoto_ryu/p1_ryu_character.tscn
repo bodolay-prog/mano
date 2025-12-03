@@ -13585,7 +13585,7 @@ frame = 52
 texture = ExtResource("2_eeord")
 hframes = 21
 vframes = 21
-frame = 161
+frame = 223
 
 [node name="camera_area" type="Area2D" parent="." groups=["char"]]
 
@@ -14530,19 +14530,16 @@ metadata/_custom_type_script = "uid://wcdguvpe3i15"
 [node name="head_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(-9, -12)
 shape = SubResource("RectangleShape2D_od1wh")
-disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="body_hurtbox" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(-17.5, 20)
 shape = SubResource("RectangleShape2D_relgi")
-disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="body_hurtbox2" type="CollisionShape2D" parent="hurtbox_manager/counter_hurtbox_manager/counter_hurtbox_area"]
 position = Vector2(10, 26)
 shape = SubResource("RectangleShape2D_y5yjc")
-disabled = true
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="health" parent="." instance=ExtResource("45_s5bnd")]
