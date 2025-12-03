@@ -2,7 +2,14 @@ extends Node2D
 
 signal on_draw()
 
+
 var continue_scene: String = "res://menus/continue/continue_scene.tscn"
+
+
+@onready var p1SpawnPos = $"../p1_spawn_pos"
+@onready var p2SpawnPos = $"../p2_spawn_pos"
+@onready var camPos
+@onready var camera = $"../Camera"
 
 @onready
 var charnode = $"../chars"
@@ -139,20 +146,7 @@ func p2_wins() -> void:
 		go_to_continue()
 
 func on_timeout() -> void:
-	
-	if p1.health == p2.health:
-		print("draw")
-		feedback.on_draw()
-		GlobalSignals.timer.stop()
-		on_draw.emit()
-		await get_tree().create_timer(3).timeout
-		go_to_continue()
-		
-	if p1.health > p2.health:
-		p2.p2_lose.emit()
-		
-	if p2.health > p1.health:
-		p1.p1_lose.emit()
+	pass
 
 func start_timer() -> void:
 	GlobalSignals.timer.start(3)
@@ -161,7 +155,6 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	call_deferred("_late_start")
-	GlobalSignals.timer3.connect("timeout", start_timer)
 	GlobalSignals.timer.connect("timeout", on_timeout)
 
 func _late_start():
@@ -187,13 +180,13 @@ func _late_start():
 		p1_hitbox_manager.connect("hit", p1_set_hit_info)
 		CharsGlobals.p1hitboxall = p1_hitbox_manager
 		p1.sp = 1000
+
 		
 	if p2:
 		var p2_hitbox_manager = p2.get_node("hitbox_manager")
 		p2.connect("hurt", p2_update_health)
 		p2.connect("hurt", p1.set_sp)
 		p2.connect("is_ready", p2.start_game)
-		p2.connect("is_ready", feedback.fight)
 		p2.connect("p2_dead", p1_wins)
 		p2.connect("p2_lose", p1_wins)
 		p2.connect("p2_dead", p1.win_game)
@@ -205,6 +198,11 @@ func _late_start():
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 		CharsGlobals.p2hitboxall = p2_hitbox_manager
 		p2.sp = 1000
+		GlobalSignals.timer4.timeout.emit()
+		
+	if camera:
+		camPos = camera.get_node("camera")
+		
 	
 func update_info() -> void:
 	
@@ -226,10 +224,25 @@ func p2_update_health() -> void:
 	health_p2._set_health(p2.health - p1_attack_damage)
 	p2.health -= p1_attack_damage
 
+func reset_sp_health() -> void:
+	
+	p1.health = 10000
+	p1.sp = 1000
+	
+	p2.health = 10000
+	p2.sp = 1000
+	
+	p1.global_position = p1SpawnPos.global_position
+	p2.global_position = p2SpawnPos.global_position
+	camPos.global_position = Vector2(630, 511)
+
 func _process(delta: float) -> void:
 	
 	if p1 and p2:
 		update_info()
+		
+		if Input.is_action_just_pressed("p1_back"):
+			reset_sp_health()
 		
 	if p1 and p1.is_on_floor():
 		p1_is_on_right_side()
@@ -237,6 +250,11 @@ func _process(delta: float) -> void:
 	if p2 and p2.is_on_floor():
 		p2_is_on_right_side()
 		
+	if p1.health <= 200:
+		p1.health = 10000
+	
+	if p2.health <= 200:
+		p1.health = 10000
 
 func _physics_process(delta):
 	

@@ -29,5 +29,6 @@ func go_main_menu() -> void:
 	pass
 	
 func on_start() -> void:
+	GameState.select_map(GameState.map_chice)
 	pass
 	

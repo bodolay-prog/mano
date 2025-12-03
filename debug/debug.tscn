@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://seujc4bmg0s5"]
 
-[ext_resource type="PackedScene" uid="uid://bf5q34m0iwx3r" path="res://stages/test_stage/test_stage.tscn" id="1_ifkhq"]
 [ext_resource type="Script" uid="uid://b7x1jwib8e8q7" path="res://core/managers/chars_manager.gd" id="2_pfhb5"]
 [ext_resource type="Script" uid="uid://c1sho0hhgeasc" path="res://core/managers/game_manager.gd" id="3_nd4er"]
+[ext_resource type="PackedScene" uid="uid://b2wcfbnn0nl36" path="res://stages/ryu_stage/ryu_stage.tscn" id="3_nlbt3"]
 [ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="5_nlbt3"]
 [ext_resource type="Script" uid="uid://c72tw245yre38" path="res://hud/feedback/feedback.gd" id="5_stv80"]
 [ext_resource type="PackedScene" uid="uid://1nald7aubhkq" path="res://ui/timer/timer.tscn" id="6_jfkso"]
@@ -21,10 +21,11 @@ charnode_path = NodePath(".")
 [node name="game_manager" type="Node2D" parent="."]
 script = ExtResource("3_nd4er")
 
-[node name="Map" parent="." instance=ExtResource("1_ifkhq")]
+[node name="ryu_stage" parent="." instance=ExtResource("3_nlbt3")]
+position = Vector2(1, 0)
 
 [node name="Camera" parent="." instance=ExtResource("13_nd4er")]
-position = Vector2(203, 298)
+position = Vector2(203, 286)
 
 [node name="p1_spawn_pos" type="StaticBody2D" parent="."]
 position = Vector2(377, 660)

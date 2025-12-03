@@ -15,3 +15,6 @@ func _play_music(music: AudioStream) -> void:
 
 func play_music_level(): 
 	_play_music(stg_char_select_bmg)
+	
+func stop_music() -> void:
+	stop()

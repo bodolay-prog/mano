@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbkhlaxt3sntc"]
+
+[ext_resource type="Script" uid="uid://b7x1jwib8e8q7" path="res://core/managers/chars_manager.gd" id="1_1sxao"]
+[ext_resource type="Script" uid="uid://c1sho0hhgeasc" path="res://core/managers/game_manager.gd" id="2_5rm4y"]
+[ext_resource type="PackedScene" uid="uid://2ub817ixrwcq" path="res://stages/training_stage/training_stage.tscn" id="3_huivg"]
+[ext_resource type="PackedScene" uid="uid://cy6etmmagty4k" path="res://core/camera/camera.tscn" id="4_iitq3"]
+[ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="5_pkpxk"]
+[ext_resource type="Script" uid="uid://c72tw245yre38" path="res://hud/feedback/feedback.gd" id="6_ukn5r"]
+[ext_resource type="PackedScene" uid="uid://1nald7aubhkq" path="res://ui/timer/timer.tscn" id="7_ua64o"]
+[ext_resource type="AudioStream" uid="uid://cwu431c4dl32l" path="res://assets/sfx/na_vls/ready3.wav" id="7_ukn5r"]
+[ext_resource type="AudioStream" uid="uid://dilaaj8c0gigm" path="res://assets/sfx/na_vls/fight.wav" id="8_ua64o"]
+[ext_resource type="AudioStream" uid="uid://srwujsrlch7m" path="res://assets/sfx/na_vls/youwin.wav" id="9_vkya4"]
+[ext_resource type="AudioStream" uid="uid://5v3pdn0s5i6c" path="res://assets/sfx/na_vls/drawgame.wav" id="10_kjdn4"]
+[ext_resource type="AudioStream" uid="uid://cbqcx0g6gti10" path="res://assets/bgm/training_stage.ogg" id="12_sboxv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrl65"]
+font = ExtResource("5_pkpxk")
+font_size = 75
+
+[node name="not_training" type="Node2D"]
+
+[node name="game_manager" type="Node2D" parent="."]
+script = ExtResource("2_5rm4y")
+
+[node name="training_stage" parent="." instance=ExtResource("3_huivg")]
+
+[node name="chars" type="Node2D" parent="."]
+script = ExtResource("1_1sxao")
+charnode_path = NodePath(".")
+
+[node name="Camera" parent="." instance=ExtResource("4_iitq3")]
+position = Vector2(630, 511)
+
+[node name="p1_spawn_pos" type="StaticBody2D" parent="."]
+position = Vector2(377, 660)
+
+[node name="p2_spawn_pos" type="StaticBody2D" parent="."]
+position = Vector2(867, 660)
+
+[node name="layer" type="CanvasLayer" parent="."]
+
+[node name="feedback" type="Label" parent="layer"]
+offset_left = 471.0
+offset_top = 360.0
+offset_right = 809.0
+offset_bottom = 422.0
+text = "READY?"
+label_settings = SubResource("LabelSettings_jrl65")
+horizontal_alignment = 1
+script = ExtResource("6_ukn5r")
+
+[node name="sfxs" type="Node" parent="layer"]
+
+[node name="ready?" type="AudioStreamPlayer" parent="layer/sfxs"]
+stream = ExtResource("7_ukn5r")
+volume_db = -19.0
+
+[node name="fight" type="AudioStreamPlayer" parent="layer/sfxs"]
+stream = ExtResource("8_ua64o")
+volume_db = -19.0
+
+[node name="you win" type="AudioStreamPlayer" parent="layer/sfxs"]
+stream = ExtResource("9_vkya4")
+volume_db = -19.0
+
+[node name="draw" type="AudioStreamPlayer" parent="layer/sfxs"]
+stream = ExtResource("10_kjdn4")
+volume_db = -19.0
+
+[node name="Control" parent="." instance=ExtResource("7_ua64o")]
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_sboxv")
+volume_db = -35.0
+autoplay = true
+parameters/looping = true

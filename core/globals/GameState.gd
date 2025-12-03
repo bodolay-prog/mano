@@ -6,6 +6,7 @@ var is_training_mode: bool = false
 var player_1_character_name: String = ""
 var player_2_character_name: String = ""
 var selected_map_name: String = "" # Nome do mapa escolhido
+var map_chice: String
 
 ## DICIONÁRIO DE PERSONAGENS
 const CHARACTER_PATHS = {
@@ -15,9 +16,9 @@ const CHARACTER_PATHS = {
 }
 
 ## DICIONÁRIO DE CENÁRIOS/MAPAS
-var stg1_path
-var stg2_path
-var stg3_path
+var ryu_stage = "res://main_fight_scenes/ryu/ryu_main.tscn"
+var ken_stage = "res://main_fight_scenes/ken/ken_main.tscn"
+var not_training_stage = "res://main_fight_scenes/not_training/not_training.tscn"
 
 ## CAMINHOS DAS CENAS
 const MAP_SELECTION_SCENE_PATH = "res://stage/control.tscn" # Caminho da tela de seleção de mapa
@@ -75,13 +76,13 @@ func select_map(map_name: String) -> void:
 	if map_name != null:
 		
 		if map_name == "stg1":
-			jump_to(stg1_path)
+			jump_to(ken_stage)
 			
 		if map_name == "stg2":
-			jump_to(stg2_path)
+			jump_to(ryu_stage)
 			
 		if map_name == "stg3":
-			jump_to(stg3_path)
+			jump_to(not_training_stage)
 		
 		print("Cenário escolhido:", map_name)
 		

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://chr65q4qo8sii"]
+[gd_scene load_steps=12 format=3 uid="uid://chr65q4qo8sii"]
 
 [ext_resource type="Script" uid="uid://cpnxaq5b4226h" path="res://stage/control.gd" id="1_raam8"]
-[ext_resource type="Texture2D" uid="uid://dpxo3rd8h1wyi" path="res://street.jpg" id="2_cd4he"]
 [ext_resource type="Texture2D" uid="uid://cc8oneo3ds5j0" path="res://Ghosts.jpg" id="2_raam8"]
-[ext_resource type="Texture2D" uid="uid://qdx6x0t8qex0" path="res://Shrine.jpg" id="3_raam8"]
+[ext_resource type="Texture2D" uid="uid://dmlodgnu40o2c" path="res://assets/stages/ken_stage.png" id="3_n1jpt"]
+[ext_resource type="Texture2D" uid="uid://yms75yu7mbc5" path="res://assets/stages/ryu_stage.png" id="4_cjo8g"]
 [ext_resource type="FontFile" uid="uid://dtrwi5mjyg2h" path="res://hoshiko_satsuki/Hoshiko Satsuki.ttf" id="5_0auyg"]
+[ext_resource type="Texture2D" uid="uid://b7wk84775x373" path="res://assets/stages/training_stage.png" id="5_xg2ta"]
 [ext_resource type="FontFile" uid="uid://d3d1p6icmlj67" path="res://hoshiko_satsuki/super-street-fighter-ii-large-colour.colr.ttf" id="6_5o3e8"]
 [ext_resource type="AudioStream" uid="uid://b0w568dklt086" path="res://assets/sfx/na_vls/select_sfx.wav" id="7_5o3e8"]
 
@@ -50,16 +51,16 @@ icon = SubResource("ViewportTexture_raam8")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ken_stage" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 304.0
 offset_right = 394.0
 offset_bottom = 454.0
-texture = ExtResource("2_cd4he")
+texture = ExtResource("3_n1jpt")
 expand_mode = 1
 
-[node name="stg1" type="Button" parent="TextureRect" groups=["map_selection"]]
+[node name="stg1" type="Button" parent="ken_stage" groups=["map_selection"]]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,16 +69,16 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="ryu_stage" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 450.0
 offset_top = 304.0
 offset_right = 820.0
 offset_bottom = 454.0
-texture = ExtResource("3_raam8")
+texture = ExtResource("4_cjo8g")
 expand_mode = 1
 
-[node name="stg2" type="Button" parent="TextureRect2" groups=["map_selection"]]
+[node name="stg2" type="Button" parent="ryu_stage" groups=["map_selection"]]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,16 +87,16 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="training_stage" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 885.0
 offset_top = 304.0
 offset_right = 1255.0
 offset_bottom = 454.0
-texture = ExtResource("3_raam8")
+texture = ExtResource("5_xg2ta")
 expand_mode = 1
 
-[node name="stg3" type="Button" parent="TextureRect3" groups=["map_selection"]]
+[node name="stg3" type="Button" parent="training_stage" groups=["map_selection"]]
 layout_mode = 0
 offset_right = 370.0
 offset_bottom = 150.0
@@ -112,18 +113,19 @@ label_settings = SubResource("LabelSettings_n1jpt")
 
 [node name="stg_name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 570.0
+offset_left = 527.0
 offset_top = 638.0
-offset_right = 721.0
+offset_right = 678.0
 offset_bottom = 680.0
 text = "STG1"
 label_settings = SubResource("LabelSettings_cjo8g")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5o3e8")
 volume_db = -25.0
 
-[connection signal="mouse_entered" from="TextureRect/stg1" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_entered" from="TextureRect2/stg2" to="." method="_on_button_2_mouse_entered"]
-[connection signal="mouse_entered" from="TextureRect3/stg3" to="." method="_on_stg_3_mouse_entered"]
+[connection signal="mouse_entered" from="ken_stage/stg1" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="ryu_stage/stg2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_entered" from="training_stage/stg3" to="." method="_on_stg_3_mouse_entered"]

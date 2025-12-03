@@ -19,6 +19,7 @@ var p2:P2Character
 
 var health_p1
 var health_p2
+var p2_combo_hits
 
 
 var p1_block_stun_frames: int 
@@ -116,7 +117,7 @@ func p1_wins() -> void:
 		print("p1 wins!")
 		GlobalSignals.timer.stop()
 		feedback.p1_wins()
-		await get_tree().create_timer(3).timeout
+		await GlobalSignals.timer5.timeout
 		go_to_continue()
 	
 func p2_wins() -> void:
@@ -125,17 +126,17 @@ func p2_wins() -> void:
 		print("p2 wins!")
 		GlobalSignals.timer.stop()
 		feedback.p2_wins()
-		await get_tree().create_timer(3).timeout
+		await GlobalSignals.timer5.timeout
 		go_to_continue()
 
 func on_timeout() -> void:
 	
 	if p1.health == p2.health:
 		print("draw")
-		feedback.on_draw()
 		GlobalSignals.timer.stop()
+		feedback.on_draw()
 		on_draw.emit()
-		await get_tree().create_timer(3).timeout
+		await GlobalSignals.timer5.timeout
 		go_to_continue()
 		
 	if p1.health > p2.health:
@@ -145,12 +146,11 @@ func on_timeout() -> void:
 		p1.p1_lose.emit()
 
 func start_timer() -> void:
-	GlobalSignals.timer.start(99)
+	GlobalSignals.timer.start(5)
 
 func _ready() -> void:
 	
 	await get_tree().process_frame
-	
 	call_deferred("_late_start")
 	GlobalSignals.timer3.connect("timeout", start_timer)
 	GlobalSignals.timer.connect("timeout", on_timeout)
@@ -183,7 +183,6 @@ func _late_start():
 		p2.connect("hurt", p2_update_health)
 		p2.connect("hurt", p1.set_sp)
 		p2.connect("is_ready", p2.start_game)
-		p2.connect("is_ready", feedback.fight)
 		p2.connect("p2_dead", p1_wins)
 		p2.connect("p2_lose", p1_wins)
 		p2.connect("p2_dead", p1.win_game)
@@ -191,10 +190,11 @@ func _late_start():
 		p2.connect("p2_lose", p2.lose_game)
 		connect("on_draw" , p2.draw_game)
 		health_p2 = p2.get_node("health/CanvasLayer/health_bar")
+		p2_combo_hits = health_p2.get_node("combo_hits")
 		p2_hitbox_manager.connect("hit", p2_set_hit_info)
 		CharsGlobals.p2hitboxall = p2_hitbox_manager
+		GlobalSignals.timer4.timeout.emit()
 	
-
 func p1_update_health() -> void:
 	health_p1._set_health(p1.health - p2_attack_damage)
 	p1.health -= p2_attack_damage
@@ -205,7 +205,7 @@ func p2_update_health() -> void:
 	p2.health -= p1_attack_damage
 
 func _process(delta: float) -> void:
-
+		
 	if p1 and p1.is_on_floor():
 		p1_is_on_right_side()
 
@@ -220,7 +220,6 @@ func _physics_process(delta):
 		
 	if p2:
 		p2.apply_push(p1, delta)
-
 	
 
 	

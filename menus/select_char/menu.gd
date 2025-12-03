@@ -19,8 +19,7 @@ var current_player: int = 1
 @onready var vlken_: AudioStreamPlayer = $Select/playerOne/vl
 @onready var vlryu_: AudioStreamPlayer = $Select/playerTwo/vl
 
-var traning_stage_path = "res://debug/debug_training.tscn"
-var degub_stage = "res://debug/debug.tscn"
+var traning_stage_path = "res://main_fight_scenes/training/training_main.tscn"
 
 # Ajuste os caminhos se necessário.
 @onready var player_one_frame = get_node_or_null("Select/playerOne/ColorRect")
@@ -101,15 +100,15 @@ func handle_selection(character_name: String) -> void:
 		else: # current_player == 2
 			print("Seleção completa — iniciando seleção de mapa 2P.")
 			# VAI PARA A SELEÇÃO DE MAPA
-			#change_to(degub_stage)
 			GameState.start_map_selection()
 	else:
 		# Modo Treino
 		GameState.select_character(2, "Ken")
 		print("Seleção completa — iniciando seleção de mapa Treino.")
 		# VAI PARA A SELEÇÃO DE MAPA
-		#change_to(traning_stage_path)
-		GameState.start_map_selection()
+		Bgm.stop_music()
+		change_to(traning_stage_path)
+		
 
 
 # Funções de cor dos botoes

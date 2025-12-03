@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://ra4wjulawch3"]
+
+[ext_resource type="Texture2D" uid="uid://dmlodgnu40o2c" path="res://assets/stages/ken_stage.png" id="1_18ys7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ggh"]
+size = Vector2(44.5, 687.595)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo03k"]
+size = Vector2(1352.5, 42)
+
+[node name="ken_stage" type="Node2D"]
+
+[node name="stage_propeties" type="Node2D" parent="."]
+
+[node name="stage_sprite" type="Sprite2D" parent="stage_propeties"]
+position = Vector2(640, 527.5)
+scale = Vector2(1, 0.5347222)
+texture = ExtResource("1_18ys7")
+
+[node name="wall_right" type="StaticBody2D" parent="stage_propeties"]
+position = Vector2(1261, 40)
+scale = Vector2(1.07297, 1.0384)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage_propeties/wall_right"]
+position = Vector2(22.25, 304.527)
+shape = SubResource("RectangleShape2D_h1ggh")
+
+[node name="ground" type="StaticBody2D" parent="stage_propeties"]
+position = Vector2(45, 58)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage_propeties/ground"]
+position = Vector2(577.75, 668)
+shape = SubResource("RectangleShape2D_yo03k")
+
+[node name="wall_left" type="StaticBody2D" parent="stage_propeties"]
+position = Vector2(-29, 39)
+scale = Vector2(1.07297, 1.0384)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage_propeties/wall_left"]
+position = Vector2(22.25, 305.277)
+shape = SubResource("RectangleShape2D_h1ggh")
+
+[node name="celing" type="StaticBody2D" parent="stage_propeties"]
+position = Vector2(55, -674)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage_propeties/celing"]
+position = Vector2(577.75, 668)
+shape = SubResource("RectangleShape2D_yo03k")
